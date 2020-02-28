@@ -5,8 +5,81 @@ Lineær algebra bruges til at løse lineære ligningssystemer.
 En af de mest nyttige algoritmer, til at løse sådanne ligningssystemer, er Gaussisk elimination, som vil blive beskrevet senere i dette kapitel.
 
 \section{Matricer}
-Lineære ligningssystemer kan opskrives i matricer. En matrix er defineret i Definition 
+Lineære ligningssystemer kan opskrives i matricer. 
+En matrix er defineret i Definition \ref{def:matricer}.
 
-\begin{defn}
-
+\begin{defn}\label{def:matricer}
+En matrix er en rektangulær tabel over skalarer. 
+Størrelsen på en matrix er $m \times n$, hvor $m$ er antal rækker og $n$ er antal søjler. 
+En matrix kaldes kvadratisk hvis $m=n$. 
+Skalaren i den $i$'te række og $j$'te søjle kaldes $(i,j)$-indgangen.
 \end{defn}
+
+Herunder ses en matrix $\underset{m \times n}{A}$ og dens indgange.
+
+\begin{align*}
+\underset{m \times n}{A} = \begin{bmatrix}
+	a_{1,1} & a_{2,1} & \dots & a_{j,1} & \dots & a_{n,1} \\
+	a_{1,2} & \ddots  &       &         &       & \vdots \\
+	\vdots  &         & \ddots &        &       & \vdots \\
+	a_{1,i} &         &       & a_{j,i} &       & \vdots \\
+	\vdots  &         &       &         & \ddots& \vdots \\
+	a_{1,m} & \dots   & \dots & \dots   & \dots & a_{n,m} 
+\end{bmatrix}
+\end{align*}
+
+En bestemt type af matrix er en identitetsmatrix, der betegnes $I_n$. 
+
+\begin{defn}\label{def:imatrix}
+For hvert positivt heltal $n$, er $n \times n$ identitetsmatricen, $I_n$, den $n \times n$ matrix, hvor hver søjle er standardvektorerne $\textbf{e}_1$, $\textbf{e}_2$, $\dots$, $\textbf{e}_n$ i $\mathbb{R}^n$.
+\end{defn}
+
+Et eksempel på en identitetsmatrix med $3$ rækker og $3$ søjler, ser således ud:
+\begin{align*}
+I_3 = \begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 
+\end{bmatrix}
+\end{align*}
+
+\begin{defn}\label{delmatrix}
+En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
+\end{defn}
+
+Givet en matrix $A$ kan der dannes delmatricen $A'$.
+
+\begin{align*}
+A = \begin{bmatrix}
+	1 & 2 & 3 \\
+	4 & 5 & 6 \\
+	7 & 8 & 9 
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+A' = \begin{bmatrix}
+	5 & 6 \\
+	8 & 9
+\end{bmatrix}
+\end{align*}
+
+\section{Regneoperationer med matricer}
+Givet to $m \times n$ matricer $A$ og $B$ kan der udføres forskellige regneoperationer. 
+Summen af to matricer findes ved at addere en indgang i $A$ med tilsvarende indgang i $B$, så $A+B$ er en $m \times n$ matrix, hvor indgang $(i,j)$ er $a_{i,j}+b_{i,j}$. 
+Det samme gør sig gældende ved substraktion. \\
+Givet en $m \times n$ matrix $A$ og en skalar $c$, er produktet af skalaren og matricen, $cA$, en $m \times n$ matrix, hvor indgangene er $c$ gange den tilsvarende indgang i $A$. \\
+
+\begin{stn}
+Lad $A$, $B$ og $C$ være $m \times n$ matricer, og lad $s$ og $t$ være tilfældige skalarer. Så gælder følgende
+\begin{enumerate}[label=(\alph*)]
+\item $A + B = B + A$
+\item $(A + B) + C = A + (B + C)$
+\item $A + O = A$
+\item $A + (-A) = O$
+\item $(st) A = s (tA)$
+\item $s(A + B) = sA + sB$
+\item $(s+t)A = sA + tA$
+\end{enumerate}
+\end{stn}
+
