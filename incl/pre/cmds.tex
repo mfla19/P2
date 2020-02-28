@@ -16,14 +16,114 @@
 % Sætninger o.lign. ------------------------------------------------------------
 % http://www.ctex.org/documents/packages/math/amsthdoc.pdf
 \theoremstyle{plain}                 % Titel med fed, tekst med skråskrift
-\newtheorem{thm}{Sætning}[chapter]   % Sætninger, nummereret efter kapitel
-\newtheorem{lem}[thm]{Lemma}         % Lemmaer, nummereret ligesom sætninger
-\newtheorem{prop}[thm]{Proposition}  % Propositioner, nummereret ligesom sætninger
-\newtheorem*{cor}{Korollar}         % Korollarer, unnumbered
+%\newtheorem{thm}{Sætning}[chapter]   % Sætninger, nummereret efter kapitel
+%\newtheorem{lem}[thm]{Lemma}         % Lemmaer, nummereret ligesom sætninger
+%\newtheorem{prop}[thm]{Proposition}  % Propositioner, nummereret ligesom sætninger
+%\newtheorem*{cor}{Korollar}         % Korollarer, unnumbered
 
-\theoremstyle{definition}            % Title med fed, opretstående tekst
-\newtheorem{defn}[thm]{Definition}   % Definitioner, nummereret ligesom sætninger
-\newtheorem{exmp}[thm]{Eksempel}      % Eksempler, nummereret ligesom sætninger
+
+\newtcolorbox{stncol}
+{colback={gray!20}, colframe=black,boxrule=0pt,leftrule=3.5pt, sharp corners
+} %Boks til sætninger, definitioner osv.
+
+\newtcolorbox{eksempelboks}
+{enforce breakable, colback={white}, boxrule=0pt, colframe={gray!100}, leftrule=3.5pt, sharp corners
+} % boks til eksempler
+
+%\newtcolorbox{algoboks}
+%{colback={white}, boxrule=0pt, toprule=1pt, bottomrule=1pt, colframe=black, sharp corners
+%}
+
+\newcounter{nyctr}
+\numberwithin{nyctr}{chapter}
+
+\newenvironment{algo}[1][]
+{ \refstepcounter{nyctr} 
+\vspace{0.3cm}
+\hrule \vspace{1mm}
+\textbf{Algoritme \thealgoctr} \hspace{0.3cm} #1 \vspace{1mm}
+\hrule
+}{
+\hrule
+  \vspace{0.3cm}
+}
+
+
+
+\newenvironment{stn}[1][]
+{ \refstepcounter{nyctr}
+\vspace{0.3cm}
+  \begin{stncol}  
+\textbf{Sætning \thestnctr \hspace{0.3cm} #1}
+  \newline
+}{
+  \end{stncol}
+  \vspace{0.3cm}
+}
+
+
+
+\newenvironment{lma}[1][]
+{ \refstepcounter{nyctr}
+  \vspace{0.3cm}
+  \begin{stncol}  
+  \textbf{Lemma \thelmactr \hspace{0.3cm} #1} 
+  \newline
+}{
+  \end{stncol}
+  \vspace{0.3cm}
+}
+
+
+
+\newenvironment{prop}[1][]
+{ \refstepcounter{nyctr}
+  \vspace{0.3cm}
+  \begin{stncol}
+\textbf{Proposition \thepropctr \hspace{0.3cm} #1} 
+  \newline
+}{
+  \end{stncol}
+  \vspace{0.3cm}
+}
+
+
+\newenvironment{cor}[1][]
+{ \refstepcounter{nyctr}
+  \vspace{0.3cm}
+  \begin{stncol}
+\textbf{Korollar \thecorctr \hspace{0.3cm} #1} 
+  \newline
+}{
+  \end{stncol}
+  \vspace{0.3cm}
+}
+
+
+\newenvironment{exmp}[1][]
+{ \refstepcounter{nyctr}
+  \vspace{0.3cm}
+  \begin{eksempelboks}
+\textbf{Eksempel \theexmpctr \hspace{0.3cm} #1} 
+  \newline
+}{    
+  \end{eksempelboks}
+  \vspace{0.3cm}
+}
+
+
+
+\newenvironment{defn}[1][]
+{ \refstepcounter{nyctr}
+  \vspace{0.3cm}
+  \begin{stncol}
+\textbf{Definition \thedefnctr \hspace{0.3cm} #1} 
+  \newline
+}{
+  \end{stncol}
+  \vspace{0.3cm}
+}
+
 
 % Figur-makroer ----------------------------------------------------------------
 
