@@ -31,7 +31,7 @@ Herunder ses en matrix $\underset{m \times n}{A}$ og dens indgange.
 En bestemt type af matrix er en identitetsmatrix, der betegnes $I_n$. 
 
 \begin{defn}\label{def:imatrix}
-For hvert positivt heltal $n$, er $n \times n$ identitetsmatricen, $I_n$, den $n \times n$ matrix, hvor hver søjle er standardvektorerne $\textbf{e}_1$, $\textbf{e}_2$, $\dots$, $\textbf{e}_n$ i $\mathbb{R}^n$.
+For hvert positivt heltal $n$, er $n \times n$ identitetsmatricen, $I_n$, den $n \times n$ matrix, hvor hver søjle er standardvektorerne $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ i $\mathbb{R}^n$.
 \end{defn}
 
 Et eksempel på en identitetsmatrix med $3$ rækker og $3$ søjler, ser således ud:
@@ -71,7 +71,8 @@ Det samme gør sig gældende ved substraktion. \\
 Givet en $m \times n$ matrix $A$ og en skalar $c$, er produktet af skalaren og matricen, $cA$, en $m \times n$ matrix, hvor indgangene er $c$ gange den tilsvarende indgang i $A$. \\
 
 \begin{stn}
-Lad $A$, $B$ og $C$ være $m \times n$ matricer, og lad $s$ og $t$ være tilfældige skalarer. Så gælder følgende
+Lad $A$, $B$ og $C$ være $m \times n$ matricer, og lad $s$ og $t$ være tilfældige skalarer. 
+Så gælder følgende
 \begin{enumerate}[label=(\alph*)]
 \item $A + B = B + A$
 \item $(A + B) + C = A + (B + C)$
@@ -83,3 +84,11 @@ Lad $A$, $B$ og $C$ være $m \times n$ matricer, og lad $s$ og $t$ være tilfæl
 \end{enumerate}
 \end{stn}
 
+\begin{proof} 
+Lad $A$, $B$ og $C$ være $m \times n$ matricer. Lad matricen $O$ være en nulmatrix. \\
+(a) Det vises, at enhver indgang i $A + B$ er tilsvarende i $B + A$. Betragt indgangene $a_{i,j}$ og $b_{i,j}$. Summen af $a_{i,j} + b_{i,j}$ er det samme som $b_{i,j} + a_{i,j}$. \\
+(b) Det vises, at enhver indgang i $(A + B) + C$ er den samme som den tilsvarende indgang i $A + (B + C)$. Ligesom i (a) tages der udgangspunkt i indgang $(i,j)$. Summen af $(a_{i,j} + b_{i,j}) + c_{i,j}$ er det samme som $a_{i,j} + (b_{i,j} + c_{i,j})$. Ifølge den associative lov, er det uden betydning hvor paranteserne er placeret i et additionsudtryk. Derfor må indgangen $(i,j)$ i $(A + B) + C$ være lig indgang $(i,j)$ i $A + (B + C)$. \\
+(c) For enhver indgang i $A$, $a_{i,j}$ skal denne adderes med $0$. Derfor må $A + O = A$. \\
+(d) For enhver indgang i $A$, $a_{i,j}$ skal denne fratrækkes samme indgang i $A$, $a_{i,j}$. Derfor må $A + (-A) = O$. \\
+(e) 
+\end{proof}
