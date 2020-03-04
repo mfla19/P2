@@ -1,0 +1,171 @@
+\chapter{Lineær algebra}
+Dette kapitel er skrevet med udgangspunkt i 
+
+Lineær algebra bruges til at løse lineære ligningssystemer. 
+En af de mest nyttige algoritmer, til at løse sådanne ligningssystemer, er Gaussisk elimination, som vil blive beskrevet senere i dette kapitel.
+
+\section{Matricer}
+Lineære ligningssystemer kan opskrives i matricer. 
+En matrix er defineret i Definition \ref{def:matricer}.
+
+\begin{defn}\label{def:matricer}
+En matrix er en rektangulær tabel over skalarer. 
+Størrelsen på en matrix er $m \times n$, hvor $m$ er antal rækker og $n$ er antal søjler. 
+En matrix kaldes kvadratisk hvis $m=n$. 
+Skalaren i den $i$'te række og $j$'te søjle kaldes $(i,j)$-indgangen.
+\end{defn}
+
+Herunder ses en matrix $\underset{m \times n}{A}$ og dens indgange.
+
+\begin{align*}
+\underset{m \times n}{A} = \begin{bmatrix}
+	a_{1,1} & a_{2,1} & \dots & a_{j,1} & \dots & a_{n,1} \\
+	a_{1,2} & \ddots  &       &         &       & \vdots \\
+	\vdots  &         & \ddots &        &       & \vdots \\
+	a_{1,i} &         &       & a_{j,i} &       & \vdots \\
+	\vdots  &         &       &         & \ddots& \vdots \\
+	a_{1,m} & \dots   & \dots & \dots   & \dots & a_{n,m} 
+\end{bmatrix}
+\end{align*}
+
+Matricer kan bruges til at vise mange forskellige ting fra den virkelige verden, det kan være antal af varer solgt fra forskellige butikker, eller prisen på forskellige produkter. 
+
+\begin{eks}
+Herunder ses en $4 \times 3$-matrix, der viser antallet af solgte varer fra tre forskellige butikker. Hver række i matricen repræsenterer en bestemt vare, mens hver søjle repræsenterer en butik. Den første række viser altså hvor mange trøjer hver butik har solgt.
+\begin{align*}
+\begin{matrix}
+	Trøjer \\
+	Kjoler \\
+	Bukser \\
+	Jakker
+\end{matrix}
+\begin{bmatrix}
+	24 & 35 & 43 \\
+	10 & 47 & 24 \\
+	33 & 25 & 32 \\
+	28 & 51 & 37
+\end{bmatrix}
+\end{align*}
+I denne matrice kan man se, at der i dens $(2,3)$-indgang står $24$, hvilket betyder, at den tredje butik har solgt $24$ kjoler. Der står i dens $(3,1)$-indgang $33$, hvilket betyder, at den første butik har solgt $33$ par bukser.
+\end{eks}
+
+En bestemt type af matrix er en identitetsmatrix, der betegnes $I_n$. 
+
+\begin{defn}\label{def:imatrix}
+For hvert positivt heltal $n$, er $n \times n$ identitetsmatricen, $I_n$, den $n \times n$ matrix, hvor hver søjle er standardvektorerne $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ i $\mathbb{R}^n$.
+\end{defn}
+
+En identitetsmatrix med $3$ rækker og $3$ søjler, ser således ud:
+\begin{align*}
+I_3 = \begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 
+\end{bmatrix}
+\end{align*}
+
+\begin{defn}\label{delmatrix}
+En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
+\end{defn}
+
+Givet en matrix $A$ kan der dannes delmatricen $A'$.
+
+\begin{align*}
+A = \begin{bmatrix}
+	1 & 2 & 3 \\
+	4 & 5 & 6 \\
+	7 & 8 & 9 
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+A' = \begin{bmatrix}
+	5 & 6 \\
+	8 & 9
+\end{bmatrix}
+\end{align*}
+
+\input{incl/main/Lin_alg/vectorer}
+
+\subsection{Regneoperationer med matricer}
+Givet to $m \times n$ matricer $A$ og $B$ kan der udføres forskellige regneoperationer. 
+Summen af to matricer findes ved at addere en indgang i $A$ med tilsvarende indgang i $B$, så $A+B$ er en $m \times n$ matrix, hvor indgang $(i,j)$ er $a_{i,j}+b_{i,j}$. 
+Det samme gør sig gældende ved substraktion. \\
+Givet en $m \times n$ matrix $A$ og en skalar $c$, er produktet af skalaren og matricen, $cA$, en $m \times n$ matrix, hvor indgangene er $c$ gange den tilsvarende indgang i $A$. \\
+
+\begin{stn}
+Lad $A$, $B$ og $C$ være $m \times n$ matricer, og lad $s$ og $t$ være tilfældige skalarer. 
+Så gælder følgende
+\begin{enumerate}[label=(\alph*)]
+\item $A + B = B + A$
+\item $(A + B) + C = A + (B + C)$
+\item $A + O = A$
+\item $A + (-A) = O$
+\item $(st) A = s (tA)$
+\item $s(A + B) = sA + sB$
+\item $(s+t)A = sA + tA$
+\end{enumerate}
+\label{stn_regn}
+\end{stn}
+
+\begin{proof} 
+Lad $A$, $B$ og $C$ være $m \times n$ matricer. Lad matricen $O$ være en nulmatrix. \\
+(a) Det vises, at enhver indgang i $A + B$ er tilsvarende i $B + A$. Betragt indgangene $a_{i,j}$ og $b_{i,j}$. Summen af $a_{i,j} + b_{i,j}$ er det samme som $b_{i,j} + a_{i,j}$. \\
+(b) Det vises, at enhver indgang i $(A + B) + C$ er den samme som den tilsvarende indgang i $A + (B + C)$. Ligesom i (a) tages der udgangspunkt i indgang $(i,j)$. Summen af $(a_{i,j} + b_{i,j}) + c_{i,j}$ er det samme som $a_{i,j} + (b_{i,j} + c_{i,j})$. Ifølge den associative lov, er det uden betydning hvor paranteserne er placeret i et additionsudtryk. Derfor må indgangen $(i,j)$ i $(A + B) + C$ være lig indgang $(i,j)$ i $A + (B + C)$. \\
+(c) For enhver indgang i $A$, $a_{i,j}$ skal denne adderes med $0$. Derfor må $A + O = A$. \\
+(d) For enhver indgang i $A$, $a_{i,j}$ skal denne fratrækkes samme indgang i $A$, $a_{i,j}$. Derfor må $A + (-A) = O$. \\
+(e) Her tages der udgangspunkt i den (i,j)-indgang af A, $a_{i,j}$. Det ses så, at udsagnet bliver til $(st)a_{i,j} = s(ta_{i,j})$ når flere tal multipliceres, er det lige meget i hvilken rækkefølge, dermed er (e) bevist. \\
+(f) Hver indgang i A, $a_{i,j}$ lægges sammen med den tilsvarende indgang i B, $b_{i,j}$, dette giver venstresiden $s(a_{i,j}+b_{i,j})$. Da det er tilladt at multiplicere ind i en parantes, kan udtrykket skrives sådan, $s(a_{i,j}+b_{i,j})=sa_{i,j}+sb_{i,j}$, dermed er (f) bevist. \\
+(g) På samme måde som før tages der udgangspunkt i den (i,j)-indgang af A, $a_{i,j}$. Udtrykket på venstresiden er så $(s+t)a_{i,j}$. Igen kan der multipliceres ind i parantesen og dermed fås følgende, $(s+t)a_{i,j}=sa_{i,j}+ta_{i,j}$, hvilket beviser (g).
+\end{proof}
+
+\begin{eks}
+For at vise eksempler på nogle af de ovenstående regneoperationer, tages der udgangspunkt i matricerne A og B, samt skalaren s.
+\begin{align*}
+A= \begin{bmatrix}
+	2 & 3 & 4 \\
+	5 & -2 & 1 	
+\end{bmatrix}  
+B= \begin{bmatrix}
+	1 & 2 & -1 \\
+	-3 & 4 & 0
+\end{bmatrix}  
+s=2
+\end{align*}
+Først udføres regneoperation (a) fra Sætning \ref{stn_regn},
+\begin{align*}
+A+B= \begin{bmatrix}
+	2 & 3 & 4 \\
+	5 & -2 & 1 	
+\end{bmatrix}  
++ \begin{bmatrix}
+	1 & 2 & -1 \\
+	-3 & 4 & 0
+\end{bmatrix}
+= \begin{bmatrix}
+	3 & 5 & 3 \\
+	2 & 2 & 1
+\end{bmatrix}.
+\end{align*}
+Herfter udføres (f),
+\begin{align*}
+s(A+B)= 5 \times \left( \begin{bmatrix}
+	2 & 3 & 4 \\
+	5 & -2 & 1 	
+\end{bmatrix}  
++ \begin{bmatrix}
+	1 & 2 & -1 \\
+	-3 & 4 & 0
+\end{bmatrix} \right)
+= 5 \times \begin{bmatrix}
+	3 & 5 & 3 \\
+	2 & 2 & 1
+\end{bmatrix}
+= \begin{bmatrix}
+	15 & 25 & 15 \\
+	10 & 10 & 5
+\end{bmatrix}.
+\end{align*}
+\end{eks}
+
+\input{incl/main/Lin_alg/lin_lign}
