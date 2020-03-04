@@ -8,7 +8,7 @@ En af de mest nyttige algoritmer, til at løse sådanne ligningssystemer, er Gau
 Lineære ligningssystemer kan opskrives i matricer. 
 En matrix er defineret i Definition \ref{def:matricer}.
 
-\begin{defn}\label{def:matricer}
+\begin{defn} [Matrix]\label{def:matricer}
 En matrix er en rektangulær tabel over skalarer. 
 Størrelsen på en matrix er $m \times n$, hvor $m$ er antal rækker og $n$ er antal søjler. 
 En matrix kaldes kvadratisk hvis $m=n$. 
@@ -19,12 +19,12 @@ Herunder ses en matrix $\underset{m \times n}{A}$ og dens indgange, $a_{i,j}$. D
 
 \begin{align*}
 \underset{m \times n}{A} = \begin{bmatrix}
-	a_{1,1} & a_{2,1} & \dots & a_{j,1} & \dots & a_{n,1} \\
-	a_{1,2} & \ddots  &       &         &       & \vdots \\
+	a_{1,1} & a_{1,2} & \dots & a_{1,j} & \dots & a_{1,n} \\
+	a_{2,1} & \ddots  &       &         &       & \vdots \\
 	\vdots  &         & \ddots &        &       & \vdots \\
-	a_{1,i} &         &       & a_{j,i} &       & \vdots \\
+	a_{i,1} &         &       & a_{i,j} &       & \vdots \\
 	\vdots  &         &       &         & \ddots& \vdots \\
-	a_{1,m} & \dots   & \dots & \dots   & \dots & a_{n,m} 
+	a_{m,1} & \dots   & \dots & \dots   & \dots & a_{m,n} 
 \end{bmatrix}
 \end{align*}
 
@@ -51,7 +51,7 @@ I denne matrice kan man se, at der i dens $(2,3)$-indgang står $24$, hvilket be
 
 En bestemt type af matrix er en identitetsmatrix, der betegnes $I_n$. 
 
-\begin{defn}\label{def:imatrix}
+\begin{defn} [Identitetsmatrix]\label{def:imatrix}
 For hvert positivt heltal $n$, er $n \times n$ identitetsmatricen, $I_n$, den $n \times n$ matrix, hvor hver søjle er standardvektorerne $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ i $\mathbb{R}^n$.
 \end{defn}
 
@@ -63,8 +63,14 @@ I_3 = \begin{bmatrix}
 	0 & 0 & 1 
 \end{bmatrix}
 \end{align*}
+Identitesmatricen bruges til at definere den inverse matrix til en matrix. 
 
-\begin{defn}\label{delmatrix}
+\begin{defn}[Invers matrix]
+Lad $A$ og $B$ være kvadratiske $m \times m$ matricer. Lad $AB=BA=I_m$, hvor $I_m$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til A. 
+\label{def(inversmatrix)}
+\end{defn}
+
+\begin{defn} [Delmatrix]\label{delmatrix}
 En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
 \end{defn}
 
@@ -167,5 +173,46 @@ s(A+B)= 5 \times \left( \begin{bmatrix}
 \end{bmatrix}.
 \end{align*}
 \end{eks}
+
+\subsection{Matrix produkt}
+Multiplikation af to matricer gøres ikke ved af multiplicere på tilsvarende indegange i to matricer. Det at gange to matricer sammen defineres herunder. 
+\begin{defn} [Matrix produkt]
+Lad $A$ være en $m \times n$ matrix og $B$ være en $n \times p$ matrix. Da er en produktet $A \dot B$ en $m \times p$ matrix, hvor indgangene er givet ved: 
+
+$$ad_{i,j} = \vec{a}_i \cdot \vec{B}_j$$
+
+hvor $\vec{a}_i$ er den $i$'te række i $A$, og $\vec{B}_j$ er den $j$'te søjle i $B$
+\label{def:(matrixprodukt)}
+\end{defn}
+
+\begin{eks}
+Nu tages udgangspunkt i to matricer $A$ og $B$. 
+\begin{align*}
+\underset{2 \times 3}{A}= \begin{bmatrix}
+	\bf{1} & \bf{3} & \bf{-2} \\
+	5 & 4 & 0 	
+\end{bmatrix}  
+\underset{3 \times 4}{B}= \begin{bmatrix}
+	\bf{2} & 3 & -1 & 3 \\
+	\bf{1} & 4 & 5 & 5\\
+	\bf{1} & 0 & 4 & 2
+\end{bmatrix}  
+\end{align*}
+For at beregne indgang $(1,1)$ benyttes række et i $A$ og søjle et i $B$. 
+$$ab_{1,1}=1\cdot 2+3\cdot 1-2 \cdot 1 = 3$$ 
+De resterende indgange beregens på samme måde. 
+Matrix produkt af $A$ og $B$ er dermed givet ved:
+\begin{align*}
+\underset{2 \times 4}{AB}= \begin{bmatrix}
+	\bf{3} & 15 & 6 & 14 \\
+	14 & 31 & 15 & 35
+\end{bmatrix}  
+\end{align*}
+
+
+\end{eks}
+
+
+
 
 \input{incl/main/Lin_alg/lin_lign}
