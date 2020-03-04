@@ -16,9 +16,97 @@ Lineære ligninger må ikke indeholde to variable multipliceret, kvadratroden af
 Et sæt af $m$ lineære ligninger, der indeholder de samme $n$ variable, hvor både $n$ og $m$ er positive heltal, kaldes et lineært ligningssystem. Lineære ligningssystemer skrives på formen
 
 \begin{align*}
-a_{11}x_1+a_{12}x_2+ &\dots +a_{1n}x_n = b_1\\
-a_{21}x_1+a_{22}x_2+ &\dots +a_{2n}x_n = b_2\\
+a_{1,1}x_1+a_{1,2}x_2+ &\dots +a_{1,n}x_n = b_1\\
+a_{2,1}x_1+a_{2,2}x_2+ &\dots +a_{2,n}x_n = b_2\\
 &\vdots \\
-a_{m1}x_1+a_{m2}x_2+ &\dots +a_{mn}x_n = b_m
+a_{m,1}x_1+a_{m,2}x_2+ &\dots +a_{m,n}x_n = b_m
 \end{align*}
 
+Koefficienterne i et lineært ligningssystem kan skrives i en matrix, mens variable og konstanterne skrives som vektorer. Et lineært ligningsystem kan så skrives op som en matrix ligning på formen $A \vec{x} = \vec{b}$, hvor
+
+\begin{align*}
+A= \begin{bmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
+\vdots  &         &       & \vdots  \\
+a_{m,1} & a_{m,2} & \dots & a_{m,n}
+\end{bmatrix}, \ 
+x= \begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{bmatrix} og \ 
+b= \begin{bmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{bmatrix}
+\end{align*}
+
+Søjlerne i $A$ indeholder koefficienterne $x_1$, $x_2$, $\dots $, $x_n$ og kaldes derfor koefficientmatricen til det lineære ligningssystem. 
+Den information, der er nødvendig for at løse et lineært ligningssystem, kan samles i en totalmatrix på formen:
+\[
+\left[
+\begin{array}{cccc|c}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} & b_1 \\
+a_{2,1} & a_{2,2} & \dots & a_{2,n} & b_2 \\
+\vdots  &         &       &         & \vdots \\
+a_{m,1} & a_{m,2} & \dots & a_{m,n} & b_n
+\end{array}
+\right]
+\]
+
+Totalmatricen laves ved at tilføje vektor $\vec{b}$ til koefficientmatricen $A$. Totalmatricen noteres således som $[A \ \vec{b}]$. \\
+
+Løsningen til et lineært ligningssystem er en vektor i $\mathds{R}^n$, som ser således ud:
+
+\begin{align*}
+\begin{bmatrix}
+s_1 \\
+s_2 \\
+\vdots \\
+s_n
+\end{bmatrix}
+\end{align*}
+
+Hvis $A$ er en $m \times n$ matrix, er en vektor $\vec{u}$  i $\mathds{R}^n$ en løsning til $A \vec{x}= \vec{b}$ hvis og kun hvis $A \vec{u}= \vec{b}$.
+
+\begin{eks}
+Følgende lineære ligningssystem er givet
+
+\begin{align*}
+8x_1+6x_2+4x_3 = 50 \\
+2x_1+4x_2+6x_3 = 30.
+\end{align*}
+
+Dette kan så skrives i en matrix,
+
+\begin{align*}
+\begin{bmatrix}
+8 & 6 & 4 & 50 \\
+2 & 4 & 6 & 30
+\end{bmatrix}.
+\end{align*}
+
+Løsningen til dette ligningssystem bliver følgende vektor
+
+\begin{align*}
+\begin{bmatrix}
+2 \\
+5 \\
+1
+\end{bmatrix}.
+\end{align*}
+
+Sætter man løsningen ind som variable fås følgende resultat,
+
+\begin{align*}
+8 \cdot 2 + 6 \cdot 5 + 4 \cdot 1 = 50 \\
+2 \cdot 2 + 4 \cdot 5 + 6 \cdot 1 = 30.
+\end{align*}
+
+Det ses, at vektoren giver en rigtig løsning til ligningssystemet, fordi alle ligningerne går op når vektoren indsættes. 
+
+\end{eks}

@@ -2,20 +2,116 @@
 Når vektorer omtales, er der tale om en matrice, der kun har en række, kaldet en række vektor, eller en matrice, med kun en søjle, kaldt en søjle vektor. Som reelt anvendes søjle vektorer. \\
 Vektorens "koordinator" kaldes komponenter, og antallet af komponenter, kan ses som, hvilken dimension vores vektor har
 \begin{defn}[Søjle vektor]
-En \textbf{Søjle vektor} er en matrice med 1 søjle og n rækker
-\begin{align}
+En \textbf{Søjle vektor} er en matrice med 1 søjle og m rækker, også normalt bare kaldt en vektor.
+\begin{align*}
 \underset{m \times n}{A} = 
 \begin{bmatrix}
 a_{1,1}\\
-a_{1,2}\\
+a_{2,1}\\
 \vdots \\
-a_{1,n-1} \\
-a_{1,n} \\
-\end{bmatrix}
-\end{align} 
+a_{m-1,1}\\
+a_{m,1} \\
+\end{bmatrix}\qquad , n=1\\ %mellemrum skal laves universelt
+Hvert koordinat kaldes en komponent.
+\end{align*} 
 \end{defn}
-
-
+%additon af to vektor
+\begin{defn}[Addition af to vektor]
+Når to vektor adderes, så adderes de komponenter, som har samme koordinator. Et krav til dette er, at vektorene har samme komponenter
+\begin{align*}
+\underset{m \times n}{A} = 
+\begin{bmatrix}
+a_{1,1}\\
+a_{2,1}\\
+\vdots \\
+a_{m-1,1}\\
+a_{m,1} \\
+\end{bmatrix}
+\qquad
+\underset{m \times n}{B} = 
+\begin{bmatrix}
+b_{1,1}\\
+b_{2,1}\\
+\vdots \\
+b_{m-1,1}\\
+b_{m,1} \\
+\end{bmatrix}
+\qquad , n=1
+\end{align*} 
+\begin{align*}
+A+B=
+\begin{bmatrix}
+a_{1,1}\\
+a_{2,1}\\
+\vdots \\
+a_{m-1,1}\\
+a_{m,1} \\
+\end{bmatrix}
++
+\begin{bmatrix}
+b_{1,1}\\
+b_{2,1}\\
+\vdots \\
+b_{m-1,1}\\
+b_{m,1} \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{1,1}+b_{1,1}\\
+a_{2,1}+b_{2,1}\\
+\vdots \\
+a_{m-1,1}+b_{m-1,1}\\
+a_{m,1}+b_{m,1} \\
+\end{bmatrix}
+\end{align*}
+\end{defn}
+\begin{eks}
+\begin{align*}
+A=
+\begin{bmatrix}
+4\\
+1\\
+0\\
+-5\\
+\end{bmatrix}
+\hspace{3cm}
+B=
+\begin{bmatrix}
+7\\
+4\\
+-2\\
+-5\\
+\end{bmatrix}\\
+A+B=
+\begin{bmatrix}
+4\\
+1\\
+0\\
+-5\\
+\end{bmatrix}
++
+\begin{bmatrix}
+7\\
+4\\
+-2\\
+-4\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+4+7\\
+1+4\\
+0-2\\
+-5-4\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+11\\
+5\\
+-2\\
+-9\\
+\end{bmatrix}
+\end{align*}
+\end{eks}
 
 
 \subsection{Matrix-vector produkt}
