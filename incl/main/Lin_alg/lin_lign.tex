@@ -58,7 +58,7 @@ a_{m,1} & a_{m,2} & \dots & a_{m,n} & b_n
 \right]
 \]
 
-Totalmatricen laves ved at tilføje vektor $\vec{b}$ til koefficientmatricen $A$. Totalmatricen noteres således som $[A \ \vec{b}]$. \\
+Totalmatricen laves ved at tilføje vektor $\vec{b}$ til koefficientmatricen $A$. Totalmatricen noteres således som $[A \ \vec{b}]$. Den lodrette streg mellem koefficienterne og konstanterne er ikke nødvendig, men kan tilføjes for at vise at der er tale om en totalmatrix.\\
 
 Løsningen til et lineært ligningssystem er en vektor i $\mathds{R}^n$, som ser således ud:
 
@@ -109,4 +109,169 @@ Sætter man løsningen ind som variable fås følgende resultat,
 
 Det ses, at vektoren giver en rigtig løsning til ligningssystemet, fordi alle ligningerne går op når vektoren indsættes. 
 
+\end{eks}
+
+\subsection{Elemntære rækkeoperationer}
+Når et lineært ligningssystem skal løses, skal flere skridt gennemføres. Først skrives ligningssystemet op som en totalmatrix, så findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. De tre typer af elementære rækkeoperationer gennemgås herunder. \\
+
+\begin{defn}
+Der findes 3 elementære rækkeoperationer
+\begin{enumerate}
+\item Ombytning af to rækker. (Ombytning)
+\item Multiplicering af en vektor med en scalar. (Scaling)
+\item Lægge en række gange en scalar til en anden række. (Udskiftning)
+\end{enumerate}
+\end{defn}
+
+\begin{eks}[Rækkeoperationer]
+\textbf{Ombytning}\\
+Herunder ses et eksempel på to rækker der ombyttes i en matrix.\\
+
+\begin{align*}
+A= \begin{bmatrix}
+0 & 2 & 3 \\
+1 & 4 & 7
+\end{bmatrix}
+\sim \begin{bmatrix}
+1 & 4 & 7 \\
+0 & 2 & 3
+\end{bmatrix} = B.
+\end{align*}
+
+\textbf{Scaling} \\
+Et eksempel på scaling ses nedenfor, hvor første række multipliceres med 2.\\
+
+\begin{align*}
+A= \begin{bmatrix}
+2 & 1 & 3 \\
+0 & 4 & 8 \\
+1 & 7 & 1
+\end{bmatrix}
+\sim \begin{bmatrix}
+4 & 2 & 6 \\
+0 & 4 & 8 \\
+1 & 7 & 1
+\end{bmatrix} = B.
+\end{align*}
+
+\textbf{Udskiftning}\\
+Et eksempel på udskiftning ses herunder, hvor to gange række 2 trækkes fra række 1.\\
+
+\begin{align*}
+A= \begin{bmatrix}
+1 & 4 & 7 \\
+0 & 2 & 3
+\end{bmatrix}
+\sim \begin{bmatrix}
+1 & 0 & 1 \\
+0 & 2 & 3
+\end{bmatrix} = B.
+\end{align*}
+\end{eks}
+
+Målet med elementære rækkeoperationer er, at opnå trappeform og derefter reduceret trappeform. 
+
+\begin{defn}[Trappeform]
+En matrix siges at være på trappeform hvis følgende tre betingelser er opfyldt. 
+\begin{enumerate}
+\item Enhver række forskellig fra 0, ligger over enhver nul-række.
+\item Den ledende indgang i en række forskellig fra 0, ligger til i en søjle højre for søjlen med den ledende indgang i rækken ovenfor.
+\item Hvis en søjle indeholder en ledende indgang, vil alle indgang under den ledende i søjlen være lig 0.
+\end{enumerate}
+\end{defn}
+
+De positioner i matricen, hvor der er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Samtidig siges et ligningssystem at være uløseligt, hvis der er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere med 0, hvilket ikke er muligt.\\
+Når en matrx er på trappeform kan der udføres flere rækkeoperationer for at få den på reduceret trappeform.
+
+\begin{defn}
+Hvis en matrix overholder betingelserne for at være på trappeform og samtidig overholder nedenstående to betingelser, siges matricen at være på reduceret trappeform.
+\begin{enumerate}
+\item Hvis en søjle indeholder en ledende indgang i en hvilken som helst række, skal alle andre indgange i søjlen være 0.
+\item den ledende indgang i hver ikke-nul-række skal være 1.
+\end{enumerate}
+\end{defn}
+
+Når der skal findes en løsning på et ligningssystem skrives det først på reduceret trappeform, derefter kan hver variabel isoleres og dermed findes en generel løsning, i form af en vektor som beskrevet tidligere. 
+ 
+\begin{eks}
+Et eksempel på en matrix på trappeform ses herunder. I matricen er pivotindgangene (1,1), (2,2) og (3,4).
+\begin{align*}
+A= \begin{bmatrix}
+2 & 4 & 2 & 6 & 8 \\
+0 & 3 & 6 & 9 & -3 \\
+0 & 0 & 0 & 6 & 2
+\end{bmatrix}. 
+\end{align*}
+Denne matrix reduceres nu ved hjælp af rækkeoperationer til reduceret trappeform.\\
+\begin{align*}
+\begin{bmatrix}
+2 & 4 & 2 & 6 & 8 \\
+0 & 3 & 6 & 9 & -3 \\
+0 & 0 & 0 & 6 & 12
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 & 2 & 1 & 3 & 4 \\
+0 & 3 & 6 & 9 & -3 \\
+0 & 0 & 0 & 6 & 12
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 & 2 & 1 & 3 & 4 \\
+0 & 1 & 2 & 3 & -1 \\
+0 & 0 & 0 & 1 & 2
+\end{bmatrix}
+\sim \\
+\begin{bmatrix}
+1 & 0 & -3 & -3 & 6 \\
+0 & 1 & 2 & 3 & -1 \\
+0 & 0 & 0 & 1 & 2
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 & 0 & -3 & 0 & 12 \\
+0 & 1 & 2 & 3 & -1 \\
+0 & 0 & 0 & 1 & 2
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 & 0 & -3 & 0 & 12 \\
+0 & 1 & 2 & 0 & -7 \\
+0 & 0 & 0 & 1 & 2
+\end{bmatrix}.
+\end{align*}
+Nu er matricen på reduceret trappeform. Som det ses, er det lige meget hvad der står i de søjler der ikke er pivotsøjler. Dette ligningssystem har derfor uendeligt mange løsninger. Nu isoleres alle variable så en løsning kan findes:
+\begin{align*}
+x_1 &= 12 + 3x_3 \\
+x_2 &= -7 - 2x_3 \\
+x_3 &= x_3 \\
+x_4 &= 2
+\end{align*}
+Dette skrives så på vectorform:
+\begin{align*}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4 
+\end{bmatrix}
+= \begin{bmatrix}
+12 + 3x_3 \\
+-7 - 2x_3 \\
+x_3 \\
+2
+\end{bmatrix}
+= \begin{bmatrix}
+12 \\
+-7 \\
+0 \\
+2
+\end{bmatrix}
++ x_3 \begin{bmatrix}
+3 \\
+-2 \\
+1 \\
+0
+\end{bmatrix}.
+\end{align*}
 \end{eks}
