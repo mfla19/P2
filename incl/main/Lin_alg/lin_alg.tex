@@ -15,7 +15,7 @@ En matrix kaldes kvadratisk hvis $m=n$.
 Skalaren i den $i$'te række og $j$'te søjle kaldes $(i,j)$-indgangen.
 \end{defn}
 
-Herunder ses en matrix $\underset{m \times n}{A}$ og dens indgange, $a_{i,j}$. Den $i$'te række i A betenges $\vec{A}_i$, mens den $j$'te række angives $\vec{a}_j$.
+Herunder ses en matrix $\underset{m \times n}{A}$ og dens indgange, $a_{i,j}$. Den $i$'te række i A betenges $\vec{a}_i$, mens den $j$'te søjle angives $\vec{A}_j$.
 
 \begin{align*}
 \underset{m \times n}{A} = \begin{bmatrix}
@@ -48,6 +48,32 @@ Herunder ses en $4 \times 3$-matrix, der viser antallet af solgte varer fra tre 
 \end{align*}
 I denne matrice kan man se, at der i dens $(2,3)$-indgang står $24$, hvilket betyder, at den tredje butik har solgt $24$ kjoler. Der står i dens $(3,1)$-indgang $33$, hvilket betyder, at den første butik har solgt $33$ par bukser.
 \end{eks}
+
+\begin{defn}[Transponeret matrix]
+Lad $A$ være en $m \times n$ matrix. Så er den transponerede matrix, $A^T$, en $n \times n$ matrix, hvor hver indgang i $A^T$, $(i,j)$ er den $(j,i)$'te indgang i $A$
+\label{def:(transmatrix)} 
+\end{defn}
+Det vil sige at rækkerne i $A$, bliver til søjlerne i $A^T$. Og søjlerne i $A$ bliver til rækkerne i $A^T$.
+
+\begin{eks}
+Givet en matrix $A$ 	bestemmes nu den transponerede
+\begin{align*}
+A = \begin{bmatrix}
+	5 & 3 & 3 \\
+	1 & 2 & 5
+\end{bmatrix}
+\end{align*}
+
+\begin{align*}
+A^T = \begin{bmatrix}
+	5 & 1  \\
+	3 & 2  \\
+	3 & 5
+\end{bmatrix}
+\end{align*}
+Det ses at $A$ er en $2 \times 3$ matrix og $A^T$ er en $3 \times 2$ matrix. 
+\end{eks}
+
 
 En bestemt type af matrix er en identitetsmatrix, der betegnes $I_n$. 
 
@@ -184,7 +210,7 @@ $$ad_{i,j} = \vec{a}_i \cdot \vec{B}_j$$
 hvor $\vec{a}_i$ er den $i$'te række i $A$, og $\vec{B}_j$ er den $j$'te søjle i $B$
 \label{def:(matrixprodukt)}
 \end{defn}
-
+Det er vigtigt at antallet af søjler i $A$ er det samme som antallet af rækker i $B$. Er det ikke tilfældet, så er matrix produktet ikke defineret. Matrix produktet er oftest ikke kommutativt. Ligningen $AB=AB$ er derfor ikke sjældent gældende. 
 \begin{eks}
 Nu tages udgangspunkt i to matricer $A$ og $B$. 
 \begin{align*}
@@ -208,8 +234,6 @@ Matrix produkt af $A$ og $B$ er dermed givet ved:
 	14 & 31 & 15 & 35
 \end{bmatrix}  
 \end{align*}
-
-
 \end{eks}
 
 
