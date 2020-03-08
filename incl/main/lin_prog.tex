@@ -1,6 +1,30 @@
 \chapter{lineær programmering}
 
-%\begin{comment}
+Lineær programmering er en anvendelse af lineær algebra til at finde den optimale resultat af et optimeringsproblem. Lineære programmeringsproblemer tager udgangspunkt i maksimering eller minimering af en lineær funktion. For variablene er der fastsat en række af betingelser, som begrænser de mulige løsninger til problemet.
+
+
+
+Funktionen, som ønskes optimeret, kaldes \textbf{kriteriefunktionen}, og findes på formen:
+\begin{align}
+c_1x_1 + c_2x_2 + \cdots + c_nx_n.
+\end{align}
+
+Dertil tilføjes en række af betingelser for variablene. Betingelser, som definerer at en variabel er positiv, kaldes en positivitetsbetingelse. En 
+
+
+\begin{eks}
+\begin{center}
+\begin{tabular}{@{}	l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}	@{}}
+Maksimer 				& 4x_1&		+3 x_2& \\
+med hensyn til 			& -x_1& 	+4 x_2& \leq 12\\
+						&  x_1& 	+2 x_2& \leq 18\\
+						& 2x_1& 	-\ x_2& \leq 26\\
+						&  x_1&			  & \geq 0\\
+						&  	  &		   x_2&	\geq 0
+\end{tabular}
+\end{center}
+\end{eks}
+
 
 Hvad skal med i dette afsnit?
 - hvad betyder lineær programmering.
@@ -9,11 +33,15 @@ Hvad skal med i dette afsnit?
 	for et sådan problem er der fastsat en række begrænsninger. 
 	fælles for den objektive funktion og begrænsningerne er at de alle er lineære funktioner. 
 	
-Den objektive funktion findes derved på formen:
-$ F: \mathcal{R}^n \rightarrow \mathcal{R} 
-$ hvor n er antallet af variable, som indgår i funktionen
+Objektfunktionen findes derved på formen:
+$ F: \mathds{R}^n \rightarrow \mathds{R} 
+$ hvor n er antallet af variable, som indgår i problemet.
 
-Begrænsningerne findes på formen:
+Kriteriefunktionen er en lineær funktion af indgangene i vektoren $\vec{x}$.
+
+Bibetingelserne findes på formen:
+$\vec{a}$
+
 
 
 %\end{comment}
