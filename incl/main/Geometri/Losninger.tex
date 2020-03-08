@@ -1,0 +1,76 @@
+\section{Hvad er en løsning?}
+
+
+\begin{defn}[Ekstremuspunkt]
+Lad $\vec{x} \in P$, hvor $P$ er en polyeder og $\lambda \in [0,1]$ være en skalar.
+Da er $\vec{x}$ et ekstremuspunkt hvis $\nexists \vec{y}, \vec{z} \in P$ så $\vec{x} = \lambda \vec{y}+ (1- \lambda)\vec{z}$ for $\vec{y}\neq \vec{x}$ og $\vec{z}\neq \vec{x}$.
+\end{defn}
+
+\begin{defn}[Knude]
+Lad $\vec{x} \in P$, hvor $P$ er en polyeder, da er $\vec{x}$ en knude, hvis $\exists \vec{c} $ så $\vec{c}^T \vec{x} < \vec{c}^T\vec{y}$ $\forall \vec{y} \in P$ for $\vec{y} \neq \vec{x}$.
+\end{defn}
+
+
+\begin{defn}[Aktive krav]
+Lad $\vec{x}^* \in \mathds{R}^n$ opfylde at $\vec{a}_i^T\vec{x}^* = b_i$, hvor $\vec{a}_i$ svare til en bibetingelse, da siges $\vec{a_i}^T$ at være \textbf{aktiv}.
+\end{defn}
+
+\begin{stn}[Lineær uafhængige rækker]
+Lad $\vec{x}^* \in \mathds{R}^n$ og $I = \{i | \vec{a_i}^T \vec{x}^*\geq b_i\}$ , da er følgende ækvivalent
+\begin{enumerate}[label=(\alph*)]
+\item Mængden $R_a =\{\vec{a_i}| i\in I\}$ består af $n$ elementer, som er lineært uafhængige.
+\item Spannet $span(a_i) = \mathds{R}^n$, for $a_i \in R_a$.
+\item Ligningssystemet $\vec{a_i}^T \vec{x}^* = b_i$, for $a_i \in R_a$ har en unik løsning.
+\end{enumerate}
+\end{stn}
+
+\begin{proof}
+
+
+
+\end{proof}
+
+
+
+
+
+\begin{defn}[Basis løsning]
+$P$, $\vec{x}^*\in \mathds{R}^n$, da er $\vec{x}^*$ en \textbf{Basis løsning} hvis:
+\begin{enumerate}[label=(\alph*)]
+\item Alle ligheds krav er aktive
+\item der er mindst $n$ lineært uafhængige aktive krav
+\end{enumerate}
+og en \textbf{Mulig basis løsning} hvis:
+\begin{itemize}
+\item $\vec{x}^*$ opfylder alle krav.
+\end{itemize}
+\end{defn}
+
+
+    
+
+\begin{stn}[Løsningerne er de samme]
+$\vec{x}^* \in P$ da er følgende ækvivalent:
+\begin{enumerate}[label=(\alph*)]
+\item ekstremuspunkt
+ \item node
+ \item mulig basis løsning
+\end{enumerate}
+\end{stn}
+
+
+\begin{cor}
+Endeligt antal krav medføre endeligt antal basisløsninger
+\end{cor}
+
+\begin{defn}[Naboløsninger]
+Naboløsninger, har samme aktive krav pånær et
+\end{defn}
+
+\begin{stn}[Er en basisløsning når:]
+Krav $A\vec{x}=b$, $\vec{x}\geq 0$, hvor $A$ er $m\times n$ matrix med lineært uafhænginge rækker. Da er $\vec{x}^*\in \mathds{R}^n$  basis løsning hviss $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der $\exists B(1), ..., B(m)$ så
+\begin{enumerate}[label=(\alph*)]
+\item kolonerne $A_{B(1)}, ..., A_{B_(m)}$ er lineært uafhænginge
+\item $x_i = 0$ hvis $i \neq B(1),...,B(m)$
+\end{enumerate}
+\end{stn}
