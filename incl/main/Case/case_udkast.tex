@@ -1,0 +1,79 @@
+\section{Case 1, Transport}
+Lad en virksomhed have $N$ fabrikker $f_i$, hvor $i = 1,...,N$, de producere $M$ forskellige produkter $p_j$, hvor $j = 1,..., M$, til en omkostning på $o_{ij}$ for det $j$te produkt på den $i$te fabrik. 
+Hver fabrik har en øvregrænse for antal produkter de kan producere pr. dag, $P_i$ for den $i$te fabrik.
+Produkterne sælges så i $K$ forskellige butikker $b_l$, hvor $l= 1,...,K$, der er en nedrebegrænsning for hvor mange af det $j$te produkt som skal være i den $l$te butik, $P_{lj}$, i den $l$te butik kan det $j$te produkt sælges til $C_{lj}$.
+Desuden koster det noget $T_{il}$ for at fragte produkter fra den $i$te fabrik til den $l$te butik.
+Alt dette kan samles til det lineær programmerings problem
+\begin{align*}
+\text{Maximer:} \sum_{l=1}^K \sum_{j=1}^M C_{jl} \sum_{i=1}^N p_{ijl} - \sum_{i=1}^N\sum_{j=1}^M o_{ij} \sum_{l=1}^K p_{ijl} - \sum_{i=1}^N \sum_{l=1}^K T_{il} \sum_{j=1}^M p_{ijl}
+\\\qquad \text{ med hensyn til:}
+\\ P_i \leq \sum_{j=1}^M \sum_{l=1}^K p_{ijl}
+\\ P_{lj} \geq  \sum_{i=1}^N \sum_{l=1}^K p_{ijl}
+\\ p_{ijl} \geq 0.
+\end{align*}
+Her beskriver $p_{ijl}$ det $j$te produkt produceret i den $i$te fabrik og solgt i den $l$te butik.
+\textit{Det vil føre til en matrix på $N+K*M \times N*M*L+(slag variable)$, så med to af hver => min 6x8 ved at sætte alle ulighederne til ligheder, og dermed undgå slagvariable}
+Dette kan udskrives til følgende hvor der er to fabrikker, produkter og butikker
+\begin{align*}
+\text{Maximer:}  
+C_{11}& ( p_{111} +  p_{211}) + C_{12} ( p_{112} +  p_{212}) + C_{21} ( p_{121} +  p_{221}) + C_{22} ( p_{122} +  p_{222})
+\\ &- (o_{11} ( p_{111} + p_{112}) + o_{21} ( p_{211} + p_{212}) + o_{12} ( p_{121} + p_{122}) + o_{22} ( p_{221} + p_{222}))
+\\&- ( T_{11} ( p_{111} + p_{121}) + T_{21} ( p_{211} + p_{221})  + T_{12} ( p_{112} + p_{122}) + T_{22} ( p_{212} + p_{222}) )
+\end{align*}
+Med hensyn til:
+\begin{align*}
+ P_1 & \leq p_{111} + p_{121} + p_{112} + p_{122}
+\\ P_2 & \leq p_{211} + p_{221} + p_{212} + p_{222}
+\\ P_{11} & \geq p_{111} + p_{211}
+\\ P_{21} & \geq p_{121} + p_{221}
+\\ P_{12} & \geq p_{112} + p_{212}
+\\ P_{22} & \geq p_{122} + p_{222}
+\\ p_{ijl} & \geq 0, i,j,l = 1, 2.
+\end{align*}
+
+\section{Case 2, Planlægning}
+Lad en virksomhed have $N$ opgaver $O_i$, hvor $i=1,...,N$ opgaver som skal løses. 
+Der er ansat $M$ personer til at tage vare på opgaverne, hvor $p_j$ er mængden af tid den $j$te person bruger på arbejde, hvor $j=1,...,M$, og $p_{ij}$ er hvor meget tid den $j$te person bruger på den $i$te opgave. 
+Hver person har et maks antal timer de må arbejde $T_j$, for den $j$te person.
+Desuden får den $j$ person en løn $L_j$ per time der er arbejdes, og da alle folk arbejder forskelligt har hver person en effektivitetskonstant $n_{ij}$ udfra hvor hurtigt de kan løse den $i$te opgave. 
+Dette kan samles til følgende lineære programmerings problem:
+\begin{align*}
+\text{Minimer:}  \sum_{j=1}^M L_j \sum_{i=1}^N p_{ij}
+\\\qquad \text{ med hensyn til:}
+\\ T_j \geq \sum_{i=1}^N p_{ij}
+\\ O_{i} \leq  \sum_{j=1}^M n_{ij} p_{ij}
+\\ p_{ij} \geq 0.
+\end{align*}
+\textit{Det vil føre til en matrix på $N+M \times N*M+(slag variable)$, så med to af hver => min 6x8 ved at sætte alle ulighederne til ligheder, og dermed undgå slagvariable}
+Dette kan udskrives til følgende hvor der er to opgaver og to ansatte
+\begin{align*}
+\text{Maximer:}  
+L_{1} ( p_{11} +  p_{21}) + L_{2} ( p_{21} +  p_{22}) 
+\\\qquad \text{ med hensyn til:}
+\\T_1 \leq p_{11} + p_{21} 
+\\ T_2 \leq  p_{12} + p_{22}
+\\ O_{1} \geq n_{11} p_{11} + n_{12} p_{12}
+\\ O_{2} \geq n_{21} p_{21} + n_{21} p_{22}
+\\ p_{ij} \geq 0, i,j = 1, 2.
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
