@@ -1,4 +1,4 @@
-\section{Lineære ligningssystemer}\label{afsnit:lign_sys}
+ \section{Lineære ligningssystemer}\label{afsnit:lign_sys}
 Lineære ligninger, der indeholder ukendte variabler, kan skrives på formen
 
 \begin{align*}
@@ -275,3 +275,18 @@ x_3 \\
 \end{bmatrix}.
 \end{align*}
 \end{eks}
+
+De variabler der ikke har en pivotsøjle, kaldes frie variable, fordi deres værdier ikke påvirker ligningssystemet. 
+Et ligningssystem kan siges at være lineært afhængig eller lineært uafhængig.
+\begin{defn}[lineær uafhængighed]
+Vektorerne $\vec{v}_1, \dots ,\vec{v}_k$ kaldes lineært uafhængige hvis ligningen
+\begin{align*}
+x_1 \cdot \vec{v}_1+x_2 \cdot \vec{v}_2 + \dots + x_k \cdot \vec{v}_k =  \vec{0}
+\end{align*}
+kun har den trivielle løsning
+\begin{align*}
+x_1=x_2= \dots =x_k=0
+\end{align*}
+ellers kaldes de lineært afhængige.
+\end{defn}
+Det kan altså siges, at et ligningssystem er lineært uafhængigt hvis der kun er en løsning, så der ingen frie variable er. Hvis et ligningssystem har frie variable er der uendeligt mange løsninger og det kaldes derfor lineært afhængigt. 
