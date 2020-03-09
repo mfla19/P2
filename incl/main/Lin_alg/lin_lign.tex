@@ -1,4 +1,4 @@
- \section{Lineære ligningssystemer}\label{afsnit:lign_sys}
+\section{Lineære ligningssystemer}\label{afsnit:lign_sys}
 Lineære ligninger, der indeholder ukendte variabler, kan skrives på formen
 
 \begin{align*}
@@ -114,13 +114,14 @@ Det ses, at vektoren giver en rigtig løsning til ligningssystemet, fordi alle l
 \subsection{Elemntære rækkeoperationer}
 Når et lineært ligningssystem skal løses, skal flere skridt gennemføres. Først skrives ligningssystemet op som en totalmatrix, så findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. De tre typer af elementære rækkeoperationer gennemgås herunder. \\
 
-\begin{defn}
+\begin{defn}[Elementære rækkeoperationer]
 Der findes 3 elementære rækkeoperationer
 \begin{enumerate}
 \item Ombytning af to rækker. (Ombytning)
 \item Multiplicering af en vektor med en scalar. (Scaling)
 \item Lægge en række gange en scalar til en anden række. (Udskiftning)
 \end{enumerate}
+\label{defn_elemen_operation}
 \end{defn}
 
 \begin{eks}[Rækkeoperationer]
@@ -178,6 +179,7 @@ En matrix siges at være på trappeform hvis følgende tre betingelser er opfyld
 \item Den ledende indgang i en række forskellig fra 0, ligger til i en søjle højre for søjlen med den ledende indgang i rækken ovenfor.
 \item Hvis en søjle indeholder en ledende indgang, vil alle indgang under den ledende i søjlen være lig 0.
 \end{enumerate}
+\label{defn_trappe}
 \end{defn}
 
 De positioner i matricen, hvor der er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Samtidig siges et ligningssystem at være uløseligt, hvis der er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere med 0, hvilket ikke er muligt.\\
@@ -278,6 +280,7 @@ x_3 \\
 
 De variabler der ikke har en pivotsøjle, kaldes frie variable, fordi deres værdier ikke påvirker ligningssystemet. 
 Et ligningssystem kan siges at være lineært afhængig eller lineært uafhængig.
+
 \begin{defn}[lineær uafhængighed]
 Vektorerne $\vec{v}_1, \dots ,\vec{v}_k$ kaldes lineært uafhængige hvis ligningen
 \begin{align*}
@@ -288,5 +291,7 @@ kun har den trivielle løsning
 x_1=x_2= \dots =x_k=0
 \end{align*}
 ellers kaldes de lineært afhængige.
+\label{defn_lin_uafh}
 \end{defn}
+
 Det kan altså siges, at et ligningssystem er lineært uafhængigt hvis der kun er en løsning, så der ingen frie variable er. Hvis et ligningssystem har frie variable er der uendeligt mange løsninger og det kaldes derfor lineært afhængigt. 
