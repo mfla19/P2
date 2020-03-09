@@ -89,16 +89,6 @@ I_3 = \begin{bmatrix}
 	0 & 0 & 1 
 \end{bmatrix}
 \end{align*}
-Identitesmatricen bruges til at definere den inverse matrix til en matrix. 
-
-\begin{defn}[Invers matrix]
-Lad $A$ og $B$ være kvadratiske $m \times m$ matricer. Lad $AB=BA=I_m$, hvor $I_m$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til A. 
-\label{def(inversmatrix)}
-\end{defn}
-
-\begin{eks}
-
-\end{eks}
 
 \begin{defn} [Delmatrix]\label{delmatrix}
 En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
@@ -240,6 +230,43 @@ Matrix produkt af $A$ og $B$ er dermed givet ved:
 \end{bmatrix}  
 \end{align*}
 \end{eks}
+
+En identitesmatrix kan bruges til at definere den inverse matrix til en matrix. Den inverse matrix er den matrix, der når den ganges på den oprindelige matrix, giver identitetsmatricen.
+\begin{defn}[Invers matrix]
+Lad $A$ og $B$ være kvadratiske $m \times m$ matricer. Lad $AB=BA=I_m$, hvor $I_m$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til A. 
+\label{def(inversmatrix)}
+\end{defn}
+
+\begin{eks}
+Givet en matrix A og en matrix B,
+\begin{align*}
+A= \begin{bmatrix}
+1 & 3 \\
+1 & 2
+\end{bmatrix}
+B= \begin{bmatrix}
+-2 & 3 \\
+1 & -1
+\end{bmatrix}
+\end{align*}
+kan det undersøges om B er den inverse matrix til A, ved at finde matrix produktet AB.
+\begin{align*}
+\begin{bmatrix}
+1 & 3 \\
+1 & 2
+\end{bmatrix}
+\cdot \begin{bmatrix}
+-2 & 3 \\
+1 & -1
+\end{bmatrix}
+= \begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\end{align*}
+Fordi de to matricers produkt bliver identitetsmatricen $I_2$, kan det konkluderes, at B er den inverse matrix til A.
+\end{eks}
+
 
 \input{incl/main/Lin_alg/lin_lign}
 
