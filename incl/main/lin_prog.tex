@@ -29,9 +29,9 @@ Et eksempel på et lineært programmeringsproblem ses her, hvor funktionen $f(x_
 \begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
 Maksimer 		& 4x_1&		+3 x_2& \\
 med hensyn til 	& - \ \ x_1& 	+4 x_2& \leq 12\\
-				&  x_1& 	+2 x_2& \leq 18\\
-				&-2x_1& 	+1 x_2& \geq -26\\
-				&  	  &		   x_2&	\geq 0
+				&  x_1& 	+2 x_2& \leq 12\\
+				&- \ \ x_1& 	+ \ \ x_2& \geq -6\\
+og $x_2\geq 0$
 \end{tabular}
 \end{center}
 
@@ -73,21 +73,31 @@ med hensyn til 	& \vec{y}^TA \geq \vec{c}^T\\
 og 				& \vec{y} \geq \vec{0}
 \end{tabular}
 \end{center}
-\label{def:std_maks}
+\label{def:std_min}
 \end{defn}
 
+\begin{eks}
+Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimum problem, skal ale uligheder i bibetingelserne være $\leq$. Bibetingelse nr.3 skal derved omskrives. Dette kan gøres ved at gange begge sider af uligheden med $-1$, da dette vender ulighedstegnet. Derudover skal også $x_1$ skal være positivt begrænset. Derved bliver Eksempel \ref{eks:maksprob1} omskrevet til et standard maksimum problem til\\
+\begin{center}
+\begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
+Maksimer 		& 4x_1&		+3 x_2& \\
+med hensyn til 	& - \ \ x_1& 	+4 x_2& \leq 12\\
+				&  x_1& 	+2 x_2& \leq 12\\
+				&  x_1& 	-\ \ x_2& \geq 6\\
+og $x_1 \geq 0, x_2\geq 0$.
+\end{tabular}
+\end{center}
+\end{eks}
+
+\section{Løsninger til linære programmeringsproblemer}
+
+Den mulige løsningsmængde 
 
 \begin{defn}[Mulige løsninger og løsningsmængden]
 En \textbf{mulig løsning} er en løsningsvektor $\vec{x}$, som opfylder alle problemets betingelser.\\
 \textbf{Løsningsmængden} $\mathds{F}$ \textit{(usikker på oversættelsen)} er mængden af alle de mulige løsninger.
-En vektor $\vec{x}$ kaldes en \textbf{optimal løsning}, hvis $f(\vec{x})=\max_{x \in \mathds{F}}f(\vec{x}).$
+En vektor $\vec{x}$ kaldes en \textbf{optimal løsning}, hvis $f(\vec{x})=\max\limits_{x \in \mathds{F}}f(\vec{x}).$
 \end{defn}
-
-
-
-\begin{eks}
-eksempel med eks 5.1 med nye betingelser og derved ny løsningsmængde.
-\end{eks}
 
 \begin{comment}
 Hvad skal med i dette afsnit?
