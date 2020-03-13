@@ -1,0 +1,36 @@
+\section{Underrum}
+\begin{defn}
+Lad $W$ være en mængde af vektorer $\vec{v_k} \in \mathds{R}^n$, da er $W$  \textbf{underrum} til $\mathds{R}^n$, hvis:
+\begin{enumerate}[label=\alph*]
+\item $\vec{0} \in W$
+\item $\vec{u}+\vec{v} \in W \quad \forall \vec{u}, \vec{v} \in W$
+\item $c \cdot \vec{v} \in W \quad \forall \vec{v} \in W, \forall c \in \mathds{R}$
+\end{enumerate}
+\label{def:underrum}
+\end{defn}
+(b) kaldes at være lukket under vektor addition (c) lukket under skalar multiplikation
+
+\begin{stn}
+Lad $S=\{\vec{v_1},...,\vec{v_k}\} \subseteq \mathds{R}^n$, da er $span(S)$ et underrum til $\mathds{R}^n$
+\end{stn}
+\begin{proof}
+For at vise at $span(S)$ er et underrum til $\mathds{R}^n$ skal det vises at $span(S)$ overholder alle betingelserne i Definition \ref{def:underrum}.
+Først vises betingelse (b), lad  derfor $\vec{u}, \vec{v} \in span(S)$, da vil 
+\begin{align*}
+\vec{u}+\vec{v}= \sum_{i=1}^k c_i \vec{v_i} + \sum_{i=1}^k c'_i \vec{v_i} = \sum_{i=1} c_i\cdot c_i' \vec{v_i},
+\end{align*}
+hvor $c_i, c_i'$ er skalare.
+Der med er $\vec{u}+\vec{v}$ en linear kombination af $\vec{v_1},...,\vec{v_k}$, hvorfor $\vec{u}+\vec{v} \in span(S)$, og $span(S)$ er lukket under vektor addition.
+\\ Så vises at $span(S)$ er lukket under skalar multiplikation, lad derfor $c, c_i$ være skalare, da vil
+\begin{align*}
+c\vec{v}= c\sum_{i=1}^k c_i \vec{v_i}  = \sum_{i=1} c \cdot c_i \vec{v_i}.
+\end{align*}
+Hvorfor at $c\vec{v} \in span(S)$, og betingelse (c), er opfyldt.
+\\Tilsidst vises det at $\vec{0} \in span(S)$.
+Da nul vektoren kan skrives som den linear kombination af vektorene i $S$, $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det at $\vec{0} \in span(S)$, hvorfor at $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
+\end{proof}
+
+\begin{defn}
+Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\}$
+\end{defn} 
+

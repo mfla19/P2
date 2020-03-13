@@ -1,14 +1,4 @@
 \subsection{Span}
-\begin{defn}
-Lad $W$ være en mængde af vektorer $\vec{v_k} \in \mathds{R}^n$, da er $W$  \textbf{underrum} til $\mathds{R}^n$, hvis:
-\begin{enumerate}[label=\alph*]
-\item $\vec{0} \in W$
-\item $\vec{u}+\vec{v} \in W \quad \forall \vec{u}, \vec{v} \in W$
-\item $c \cdot \vec{v} \in W \quad \forall \vec{v} \in W, \forall c \in \mathds{R}$
-\end{enumerate}
-\end{defn}
-(b) kaldes at være lukket under vektor adition (c) lukket under scalar multiplikation
-
 \begin{defn}[Span]
 Lad $S=\{\vec{v_1},...,\vec{v_k}\}$ være en ikke tom mængde af vektorer, hvor $\vec{v_i} \in \mathds{R}^n$ for $i = 1,..,k$. 
 Da er \textbf{spannet af $S$} mængden af vektorer
@@ -65,3 +55,4 @@ hvor $c_j, C_j, c_{k+1}, K_j$ er vilkårlige skalare.
 \\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor at de samme vektore som er en linear kombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linear kombination $\vec{v_1},..., \vec{v_k}$, hvorfor $\vec{u}$ må være en linear kombination af  $\vec{v_1},..., \vec{v_k}$, derfor følger det af Definition \ref{def:span} at $\vec{u} \in span(S).$
 \end{proof}
 
+\input{incl/main/Lin_alg/underrum}
