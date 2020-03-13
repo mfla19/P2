@@ -1,16 +1,22 @@
+\section{Span, Basis og Underrum}
+Normalt vil der ved en vilkårlig vektor $\vec{v} \in \mathds{R}^n$ forstås den lineare kombination af standard vektorene $\vec{e_1}$, for $i = 1,..., n$; $\vec{v}= \sum_{i=1}^n v_i \vec{e_i}$ hvor $v_i$ er den $i$te indgang i $\vec{v}$. 
+Og de $n$ første standard vektorer siges at udspænde eller generere $\mathds{R}^n$.
+Dette kan generaliseres for en hvilken som helst mængde af vektorer af samme længde, det gøres ved introduktion af span, basis og underrum.
 \subsection{Span}
+En mængde af vektorer $S$ udspænder en anden mængde af vektorer $V$, hvis en hver vektor i $V$ kan skrives som en linear kombination af vektorerne i $S$, er det tilfældet kaldes $V$ for spannet af $S$.
 \begin{defn}[Span]
 Lad $S=\{\vec{v_1},...,\vec{v_k}\}$ være en ikke tom mængde af vektorer, hvor $\vec{v_i} \in \mathds{R}^n$ for $i = 1,..,k$. 
 Da er \textbf{spannet af $S$} mængden af vektorer
 \begin{align*}
-span(S) = \{\vec{u}| \vec{u}=\sum_{i=0}^k c_i \vec{v_i}, \vec{v_i} \in S, c_i \in \mathds{R}\}
+span(S) = \{\vec{u}| \vec{u}=\sum_{i=0}^k c_i \vec{v_i}, \vec{v_i} \in S, c_i \in \mathds{R}\}.
 \end{align*} 
 \label{def:span}
 \end{defn}
 Bemærk at $\sum_{i=0}^k c_i \vec{v_i}$ er det samme som at multiplicere en matrix og en vektor, det betyder at en vektor $\vec{u}$ tilhøre spannet af en mængde vektorer $S$, hvis og kun hvis der er en løsning til ligningen $A\vec{x} = \vec{v}$, hvor at vektorene fra $S$ udgør søjlerne i matricen $A$.
 Løsningen vil være vektoren $\vec{x}=\vec{c}$, hvis $i$te indgang vil være skalaren $c_i$.
-
-\begin{stn}
+Det betyder at hvis $S$ kan udspænde $\mathds{R}^n$ skal der være en løsning til $A \vec{x} = \vec{b}$ for en hver vektor $\vec{b} \in \mathds{R}^n$. 
+Derfor indeholder matricen hvis søjler består vektorene fra $S$ indformation om hvilken mængde af vektorer som $S$ udspænder
+\begin{stn}[Span af $\mathds{R}^n$]
 Lad $A$ være en $m\times n$ matrix og $S_A= \{A_j| A_j \in A\}$, da er følgende udsagn ækvivalente:
 \begin{enumerate}[label=\alph*]
 \item $span(S_A) = \mathds{R}^m$
@@ -24,24 +30,24 @@ Lad $A$ være en $m\times n$ matrix og $S_A= \{A_j| A_j \in A\}$, da er følgend
 Først vises (a) <=> (b):
 Lad $span(S_A) = \mathds{R}^m$ så følger det af Definition \ref{def:span} at $A\vec{x}= \vec{b}$ har en løsning for ethvert $\vec{b} \in \mathds{R}^m$.
 På samme måde hvis $A\vec{x}= \vec{b}$ har en løsning for ethvert $\vec{b} \in \mathds{R}^m$, medfører det at $span(S_A) = \mathds{R}^m$. 
-(c) <=> (d): 
-Lad $rank(A) = m$, da følger det af Definitionen for rang at antallet af nulrækker i den rækkereduserede form af matricen $A$ er $m-m = 0$.
+\\(c) <=> (d): 
+Lad $rank(A) = m$, da følger det af definitionen for rang at antallet af nulrækker i den rækkereducerede form af matricen $A$ er $m-m = 0$.
 På samme måde må rangen af $A$ være lig antallet af rækker, hvis der ikke er nogle nulrækker i den rækkereduceret form af $A$.
-(d) <=> (e):
+\\(d) <=> (e):
 Lad den rækkereducerede form af $A$ have ingen nul rækker, da må der være en pivot indgang i hver række. 
 Da der skal være en indgang pr. række med værdi forskellig $0$. 
 På samme måde gælder at hvis der er en pivot indgang i en række kan det ikke være en nul række, når matricen bringes på rækkereduceret form, derfor må (e) => (d).
-(b) => (d):
+\\(b) => (d):
 Antag for modstrid at $A$ indeholder en nulrække på rækkereduceret form, lad denne række være $\vec{a_i}^T = \vec{0}$, da vil $A\vec{x} = \vec{b}$ kun have en løsning hvis $b_i=0$, hvor $b_i$ er den $i$te indgang i $\vec{b}$, da $b_i = \vec{a_i}^T \vec{x} = \vec{0} \vec{x} = 0$. 
 Derfor er der ikke en løsning til ethvert $\vec{b} \in \mathds{R}^m$, hvorfor der er opstået modstrid.
-(e) => (b): 
+\\(e) => (b): 
 Betragt total matricen $[A \vec{b}]$, da der er en pivot indgang i hver række, medføre det at totalmatricen ikke kan indeholde en række på formen $[\vec{0}^T, b_i]$, hvor $b_i \neq 0$, derfor må der være en løsning til ligningsstemmet $A\vec{x} = \vec{b}$.
 Da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$te indgang i den $i$te række, og $k$ er en konstant forskellig fra nul.
 Da et hvert tal kan udtrykkes som produktet af to realle tal, må der altid være en løsning til $A\vec{x}=\vec{b}$.
 \end{proof}
-
-
-\begin{stn}
+Hvis $A$ er en $n \times m$ matrix med rang $m$, betyder det derfor at søjlerne udspænder $\mathds{R}^m$, men har tages der ikke højde for $n$ så længe $n \geq m$, dvs. at både $A$ og $A'$ hvor $A'$ er en $l \times m$ matrix, og $m \leq l \leq n$, udspænder $\mathds{R}^m$, hvis rangen af $A'$ også er $m$. 
+Det antyder derfor at spannet af to mængder vektorer $S$ og $S'$ er det samme, hvis alle $\vec{v} \in S'\setminus S$ er en linarkombination af vektorene i $S$.
+\begin{stn}[Ækvivalente span]
 Lad $S = \{v_1,...,v_k\}$ og $S_u = \{v_1,...,v_k, u\}$ være mængder af vektorer i $\mathds{R}^n$, da $span(S) = span(S_u)$, hvis og kun hvis $u \in span(S)$.
 \end{stn}
 \begin{proof}

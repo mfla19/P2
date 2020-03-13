@@ -1,6 +1,7 @@
-\section{Underrum}
-\begin{defn}
-Lad $W$ være en mængde af vektorer $\vec{v_k} \in \mathds{R}^n$, da er $W$  \textbf{underrum} til $\mathds{R}^n$, hvis:
+\subsection{Underrum}
+Spannet for en mængde af vektorer $S$ udspænder et underrum, som er en delmængde at vektorer som indeholder nulvektoren, og er lukket under vektor addition og skalar multiplikation.
+\begin{defn}[Underrum]
+Lad $W$ være en mængde af vektorer $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$, da er $W$  \textbf{underrum} til $\mathds{R}^n$, hvis:
 \begin{enumerate}[label=\alph*]
 \item $\vec{0} \in W$
 \item $\vec{u}+\vec{v} \in W \quad \forall \vec{u}, \vec{v} \in W$
@@ -8,9 +9,8 @@ Lad $W$ være en mængde af vektorer $\vec{v_k} \in \mathds{R}^n$, da er $W$  \t
 \end{enumerate}
 \label{def:underrum}
 \end{defn}
-(b) kaldes at være lukket under vektor addition (c) lukket under skalar multiplikation
-
-\begin{stn}
+For at vise at spannet er mængden af vektorer $S$ er et underrum, skal det vises at nul vektoren kan skrives som en linear kombination af vektorene i $S$, det samme gælder for summen af to vektorer og skalaproduktet, af to vektorer.
+\begin{stn}[Span er et underrum]
 Lad $S=\{\vec{v_1},...,\vec{v_k}\} \subseteq \mathds{R}^n$, da er $span(S)$ et underrum til $\mathds{R}^n$
 \label{stn:spanunderrum}
 \end{stn}
@@ -30,8 +30,8 @@ Hvorfor at $c\vec{v} \in span(S)$, og betingelse (c), er opfyldt.
 \\Tilsidst vises det at $\vec{0} \in span(S)$.
 Da nul vektoren kan skrives som den linear kombination af vektorene i $S$, $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det at $\vec{0} \in span(S)$, hvorfor at $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
 \end{proof}
-
-\begin{defn}
+Betragtes en $n\times m$ matrix igen, så vil den udspænde $\mathds{R}^m$ hvis den rang var $m$, er dens rang mindre end $m$, da udspænder dens søjler et underrum til $\mathds{R}^m$ kaldet søjlerummet.
+\begin{defn}[Søjlerum]
 Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\}$
 \label{def:sojlerum}
 \end{defn} 
