@@ -271,4 +271,99 @@ Fordi de to matricers produkt bliver identitetsmatricen $I_2$, kan det konkluder
 
 \input{incl/main/Lin_alg/lin_lign}
 
+\subsection{Invers matrix}
+
+Hvis matrix produktet af to matricer, A og B, giver identitetsmatricen, sigen B matrix at være den inverse matrix til A. 
+\begin{defn}[Invers matrix]
+Lad $A$ og $B$ være kvadratiske $n \times n$ matricer. Lad $AB=BA=I_n$, hvor $I_n$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til A. 
+\label{def(inversmatrix)}
+\end{defn}
+Den inverse til en matrix, $A$, noteres som $A^{-1}$. Altså er $A^{-1}A=I_n$. Den inverse matrix kan bruges til at løse specifikke ligningssystemer. Lad $A$ være en $n \times n$ matrix, og $\vec{b}$ være en vektor i $\mathds{R}^n$. Betragt ligningssystemet: 
+\begin{align*}
+A \vec{x} &= \vec{b}\\
+A^{-1} A \vec{x} &= A^{-1} \vec{b}\\
+I_n \vec{x} &= A^{-1} \vec{b}.
+\end{align*} 
+Ved at gange den inverse matrix på begge sider af lighedstegnet, opnåes et udtryk for den entydige løsning til ligningssystemet: 
+\begin{align}
+\vec{x} &= A^{-1} \vec{b}.
+\end{align} 
+
+Løsningen til ligningssystemet kræver at den inverse matrix kan findes. 
+\begin{stn}
+Lad $A$ være en $n \times n$ matrix. Der gælder at: 
+\begin{enumerate}[label=(\alph*)]
+\item $A$ er invertibel hvis og kun hvis den reducerede trappeform af $A$ er identitesmatricen, $I_n$
+\item Hvis $A$ er invertibel, så vil de samme elementære rækkeoperationer som reducerer $A$ til $I_n$ føre $I_n$ over i $A^{-1}$.  
+\end{enumerate}
+\begin{align*}
+\begin{bmatrix}
+A & I_n
+\end{bmatrix} \sim \dots \sim
+\begin{bmatrix}
+I_n & A^{-1}
+\end{bmatrix}
+\end{align*}
+\label{stn:inversmatrix}
+\end{stn}
+
+\begin{proof}
+(a) Først lad $A$ være invertibel. Betragt nu en vektor $\vec(x)$ i $\mathds{R}^n$, som opfylder $A\vec{x}=\vec{0}$. Så fåes det at ligning $(4.1)$, at $\vec{x}=A^{-1} \vec{0}=\vec{0}$. Da løsningen af  $A\vec{x}=\vec(0)$ er $\vec{0}$ må $rang(A)=n$. Det betydet at antallet af pivot-søjler er det samme som antellet af søjler, samt antallet af rækker. Den reducerede trappeform af $A$ må derfor være identitetsmatricen. 
+Lad nu den reducerede trappeform af $A$ være identitesmatricen. Så må der findes en invertibel $n \times n$ matrix $P$ således at: $AP=I_n$
+\begin{align*}
+A=I_nA=(P^{-1}P)A=P^{-1}(PA)=P^{-1}I_n=P^{-1}
+\end{align*}
+Da $P$ er invertibel må $P{-1}$ også være invertibel. Derfor er $A$ invertibel. 
+
+(b) Betragt matricen $[A \quad I_n]$. Enhver $n \times n$ matrix, $A$, kan skrives som en matrix, $R$, på reduceret trappeform, ved hjælp af elementære rækkeoperationer. Udføres de samme rækkeoperationer på $n \times 2n$ matricen, $[A \quad I_n]$, tranformeres denne til $[R \quad B]$. Betragt en invertibel matrix $P$, som opfyldet at: $P[A \quad I_n]=[R \quad B]$. Så følger det at:  
+\begin{align*}
+[R \quad B]=P[A \quad I_n]=[PA \quad PI_n]=[PA \quad P]. 
+\end{align*}
+Så er $PA=R$ og $P=B$. Hvis $R \neq I_n$ så er $A$ ikke invertibel. Derfor må $R=I_n$, og dermed er $PA=I_n\Leftrightarrow P=A^{-1}$. P er da lig med både $A^{-1}$ og $B$, og $A^{-1}=B$. 
+$$[A \quad I_n]\sim[R \quad B]=[PA \quad P]=[I_n \quad A^{-1}]$$
+\end{proof}
+
+\begin{eks}
+Givet en matrix A ønskes det nu at finde en inverse. 
+\begin{align*}
+A= \begin{bmatrix}
+1 & 3 \\
+1 & 2
+\end{bmatrix}
+\end{align*}
+Først opstilles $[A \quad I_n]$ matricen: 
+\begin{align*}
+\begin{bmatrix}
+1 & 3 & 1 & 0 \\
+1 & 2 & 0 & 1
+\end{bmatrix}.
+\end{align*}
+Nu udførers elementære rækkeoperationer således at $A$ transformeres til $I_n$. 
+\begin{align*}
+\begin{bmatrix}
+1 & 3 & 1 & 0 \\
+1 & 2 & 0 & 1
+\end{bmatrix}.
+\sim \begin{bmatrix}
+1 & 3 & 1 & 0 \\
+0 & -1 & -1 & 1
+\end{bmatrix}.
+\sim \begin{bmatrix}
+1 & 3 & 1 & 0 \\
+0 & 1 & 1 & -1
+\end{bmatrix}.
+\sim \begin{bmatrix}
+1 & 0 & -2 & 3 \\
+0 & 1 & 1 & -1
+\end{bmatrix}.
+\end{align*}
+Det er nu muligt at aflæse $A^{-1}$:
+\begin{align*}
+A^{-1} =\begin{bmatrix}
+-2 & 3\\
+1 & -1 
+\end{bmatrix}.
+\end{align*}
+\end{eks}
+
 \input{incl/main/Lin_alg/Determinant}
