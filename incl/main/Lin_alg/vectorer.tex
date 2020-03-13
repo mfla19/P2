@@ -1,26 +1,42 @@
 \subsection{Vektorer}
-Når vektorer omtales, er der tale om en matrice, der kun har en række, kaldet en række vektor, eller en matrice, med kun en søjle, kaldt en søjle vektor. Som reelt anvendes søjle vektorer. \\
-Vektorens "koordinator" kaldes komponenter, og antallet af komponenter, kan ses som, hvilken dimension vores vektor har.
+Når vektorer omtales, er der tale om en matrice, der kun har en række, kaldet en række vektor, eller en matrice, med kun en søjle, kaldt en søjle vektor. Disse vektorer kan være for sig selv, eller være en delmatrice af en $\underset{m \times n}{A}$ matrice\\
+Disse Vektorers indgange  kaldes vektorkomponenter. %$n$ Antallet af komponenter vektoren har, kan ses som den dimension $\mathds{R}^n$ vektoren befinder sig i.
+
+
+
+
 \begin{defn}[Søjle vektor]
-En \textbf{Søjle vektor} er en matrice med 1 søjle og m rækker, også normalt bare kaldt en vektor.
+Lad $\underset{m \times n}{A}$ være en matrice, så vil en \textbf{Søjle vektor} være en delmatrice med kun en søjle og alle søjlen rækkekomponenter
 \begin{align*}
-\underset{m \times n}{A} = 
+\underset{m \times 1}{A} = 
 \begin{bmatrix}
-a_{1,1}\\
-a_{2,1}\\
+a_{1,i}\\
+a_{2,i}\\
 \vdots \\
-a_{m-1,1}\\
-a_{m,1} \\
-\end{bmatrix}\qquad , n=1\\ %mellemrum skal laves universelt
-\vec{x}=a_{i1}\in\underset{m \times n}{A}
-\end{align*} 
-Hvert koordinat kaldes en komponent.
+a_{m-1,i}\\
+a_{m,i} \\
+\end{bmatrix}\qquad , i\in %[1,n]|n\neq1
+\end{align*}
 \end{defn}
+
+\begin{defn}[Række vektor]
+Lad $\underset{m \times n}{A}$ være en matrice, så vil en \textbf{Række vektor} være en delmatrice med kun en række og alle rækkens søjlekomponenter
+%En \textbf{Række vektor} er en matrice med 1 række og n søjler
+\begin{align*}
+\underset{1 \times n}{A} = 
+\begin{bmatrix}
+a_{j,1} a_{j,2} \dots a_{j,n-1} a_{j,n}
+\end{bmatrix}
+\qquad , j\in [1,m]%|m\neq1
+\end{align*}
+\end{defn}
+Bemærk at hvis $m$ eller $n$ er $1$, så er matricen i forvejen en vektor.\\
+\\
 Hvis et objekt, bliver påvirket af flere forskellige kraft fra forskellige retninger, så er det nødvendigt at vide, hvordan man regner ud hvor objektet bevæger sig hen. Dette gøres ved at sætte vetorene i forlængelse af hinanden, det vil sige at man lægger dem sammen.
 \begin{defn}[Addition af to vektor]
-Når to vektor adderes, så adderes de komponenter, som har samme koordinator. Dette kræver, at vektorene har samme antal komponenter.
+Lad $\underset{m \times 1}{A}$ og $\underset{m \times 1}{B}$ være to vektorer med samme størrelse, så vil additionen af de to vektorer, resultere i addition af vektorens komponenter med samme koordinator og giver vektoren $\underset{m \times 1}{C}$ med samme størrelse
 \begin{align*}
-\underset{m \times n}{A} = 
+\underset{m \times 1}{A} = 
 \begin{bmatrix}
 a_{1,1}\\
 a_{2,1}\\
@@ -29,7 +45,7 @@ a_{m-1,1}\\
 a_{m,1} \\
 \end{bmatrix}
 \qquad
-\underset{m \times n}{B} = 
+\underset{m \times 1}{B} = 
 \begin{bmatrix}
 b_{1,1}\\
 b_{2,1}\\
@@ -37,10 +53,9 @@ b_{2,1}\\
 b_{m-1,1}\\
 b_{m,1} \\
 \end{bmatrix}
-\qquad , n=1
 \end{align*} 
 \begin{align*}
-A+B=
+C=A+B=
 \begin{bmatrix}
 a_{1,1}\\
 a_{2,1}\\
@@ -116,8 +131,9 @@ A+B=
 Hvis en vektor kan lægges til en anden vektor, så må det også være muligt at skalere den, det vil sige multiplicere den med en konstant, eftersom $2\vec{x}=\vec{x}+\vec{x}$.\\
 \input{fig/tikz/vektorskalar}
 \begin{defn}[Vektor skalar]
-En \textbf{Vektor skalar} er produktet af en vektor $\vec{x}$
-som bliver multipliceret med en konstant $k$ kaldet skalar. Denne vektor peger i samme retning, men har en anden længde.
+Lad $\vec{x}$ være en vektor i $\mathds{R}^n$, så er et \textbf{Vektor skalar} produktet af den vektorens komponenter multipliceret med konstanten.
+%En \textbf{Vektor skalar} er produktet af en vektor $\vec{x}$
+%som bliver multipliceret med en konstant $k$ kaldet skalar. Denne vektor peger i samme retning, men har en anden længde.
 \begin{align*}
 \vec{x}=\begin{bmatrix}
 x_1\\
@@ -131,14 +147,13 @@ x_1\\
 x_2\\
 \vdots\\
 x_{n-1}\\
-x_k
 \end{bmatrix}=
 \begin{bmatrix}
-x_1k\\
-x_2k\\
+kx_1\\
+kx_2\\
 \vdots\\
-x_{n-1}k\\
-x_nk\\
+kx_{n-1}\\
+kx_n\\
 \end{bmatrix}
 \end{align*}
 \end{defn}
