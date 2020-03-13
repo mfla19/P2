@@ -5,12 +5,42 @@ Lad $S =\{v_1,...,v_k\}$ hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er line
 \label{def:basis}
 \end{defn}
 
+
 \begin{stn}
-Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
+Lad $S=\{\vec{v_1}, ..., \vec{k}\}$, for $\vec{v_1}, ..., \vec{k} \in \mathds{R}^n$ og lad $span(S) = V$ være et underrum til $\mathds{R}^n$ da er kan $S$ gøres til en basis for $V$ ved at fjerne vektorer fra $S$.
+\label{stn:reduceringbasis}
 \end{stn}
 
 \begin{proof}
-Antag uden at miste generealitet at de først $k$ søjler i $A$ har en pivot indgang, da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
-Derfor følger det af Sætning \ref{stn:akvivalentespan} at $span(\{A_j| j =1,...,n\}) =span(\{A_j| j=1,...,k\})$.
-Hvorfor det følger af Definition \ref{def:sojlerum} at $Col A = span(\{A_j| j=1,...,k\})$, og da alle vektorer i $\{A_j | j = 1,...,k\}$ er lineært uafhængige følger det af Definition \ref{def:basis} at $\{A_j | j = 1,...,k\}$ er en basis for $Col A$.
+Antag uden at miste generealitet at de først $l$ vektorer i $S$ er  lineært uafhængige, da vil $\vec{v_i}$, for $i = l+1,...,k$ være en linear kombination af $\{\vec{v_i} | i = 1,...,l\}$. 
+Derfor følger det af Sætning \ref{stn:akvivalentespan} at $V = span(\{\vec{v_i}| j =1,...,k\}) =span(\{\vec{v_i}| j=1,...,l\})$.
+Da alle vektorer i $\{\vec{v_i}| j=1,...,l\}$ er lineært uafhængige følger det af Definition \ref{def:basis} at $\{\vec{v_i}| j=1,...,l\}$ er en basis for $V$. 
+Derfor bliver $S$ en basis ved at fjerne $\{\vec{v_i}| i = l+1,...,k\}$.
 \end{proof}
+
+\begin{kor}
+Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
+\end{kor}
+
+\begin{proof}
+Antag uden at miste generealitet at de først $k$ søjler i $A$ har en pivot indgang, da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
+Det følger derfor af Sætning \ref{stn:reduceringbasis} at $Col A = span(\{A_j| j=1,...,k\})$.
+\end{proof}
+
+\begin{stn}
+Lad $S=\{\vec{v_1}, ..., \vec{k}\}$ være en delmængde for underrummet $V$ til $\mathds{R}^n$, for $\vec{v_1}, ..., \vec{k} \in \mathds{R}^n$ være lineært uafhængige vektorer, da vil $S$ kunne udvides til en basis for $V$ ved at tilføje ekstra vektorer.
+\end{stn}
+\begin{proof}
+Observer at $span(S) \subseteq V$, og $S$ vil være en basis for $span(S)$.
+Lad $\vec{v_{k+1}} \in V$ være lineært uafhængig med $\vec{v_1}, ..., \vec{k}$, så vil $span(S\cup\{\vec{v_{k+1}}\}) \subseteq V$ med basis $S\cup\{\vec{v_{k+1}}\}$. 
+Gentag til der ikke er flere vektorer i $V$ som er lineært uafhængig med delmængden af vektorer, og kald mængden $S_V$.
+Bemærk at $span(S_V) \subseteq V$.
+Det vises nu at $V \subseteq span(S_V)$. 
+Af Definiton \ref{def:span} indeholder $span(S_V)$ alle vektorer som er en linear kombination af vektorerne i $S_V$, og da der ikke er nogle vektorer i $V$ som er lineært uafhængig til $S_V$ pr konstruktion af $S_V$, må $V$ være indeholdt i $S_V$. 
+Hvorfor $V \subseteq span(S_V)$, hvilket medfører at $V = span(S_V)$, med basis $S_V$. 
+Da $S_V$ var konstrueret ved at tilføje vektorer til $S$ er sætningen hermed bevist.
+\end{proof}
+
+
+
+lad $span(S) = V$ være et underrum til $\mathds{R}^n$ da er kan $S$ gøres til en basis for $V$ ved at fjerne vektorer fra $S$.
