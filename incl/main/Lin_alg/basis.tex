@@ -1,0 +1,16 @@
+\section{Basis}
+
+\begin{defn}
+Lad $S =\{v_1,...,v_k\}$ hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er lineært uafhængige, og lad $V$ være et underrum til $\mathds{R}^n$, da er $S$ en \textbf{basis} til $V$, hvis $V = span(S)$.
+\label{def:basis}
+\end{defn}
+
+\begin{stn}
+Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
+\end{stn}
+
+\begin{proof}
+Antag uden at miste generealitet at de først $k$ søjler i $A$ har en pivot indgang, da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
+Derfor følger det af Sætning \ref{stn:akvivalentespan} at $span(\{A_j| j =1,...,n\}) =span(\{A_j| j=1,...,k\})$.
+Hvorfor det følger af Definition \ref{def:sojlerum} at $Col A = span(\{A_j| j=1,...,k\})$, og da alle vektorer i $\{A_j | j = 1,...,k\}$ er lineært uafhængige følger det af Definition \ref{def:basis} at $\{A_j | j = 1,...,k\}$ er en basis for $Col A$.
+\end{proof}
