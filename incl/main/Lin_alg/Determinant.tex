@@ -1,1 +1,166 @@
 \subsection{Determinant}
+Determinanten af en matrix er en scalar, der blandt andet kan bruges til at finde ud af om en matrix er invertibel eller ej.
+Først vises, hvordan determinanten af en $2 \times 2$-matrix findes.
+
+\begin{defn}
+For en matrix $A$, 
+\begin{align*}
+A= \begin{bmatrix}
+a & c \\
+b & d
+\end{bmatrix},
+\end{align*}
+er determinanten defineret ved $det(A)=a \cdot d - b \cdot c$.
+\end{defn}
+
+Det er altså relativt nemt at finde determinanten for en $2 \times 2$-matrix. 
+Når determinanten så er fundet, kan denne bruges til at finde ud af, om matricen er invertibel. 
+Samtidig kan determinanten også bruges til at finde den inverse matrix. 
+
+\begin{stn}
+$A$ er invertibel hvis og kun hvis $det(A) \neq 0$ og $A^{-1} = \frac{1}{det(A)} \cdot \begin{bmatrix}
+d & -c \\
+-b & a
+\end{bmatrix}$.
+\end{stn}
+
+Determinanten kan findes for alle $N \times N$-matricer ved brug af undermatricer.
+
+\begin{defn}
+$A_{ij} =$ matricen $A$, men uden $i$'te række og $j$'te søjle. 
+\end{defn}
+
+\begin{eks}
+Her ses et eksempel på en undermatrix
+\begin{align}
+A=\begin{bmatrix}
+a & d & g \\
+b & e & h \\
+c & f & i
+\end{bmatrix}
+\: A_{12}=\begin{bmatrix}
+d & g \\
+f & i
+\end{bmatrix}.
+\end{align}
+\end{eks}
+
+\begin{defn}
+For $\underset{N \times N}{A}=(a_{ij})$ defineres 
+\begin{align*}
+det(A)=a_{1,1} \cdot (-1)^{1+1} \cdot det(A_{1,1}) + a_{1,2} \cdot (-1)^{1+2} \cdot det(A_{1,2}) + \dots + a_{1,N} \cdot (-1)^{1+N} \cdot det(A_{1,N}).
+\end{align*}
+Dette kan også skrives, 
+\begin{align*}
+det(A)=\sum_{j=1}^{N} a_{1,j} \cdot (-1)^{1+j} \cdot det(A_{1,j}).
+\end{align*}
+\end{defn}
+
+\textbf{mangler bevis}
+
+For $N \times N$ matricer kan det være omfattende at finde determinanten. Det kræver $N!$ multiplikationer at berenge determinanten af en $N \times N$-matrix. I en $2 \times 2$-matrix kræver det to multiplikationer, i en $3 \times 3$-matrix kræver det 6, fordi alle indgang i den valgte række eller søjle ganges med den tilhørende undermatrix, dette giver $3 \cdot 2$ multiplikationer. Tilføjes endnu en række og søjle så,  ganges $4$ på de tidligere $6$ multiplikationer og det samlede antal bliver så $24$ og sådan fortsætter det.\\
+
+\begin{stn}
+Når determinanten i en $N \times N$-matrix beregnes, kan det frit vælges hvilken række eller søjle der tages udgangspunkt i. Tages der udgangspunkt i den $i$'te række ser formlen sådan ud;
+\begin{align*}
+det(A)=\sum_{j=1}^{N}a_{i,j} \cdot (-1)^{i+j} \cdot det(A_{i,j}),
+\end{align*}
+her er $i$ konstant. Tages der udgangspunkt i den $j$'te søjle ser formlen sådan ud;
+\begin{align*}
+det(A)=\sum_{i=1}^{N}a_{i,j} \cdot (-1)^{i+j} \cdot det(A_{i,j}),
+\end{align*}
+her er $j$ konstant.
+\end{stn}
+
+Da det kan være meget omfattende at beregne determinanten for en stor matrix, kan det være smart, at tage udgangspunkt i en række eller søjle med mange nuller.
+Dette betyder at flere led i udregningen går ud og dermed formindskes antallet af multiplikationer. 
+
+\begin{eks}
+Givet en matrix A,
+\begin{align*}
+A=\begin{bmatrix}
+2 & 3 & 0 & 1 \\
+0 & 4 & 7 & 2 \\
+1 & 0 & 0 & 3 \\
+0 & 5 & 0 & -1
+\end{bmatrix}
+\end{align*}
+findes determinanten ved hjælp af den række eller søjle med flest nuller, i dette tilfælde er det den tredje søjle.
+\begin{align*}
+det(A)&= 7 \cdot (-1)^{2+3} \cdot det \left( \begin{bmatrix}
+2 & 3 & 1 \\
+1 & 0 & 3 \\
+0 & 5 & -1
+\end{bmatrix} \right)+0+0+0 \\
+&= -7 \cdot \left( 1 \cdot (-1)^{2+1} \cdot det \left(
+\begin{bmatrix}
+3 & 1 \\
+5 & -1
+\end{bmatrix} \right) + 0 + 3 \cdot (-1)^{2+3} \cdot det \left( 
+\begin{bmatrix}
+2 & 3 \\
+0 & 5
+\end{bmatrix} \right) \right) \\
+&= -7 \cdot (-(3 \cdot (-1)-5 \cdot 1)-3 \cdot(2 \cdot 5 - 0 \cdot 3)) \\
+&= -7 \cdot (8-30) \\
+&= -7 \cdot (-22) \\
+&= 154
+\end{align*}
+Determinanten af $A$ er altså $154$.
+\end{eks}
+
+Specielt for matricer på trappeform er det nemt at finde determinanten, da man her altid vil kunne vælge en søjle der kun har 1 indgang der er forskellig fra nul. 
+Dette betyder at det er muligt, bare at gange alle indgange i diagonalen for at finde determinanten. 
+Determinanten af en matrix kan dog godt ændre sig hvis der udføres rækkeoperationer, derfor er det ikke muligt bare at reducere en matrice til trappeform og så finde determinanten. 
+De elementære rækkeoperationer påvirker determinanten på forskellige måder. 
+
+\begin{stn}
+\begin{itemize}
+\item \textbf{Ombytning:} Ændrer fortegn på determinanten. 
+\item \textbf{Scaling:} Ganger determinanten med k (det k der ganges på den række scalingen udføres på).
+\item \textbf{Udskiftning:} Dette ændrer ikke determinanten.
+\end{itemize}
+\end{stn}
+
+\begin{proof}
+\textbf{ikke færdigt bevis}
+Lad $A$ være en $N \times N$-matrix, med rækkerne $\vec{a_1}, \vec{a_2}, \dots , \vec{a_N}$. \\
+Først bevises (a). 
+Det vises først
+Så bevises (b). 
+Lad $B$ være der fås ved at gange hver indgang i en række $p$ i A med en skalar $k$. 
+Da fås 
+\begin{align*}
+det(B)=\sum_{j=1}^{N}k \cdot a_{i,j} \cdot (-1)^{i+j} \cdot det(A_{i,j}),
+\end{align*}
+hvilket er det samme som 
+\begin{align*}
+det(B)=k \cdot \sum_{j=1}^{N}a_{i,j} \cdot (-1)^{i+j} \cdot det(A_{i,j}).
+\end{align*}
+determinanten for $A$ er
+\begin{align*}
+det(A)=\sum_{j=1}^{N}a_{i,j} \cdot (-1)^{i+j} \cdot det(A_{i,j})
+\end{align*}
+udfra det ses det, at determinanten af $B$ opnås ved at gange determinanten af $A$ med $k$, dermed gælder det, at
+\begin{align*}
+det(B)=k \cdot det(A)
+\end{align*}
+Til sidst bevises (c). 
+Lad $B$ være den matrix der fås ved at bytte rækkerne $p$ og $q$, hvor $p<q$. 
+Lad nu $q=p+1$, så er $a_{p,q}=b_{q,p}$ og $A_{p,q}=B_{q,p}$
+\end{proof}
+
+\begin{stn}
+Lad $A$ og $B$ være to kvadratiske matricer af samme størrelse, så gælder:
+\begin{enumerate}
+\item A er invertibel $\Leftrightarrow$ $det(A) \neq 0$
+\item $det(A \cdot B) = det(A) \cdot det(B)$
+\item $det(A^T)=det(A)$
+\item $det(A^{-1})=\frac{1}{det(A)}$
+\end{enumerate}
+\end{stn}
+
+\begin{proof}
+\textbf{ikke færdigt bevis}
+Først bevises (1), (2) og (3) hvis $A$ er invertibel.\\
+\end{proof}
