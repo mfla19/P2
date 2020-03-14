@@ -27,22 +27,23 @@ Et eksempel på et lineært programmeringsproblem ses i Eksempel \ref{eks:makspr
 Et eksempel på et lineært programmeringsproblem ses her, hvor funktionen $f(x_1,x_2)=4x_1+3 x_2$ skal maksimeres.
 \begin{center}
 \begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
-Maksimer 		& 4x_1&		+3 x_2& \\
-med hensyn til 	& - \ \ x_1& 	+4 x_2& \leq 12\\
-				&  x_1& 	+2 x_2& \leq 12\\
-				&- \ \ x_1& 	+ \ \ x_2& \geq -6\\
+Maksimer 		& 		4x_1&	+3 x_2	& \\
+med hensyn til 	&  \ \ 	2 x_1& 	- 4 x_2	& \geq - 8\\
+				&  		x_1& 	+3 x_2	& \leq 16\\
+				&  \ \ 	x_1& 			& \leq 10\\
 og $x_2\geq 0$
 \end{tabular}
 \end{center}
 
-Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvist på 1. og 2. aksen.
+Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen.
 
 \begin{center}
-	\includegraphics[scale=0.2]{fig/prog/feasibleset1}
-	\captionof{figure}{Den mulige mængde (bør laves til tikz)}
+	\input{fig/tikz/linprog1}
+	\captionof{figure}{Grafisk repræsentation af løsningsmængde}
 	\label{fig:maksprob1}
 \end{center}
-\label{eks:maksprob1}
+
+
 \end{eks}
 
 \section{Standard maksimums- og minimumsproblemer}
@@ -80,24 +81,58 @@ og 				& \vec{y} \geq \vec{0}
 Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimum problem, skal ale uligheder i bibetingelserne være $\leq$. Bibetingelse nr.3 skal derved omskrives. Dette kan gøres ved at gange begge sider af uligheden med $-1$, da dette vender ulighedstegnet. Derudover skal også $x_1$ skal være positivt begrænset. Derved bliver Eksempel \ref{eks:maksprob1} omskrevet til et standard maksimum problem til\\
 \begin{center}
 \begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
-Maksimer 		& 4x_1&		+3 x_2& \\
-med hensyn til 	& - \ \ x_1& 	+4 x_2& \leq 12\\
-				&  x_1& 	+2 x_2& \leq 12\\
-				&  x_1& 	-\ \ x_2& \geq 6\\
+Maksimer 		& 		4x_1&	+3 x_2	& \\
+med hensyn til 	&  \ \ 	-2 x_1& 	 4 x_2	& \leq 8\\
+				&  		x_1& 	+3 x_2	& \leq 16\\
+				&  \ \ 	x_1& 			& \leq 10\\
 og $x_1 \geq 0, x_2\geq 0$.
 \end{tabular}
+\end{center}
+
+\begin{center}
+	\input{fig/tikz/linprog2}
 \end{center}
 \end{eks}
 
 \section{Løsninger til linære programmeringsproblemer}
 
-Den mulige løsningsmængde 
+Den mulige løsningsmængde er mængden af løsningsvektorer, $\vec{x}$, som opfylder alle problemets betingelser. Derved vil den optimale løsning være indeholdt i denne mængde, så længe at mængden ikke er tom.
 
 \begin{defn}[Mulige løsninger og løsningsmængden]
 En \textbf{mulig løsning} er en løsningsvektor $\vec{x}$, som opfylder alle problemets betingelser.\\
 \textbf{Løsningsmængden} $\mathds{F}$ \textit{(usikker på oversættelsen)} er mængden af alle de mulige løsninger.
+\begin{align*}
+\mathds{F}=\{\vec{x} \in \mathds{R}|A\vec{x} \leq \vec{b}, \vec{x} \geq \vec{0}\}
+\end{align*}
 En vektor $\vec{x}$ kaldes en \textbf{optimal løsning}, hvis $f(\vec{x})=\max\limits_{x \in \mathds{F}}f(\vec{x}).$
 \end{defn}
+
+Den optimale løsning kan findes på forskellige måder heriblandt simplex-metoden, som beskrives i senere kapitler. En anden måde er geometrisk visualisering af løsningsmængden. Denne metode er mulig for problemer med op til 3 variable, da løsningsmængden derved visualiseres som et plot i det tilsvarende antal dimensioner.
+
+Niveaukurver kan anvendes til at 
+
+Eksempel \ref{eks:maksporb3}
+
+
+\begin{eks}[Optimal løsning fundet grafisk]
+	\begin{center}	
+		\input{fig/tikz/linprog3}
+		\label{eks:maksprob3}
+	\end{center}
+	\captionof{figure}{Optimal løsning fundet grafisk}
+
+\end{eks}
+
+
+Stadig to do i afsnittet\\
+- infeasible og unbounded tilfælde\\
+- niveaukurver\\
+- Hvis der findes en løsning, findes der en optimal løsning (med evt. bevis. burde ikke være så svært med modstrid)\\
+
+Skal jeg have det med at løsninger findes i hjørner? det virker til at kræve en smule mere geometri og hører nok bedre til i geometri afsnittet.
+
+
+
 
 \begin{comment}
 Hvad skal med i dette afsnit?

@@ -90,7 +90,7 @@ Dette kan så skrives i en matrix,
 \end{bmatrix}.
 \end{align*}
 
-Løsningen til dette ligningssystem bliver følgende vektor
+Følgende vektor er en løsning til dette ligningssystem.
 
 \begin{align*}
 \begin{bmatrix}
@@ -112,7 +112,7 @@ Det ses, at vektoren giver en rigtig løsning til ligningssystemet, fordi alle l
 \end{eks}
 
 \subsection{Elementære rækkeoperationer}
-Når et lineært ligningssystem skal løses, skal flere skridt gennemføres. Først skrives ligningssystemet op som en totalmatrix. Herefter findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. De tre typer af elementære rækkeoperationer gennemgås i Definition \ref{defn_elemen_operation}. \\
+Når et lineært ligningssystem skal løses, skal flere trin gennemføres. Først skrives ligningssystemet op som en totalmatrix. Herefter findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. De tre typer af elementære rækkeoperationer gennemgås i Definition \ref{defn_elemen_operation}. \\
 
 \begin{defn}[Elementære rækkeoperationer]
 Der findes 3 elementære rækkeoperationer
@@ -194,8 +194,8 @@ Hvis en matrix overholder betingelserne for at være på trappeform og samtidig 
 \end{defn}
 
 Når der skal findes en løsning på et ligningssystem skrives det først på reduceret trappeform, hvorefter hver variabel isoleres. 
-Dermed findes en generel løsning i form af en vektor som beskrevet tidligere. 
- 
+Dermed findes en generel løsning i form af en vektor som beskrevet tidligere. % det er da ikke tidligere beskrevet?
+
 \begin{eks}
 Et eksempel på en matrix på trappeform ses herunder. I matricen er pivotindgangene $(1,1)$, $(2,2)$ og $(3,4)$.
 \begin{align*}
@@ -284,8 +284,8 @@ De variable, der ikke har en pivot-søjle, kaldes frie variable, fordi deres væ
 I forlængelse heraf, kan man kigge på matricens \textbf{rang} og \textbf{nullitet}. 
 \begin{defn}
 Lad $A$ være en $m \times n$ matrix på reduceret trappeform. 
-Da er \textbf{rangen} af $A$ defineret som antal pivot-søjler i $A$, og noteres $rang(A)$. 
-\textbf{Nulliteten} af $A$ noteres $null(A)$ og er defineret som antal ikke-pivot-søjler i $A$, altså $n - rang(A)$. \\
+Da er \textbf{rangen} af $A$ defineret som antallet af pivot-søjler i $A$, og noteres $rang(A)$. 
+\textbf{Nulliteten} af $A$ noteres $null(A)$ og er defineret som antallet af ikke-pivot-søjler i $A$, altså $n - rang(A)$. \\
 Derudover gælder $rang(A) + null(A) = n$.
 \end{defn}
 
