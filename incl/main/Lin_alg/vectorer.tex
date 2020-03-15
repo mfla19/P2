@@ -1,11 +1,5 @@
 \subsection{Vektorer}
 
-\begin{comment}
-det der stod her originalt
-Når vektorer omtales, er der tale om en matrice, der kun har en række, kaldet en række vektor, eller en matrice, med kun en søjle, kaldt en søjle vektor. Disse vektorer kan være for sig selv, eller være en delmatrice af en $\underset{m \times n}{A}$ matrice\\
-Disse Vektorers indgange  kaldes vektorkomponenter. %$n$ Antallet af komponenter vektoren har, kan ses som den dimension $\mathds{R}^n$ vektoren befinder sig i.
-\end{comment}
-
 En vektor er en matrix, som enten kun har en sølje eller en række. En vektor med kun en søjle kaldes en søjlevektor, mens en vektor men kun en række kaldes en rækkevektor.
 Vektorer anvendes blandt andet til at repræsentere  rækker og søjler i matricer. I dette tilfælde er vektorerne derved delmatricer af den originale matrix.
 Indgangene i en vektor kaldes vektorens vektorkomponenter
@@ -35,10 +29,10 @@ Lad $\underset{m \times n}{A}$ være en matrix, så vil en \textbf{rækkevektor}
 \qquad , j\in [1,m]%|m\neq1
 \end{align*}
 \end{defn}
-Bemærk at hvis $m$ eller $n$ er $1$, så er matricen i forvejen en vektor.\\
+Bemærk at hvis henholdsvis $m$ eller $n$ er $1$, så er matricen i forvejen en vektor.\\
 \\
-Hvis et objekt, bliver påvirket af flere forskellige kraft fra forskellige retninger, så er det nødvendigt at vide, hvordan man regner ud hvor objektet bevæger sig hen.%lidt kludret
-Dette gøres ved at sætte vetorene i forlængelse af hinanden, det vil sige at man lægger dem sammen. 
+Addition af to vektorer kan repræsenteres grafisk med pile, ved at tage to ikke-nul vektorer $\vec{u}$ og $\vec{v}$ og forme et parallelogram med vektorene som parallelogrammets sider. I følge parallelogram loven vil diagonalen af parallelogrammet være de to vektor lagt sammen $\vec{u}+\vec{v}$.
+%Mangler firgur 1.3 fra lial bogen
 \begin{defn}[Addition af to vektor]
 Lad $\underset{m \times 1}{A}$ og $\underset{m \times 1}{B}$ være to vektorer med samme størrelse. Da vil additionen af de to vektorer give en vektor, $\underset{m \times 1}{C}$, hvor hver komponent er summen af de tilsvarende komponenter i $\underset{m \times 1}{A}$ og $\underset{m \times 1}{B}$.
 \begin{align*}
@@ -191,7 +185,7 @@ k\vec{x}=3
 \subsection{Matrix-vector produkt}
 Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en vektor. Dette lægger grundlaget for hvordan matricer ganges sammen, eftersom en vektor også kan ses som en $n\times1$ matrix. 
 \begin{defn}[Matrix-vektor produkt]
-Lad $A$ være en $mxn$ matrix og $x$ være en $nx1$ vektor. Så skrives \textbf{Matrix-vektor produktet} $A\vec{x}$, som er den lineære kombination af søjlerne $\vec{A_j}$ i $A$ og de tilsvarende komponenter i $\vec{x}$. Dette kræver at matricen har samme antal søjler som vektoren har komponenter, hvilket er defineret med $n$.
+Lad $A$ være en $mxn$ matrix og $x$ være en $mx1$ vektor. Så skrives \textbf{Matrix-vektor produktet} $A\vec{x}$, som produktet af søjlerne $\vec{A_j}$ i $A$ og de tilsvarende komponenter i $\vec{x}$. Dette kræver at matricen har samme antal søjler som vektoren har komponenter, hvilket er defineret med $n$.
 \begin{align*}
 A\vec{x}&=x_1\vec{A}_1+x_2\vec{A}_2+ \dots +x_{n-1}\vec{A}_{n-1}+x_n\vec{A}_n \\
 &=
@@ -274,7 +268,7 @@ Standard basis vektorer i $\mathds{R}^n$ skrives som $e_i$, hvor $i\in[1,n]$ og 
 \begin{defn}[Standart basis vektorer]
 Lad $e_m$ være en $m\times 1$ vektor i $\mathds{R}^m$ med alle indgange/komponenter $a_i=0$
 \begin{align*}
-e_i=e_m|a_i\in e_m=1 \forall i\in[1,m] %
+e_i=e_m|a_i\in e_m=1 \forall i\in[1,m] %stadig ikke helt sikker på det, men det giver mere mening
 \end{align*}
 
 \end{defn}
