@@ -1,0 +1,63 @@
+\subsection{Span og basis for en matrix}
+På samme måde som at en matrix kan skabes ud fra en delmængde af vektorer, så kan en delmængde af vektorer generes udfra søjlerne eller rækkerne i en matrix. 
+Søjlerne i en matrix med rang $m$ vil udspænde $\mathds{R}^m$.
+\begin{stn}[Span af $\mathds{R}^n$]
+Lad $A$ være en $m\times n$ matrix og $S_A= \{A_j| A_j \in A\}$, da er følgende udsagn ækvivalente:
+\begin{enumerate}[label=\alph*]
+\item $span(S_A) = \mathds{R}^m$
+\item $\exists \vec{x} \in \mathds{R}^n \forall \vec{b} \in \mathds{R}^m: \quad A\vec{x}=\vec{b}$
+\item $rank(A) = m$
+\item Den rækkerederede form af $A$ har ingen nul rækker
+\item En hver række i $A$ har en pivot indgang
+\end{enumerate}
+\end{stn}
+\begin{proof}
+Først vises (a) <=> (b):
+Lad $span(S_A) = \mathds{R}^m$ så følger det af Definition \ref{def:span} at $A\vec{x}= \vec{b}$ har en løsning for ethvert $\vec{b} \in \mathds{R}^m$.
+På samme måde hvis $A\vec{x}= \vec{b}$ har en løsning for ethvert $\vec{b} \in \mathds{R}^m$, medfører det at $span(S_A) = \mathds{R}^m$. 
+\\(c) <=> (d): 
+Lad $rank(A) = m$, da følger det af definitionen for rang at antallet af nulrækker i den rækkereducerede form af matricen $A$ er $m-m = 0$.
+På samme måde må rangen af $A$ være lig antallet af rækker, hvis der ikke er nogle nulrækker i den rækkereduceret form af $A$.
+\\(d) <=> (e):
+Lad den rækkereducerede form af $A$ have ingen nul rækker, da må der være en pivot indgang i hver række. 
+Da der skal være en indgang pr. række med værdi forskellig $0$. 
+På samme måde gælder at hvis der er en pivot indgang i en række kan det ikke være en nul række, når matricen bringes på rækkereduceret form, derfor må (e) => (d).
+\\(b) => (d):
+Antag for modstrid at $A$ indeholder en nulrække på rækkereduceret form, lad denne række være $\vec{a_i}^T = \vec{0}$, da vil $A\vec{x} = \vec{b}$ kun have en løsning hvis $b_i=0$, hvor $b_i$ er den $i$te indgang i $\vec{b}$, da $b_i = \vec{a_i}^T \vec{x} = \vec{0} \vec{x} = 0$. 
+Derfor er der ikke en løsning til ethvert $\vec{b} \in \mathds{R}^m$, hvorfor der er opstået modstrid.
+\\(e) => (b): 
+Betragt total matricen $[A \vec{b}]$, da der er en pivot indgang i hver række, medføre det at totalmatricen ikke kan indeholde en række på formen $[\vec{0}^T, b_i]$, hvor $b_i \neq 0$, derfor må der være en løsning til ligningsstemmet $A\vec{x} = \vec{b}$.
+Da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$te indgang i den $i$te række, og $k$ er en konstant forskellig fra nul.
+Da et hvert tal kan udtrykkes som produktet af to realle tal, må der altid være en løsning til $A\vec{x}=\vec{b}$.
+\end{proof}
+Underrummet udspændt af søjlerne i $A$ kaldes for søjlerummet af $A$, mens rækkerummet af $A$ er udspændt af $A$s rækker.
+\begin{defn}[Søjlerum og Rækkerum]
+Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\}$, mens \textbf{rækkerummet} af $A$ er $Row A = span(\{\vec{a_i}|i=1,...,m\})$.
+\label{def:sojlerum}
+\end{defn} 
+Det betyder at de lineært uafhængige søjler og rækker vil udgøre en base for henholdsvis søjlerummet og rækkerummet, hvilket er det rækker og søjler med pivot indgang. 
+De næste to resultater vil kun blive vist for søjlerummet, da de er ækvivalente til rækkerummet og det samme gælder for deres beviser.
+\begin{kor}
+Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en base for $Col (A)$
+\label{kor:pivotsojle}
+\end{kor}
+\begin{proof}
+Antag uden at miste generealitet at de først $k$ søjler i $A$ har en pivot indgang, da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
+Det følger derfor af Sætning \ref{stn:reduceringbasis} at $Col A = span(\{A_j| j=1,...,k\})$.
+\end{proof}
+Det betyder at dimensionen af søjlerummet og rækkerummet er lig antallet af pivotindgange i matricen, hvilket pr defintion er rangen af matricen.
+\begin{kor}
+Lad $A$ være en $n\times m $ matrix da er $\dim{col A} = rank (A)$
+\end{kor}
+\begin{proof}
+Af Korolar \ref{kor:pivotsojle} følger at søjlerne i $A$ med pivot indgang udgør en base for $Col A$, da antallet af søjler med pivot indgang er lig rangen af $A$ må $\dim{Col A} = rank (A)$ i følge Definition \ref{def:dim}.
+\end{proof}
+
+
+%\begin{kor}
+%Lad $A$ være en $n\times m $ matrix, da udgør rækkerne med pivot indgang en base for rækkerummet for $A$
+%\end{kor}
+%\begin{proof}
+%Antag uden at miste generealitet at de først $k$ rækker i $A$ har en pivot indgang, da er $\vec{a_i}^T$, for $i=1,...,k$ lineært uafhængige, mens $\vec{a_i}^T$, for $i = k+1,...,n$ vil være en linear kombination af $\{\vec{a_i}^T | i = 1,...,k\}$. 
+%Det følger derfor af Sætning \ref{stn:reduceringbasis} at $\{\vec{a_i}^T | i = 1,...,k\}$ vil være en basis for rækkerummet af $A$.
+%\end{proof}
