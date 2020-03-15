@@ -27,18 +27,18 @@ Antag for modstrid at $A$ indeholder en nulrække på rækkereduceret form, lad 
 Derfor er der ikke en løsning til ethvert $\vec{b} \in \mathds{R}^m$, hvorfor der er opstået modstrid.
 \\(e) => (b): 
 Betragt total matricen $[A \vec{b}]$, da der er en pivot indgang i hver række, medføre det at totalmatricen ikke kan indeholde en række på formen $[\vec{0}^T, b_i]$, hvor $b_i \neq 0$, derfor må der være en løsning til ligningsstemmet $A\vec{x} = \vec{b}$.
-Da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$te indgang i den $i$te række, og $k$ er en konstant forskellig fra nul.
+Da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$te indgang i den $i$te række, og $k$ er en skalar.
 Da et hvert tal kan udtrykkes som produktet af to realle tal, må der altid være en løsning til $A\vec{x}=\vec{b}$.
 \end{proof}
 Underrummet udspændt af søjlerne i $A$ kaldes for søjlerummet af $A$, mens rækkerummet af $A$ er udspændt af $A$s rækker.
 \begin{defn}[Søjlerum og Rækkerum]
-Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\}$, mens \textbf{rækkerummet} af $A$ er $Row A = span(\{\vec{a_i}|i=1,...,m\})$.
+Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\})$, mens \textbf{rækkerummet} af $A$ er $Row A = span(\{\vec{a_i}|i=1,...,m\})$.
 \label{def:sojlerum}
 \end{defn} 
-Det betyder at de lineært uafhængige søjler og rækker vil udgøre en base for henholdsvis søjlerummet og rækkerummet, hvilket er det rækker og søjler med pivot indgang. 
+Det betyder at de lineært uafhængige søjler og rækker vil udgøre en basis for henholdsvis søjlerummet og rækkerummet, hvilket er de rækker og søjler med pivot indgang. 
 De næste to resultater vil kun blive vist for søjlerummet, da de er ækvivalente til rækkerummet og det samme gælder for deres beviser.
 \begin{kor}
-Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en base for $Col (A)$
+Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
 \label{kor:pivotsojle}
 \end{kor}
 \begin{proof}

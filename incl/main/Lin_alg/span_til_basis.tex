@@ -1,5 +1,6 @@
 \subsection{Fra span til base}
-Da spannet af to mængder er det samme, hvis deres snitmængde er lineært afhængig af deres fælles mængde, betyder det at deres fælles mængde er en base for spannet, det betyder at enhver mængde af lineært afhængige vektorer kan blive til base, ved at fjerne vektorer til de resterne er lineært uafhængige.
+Da spannet af to mængder er det samme, hvis deres snitmængde er lineært afhængig af deres fælles mængde, betyder det at hvis deres fælles mængde er lineært uafhængig da er fællesmængden en basis for spannet.
+Derfor kan enhver mængde af lineært afhængige vektorer blive til basis, ved at fjerne vektorer til de resterne er lineært uafhængige.
 \begin{stn}
 Lad $S=\{\vec{v_1}, ..., \vec{k}\}$, for $\vec{v_1}, ..., \vec{k} \in \mathds{R}^n$ og lad $span(S) = V$ være et underrum til $\mathds{R}^n$ da er kan $S$ gøres til en basis for $V$ ved at fjerne vektorer fra $S$.
 \label{stn:reduceringbasis}
@@ -15,7 +16,7 @@ Udspænder delmængden derimod et underrum til et andet underrum kan der tilføj
 Lad $S=\{\vec{v_1}, ..., \vec{k}\}$ være en delmængde for underrummet $V$ til $\mathds{R}^n$, for $\vec{v_1}, ..., \vec{k} \in \mathds{R}^n$ være lineært uafhængige vektorer, da vil $S$ kunne udvides til en basis for $V$ ved at tilføje ekstra vektorer.
 \end{stn}
 \begin{proof}
-Observer at $span(S) \subseteq V$, og $S$ vil være en basis for $span(S)$.
+Observer at $span(S) \subseteq V$, og at $S$ er en basis for $span(S)$.
 Lad $\vec{v_{k+1}} \in V$ være lineært uafhængig med $\vec{v_1}, ..., \vec{k}$, så vil $span(S\cup\{\vec{v_{k+1}}\}) \subseteq V$ med basis $S\cup\{\vec{v_{k+1}}\}$. 
 Gentag til der ikke er flere vektorer i $V$ som er lineært uafhængig med delmængden af vektorer, og kald mængden $S_V$.
 Bemærk at $span(S_V) \subseteq V$.
@@ -24,6 +25,7 @@ Af Definiton \ref{def:span} indeholder $span(S_V)$ alle vektorer som er en linea
 Hvorfor $V \subseteq span(S_V)$, hvilket medfører at $V = span(S_V)$, med basis $S_V$. 
 Da $S_V$ var konstrueret ved at tilføje vektorer til $S$ er sætningen hermed bevist.
 \end{proof}
+Det betyder at en basis til et underrum er det størst mulige antal lineært uafhængige vektorer i underrummet, en anden måde at betragte det på er også at en basis til underrummet er den mindste mulige mængde af vektorer som udspænder underrummet.
 
 
 

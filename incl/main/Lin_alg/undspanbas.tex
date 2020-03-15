@@ -1,7 +1,7 @@
 \section{Underrum, Span og Basis}
 Rummet $\mathds{R}^n$ er mængden af vektorer af dimension $n$, og på samme måde som med mængder generelt, er det muligt at betragte delmængder af $\mathds{R}^n$.
-Et special tilfælde af disse delmængder, er hvis delmængden af vektorer indeholder nul vektoren, og er lukket under vektor addition og skalar multiplikation. 
-I det tilfælde kaldes delmængden et underrum til $\mathds{R}^n$.
+Et special tilfælde af disse delmængder er et underrum.
+En delmængden af vektorer  er et underrum, hvis den indeholder nul vektoren, og er lukket under vektor addition og skalar multiplikation. 
 \begin{defn}[Underrum]
 Lad $W$ være en mængde af vektorer $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$, da er $W$  \textbf{underrum} til $\mathds{R}^n$, hvis:
 \begin{enumerate}[label=\alph*]
@@ -36,11 +36,11 @@ span(S_u) &= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \
 \\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{j=1}^k K_j v_{ij}  = b_i\} = span(S)
 \end{align*}
 hvor $c_j, C_j, c_{k+1}, K_j$ er vilkårlige skalare.
-\\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor at de samme vektore som er en linear kombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linear kombination $\vec{v_1},..., \vec{v_k}$, hvorfor $\vec{u}$ må være en linear kombination af  $\vec{v_1},..., \vec{v_k}$, derfor følger det af Definition \ref{def:span} at $\vec{u} \in span(S).$
+\\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor at de samme vektorer som er en linear kombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linear kombination $\vec{v_1},..., \vec{v_k}$, hvorfor $\vec{u}$ må være en linear kombination af  $\vec{v_1},..., \vec{v_k}$, derfor følger det af Definition \ref{def:span} at $\vec{u} \in span(S).$
 \label{stn:akvivalentespan}
 \end{proof}
 Det betyder at det mindste antal af vektorer som $S$ skal indeholde, før spannet ændres er mængden af lineært uafhængige vektorer i spannet.
-Hvis $S$ er lineært uafhængig og udspænder et underrum da, kaldes $S$ for en base for underrummet.
+Hvis $S$ er lineært uafhængig og udspænder et underrum, da kaldes $S$ for en basis for underrummet.
 \begin{defn}[Basis]
 Lad $S =\{v_1,...,v_k\}$ hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er lineært uafhængige, og lad $V$ være et underrum til $\mathds{R}^n$, da er $S$ en \textbf{basis} til $V$, hvis $V = span(S)$.
 \label{def:basis}
@@ -66,24 +66,24 @@ Hvorfor at $c\vec{v} \in span(S)$, og betingelse (c), er opfyldt.
 \\Tilsidst vises det at $\vec{0} \in span(S)$.
 Da nul vektoren kan skrives som den linear kombination af vektorene i $S$, $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det at $\vec{0} \in span(S)$, hvorfor at $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
 \end{proof}
-Det betyder at hvis en mængde af vektorer er lineært uafhængige så udgør de en base for et underrum. 
-Den mest kendte base er standard vektorene, som udspænder $\mathds{R}^n$, da en hver vektor $\vec{v} \in \mathds{R}^n$ kan udtrykkes som en lineare kombination af standard vektorene $\vec{e_1}$, for $i = 1,..., n$; $\vec{v}= \sum_{i=1}^n v_i \vec{e_i}$ hvor $v_i$ er den $i$te indgang i $\vec{v}$.
-En anden base for samme rum er $B=\{2\vec{e_i}| i =1,...,n\}$, her vil $\vec{v} = \sum_{i=1}^n \frac{1}{2} v_i \cdot 2\vec{e_i}$, det betyder at $\vec{v}$ udtrykt i forhold til basen $B$ vil være $\vec{v}_B = \frac{1}{2}\vec{v}$.
-Helt generelt gælder der; hvis $A_B$ er en $n \times m$ matrix hvis søjler er udgjort af vektorerne fra $B$, da kan en vektor $\vec{v}$ udtrykkes i forhold til basen $B$ som løsningen til ligningssystemet $A \vec{x} =\vec{v}$, det betyder at $\vec{v}_B =  \vec{x}$. 
-Ligger vektor $\vec{v}$ ikke i det underrum som $B$ er base for, vil der ikke være en løsning til $A \vec{x} =\vec{v}$, hvorfor at vektoren ikke kan udtrykkes i forhold til basen, hvilket også følger af Definition \ref{def:span} og Sætning \ref{stn:spanunderrum}.
+Det betyder at hvis en mængde af vektorer er lineært uafhængige så udgør de en basis for et underrum. 
+Den mest kendte basis er standard vektorene, som udspænder $\mathds{R}^n$, da en hver vektor $\vec{v} \in \mathds{R}^n$ kan udtrykkes som en lineare kombination af standard vektorene $\vec{e_i}$, for $i = 1,..., n$; $\vec{v}= \sum_{i=1}^n v_i \vec{e_i}$ hvor $v_i$ er den $i$te indgang i $\vec{v}$.
+En anden basis for samme rum er $B=\{2\vec{e_i}| i =1,...,n\}$, her vil $\vec{v} = \sum_{i=1}^n \frac{1}{2} v_i \cdot 2\vec{e_i}$, det betyder at $\vec{v}$ udtrykt i forhold til basisen $B$ vil være $\vec{v}_B = \frac{1}{2}\vec{v}$.
+Helt generelt gælder der; hvis $A_B$ er en $n \times m$ matrix hvis søjler er udgjort af vektorerne fra $B$, da kan en vektor $\vec{v}$ udtrykkes i forhold til basisen $B$ som løsningen til ligningssystemet $A \vec{x} =\vec{v}$, det betyder at $\vec{v}_B =  \vec{x}$. 
+Ligger vektor $\vec{v}$ ikke i det underrum som $B$ er basis for, vil der ikke være en løsning til $A \vec{x} =\vec{v}$, hvorfor at vektoren ikke kan udtrykkes i forhold til basisen, hvilket også følger af Definition \ref{def:span} og Sætning \ref{stn:spanunderrum}.
 Det betyder, at der er forskellige baser til samme underrum, hvor nogle er mere hensigtsmæssige i forskellige tilfælde.
-Men da en base består af lineært uafhængige vektorer som udspænder underrummet, og da to mængder af vektorer ikke kan udspænde samme underrum, have forskellig kardinaliltet og være lineært uafhængige på samme tid, betyder det at to forskellige baser for samme underrum, altid vil indeholde den samme mængde vektorer.
+Men da en basis består af lineært uafhængige vektorer som udspænder underrummet, og da to mængder af vektorer ikke kan udspænde samme underrum, have forskellig kardinaliltet og være lineært uafhængige på samme tid, betyder det at to forskellige basisr for samme underrum, altid vil indeholde den samme mængde vektorer.
 \begin{stn}[Kardinalteten af en basis]
 Lad $V$ være et ikke tomt underrum til $\mathds{R}^n$, og lad $B$ og $B'$ udgøre en basis for $V$, da vil $|B|=|B'|$
 \label{stn:basiskardinalitet}
 \end{stn}
 \begin{proof}
 Lad $B$ bestå af $k$ vektorer og $B'$ af $p$ vektorer, antag for modstrid $k < p$, da vil der eksistere to matricer $A_{B}$ og $A_{B'}$, hvis søjler er vektorerne fra henholdsvis $B$ og $B'$.
-Hvis $rank(A_{B}) = rank(A_{B'} = k$ da vil vektorerne i $B'$ være lineært afhængig, hvorfor at $B'$ ikke er en basis.
-Hvis $rank(A_{B}) < rank(A_{B'} $ da vil der eksistere en vektor $\vec{b} \in \mathds{R}^n$ hvor der eksistere en løsning til $A_{B'}\vec{x} = \vec{b}$, men ikke til ligningssystemet $A_B \vec{x}=\vec{b}$, hvorfor at $span(B) \neq span(B')$ hvorfor at både $B$ og $B'$ ikke kan være basis til $V$ af Definition \ref{def:basis}.
+Hvis $rank(A_{B}) = rank(A_{B'}) = k$ da vil vektorerne i $B'$ være lineært afhængig, hvorfor at $B'$ ikke er en basis.
+Hvis $rank(A_{B}) < rank(A_{B'} )$ da vil der eksistere en vektor $\vec{b} \in \mathds{R}^n$ hvor der eksistere en løsning til $A_{B'}\vec{x} = \vec{b}$, men ikke til ligningssystemet $A_B \vec{x}=\vec{b}$, hvorfor at $span(B) \neq span(B')$ hvorfor at både $B$ og $B'$ ikke kan være basis til $V$ af Definition \ref{def:basis}.
 Derfor følger det at $p=k$.
 \end{proof}
-Antallet af vektorer, som en hver base for et underrum, kaldes dimensionen for basen.
+Kardinaliten af basen for et underrum, kaldes dimensionen af underrummet.
 \begin{defn}[Dimension]
 Lad $B$ være en basis for et ikke tomt underrum $V$ til $\mathds{R}^n$, da er \textbf{dimensionen} af $V$ givet ved $\dim{V} = |B|$
 \label{def:dim}
