@@ -26,21 +26,22 @@ Løsningen vil være vektoren $\vec{x}=\vec{c}$, hvis $i$te indgang vil være sk
 Det betyder at hvis $S$ kan udspænde $\mathds{R}^n$ skal der være en løsning til $A \vec{x} = \vec{v}$ for en hver vektor $\vec{v} \in \mathds{R}^n$. 
 Tilføjes det endnu en søjle til $A$, som er lineært afhængig af de originale søjler, da vil der stadig være en løsning til $A \vec{x} = \vec{v}$ for en hver vektor $\vec{v} \in \mathds{R}^n$, det antyder at spannet af to delmængder $S$ og $S'$ er ens hvis deres snitmængde er lineært afhængig af deres fællesmængde.
 \begin{stn}[Ækvivalente span]
-Lad $S = \{v_1,...,v_k\}$ og $S_u = \{v_1,...,v_k, u\}$ være mængder af vektorer i $\mathds{R}^n$, da $span(S) = span(S_u)$, hvis og kun hvis $u \in span(S)$.
+Lad $S = \{\vec{v_1},...,\vec{v_k}\}$ og $S_u = \{\vec{v_1},...,\vec{v_k}, \vec{u}\}$ være mængder af vektorer i $\mathds{R}^n$, da $span(S) = span(S_u)$, hvis og kun hvis $u \in span(S)$.
 \end{stn}
 \begin{proof}
 Antag først at $\vec{u} \in span(S)$, da er $\vec{u}$ en linear kombination af $v_1,..., v_k$, hvorfor
 \begin{align*}
-span(S_u) &= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{j=1}^k c_j v_{ij} + c_{k+1} u_i  = b_i\}
-\\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{j=1}^k c_j v_{ij} + c_{k+1} \sum_{j=1}^k C_j v_{ij}  = b_i\}
-\\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{j=1}^k K_j v_{ij}  = b_i\} = span(S)
+span(S_u) &= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \vec{u}  =\vec{b}\}
+\\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \sum_{i=1}^k C_i \vec{v_i} = \vec{b}\}
+\\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k K_j \vec{v_i} = \vec{b}\} = span(S)
 \end{align*}
 hvor $c_j, C_j, c_{k+1}, K_j$ er vilkårlige skalare.
 \\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor at de samme vektorer som er en linear kombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linear kombination $\vec{v_1},..., \vec{v_k}$, hvorfor $\vec{u}$ må være en linear kombination af  $\vec{v_1},..., \vec{v_k}$, derfor følger det af Definition \ref{def:span} at $\vec{u} \in span(S).$
 \label{stn:akvivalentespan}
 \end{proof}
-Det betyder at det mindste antal af vektorer som $S$ skal indeholde, før spannet ændres er mængden af lineært uafhængige vektorer i spannet.
-Hvis $S$ er lineært uafhængig og udspænder et underrum, da kaldes $S$ for en basis for underrummet.
+Det betyder at spannet af en delmængde først ændres når en lineært uafhængig vektor fjernes. 
+Derfor er det mindste antal vektorer delmængden skal indeholde lig mængden af lineært uafhængige vektorer.
+Hvis delmængden er lineært uafhængig og udspænder et underrum, da kaldes delmængden for en basis for underrummet.
 \begin{defn}[Basis]
 Lad $S =\{v_1,...,v_k\}$ hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er lineært uafhængige, og lad $V$ være et underrum til $\mathds{R}^n$, da er $S$ en \textbf{basis} til $V$, hvis $V = span(S)$.
 \label{def:basis}
@@ -52,17 +53,17 @@ Lad $S=\{\vec{v_1},...,\vec{v_k}\} \subseteq \mathds{R}^n$, da er $span(S)$ et u
 \end{stn}
 \begin{proof}
 For at vise at $span(S)$ er et underrum til $\mathds{R}^n$ skal det vises at $span(S)$ overholder alle betingelserne i Definition \ref{def:underrum}.
-Først vises betingelse (b), lad  derfor $\vec{u}, \vec{v} \in span(S)$, da vil 
+Først vises betingelse (b), lad  derfor $\vec{u}, \vec{w} \in span(S)$, da vil 
 \begin{align*}
-\vec{u}+\vec{v}= \sum_{i=1}^k c_i \vec{v_i} + \sum_{i=1}^k c'_i \vec{v_i} = \sum_{i=1} c_i\cdot c_i' \vec{v_i},
+\vec{u}+\vec{w}= \sum_{i=1}^k c_i \vec{v_i} + \sum_{i=1}^k c'_i \vec{v_i} = \sum_{i=1} c_i\cdot c_i' \vec{v_i},
 \end{align*}
 hvor $c_i, c_i'$ er skalare.
-Der med er $\vec{u}+\vec{v}$ en linear kombination af $\vec{v_1},...,\vec{v_k}$, hvorfor $\vec{u}+\vec{v} \in span(S)$, og $span(S)$ er lukket under vektor addition.
+Der med er $\vec{u}+\vec{w}$ en linear kombination af $\vec{v_1},...,\vec{v_k}$, hvorfor $\vec{u}+\vec{v} \in span(S)$, og $span(S)$ er lukket under vektor addition.
 \\ Så vises at $span(S)$ er lukket under skalar multiplikation, lad derfor $c, c_i$ være skalare, da vil
 \begin{align*}
-c\vec{v}= c\sum_{i=1}^k c_i \vec{v_i}  = \sum_{i=1} c \cdot c_i \vec{v_i}.
+c\vec{w}= c\sum_{i=1}^k c_i \vec{v_i}  = \sum_{i=1} c \cdot c_i \vec{v_i}.
 \end{align*}
-Hvorfor at $c\vec{v} \in span(S)$, og betingelse (c), er opfyldt.
+Hvorfor at $c\vec{w} \in span(S)$, og betingelse (c), er opfyldt.
 \\Tilsidst vises det at $\vec{0} \in span(S)$.
 Da nul vektoren kan skrives som den linear kombination af vektorene i $S$, $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det at $\vec{0} \in span(S)$, hvorfor at $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
 \end{proof}
