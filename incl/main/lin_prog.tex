@@ -2,14 +2,14 @@
 
 \begin{comment}
 Ting til retter
-- bør "def 5.5 mulige løsninger og den mulige mængde" komme før "standard maksimums- og minimumsproblemer"?
+- bør "def 5.5 mulige løsninger og den mulige mængde" komme før "standard maksimums- og minimumsproblemer"? %Nej, det synes jeg ikke
 - Jeg er ikke sikker på alle termer i dette afsnit. Jeg rettede kriteriefunktion til objektfunktion, da der blev brugt objektfunktion i projektforslaget.
-- Jeg er lidt inkonsistent med anvendelsen af [1 2 3] og [1,2,3]. er ikke helt sikker på hvad der ser bedst ud.
+- Jeg er lidt inkonsistent med anvendelsen af [1 2 3] og [1,2,3]. er ikke helt sikker på hvad der ser bedst ud. %Hvis det er en vektor så er det [1 2 3]
 - Er der brug for at skrive betingelserne og objektfunktionen ud i starten, eller er det nok at det skrives som vektor-vektor produkt?
 \end{comment}
 
 Lineær programmering er en anvendelse af lineær algebra til at finde den optimale resultat af et optimeringsproblem. Lineære programmeringsproblemer tager udgangspunkt i maksimering eller minimering af en lineær funktion. For variablene er der fastsat en række af betingelser, som begrænser de mulige løsninger til problemet.
-
+%Hvad er en lineær funktion?
 
 
 Funktionen, som ønskes optimeret, kaldes \textbf{objektfunktionen}, og findes på formen:
@@ -17,20 +17,34 @@ Funktionen, som ønskes optimeret, kaldes \textbf{objektfunktionen}, og findes p
 f(x_1,x_2,\cdots , x_n)\ =\ c_1x_1 + c_2x_2 + \cdots + c_nx_n = \vec{c}^T \vec{x},
 \end{align}
 hvor $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$ og $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$.
+\begin{comment}
+Bør muligvis være en defintion, behøver ikke at skrives ud, men så skal f(\vec{x}) frem for f(x_1, ..., x_n).  Men det er jo variable repræcenteret ved en vektor så måske introducerer f(x_1, ..., x_n), udenfor definitionen.
+\begin{defn}
+Betragt et lineært programmerings problem, da er \textbf{objektfunktionen}
+\begin{align*}
+f(\vec{x}) = \vec{c}^T \cdot \vec{x}, 
+\end{align*}
+for $\vec{x}, \vec{c} \in \mathds{R}^n$, funktionen, som ønskes optimeret.
+\end{defn} Eller noget, det er vigtigt at denne definition, vil kræve at vektor x og c bliver introduceret i den bindende tekst.
+\end{comment}
 
+
+%hvis objektfunktionen defineres, så bør det samme ske for bibetingelserne.
 Dertil tilføjes en række af betingelser for variablene. Betingelser, som definerer at en variabel er positiv, kaldes en \textbf{positivitetsbetingelse}. 
 \begin{align}
 	x_i \geq 0
 \end{align}
 Andre lineære betingelser for variablene kaldes for \textbf{lineære bibetingelser}, og findes på formen, 
 \begin{align}
-	a_{i,1} x_1 + a_{i,2} x_2 + \cdots + a_{i,n} x_n =\vec{a}_i\vec{x} \ (\leq,=,\geq) \  b_i, \quad \text{for} \ i \in \{1,2,\cdots, m\},
+	a_{i,1} x_1 + a_{i,2} x_2 + \cdots + a_{i,n} x_n =\vec{a}_i\vec{x} \ (\leq,=,\geq) \  b_i, \quad \text{for} \ i \in \{1,2,\cdots, m\}, %Kan man bruge \leq,=,\geq)?
 \end{align}
-hvor $m$ er antallet af lineære bibetingelser. I en lineær bibetingelse kan venstresiden være begrænset med $\leq, \geq$ eller $=$ i forhold til konstanten $b_i$. I nogle typer af programmeringsproblemer anvendes kun en enkelt af disse relationer. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse blot kan ses som en lineær bibetingelse hvor en koefficient er 1 mens resten er 1 og hvor $b_i=0$.
+hvor $m$ er antallet af lineære bibetingelser. I en lineær bibetingelse kan venstresiden være begrænset med $\leq, \geq$ eller $=$ i
+% bliver forvirende da $i$ ofte bliver brugt i matematik
+ forhold til konstanten $b_i$. I nogle typer af programmeringsproblemer anvendes kun en enkelt af disse relationer. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse blot kan ses som en lineær bibetingelse hvor en koefficient er 1 mens resten er 1 og hvor $b_i=0$. %Mener du ikke resten er 0?
 
-En \textbf{mulig løsning} til en vektor $\vec{x}$, som overholder alle problemets betingelser.
+En \textbf{mulig løsning} til en vektor $\vec{x}$, som overholder alle problemets betingelser. %Bør nok skrives som en definition, men det kan være at det først skal ske under geo? Bertimaz har i hvertfald en strangent def.
 
-Et eksempel på et lineært programmeringsproblem ses i Eksempel \ref{eks:maksprob1}. Eksemplet er et lineært maksimeringsproblem, da objektfunktionen søges maksimeret.
+Et eksempel på et lineært programmeringsproblem ses i Eksempel \ref{eks:maksprob1}. Eksemplet er et lineært maksimeringsproblem, da objektfunktionen søges maksimeret. %søges?
 
 \begin{eks}
 Et eksempel på et lineært programmeringsproblem ses her, hvor funktionen $f(x_1,x_2)=4x_1+3 x_2$ skal maksimeres.
@@ -44,13 +58,13 @@ og $x_2\geq 0$
 \end{tabular}
 \end{center}
 
-Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen.
+Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen. %Hvor får du det grå område fra?
 
 \begin{center}
 	\input{fig/tikz/linprog1}
 	\captionof{figure}{Grafisk repræsentation af mulige løsninger.}
 	\label{fig:maksprob1}
-\end{center}
+\end{center} 
 
 \label{eks:maksprob1}
 \end{eks}
@@ -61,7 +75,7 @@ I et standard maksimumsproblem gælder det for alle bibetingelserne, at den line
 Som beskrevet i Afsnit \ref{afsnit:lign_sys} kan et lineært ligningssystem opskrives med et matrix-vektor produkt. Tilsvarende gælder det for objektfunktionen, at denne kan skrives som et produkt af to vektorer. Det tillader derved definitionen af standard maksimum problemet med disse produkter i definition \ref{def:std_maks}
 
 \begin{defn}[Standard maksimum problem]
-	Lad $\vec{x}= [x_1, x_2,\cdots, x_n]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= [c_1, c_2,\cdots, c_n]^T$ i objektfunktionen, og lad $mxn$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{b}=[b_1, b_2,\cdots, b_m]^T$.
+	Lad $\vec{x}= [x_1, x_2,\cdots, x_n]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= [c_1, c_2,\cdots, c_n]^T$ i objektfunktionen, og lad $m \times n$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{b}=[b_1, b_2,\cdots, b_m]^T$.
 	Da er standard maksimum problemet defineret som\\
 \begin{center}
 \begin{tabular}{l	>{$}l<{$}}
@@ -84,11 +98,11 @@ og 				& \vec{y} \geq \vec{0}
 \end{tabular}
 \end{center}
 \label{def:std_min}
-\end{defn}
+\end{defn} %Hvorfor byttes der rundt på b og c? i min og max?
 
 \subsection{Omskrivning mellem ligheder og uligheder}
 Da et programmeringsproblem ikke nødvendigvis er på den rigtige form fra start, er det vigtigt at kunne omskrive mellem uligheder og ligheder.\\
-Omskrivning mellem uligheder
+Omskrivning mellem uligheder %bliver til flagrende overskrifter
 \begin{align*}
 	\vec{a}_i\vec{x} \geq b_i \quad \Leftrightarrow \quad -\vec{a}_i\vec{x} \leq -b_i
 \end{align*}
@@ -98,17 +112,18 @@ Omskrivning fra lighed til ulighed
 										& \vec{a}_i\vec{x} \geq b_i \\
 \end{align*}
 Omskrivning fra ulighed til lighed\\
-En ulighed kan omskrives til en lighed ved indførslen af en ikke-negativ slack-variabel, som udgør forskellen mellem $\vec{a}_i\vec{x}$ og $b_i$ i uligheden. For maksimeringsproblemer får denne variabel en koefficient på 1 i koefficientmatricen (?) og -1 for minimeringsproblemer. \\
+En ulighed kan omskrives til en lighed ved indførslen af en ikke-negativ slack-variabel, som udgør forskellen mellem $\vec{a}_i\vec{x}$ og $b_i$ i uligheden. For maksimeringsproblemer får denne variabel en koefficient på 1 i koefficientmatricen (?) og -1 for minimeringsproblemer. \\ 
 Et standard maksimeringsproblem kan derved omskrives til ligheder ved at indføre en slackvariabel $x_{n+i}$ for hver bibetingelse. Derved bliver betingelserne for henholdsvis et maksimeringsproblem og et minimeringsproblem omskrevet til:
 \begin{align*}
 	A' &=\rvect{A & I_m}\\
 	A' &=\rvect{A & -I_m}
 \end{align*}
+%Nok en god idet at komme med et eksemple så \vec{a_i} \vec{x} + x_{n+i} = b_i indflettet, på lige fod med for omskrivning af mellem uligheder.
 
 
 
 \begin{eks}[Standard maksimum problem]
-Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimum problem, skal alle uligheder i bibetingelserne være $\leq$. Bibetingelse nr.3 skal derved omskrives. Dette kan gøres ved at gange begge sider af uligheden med $-1$, da dette vender ulighedstegnet. Derudover skal også $x_1$ skal være positivt begrænset. Derved bliver Eksempel \ref{eks:maksprob1} omskrevet til et standard maksimum problem til\\
+Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimum problem, skal alle uligheder i bibetingelserne være $\leq$. Bibetingelse nr. 3 skal derved omskrives. Dette kan gøres ved at multiplicere begge sider af uligheden med $-1$, thi dette vender ulighedstegnet. Derudover skal også $x_1$ skal være positivt begrænset. Derved bliver Eksempel \ref{eks:maksprob1} omskrevet til et standard maksimum problem til\\
 \begin{center}
 \begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
 Maksimer 		& 		4x_1	&	+3 x_2	& \\
@@ -140,11 +155,15 @@ En \textbf{mulig løsning} er en løsningsvektor $\vec{x}$, som opfylder alle pr
 En vektor $\vec{x}$ kaldes en \textbf{optimal løsning}, hvis $f(\vec{x})=\max\limits_{x \in \mathds{F}}f(\vec{x}).$\\
 Et problem kaldes \textbf{inkonsistent} (usikker på oversættelse) hvis den mulige mængde er den tomme mængde, ellers er problemet \textbf{konsistent}. Et problem kaldes \textbf{ubegrænset}, hvis objektfunktionen kan tage arbitrært store funktionsværdier for maksimeringsproblemer, og arbitrært små funktionsværdier for minimeringsproblemer. Ellers kaldes problemet \textbf{begrænset}.
 \end{defn}
+%Linje efter align og \\ skal enten skrives i bindende tekst eller gøres mere præcis
 
 Den optimale løsning kan findes på forskellige måder heriblandt med simplex-metoden, som beskrives i senere kapitler. En anden måde er ved geometrisk visualisering af den mulige mængde. Denne metode er mulig for problemer med op til 3 variable, da løsningsmængden derved visualiseres som et plot i det tilsvarende antal dimensioner. 
 
 \subsection{niveaukurver}
 Niveaukurver dannes ved fastsættelsen af funktionsværdi $z=\vec{c}^T \vec{x}$. Niveaukurven er derved mængden af alle vektorer $\vec{x}$, som løser ligningen. Da målet er at maksimere $z$, er målet at finde den største $z$ for hvilken niveaukurven har en ikke-tom skæring med den mulige mængde. dette kan ses i Eksempel \ref{eks:maksprob3}.
+\begin{comment}
+Bør niveaukurve defineres????? Hvordan kan dette bruges for finde $z$ er egentlig bare en omskrivning, så der mangler noget argumentation for at $z$ bliver større jo længere væk fra origo man er, hvilket giver ret god mening, men er svært at argumentere for uden at starte på geometri, så måske hele dette afsnit skulle flyttes, måske skal alt om løsninger skal flyttes til geometri?
+\end{comment}
 
 
 \begin{eks}[Optimal løsning fundet grafisk]
@@ -153,7 +172,7 @@ Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på figur \re
 	\begin{center}	
 		\input{fig/tikz/linprog3}
 		\captionof{figure}{Optimal løsning fundet grafisk}
-		\label{fig:maksprob3}
+		\label{fig:maksprob3} % fejl i billedet, z værdierne skal byttes rundt
 	\end{center}
 	
 På figuren ses det at den største funktionsværdi $z=46$ findes i skæringen mellem bibetingelse 2 og 3.
@@ -167,6 +186,9 @@ Stadig to do i afsnittet\\
 %- infeasible og unbounded tilfælde\\
 %- niveaukurver\\
 - Hvis der findes en løsning, findes der en optimal løsning (med evt. bevis. burde ikke være så svært med modstrid)\\
+	%Men hører nok til nede i geometri afsnittet
 
-Skal jeg have det med at løsninger findes i hjørner? det virker til at kræve en smule mere geometri og hører nok bedre til i geometri afsnittet.
+Skal jeg have det med at løsninger findes i hjørner? det virker til at kræve en smule mere geometri og hører nok bedre til i geometri afsnittet. %Enig
+
+%Er det standard maksimum problem eller standard maksimeringsproblem?
 \end{comment}
