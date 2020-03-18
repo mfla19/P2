@@ -21,7 +21,8 @@ span(S) = \{\vec{u}| \vec{u}=\sum_{i=0}^k c_i \vec{v_i}, \vec{v_i} \in S, c_i \i
 \end{align*} 
 \label{def:span}
 \end{defn}
-Bemærk at $\sum_{i=0}^k c_i \vec{v_i}$ er det samme som at multiplicere en matrix og en vektor, det betyder at en vektor $\vec{u}$ tilhøre spannet af en mængde vektorer $S$, hvis og kun hvis der er en løsning til ligningen $A\vec{x} = \vec{v}$, hvor at vektorene fra $S$ udgør søjlerne i matricen $A$.
+Bemærk at $\sum_{i=0}^k c_i \vec{v_i}$ er det samme som at multiplicere en matrix og en vektor, af Definition \ref{def:matrixvectorprodukt} hvis $c_i$ udgør den $i$te indgang i en vektor $\vec{c} \in \mathds{R}^n$ og $\vec{v_i}$ udgør den $i$te søjle i en $m \times n$ matrix $A$.
+Det betyder at en vektor $\vec{u}$ tilhøre spannet af en mængde vektorer $S$, hvis og kun hvis der er en løsning til ligningen $A\vec{x} = \vec{v}$, hvor at vektorene fra $S$ udgør søjlerne i matricen $A$.
 Løsningen vil være vektoren $\vec{x}=\vec{c}$, hvis $i$te indgang vil være skalaren $c_i$.
 Det betyder at hvis $S$ kan udspænde $\mathds{R}^n$ skal der være en løsning til $A \vec{x} = \vec{v}$ for en hver vektor $\vec{v} \in \mathds{R}^n$. 
 Tilføjes det endnu en søjle til $A$, som er lineært afhængig af de originale søjler, da vil der stadig være en løsning til $A \vec{x} = \vec{v}$ for en hver vektor $\vec{v} \in \mathds{R}^n$, det antyder at spannet af to delmængder $S$ og $S'$ er ens hvis deres snitmængde er lineært afhængig af deres fællesmængde.

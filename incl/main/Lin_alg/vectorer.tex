@@ -213,15 +213,16 @@ Lad $\vec{u}, \vec{v} \in \mathds{R}^n$ være vektorer, da er $\vec{u}-\vec{v}= 
 \end{defn}
 
 \subsection{Matrix-vector produkt}
-To vektorer af samme dimension kan prikkes sammen ved at multiplicere deres $i$te indgange med hinanden og så finde summen af produktorne
-\begin{defn}[Prikproduktet]
-Lad $\vec{v}, \vec{u} \in \mathds{R}^n$ være to vektorer, da er \textbf{prikproduktet} givet ved $\langle\vec{v},\vec{u}\rangle = \sum_{i=1}^n v_i \cdot u_i.$
-\end{defn}
-Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svare til en $m$ dimentional vektor , hvis $i$te indgang er prikproduktet af den $i$te række og den $n$ dimensionalle vektor. 
-Dette lægger grundlaget for hvordan matricer ganges sammen, eftersom en vektor også kan ses som en $n\times1$ matrix. 
+%To vektorer af samme dimension kan prikkes sammen ved at multiplicere deres $i$te indgange med hinanden og så finde summen af produktorne
+%\begin{defn}[Prikproduktet]
+%Lad $\vec{v}, \vec{u} \in \mathds{R}^n$ være to vektorer, da er \textbf{prikproduktet} givet ved $\langle\vec{v},\vec{u}\rangle = \sum_{i=1}^n v_i \cdot u_i.$
+%\end{defn}
+%Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svare til en $m$ dimentional vektor , hvis $i$te indgang er prikproduktet af den $i$te række og den $n$ dimensionalle vektor. 
+%Dette lægger grundlaget for hvordan matricer ganges sammen, eftersom en vektor også kan ses som en $n\times1$ matrix. 
+Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svare til summen af vektorskalar produktet mellem den $j$te søjle i matricen, og den $j$te indgang i vektoren, for enhver søjle i matricen.
 \begin{defn}[Matrix-vektor produkt]
 Lad $A$ være en $m\times n$ matrix og $\vec{v}\in \mathds{R}^n$ vektor. 
-Da vil $A \vec{v} = \vec{u}$, hvor $\vec{u} \in \mathds{R}^m$, hvis $i$te indgang er givet ved $u_i = \langle \vec{a_i}^T, \vec{x}\rangle$.
+Da vil $A \vec{v} = \sum_{j=1}^n \vec{A_j}v_j = \vec{u}$, hvor $\vec{u} \in \mathds{R}^m$.
 %Lad $A$ være en $m\tiems n$ matrix og $\vec{v}\in \mathds{R}^n$ vektor. Så skrives \textbf{Matrix-vektor produktet} $A\vec{x}$, som produktet af søjlerne $\vec{A_j}$ i $A$ og de tilsvarende komponenter i $\vec{x}$. Dette kræver at matricen har samme antal søjler som vektoren har komponenter, hvilket er defineret med $n$.
 %\begin{align*}
 %A\vec{x}&=x_1\vec{A}_1+x_2\vec{A}_2+ \dots +x_{n-1}\vec{A}_{n-1}+x_n\vec{A}_n \\
@@ -244,8 +245,11 @@ Da vil $A \vec{v} = \vec{u}$, hvor $\vec{u} \in \mathds{R}^m$, hvis $i$te indgan
 %\end{align*}
 \label{def:matrixvektorprodukt}
 \end{defn}
-Bemærk at en $m \times n$ matrix kun kan multipliceres med en $n$ dimentionel søjlevektor ud fra Definition \ref{def:matrixvektorprodukt}, produktet mellem en $m$ dimensional rækkevektor og en $m \times n$ matrix, kan defineres på samme måde, så resultatet bliver en $n$ dimentionel vektor hvis $j$te indgang er prikproduktet af den $j$te søjle og den $m$ dimensionsalle vektor. 
-Desuden skal det bemærkes at prikproduktet er et særtilfælde af matrix-vektormultiplikation, da $\langle \vec{x}, \vec{u}\rangle = \vec{v}^T \cdot \vec{u}\rangle$.
+Bemærk at en $m \times n$ matrix kun kan multipliceres med en $n$ dimentionel søjlevektor ud fra Definition \ref{def:matrixvektorprodukt}, produktet mellem en $m$ dimensional rækkevektor og en $m \times n$ matrix, kan defineres på samme måde, så resultatet bliver en $n$ dimentionel vektor. 
+Et ser tilfælde af et matrix-vektor mulitiplikation er når to vektorer multipliceres sammen, dette kaldes et prikprodukt.
+\begin{defn}[Prikproduktet]
+Lad $\vec{v}, \vec{u} \in \mathds{R}^n$ være to vektorer, da er \textbf{prikproduktet} givet ved $\langle\vec{v},\vec{u}\rangle = \sum_{i=1}^n v_i \cdot u_i = \vec{v}^T \cdot \vec{u} $
+\end{defn}
 \begin{eks}
 Betragt den $2 \times 3$ matrix og den $2$ dimentionelle søjle vektor
 \begin{align*}
