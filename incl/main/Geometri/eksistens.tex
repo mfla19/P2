@@ -2,32 +2,19 @@
 Lad $P\subseteq \mathds{R}^n $ være en polyide, da indeholder $P$ en \textbf{linje}, hvis $\vec{x}+\lambda\vec{d} \in P$ for alle $\lambda \in \mathds{R}^n$, hvor $\vec{x}\in P$ og $\vec{d} \in \mathds{R}^n$.
 \end{defn}
 
+
+
+%\begin{defn}
+%Lad $P=\{\vec{x} \in \mathds{R}^n| A \vec{x} \geq b, \vec{x} \geq \vec{0}\} \neq \emptyset$ være en polyide, svarende til bibetingelserne til det lineære minimerings problem $\vec{c}^T\vec{x}$.
+%Da siges en vektor $\vec{x^*}\in P$ at være \textbf{optimal}, hvis $\vec{c}^T\vec{x^*}\leq \vec{c}^T\vec{x}$ for alle $\vec{x}\in P$
+%\end{defn}
+
 \begin{stn}[Eksistens af optimal løsning]
-Lad $P=\{\vec{x} \in \mathds{R}^n| A \vec{x} \geq b, \vec{x} \geq \vec{0}\} \neq \emptyset$ være en polyide, svarende til bibetingelserne til det lineære minimerings problem $\vec{c}^T\vec{x}$. Hvis $P$ ikke indeholder en linje, da vil der eksistere en optimal løsning $\vec{x^{**}}$ som er en basis mulig løsning.
+Lad $P=\{\vec{x} \in \mathds{R}^n| A \vec{x} = b, \vec{x} \geq \vec{0}\} \neq \emptyset$ være en polyide, svarende til bibetingelserne til det lineære minimerings problem $\vec{c}^T\vec{x}$. Hvis $P$ ikke indeholder en linje, da vil der eksistere en optimal løsning $\vec{x^{**}}$ som er en basis mulig løsning.
+\label{stn:eksistens}
 \end{stn}
 
-\begin{defn}
-Lad $P=\{\vec{x} \in \mathds{R}^n| A \vec{x} \geq b, \vec{x} \geq \vec{0}\} \neq \emptyset$ være en polyide, svarende til bibetingelserne til det lineære minimerings problem $\vec{c}^T\vec{x}$.
-Da siges en vektor $\vec{x^*}\in P$ at være \textbf{optimal}, hvis $\vec{c}^T\vec{x^*}\leq \vec{c}^T\vec{x}$ for alle $\vec{x}\in P$
-\end{defn}
-
 \begin{proof}
-%Af Sætning %Q=P
-%følger det at alle bibetingelser er lineært uafhængig, der eksistere derfor $m \geq n$ lineært uafhængige vektorer, der hver repræsentere en bibetingelse, $\vec{a_i}$
-%\\
-%
-%Da $P$ ikke er tom må der eksistere en vektor $\vec{x} \in P$, lad nu $I = \{i | \vec{a_i} \vec{x} = b_i\}$ betegne indekset af aktive bibetingelser. 
-%Bemærk at $I$ kan være lig den tomme mængde.  
-%Antag at $|I| < n$ da er $\vec{x}$ ikke en basis mulig løsning, derfor konstrueres nu en basis mulig løsning med udgangspunkt i $\vec{x}$.\\
-%Der må være en vektor $d \in \mathds{R}^n$ der er lineært uafhængig af alle vektorer $\vec{a_i}$ for $i \in I$, der opfylder at $\vec{a_j}\vec{d} \neq 0$ for et givent $j \notin I$. 
-%Da $P$ ikke indeholder nogle linjer, må der eksistere et $\lambda$ så $\vec{a_j}(\vec{x} + \lambda\vec{d}) =b_j$.
-%Vektoren $\vec{x}+\lambda \vec{d} \in P$ da $\vec{a_i}(\vec{x}+\lambda\vec{d})= \vec{a_i}\vec{v} = b_i$, for $i \in I$, hvorfor alle aktive bibetingelser stadig er overholdt.
-%Antag nu at $\vec{d}$ er lineært afhængig af andre bibetingelser end $\vec{a_j}$ da vil $\vec{a_j}$ også være lineært afhæng af dem, hvorfor det følger af Sætning $P=Q$ at man kan se bort fra dem, og $\vec{x}+\lambda \vec{d} \in P$. 
-%Da $\vec{d}$ er lineært afhængig af $\vec{a_j}$, må det medfører at da $\vec{d}$ er lineært uafhængig af $\vec{a_i}$ så må $\vec{a_j}$ også være det. 
-%Betragt objektfunktionen $\vec{c}^T(\vec{x}+\lambda \vec{d}$
-%Gentag proseduren indtil at $|I| = n$, da vil
-
-
 Da $P$ ikke er tom må der eksistere en vektor $\vec{x} \in P$.
 Antag at $\vec{x}$ ikke er en basis mulig løsning, da vil $I = \{i | \vec{a_i}\vec{x} = b_i\}$, hvor $\vec{a_i}\vec{x}=b_i$ er lineære uafhængige bibetingelser, indeholde færre end $n$ elementer. 
 Nu konstrueres en basis mulig løsning $\vec{x^*}$, med udgangspunkt i $\vec{x}$ så $\vec{c}^T\vec{x^*}\leq \vec{c}^T\vec{x}$.
@@ -41,4 +28,14 @@ Derfor kan $j$ tilføjes til $I$.
 Gentag til at $I$ indeholder $n$ lineært uafhængige vektorer, hvorefter at en basis mulig løsning er konstrueret.
 Da $\vec{x^*}$ er konstrueret ud fra en vilkårlig vektor $\vec{x}\in P$ medføre det at en mulig basis løsning altid vil opfylde $\vec{c}^T\vec{x^*} \leq \vec{c}\vec{x}$ for en hver ikke basis mulig løsning. 
 Da der kun er en endelig mængde mulig basis løsninger må der være en vektor $\vec{x^{**}}$ som opfylder at $\vec{c}^T\vec{x^{**}}\leq \vec{c}^T\vec{x^*}$ for alle andre basis mulige løsninger, hvorfor at $\vec{x^{**}}$ er en optimal løsning.
+\end{proof}
+
+\begin{kor}
+Lad $f(\vec{x}) = \vec{c}^T\vec{x}$ betegne et lineært minimerings programmerings problem på augumenteret form, med mulige løsnings mængde $\mathcal{F} \neq \emptyset$. 
+Da vil der eksistere en optimal løsning, som er en mulig basis løsning, hvis der eksistere $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$ 
+\end{kor}
+
+\begin{proof}
+Lad  $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$, da må der for et hvert $\vec{x} \in P$ og $\vec{d} \in \mathds{R}^n$ eksistere et $\lambda$ så $f(\vec{x}+\lambda \vec{d}) = K$, og da $f$ er lineær følger det at $\mathcal{F}$ ikke kan indholde en linje. 
+Da det lineære programerings problem er på augumenteret form betyder det at $\mathcal{F}=P=\{\vec{x} \in \mathds{R}^n| A \vec{x} = b, \vec{x} \geq \vec{0}\} \neq \emptyset$ følger det af Sætning \ref{stn:eksistens}, at er eksistere en optimal løsning, som er en mulig basis løsning til det lineære minimerings programmerings problem.
 \end{proof}
