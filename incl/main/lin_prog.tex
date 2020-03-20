@@ -38,13 +38,11 @@ Andre lineære betingelser for variablene kaldes for \textbf{lineære bibetingel
 \begin{align}
 	a_{i,1} x_1 + a_{i,2} x_2 + \cdots + a_{i,n} x_n =\vec{a}_i\vec{x} \ (\leq,=,\geq) \  b_i, \quad \text{for} \ i \in \{1,2,\cdots, m\}, %Kan man bruge \leq,=,\geq)?
 \end{align}
-hvor $m$ er antallet af lineære bibetingelser. I en lineær bibetingelse kan venstresiden være begrænset med $\leq, \geq$ eller $=$ i
-% bliver forvirende da $i$ ofte bliver brugt i matematik
- forhold til konstanten $b_i$. I nogle typer af programmeringsproblemer anvendes kun en enkelt af disse relationer. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse blot kan ses som en lineær bibetingelse hvor en koefficient er 1 mens resten er 1 og hvor $b_i=0$. %Mener du ikke resten er 0?
+hvor $m$ er antallet af lineære bibetingelser. I en lineær bibetingelse kan venstresiden være begrænset med $\leq, \geq$ eller $=$ i forhold til højresiden. I nogle typer af programmeringsproblemer anvendes kun en enkelt af disse relationer. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse, $x_i \geq 0$, blot kan ses som en lineær bibetingelse hvor en koefficienten til $x_i$ er 1 mens resten af koefficienterne er 0 og hvor $b_i=0$.
 
 En \textbf{mulig løsning} til en vektor $\vec{x}$, som overholder alle problemets betingelser. %Bør nok skrives som en definition, men det kan være at det først skal ske under geo? Bertimaz har i hvertfald en strangent def.
 
-Et eksempel på et lineært programmeringsproblem ses i Eksempel \ref{eks:maksprob1}. Eksemplet er et lineært maksimeringsproblem, da objektfunktionen søges maksimeret. %søges?
+Et eksempel på et lineært programmeringsproblem ses i Eksempel \ref{eks:maksprob1}. Eksemplet er et lineært maksimeringsproblem, da objektfunktionen ønskes maksimeret. %søges?
 
 \begin{eks}
 Et eksempel på et lineært programmeringsproblem ses her, hvor funktionen $f(x_1,x_2)=4x_1+3 x_2$ skal maksimeres.
@@ -58,67 +56,90 @@ og $x_2\geq 0$
 \end{tabular}
 \end{center}
 
-Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen. %Hvor får du det grå område fra?
 
-\begin{center}
-	\input{fig/tikz/linprog1}
-	\captionof{figure}{Grafisk repræsentation af mulige løsninger.}
-	\label{fig:maksprob1}
-\end{center} 
+%Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen. %Hvor får du det grå område fra?
+%
+%\begin{center}
+%	\input{fig/tikz/linprog1}
+%	\captionof{figure}{Grafisk repræsentation af mulige løsninger.}
+%	\label{fig:maksprob1}
+%\end{center} 
 
 \label{eks:maksprob1}
 \end{eks}
 
 \section{Standard maksimums- og minimumsproblemer}
-I et standard maksimumsproblem gælder det for alle bibetingelserne, at den lineære funktion af variablene er mindre end eller lig en konstant, samt at alle variablene er positivt begrænsede.
+I et standard maksimumsproblem gælder det for alle bibetingelserne, at den lineære funktion af variablene er mindre end eller lig en konstant, mens det i et standard minimumsproblem problem gælder at mens funktionerne er større eller lig en konstant. For begge problemer er variablene positivt begrænsede.
 
-Som beskrevet i Afsnit \ref{afsnit:lign_sys} kan et lineært ligningssystem opskrives med et matrix-vektor produkt. Tilsvarende gælder det for objektfunktionen, at denne kan skrives som et produkt af to vektorer. Det tillader derved definitionen af standard maksimum problemet med disse produkter i definition \ref{def:std_maks}
+Som beskrevet i Afsnit \ref{afsnit:lign_sys} kan et lineært ligningssystem opskrives med et matrix-vektor produkt. Tilsvarende gælder det for objektfunktionen, at denne kan skrives som et produkt af to vektorer. Det tillader derved definitionen af standard maksimum problemet med disse produkter i definition \ref{def:std_maksmin}
 
-\begin{defn}[Standard maksimum problem]
-	Lad $\vec{x}= [x_1, x_2,\cdots, x_n]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= [c_1, c_2,\cdots, c_n]^T$ i objektfunktionen, og lad $m \times n$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{b}=[b_1, b_2,\cdots, b_m]^T$.
+\begin{defn}[Standard maksimum og minimum problemer]
+	Lad $\vec{x}= [x_1, x_2,\cdots, x_n]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= [c_1, c_2,\cdots, c_n]^T$ i objektfunktionen, og lad $m \times n$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{b}=[b_1, b_2,\cdots, b_m]^T$.\\
 	Da er standard maksimum problemet defineret som\\
 \begin{center}
 \begin{tabular}{l	>{$}l<{$}}
 Maksimer 		& \vec{c}^T\vec{x} \\
 med hensyn til 	& A\vec{x} \leq \vec{b}\\
-og 				& \vec{x} \geq \vec{0}
+og 				& \vec{x} \geq \vec{0},
 \end{tabular}
 \end{center}
-\label{def:std_maks}
-\end{defn}
-
-\begin{defn}[Standard minimum problem]
-	Lad $\vec{y}= [y_1, y_2,\cdots, y_m]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{b}= [b_1, b_2,\cdots, b_m]^T$ i objektfunktionen, og lad $mxn$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{c}=[c_1, c_2,\cdots, c_n]^T$.
-	Da er standard minimum problemet defineret som\\
+og standard minimum problemet er defineret som\\
 \begin{center}
 \begin{tabular}{l	>{$}l<{$}}
-Minimer			& \vec{y}^T\vec{b} \\
-med hensyn til 	& \vec{y}^TA \geq \vec{c}^T\\
-og 				& \vec{y} \geq \vec{0}
+Minimer			& \vec{c}^T\vec{x} \\
+med hensyn til 	& A\vec{x} \geq \vec{b}\\
+og 				& \vec{x} \geq \vec{0}.
 \end{tabular}
 \end{center}
-\label{def:std_min}
-\end{defn} %Hvorfor byttes der rundt på b og c? i min og max?
+\label{def:std_maksmin}
+\end{defn}
+
+
+%\begin{defn}[Standard minimum problem]
+%	Lad $\vec{x}= [x_1, x_2,\cdots, x_n]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= [c_1, c_2,\cdots, c_n]^T$ i objektfunktionen, og lad $m \times n$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{b}=[b_1, b_2,\cdots, b_m]^T$.
+%	Da er standard minimum problemet defineret som\\
+%\begin{center}
+%\begin{tabular}{l	>{$}l<{$}}
+%Minimer			& \vec{c}^T\vec{x} \\
+%med hensyn til 	& A\vec{x} \geq \vec{b}\\
+%og 				& \vec{x} \geq \vec{0}
+%\end{tabular}
+%\end{center}
+%\label{def:std_min}
+%\end{defn} %Hvorfor byttes der rundt på b og c? i min og max?
+
 
 \subsection{Omskrivning mellem ligheder og uligheder}
-Da et programmeringsproblem ikke nødvendigvis er på den rigtige form fra start, er det vigtigt at kunne omskrive mellem uligheder og ligheder.\\
-Omskrivning mellem uligheder %bliver til flagrende overskrifter
+Da et programmeringsproblem ikke nødvendigvis er på den rigtige form fra start af, er det vigtigt at kunne omskrive mellem uligheder og ligheder.\\
+\begin{itemize}
+\item Omskrivning mellem uligheder %bliver til flagrende overskrifter
 \begin{align*}
 	\vec{a}_i\vec{x} \geq b_i \quad \Leftrightarrow \quad -\vec{a}_i\vec{x} \leq -b_i
 \end{align*}
-Omskrivning fra lighed til ulighed % hvorfor bruges der forskellige pile
-\begin{align*}
-	\vec{a}_i\vec{x} = b_i \quad \rightarrow \quad 	& \vec{a}_i\vec{x} \leq b_i \\
-										& \vec{a}_i\vec{x} \geq b_i \\
-\end{align*}
-Omskrivning fra ulighed til lighed\\
-En ulighed kan omskrives til en lighed ved indførslen af en ikke-negativ slack-variabel, som udgør forskellen mellem $\vec{a}_i\vec{x}$ og $b_i$ i uligheden. For maksimeringsproblemer får denne variabel en koefficient på 1 i koefficientmatricen (?) og -1 for minimeringsproblemer. \\ 
-Et standard maksimeringsproblem kan derved omskrives til ligheder ved at indføre en slackvariabel $x_{n+i}$ for hver bibetingelse. Derved bliver betingelserne for henholdsvis et maksimeringsproblem og et minimeringsproblem omskrevet til:
+\item Omskrivning fra lighed til ulighed % hvorfor bruges der forskellige pile. rettet
+\begin{center}
+\begin{tabular}{>{$}l<{$} >{$}r<{$}}
+	\vec{a}_i\vec{x} = b_i \quad \Leftrightarrow \quad 	& \vec{a}_i\vec{x} \leq b_i \\
+										& \text{og} \quad  \vec{a}_i\vec{x} \geq b_i \\
+\end{tabular}
+\end{center}
+\item Omskrivning fra ulighed til lighed\\
+En ulighed kan omskrives til en lighed ved indførslen af en ikke-negativ slack-variabel, som udgør forskellen mellem $\vec{a}_i\vec{x}$ og $b_i$ i uligheden. For maksimeringsproblemer får denne variabel en koefficient på 1 i koefficientmatricen (?) og -1 for minimeringsproblemer.
+Et standard maksimeringsproblem kan derved omskrives til ligheder ved at indføre en slackvariabel $x_{n+i}$ for hver bibetingelse. 
+\begin{center}
+\begin{tabular}{ >{$}l<{$} >{$}l<{$} >{$}l<{$}}
+	\vec{a}_i \vec{x}  \leq b_i & \Rightarrow & \vec{a}_i \vec{x} \ + \ x_{n+i} \ = b_i\\
+	\vec{a}_i \vec{x}  \geq b_i & \Rightarrow & \vec{a}_i \vec{x} \ -\ x_{n+i} \ = b_i
+\end{tabular}
+\end{center}
+
+Derved bliver betingelserne for henholdsvis et maksimeringsproblem og et minimeringsproblem omskrevet til:
 \begin{align*}
 	A' &=\rvect{A & I_m}\\
 	A' &=\rvect{A & -I_m}
 \end{align*}
 %Nok en god idet at komme med et eksemple så \vec{a_i} \vec{x} + x_{n+i} = b_i indflettet, på lige fod med for omskrivning af mellem uligheder.
+\end{itemize}
 
 
 
@@ -128,37 +149,52 @@ Bibetingelse nr. 3 skal derved omskrives. Dette kan gøres ved at multiplicere b
 \begin{center}
 \begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
 Maksimer 		& 		4x_1	&	+3 x_2	& \\
-med hensyn til 	&  \ \ 	-2 x_1	& 	4 x_2	& \leq 8\\
+med hensyn til 	&  \ \ 	-2 x_1	& 	+4 x_2	& \leq 8\\
 				&  		x_1		& 	+3 x_2	& \leq 16\\
 				&  \ \ 	x_1		& 			& \leq 10\\
 og $x_1 \geq 0, x_2\geq 0$.
 \end{tabular}
 \end{center}
 
-\begin{center}
-	\input{fig/tikz/linprog2}
-	\captionof{figure}{Den mulige mængde af et standard maksimeringsproblem.}
-	\label{fig:maksprob2}
-\end{center}
+%\begin{center}
+%	\input{fig/tikz/linprog2}
+%	\captionof{figure}{Den mulige mængde af et standard maksimeringsproblem.}
+%	\label{fig:maksprob2}
+%\end{center}
+
 \label{eks:maksprob2}
 \end{eks}
 
 \section{Løsninger til linære programmeringsproblemer}
 
-Den mulige løsningsmængde er mængden af løsningsvektorer, $\vec{x}$, som opfylder alle problemets betingelser. Derved vil den optimale løsning være indeholdt i denne mængde, så længe at mængden ikke er tom.
+Den mulige mængde er mængden af løsningsvektorer, $\vec{x}$, som opfylder alle problemets betingelser. Hvis en optimal løsning eksisterer vil denne derved være indeholdt i den mulige mængde.
 
 \begin{defn}[Mulige løsninger og den mulige mængde]
 En \textbf{mulig løsning} er en løsningsvektor $\vec{x}$, som opfylder alle problemets betingelser.\\
-\textbf{Den mulige mængde} $\mathds{F}$ \textit{(usikker på oversættelsen)} er mængden af alle de mulige løsninger.
+\textbf{Den mulige mængde} $\mathds{F}$ \textit{(usikker på oversættelsen)} er mængden af alle de mulige løsninger. Den vil derfor for et standard maksimeringsproblem defineres som
 \begin{align*}
 \mathds{F}=\{\vec{x} \in \mathds{R}|A\vec{x} \leq \vec{b}, \vec{x} \geq \vec{0}\}
 \end{align*}
-En vektor $\vec{x}$ kaldes en \textbf{optimal løsning}, hvis $f(\vec{x})=\max\limits_{x \in \mathds{F}}f(\vec{x}).$\\
+En vektor $\vec{x}$ kaldes en \textbf{optimal løsning}, hvis 
+\begin{align}
+	f(\vec{x})=\max\limits_{x \in \mathds{F}}f(\vec{x}).
+\end{align}
 Et problem kaldes \textbf{inkonsistent} (usikker på oversættelse) hvis den mulige mængde er den tomme mængde, ellers er problemet \textbf{konsistent}. Et problem kaldes \textbf{ubegrænset}, hvis objektfunktionen kan tage arbitrært store funktionsværdier for maksimeringsproblemer, og arbitrært små funktionsværdier for minimeringsproblemer. Ellers kaldes problemet \textbf{begrænset}.
 \end{defn}
 %Linje efter align og \\ skal enten skrives i bindende tekst eller gøres mere præcis
 
 Den optimale løsning kan findes på forskellige måder heriblandt med simplex-metoden, som beskrives i senere kapitler. En anden måde er ved geometrisk visualisering af den mulige mængde. Denne metode er mulig for problemer med op til 3 variable, da løsningsmængden derved visualiseres som et plot i det tilsvarende antal dimensioner. 
+
+\begin{eks}[Den mulige mængde]
+Ved at indtegne betingelserne i et koordinatsystem, er det muligt at visualisere den mulige mængde som fællesmængden af de mængder, der dannes ud fra betingelserne. På figur \ref{fig:maksprob2} er den mulige mængde for problemet i Eksempel \ref{eks:maksprob2} indtegnet. Der er desuden tegnet en pil for hver betingelse, som viser for hvilken side af linjen at koordinaterne opfylder betingelsen.
+
+\begin{center}
+	\input{fig/tikz/linprog2}
+	\captionof{figure}{Den mulige mængde af et standard maksimeringsproblem.}
+	\label{fig:maksprob2}
+\end{center}
+
+\end{eks}
 
 \subsection{niveaukurver}
 Niveaukurver dannes ved fastsættelsen af funktionsværdi $z=\vec{c}^T \vec{x}$. Niveaukurven er derved mængden af alle vektorer $\vec{x}$, som løser ligningen. Da målet er at maksimere $z$, er målet at finde den største $z$ for hvilken niveaukurven har en ikke-tom skæring med den mulige mængde. dette kan ses i Eksempel \ref{eks:maksprob3}.
@@ -173,7 +209,7 @@ Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på figur \re
 	\begin{center}	
 		\input{fig/tikz/linprog3}
 		\captionof{figure}{Optimal løsning fundet grafisk}
-		\label{fig:maksprob3} % fejl i billedet, z værdierne skal byttes rundt
+		\label{fig:maksprob3}
 	\end{center}
 	
 På figuren ses det at den største funktionsværdi $z=46$ findes i skæringen mellem bibetingelse 2 og 3.
