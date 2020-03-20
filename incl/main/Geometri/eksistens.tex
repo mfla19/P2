@@ -1,19 +1,30 @@
-\begin{defn}[Linje]
-Lad $P\subseteq \mathds{R}^n $ være en polyide, da indeholder $P$ en \textbf{linje}, hvis $\vec{x}+\lambda\vec{d} \in P$ for alle $\lambda \in \mathds{R}^n$, hvor $\vec{x}\in P$ og $\vec{d} \in \mathds{R}^n$.
-\end{defn}
-
-
-
+\section{Optimale løsning}
+Hvis løsnings mængden til et lineært programmerings problem ikke er tom, må der derfor være en løsning til problemet.
+Men bare fordi der eksistere en løsning behøver der ikke eksistere en optimal løsning. 
 %\begin{defn}
 %Lad $P=\{\vec{x} \in \mathds{R}^n| A \vec{x} \geq b, \vec{x} \geq \vec{0}\} \neq \emptyset$ være en polyide, svarende til bibetingelserne til det lineære minimerings problem $\vec{c}^T\vec{x}$.
 %Da siges en vektor $\vec{x^*}\in P$ at være \textbf{optimal}, hvis $\vec{c}^T\vec{x^*}\leq \vec{c}^T\vec{x}$ for alle $\vec{x}\in P$
 %\end{defn}
-
+Betragt tilfældet, hvor der eksistere en vektor i løsningsmængden, hvor det er muligt at lægge en vilkårlig stor vektor til, og summen stadig er indholdt i løsnings mængden.
+Er det tilfældet siges løsningsmængden at indeholde en linje.
+\begin{defn}[Linje]
+Lad $P\subseteq \mathds{R}^n $ være en polyide, da indeholder $P$ en \textbf{linje}, hvis $\vec{x}+\lambda\vec{d} \in P$ for alle $\lambda \in \mathds{R}^n$, hvor $\vec{x}\in P$ og $\vec{d} \in \mathds{R}^n$.
+\end{defn}
+Hvis løsningsmængden indholder en linje, så må objektfunktion nødvendigvis kunne tage en vilkårlig stor værdi, og løsningen vil være lig $-\infty$ i tilfældet af at objektfunktionen skal minimeres. 
+Det antyder derfor at objektfunktionen skal være begrænset, for at der eksistere en optimal løsning.
+\begin{defn} [Begrænset]
+Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksistere en konstant $K$ så $\forall \vec{x} \in S: \vec{x} \leq K$
+\end{defn}
+Det viser sig at hvis løsnings mængden ikke er tom og ikke indeholder en linje, så er der en optimal løsning, som vil være en basis mulig løsning, det vil sige at løsningen findes i et skærings punkt af $n$ lineært uafhængige bibetingelser.
 \begin{stn}[Eksistens af optimal løsning]
 Lad $P=\{\vec{x} \in \mathds{R}^n| A \vec{x} = b, \vec{x} \geq \vec{0}\} \neq \emptyset$ være en polyide, svarende til bibetingelserne til det lineære minimerings problem $\vec{c}^T\vec{x}$. Hvis $P$ ikke indeholder en linje, da vil der eksistere en optimal løsning $\vec{x^{**}}$ som er en basis mulig løsning.
 \label{stn:eksistens}
 \end{stn}
-
+Sætningen bevises med et medføre bevis, ved at finde en vektor $\vec{x}$ i løsningsmængden også konstruere en basis mulig løsning ud fra vektoren. 
+Ved at finde en retnings vektor $\vec{d}$ som minimere objektfunktionen, og så lægge et multiplum af $\vec{d}$ til $\vec{x}$ indtil at summen gør en ny bibetingelse aktiv. 
+Det vil altid være muligt at at finde sådan en bibetingelse, da løsningsmængden ikke indeholder en linje.
+Processen gentages til der vektoren har $n$ lineært uafhængige aktive bibetingelser, se Figur something.
+Da en objektfunktionen til enhver vektor i løsningsmængden, derfor er mindre eller lig objektfunktionen til en basis mulig løsning, må den optimale løsning, være en basis vektor.
 \begin{proof}
 Da $P$ ikke er tom må der eksistere en vektor $\vec{x} \in P$.
 Antag at $\vec{x}$ ikke er en basis mulig løsning, da vil $I = \{i | \vec{a_i}\vec{x} = b_i\}$, hvor $\vec{a_i}\vec{x}=b_i$ er lineære uafhængige bibetingelser, indeholde færre end $n$ elementer. 
@@ -29,13 +40,17 @@ Gentag til at $I$ indeholder $n$ lineært uafhængige vektorer, hvorefter at en 
 Da $\vec{x^*}$ er konstrueret ud fra en vilkårlig vektor $\vec{x}\in P$ medføre det at en mulig basis løsning altid vil opfylde $\vec{c}^T\vec{x^*} \leq \vec{c}\vec{x}$ for en hver ikke basis mulig løsning. 
 Da der kun er en endelig mængde mulig basis løsninger må der være en vektor $\vec{x^{**}}$ som opfylder at $\vec{c}^T\vec{x^{**}}\leq \vec{c}^T\vec{x^*}$ for alle andre basis mulige løsninger, hvorfor at $\vec{x^{**}}$ er en optimal løsning.
 \end{proof}
-
+Sætning \ref{stn:eksistens} kan omskrives en smugle, så i stedet for at kravet er at løsningsmængden ikke har en linje, så er det at objekt funktionen til løsningsmængden er begrænset.
 \begin{kor}
 Lad $f(\vec{x}) = \vec{c}^T\vec{x}$ betegne et lineært minimerings programmerings problem på augumenteret form, med mulige løsnings mængde $\mathcal{F} \neq \emptyset$. 
 Da vil der eksistere en optimal løsning, som er en mulig basis løsning, hvis der eksistere $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$ 
+\label{kor:eksistens}
 \end{kor}
-
+Korolar \ref{kor:eksistens} bevises ved et medføre bevis.
 \begin{proof}
 Lad  $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$, da må der for et hvert $\vec{x} \in P$ og $\vec{d} \in \mathds{R}^n$ eksistere et $\lambda$ så $f(\vec{x}+\lambda \vec{d}) = K$, og da $f$ er lineær følger det at $\mathcal{F}$ ikke kan indholde en linje. 
 Da det lineære programerings problem er på augumenteret form betyder det at $\mathcal{F}=P=\{\vec{x} \in \mathds{R}^n| A \vec{x} = b, \vec{x} \geq \vec{0}\} \neq \emptyset$ følger det af Sætning \ref{stn:eksistens}, at er eksistere en optimal løsning, som er en mulig basis løsning til det lineære minimerings programmerings problem.
 \end{proof}
+Det betyder at hvis der til et lineært programmerings problem skal eksistere en optimal løsning, så må løsnings mængden ikke indeholde en linje og objektfunktion på løsningsmængden skal være begrænset. 
+Er det ikke tilfældet må obejktfunktionen kunne tage værdierne $\infty$ og $-\infty$, og det vil derfor være løsningen på problemet, alt afhængig af om det var et henholdsvis maksimering eller minimerings problem.
+
