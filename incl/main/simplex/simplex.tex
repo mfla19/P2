@@ -1,1 +1,19 @@
 \chapter{Simplex}
+
+Hvis et lineært programmeirngproblem har en optimal mulig løsningen, så findes der en basis mulig løsning som er optimal. 
+Simplex metoden søger efter denne optimale basis mulige løsning, ved at bevæge sig mellem de mulige basis løsninger. 
+På et tidspunkt vil den optimale løsning være fundet, da der kun er et endeligt antal basis mulige løsninger. 
+Denne søgen efter den optimale basis løsning kan gøres ved hjælp af forskellige typer Simplex. 
+Nogen af disse vil blive gennemgået i dette kapitel. 
+
+\section{kommer senere}
+De algoritmer som bruges til at løse dette problem er ofte struktureret således at de med udgangspunkt en allerede kendte basis mulig løsning. Hvorefter der søges efter en bedere løsning i nærheden. 
+
+Betragt en basis mulig løsning $\vec{x} \in P$. 
+Det ønskes at rykke til en anden mulig løsning, dette gøres i rettingen af en vektor $\vec{d} \in \mathds{R}^n$. Det giver ikke mening at betragte de vektorer som med det samme kommer udenfor polyhedronet, $P$. Det er derfor kun de mulige retninger som betrages. 
+
+\begin{defn}[Mulig retning]
+Lad $\vec{x}$ være en vektor i $P$. En vektor $\vec{d}$ er en mulig retningen fra $\vec{x}$, hvis der findes en positiv scalar $\theta$ således at $\vec{x}+\theta\vec{d} \in P$ 
+\end{defn}
+
+Da polyhedronet er en konveks mængnde må det gælde at, hvis $\vec{x} \in P$ og $\vec{d}$ er en mulig retning, så er $\vec{x}+ \theta^{*} \vec{d} \in P$ for $\theta^{*} \in ] 0,\theta ] $
