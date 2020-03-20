@@ -1,0 +1,24 @@
+En metode der kan bruges til at løse lineære programmerings problemer er simplex metoden. Kort fortalt går simplex metoden ud på at finde et punkt der opfylder alle givne uligheder, dette punkt findes i skæringpunktet mellem nogle funktioner for de givne uligheder. Herefter undersøges, i hvilken retning objektfunktionen vokser mest, og der fortsættes så i denne retning til et nyt punkt findes, hvor den retning der giver den største vækst igen findes. Dette gentages intil der ikke længere kan findes en retning hvor objektfunktionen vokser, og denne derfor må være optimal. 
+
+I simplex metoden, bruges variable kaldet restvariable. Disse variable tilføjes til ligninger der beskriver uligheder, for at gøre dem til ligheder. 
+\begin{defn}[Restvariable]
+En restvariabel er en variabel, der tilføjes på den mindste side af en ulighed for at skabe en lighed. 
+\end{defn}
+
+Herunder ses et eksempel på hvordan en ulighed kan ændres til en lighed ved tilføjelse af restvariable.
+
+\begin{eks}
+Et lineært ligningssystem er givet,
+\begin{align*}
+5 x_1 + 2 x_2 &+ 2x_3 \leq 20 \\
+3 x_1 + 4 x_2 &+ 3 x_3 \leq 30 \\
+x_2 &+ 2 x_3 \leq 10.
+\end{align*}
+Nu tilføjes restvariable for at gøre de tre uligheder til ligheder,
+\begin{align*}
+5 x_1 + 2 x_2 &+ 2x_3 + x_4& &&\leq 20 \\
+3 x_1 + 4 x_2 &+ 3 x_3 &+ x_5& &\leq 30 \\
+x_2 &+ 2 x_3 & &+x_6 &\leq 10.
+\end{align*}
+
+\end{eks}
