@@ -1,0 +1,111 @@
+\section{Hvad er en løsning?}
+
+
+\begin{defn}[Ekstremuspunkt]
+Lad $\vec{x} \in P$, hvor $P$ er en polyeder og $\lambda \in [0,1]$ være en skalar.
+Da er $\vec{x}$ et ekstremuspunkt hvis $\nexists \vec{y}, \vec{z} \in P$ så $\vec{x} = \lambda \vec{y}+ (1- \lambda)\vec{z}$ for $\vec{y}\neq \vec{x}$ og $\vec{z}\neq \vec{x}$.
+\end{defn}
+Man laver to vektorer som går i hver sin retning fra vektoren x, hvis en af vektorene ikke i polyeden så er x et ekstremuspunkt
+
+\begin{defn}[Knude]
+Lad $\vec{x} \in P$, hvor $P$ er en polyeder, da er $\vec{x}$ en knude, hvis $\exists \vec{c} $ så $\vec{c}^T \vec{x} < \vec{c}^T\vec{y}$ $\forall \vec{y} \in P$ for $\vec{y} \neq \vec{x}$.
+\end{defn}
+Hvis y er i polyeden så er x også i polyeden, hvis der findes en vektor som kan ganges på både x og y så x<y
+
+\begin{defn}[Aktive krav]
+Lad $\vec{x}^* \in \mathds{R}^n$ opfylde at $\vec{a}_i^T\vec{x}^* = b_i$, hvor $\vec{a}_i$ svare til en bibetingelse, da siges $\vec{a_i}^T$ at være \textbf{aktiv}.
+\end{defn}
+
+\begin{stn}[Lineær uafhængige rækker]
+Lad $\vec{x}^* \in \mathds{R}^n$ og $I = \{i | \vec{a_i}^T \vec{x}^*\geq b_i\}$ , da er følgende ækvivalent
+\begin{enumerate}[label=(\alph*)]
+\item Mængden $R_a =\{\vec{a_i}| i\in I\}$ består af $n$ elementer, som er lineært uafhængige.
+\item Spannet $span(\vec{a_i}) = \mathds{R}^n$, for $a_i \in R_a$.
+\item Ligningssystemet $\vec{a_i}^T \vec{x}^* = b_i$, for $a_i \in R_a$ har en unik løsning.
+\end{enumerate}
+\end{stn}
+
+\begin{proof}
+(a) => (c): Lad $A$ være en $n \times n$ matrix bestående af rækkerne $\vec{a_i}^T \in R_a$, og antag at alle $\vec{a_i}$ er lineært uafhængige. 
+Antag nu for modstrid at ligningssystemet $A\vec{x} = \vec{b}$, hvor $\vec{b}$ har indgangende $b_i$ for $i \in I$, har to løsninger. 
+Da vil $A \vec{x} = \vec{b}$ og $A \vec{y} = \vec{b}$ hvorfor $A\vec{x-y} = \vec{0}$.
+Derfor må søjlerne enten være lineært afhængige, eller $\vec{x-y} = \vec{0}$.
+Da der er $n$ lineært uafhængige rækker i $A$ må $rank(A) = n$, hvorfor alle søjler er lineært uafhængige, da $A$ er en $n \times n$ matrice.
+Det medfører at $\vec{x-y} = \vec{0}$, hvorfor det kan konkluderes at løsningen til ligningssystemet er unikt da $ \vec{x}=\vec{y}$.
+\\(c) => (a):Antag at der er en unik løsning til $A$ det medfører at $rank(A) = n$, hvorfor alle rækker må være lineært uafhængige, , da $A$ er en $n \times n$ matrice. % s. 78-79 LinAlg
+\\ (a) => (b): Da $R_a$ består af $n$ linært uafhængige $n$-dimentionelle vektorer, må $R_a$ udgøre en base for $\mathds{R}^n$, hvorfor $span(R_a) = \mathds{R}^n$.
+\\ (b) => (a): Antag for modstrid, at vektorene i $R_a$ ikke er lineært uafhængige, da vil der eksistere en vektor $\vec{a_i'} \in R_a$ som er en linear kombination af de andre vektorer, der må derfor eksistere en vektor $A\vec{x} = \vec{0}$, hvor $\vec{x} \neq \vec{0}$, da det kun kan lade sig gøre hvis $\vec{x}$ er ortogonal med alle rækker i $A$, kan $\vec{x}$ ikke være en linear kombination af vektorene i $R_a$.
+Hvorfor at $\vec{x} \notin span(R_a)$.
+Derfor kan $span(R_a) \neq \mathds{R}^n$, hvorfor der er opstået modstrid.
+\end{proof}
+
+
+
+
+
+\begin{defn}[Basis løsning]
+$P$, $\vec{x}^*\in \mathds{R}^n$, da er $\vec{x}^*$ en \textbf{Basis løsning} hvis:
+\begin{enumerate}[label=(\alph*)]
+\item Alle ligheds krav er aktive
+\item der er mindst $n$ lineært uafhængige aktive krav
+\end{enumerate}
+og en \textbf{Mulig basis løsning} hvis:
+\begin{itemize}
+\item $\vec{x}^*$ opfylder alle krav.
+\end{itemize}
+\end{defn}
+
+
+    
+
+\begin{stn}[Løsningerne er de samme]
+$\vec{x}^* \in P$ da er følgende ækvivalent:
+\begin{enumerate}[label=(\alph*)]
+\item ekstremuspunkt
+ \item node
+ \item mulig basis løsning
+\end{enumerate}
+\end{stn}
+
+
+%\begin{cor}
+%Endeligt antal krav medføre endeligt antal basisløsninger
+%\end{cor}
+
+\begin{defn}[Naboløsninger]
+Naboløsninger, har samme aktive krav pånær et
+\end{defn}
+
+\begin{stn}[Er en basisløsning når:]
+Krav $A\vec{x}=b$, $\vec{x}\geq 0$, hvor $A$ er $m\times n$ matrix med lineært uafhænginge rækker. Da er $\vec{x}^*\in \mathds{R}^n$  basis løsning hviss $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der $\exists B(1), ..., B(m)$ så
+\begin{enumerate}[label=(\alph*)]
+\item kolonerne $A_{B(1)}, ..., A_{B_(m)}$ er lineært uafhænginge
+\item $x_i = 0$ hvis $i \neq B(1),...,B(m)$
+\end{enumerate}
+\end{stn}
+\textbf{Bevis:} 
+Lad $I$ være mængden af indeks for de lineære uafhængige løsninger$I={B(1),\dots,B(m)}$. per definition er $\vec{b}=\sum_{j=1}^{n}\vec{x_j}A_j$ som er summen af alle rækkerne gange en løsning som giver $\vec{b}$, det må være det samme som $b=\sum_{j\in I}^{n}\vec{x_j}A_j+\sum_{j\notin I}^{n}\vec{x_j}A_j$, som er summen af alle de lineære uafhængige rækker og deres løsninger lagt sammen med summen af de lineære afhængige rækker og deres løsninger, men $\vec{x_j}$ til de lineære uafhængige løsninger er er i følge sætningen $x_i = 0$ hvis $i \neq B(1),...,B(m)$ så derfor må ligningen blive $b=\sum_{j\in I}^{n}\vec{x_j}A_j+0$, så derfor må $\vec{x}$ være en basis løsning.
+Modsat, hvis der antages at $\vec{x}$ er en basis løsning, så lad $x_{B(1)},\dots x_B(k)$ være alle ikke-nul komponenterne af $\vec{x}$. Eftersom $\vec{x}$ er en basis løsning, så må ligningssystemet af aktive bibetingelser $\sum_{i=1}^{n}A_ix_i=b$, hvor $x_i=0, i\neq B(1),\dots , B(k)$ have en unik løsning \textit{Pr. dif 2.2 i bert}, ligeledes må ligningen $\sum_{i=1}^{k}A_{B(i)}x_{B(i)}=b$ have en unik løsning og derfor må kolonerne $A_{B(1)}, ..., A_{B_(m)}$ være lineært uafhængige.\\
+Eftersom kolonerne $A_{B(1)}, ..., A_{B_(m)}$ er lineært uafhængige, så må der $k\leq m$, \textit{herefter følger tingende af sætning 1.3(b) i bertsimas, som jeg ikke er helt sikker på endnu}
+%$x\in \mathds{R}$ og antag at der findes indeksene $B(1),\dots,B(m)$ som opfylder (a) og (b) i sætningen. De aktive bibetingelser $x_i=,i\neq (1),\dots,B(m)$ og $A\vec{x}=\vec{b}$ indebære at
+%\begin{align*}
+%\sum_{i=1}^{m} A_{B(i)}\vec{x_{B(i)}}=\sum_{i=1}^{n}A_i\vec{x_i}=A\vec{x}=b
+%\end{align*}
+%Siden at $A_{B(i)}, i=1,\dots,m$  er lineært uafhængig, så må løsningerne $x_{B(1),\dots},x_{B(m)}$ være unikke pr sætning 2.2 (c).
+%
+%Lad $x_{B(1),\dots},x_{B(m)}$ være komponenter af $\vec{x}\neq 0$. Siden $\vec{x}$ er en basis løsning, så har systemet af aktive bibetingelser $\sum_{i=1}^{n} A_i\vec{x}_i=\vec{b}$ og $x_i=0, i\neq B(1),\dots,B(k)$ en unik løsning. Ligeledes har ligningen $\sum_{i=1}^{k} A_{B(i)}x_{B(i)}=b$ også en unik løsning. det følger at $A_{B(1)},\dots A_{B(k)}$ er lineært uafhængig, hvilket indebære at $k\leq m$. 
+%Eftersom $A$ har $m$ lineært uafhængig rækker, så har $A$ også $m$ lineært uafhængig søjler, som er i $\mathds{R}$. Det følger af \textbf{Theorem 1.3 fra Bertsimas} at der findes $m-k$ flere søjler $A_{B(k+1)},\dots A_{B(m)}$, så rækkerne $A_{B(i)},i=1,\dots m$ er lineært uafhængig. 
+%Og hvis $i\neq B(1),\dots ,B(m)$, så er $i\neq B(1),\dots B(k)$ fordi $k\leq m$ og $x_i=0$, derfor er både sætning (a) og (b) opfyldt
+\begin{alg}[Procedure for konstruktion af basis løsninger(bruger lige algoritme indtil videre)]
+1. Vælg $m$ lineært uafhængig koloner $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$\\
+2. Lad $x_i=0\forall i\neq\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$\\
+3. Løs $A\vec{x}=\vec{b}$ for de ubekendte $x_{B(1)},\dots x_{B(m)}$
+\end{alg}
+
+\begin{stn}
+Lad $P=x|A\vec{x}=\vec{b},x\geq 0$ være en ikke-tom polyede, hvor $A$ er en $m\times n$ matrix med lineære uafhængige søjler.\\
+%Antag at $rank(A)=k<m$. Betragt polyeden $Q=\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots,\A_{j_k}\vec{x}=b_{i_k}$, så er $Q=P$
+\end{stn}
+\textbf{Bevis}:
+Hvis $P=x|A\vec{x}=\vec{b},x\geq 0$ er en polyede der består af alle bibetingelserne, så må der være en $Q=\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots,\A_{j_k}\vec{x}=b_{i_k}$, der består af alle lineære uafhængig bibetingelser. så må $P\subset Q$ eftersom alle elementerne i $P$ også tilfredsstiller bibetingelserne som elementerne i $Q$ tilfredsstiller.
+Lad $A'$ være en matrix med $A$s linear uafhængige bibetingelser så medføre det at $A\vec{x}=\vec{b}$ og $A\vec{x}=\vec{b}$, hvor $b\in {rækker af A}$ det betyder at $\exists \vec{x}:\vec{x}A=\vec{b}, \vec{x}A'=\vec{b}$ hvilket medføre at $b\in P$ og derfor må $Q\subset P$ og med der $P=Q$
