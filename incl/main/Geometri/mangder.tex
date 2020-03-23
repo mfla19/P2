@@ -1,5 +1,7 @@
 \chapter{Geometri}
+Intro til Geometri
 \section{Hvilke typer af mængder beskæftiger vi os med?}
+I lineær programmering afsnittet, er løsningerne til et optimeringsproblem beskrevet som værende alle de $\vec{x}$ som overholder bibetingelserne. Dette er beskrevet som værende et polyhedron
 \begin{defn} [Polyhedron]
 Et \textbf{Polyhedron} er en mængde 
 \begin{align*}
@@ -7,22 +9,30 @@ Et \textbf{Polyhedron} er en mængde
 \end{align*}
 hvor at $A$ er en $m \times n$ matrice.
 \end{defn}
-
+Hvis et lineært programmerings problem står på standard form $\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$, så kaldes dette stadig et polyhedron.\\
+Et polyhedron kan, alt efter bibetingelserne, være en mængde der strækker sig ud i det uendelige eller de kan være begrænset 
+Hvis der er med et maksimerings problem at gøre, kan det ses at bibetingelserne danner et område, men ved at minimeringsproblem, vil bibetingelserne ofte resultere i, at polyheronet strækker ud i det uendelige og derfor ikke længere er en form, men selvom dette er tilfældet, kaldes løsningsmængden stadig for et polyhedron.
+følgene definition omhandler et begrænset område
 \begin{defn} [Begrænset]
-Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksistere en konstant $K$ så $\forall \vec{x} \in S: \vec{x} \leq K$
+Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksistere en konstant $K$ så $\forall \vec{x} \in S: |\vec{x}| \leq K$
 \end{defn}
+Med andre ord, hvis der findes en konstant, som er højere end den absolutte værdi af alle $\vec{x} \in S \in S$, hvis der ikke eksistere en konstant, som er støre end $|\vec{x}|$, så ville alle $\vec{x}$ gå mod uendeligt
 
 \begin{defn}
 Lad $ \vec{a} \in \mathds{R}^n$, $\vec{a}\neq \vec{0}$ og $b$ være en skalar, da kaldes en mængde for:
-en \textbf{Hyperplane} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = \vec{b}\}$.
-\\ en \textbf{Halfspace} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T} \vec{x} \geq \vec{b}\}$
+\begin{enumerate}
+\item En \textbf{Hyperplan} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = \vec{b}\}$.
+\\ \item En \textbf{Halfspace} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T} \vec{x} \geq \vec{b}\}$
+\end{enumerate}
 \end{defn}
 
+\subsection{Konveks}
 
 \begin{defn} [Konveks]
 Lad $S \subset \mathds{R}^n$  da er $S$ konveks, hvis der $\forall \vec{x}, \vec{y} \in S$ og et vilkårligt $\lambda \in [0,1]$ gælder at $\lambda \vec{x} + (1-\lambda) \vec{y} \in S$.
 \label{def:Konveks}
 \end{defn}
+Med andre ord så vil ligningen $\lambda \vec{x} + (1-\lambda) \vec{y}$, hvor $\lambda$ ligger i intervallet fra $0$ til $1$, danne en linje af elementer mellem $\vec{x}$ og $\vec{y}$, hvis alle disse elementer er inden som området $S$, så er mængden konveks
 
 \begin{defn}[Konveks kombination og konveks huld]
 Lad $\vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n$, og $\lambda_1,..., \lambda_k \geq 0 $ være skalare, som opfylder $\sum_{i=1}^k \lambda_i =1$ da er
