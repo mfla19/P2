@@ -34,12 +34,12 @@ Processen gentages til der vektoren har $n$ lineært uafhængige aktive bibeting
 Da objektfunktionen til enhver vektor i løsningsmængden, derfor er mindre eller lig objektfunktionen til en basis mulig løsning, må den optimale løsning, være en basis vektor.
 \begin{proof}
 Da $P$ ikke er tom må der eksistere en vektor $\vec{x} \in P$.
-Antag at $\vec{x}$ ikke er en basis mulig løsning, da vil $I = \{i | \vec{a_i}\vec{x} = b_i\}$, hvor $\vec{a_i}\vec{x}=b_i$ er lineære uafhængige bibetingelser, indeholde færre end $n$ elementer. 
+Antag at $\vec{x}$ ikke er en basis mulig løsning, da vil $I = \{i | \vec{a_i}^T\vec{x} = b_i\}$, hvor $\vec{a_i}^T\vec{x}=b_i$ er lineære uafhængige bibetingelser, indeholde færre end $n$ elementer. 
 Nu konstrueres en basis mulig løsning $\vec{x^*}$, med udgangspunkt i $\vec{x}$ så $\vec{c}^T\vec{x^*}\leq \vec{c}^T\vec{x}$.
-Da $|I|<n $ må $span(\{a_i | i \in I\})$ være et ægte underrum til $\mathds{R}^n$, hvorfor der eksistere en vektor $\vec{d} \in \mathds{R}^n$ så $\vec{a_I}\vec{d}=0$ for alle $i \in I$. 
-Vælg nu fortegn på $\vec{d}$ så $\vec{c}\vec{d} \leq 0$, da vil $\vec{c}(\vec{x}+\lambda\vec{d}) \leq \vec{c}\vec{x}$ hvor $\lambda$ er en positiv skalar.
-Da $P$ er begrænset, og derfor ikke indeholder en linje, må der være et $\lambda'$ som gør, at $\vec{x}+\lambda '\vec{d} \not P$, hvorfor at der for et $\lambda^*$, må gælde at $\vec{a_j}(\vec{x}+\lambda^* \vec{d}) = b_j$, for $j \notin I$.
-Bemærk at $\vec{x}+\lambda^*\vec{d} \in P$, da $\vec{a_i}(\vec{x}+\lambda\vec{d})= \vec{a_i}\vec{v} = b_i$, for $i \in I$, hvorfor alle aktive bibetingelser stadig er overholdt.
+Da $|I|<n $ må $span(\{a_i | i \in I\})$ være et ægte underrum til $\mathds{R}^n$, hvorfor der eksistere en vektor $\vec{d} \in \mathds{R}^n$ så $\vec{a_I}^T\vec{d}=0$ for alle $i \in I$. 
+Vælg nu fortegn på $\vec{d}$ så $\vec{c}^T\vec{d} \leq 0$, da vil $\vec{c}(\vec{x}+\lambda\vec{d}) \leq \vec{c}^T\vec{x}$ hvor $\lambda$ er en positiv skalar.
+Da $P$ er begrænset, og derfor ikke indeholder en linje, må der være et $\lambda'$ som gør, at $\vec{x}+\lambda'\vec{d} \notin P$, hvorfor at der for et $\lambda^*$, må gælde at $\vec{a_j}^T(\vec{x}+\lambda^* \vec{d}) = b_j$, for $j \notin I$.
+Bemærk at $\vec{x}+\lambda^*\vec{d} \in P$, da $\vec{a_i}^T(\vec{x}+\lambda\vec{d})= \vec{a_i}^T\vec{v} = b_i$, for $i \in I$, hvorfor alle aktive bibetingelser stadig er overholdt.
 Antag nu at $\vec{d}$ er lineært afhængig af andre bibetingelser end $\vec{a_j}$ da vil $\vec{a_j}$ også være lineært afhæng af dem, hvorfor det følger af Sætning $P=Q$ at man kan se bort fra dem, og $\vec{x}+\lambda \vec{d} \in P$. 
 Da $\vec{d}$ er lineært afhængig af $\vec{a_j}$, må det medfører, at da $\vec{d}$ er lineært uafhængig af $\vec{a_i}$ så må $\vec{a_j}$ også være det. 
 Derfor kan $j$ tilføjes til $I$. 
@@ -53,11 +53,11 @@ Lad $f(\vec{x}) = \vec{c}^T\vec{x}$ betegne et lineært minimerings programmerin
 Da vil der eksistere en optimal løsning, som er en mulig basis løsning, hvis der eksistere $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$ 
 \label{kor:eksistens}
 \end{kor}
-Korolar \ref{kor:eksistens} bevises ved et medføre bevis.
+Korollar \ref{kor:eksistens} bevises ved et medføre bevis.
 \begin{proof}
-Lad  $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$, da må der for et hvert $\vec{x} \in P$ og $\vec{d} \in \mathds{R}^n$ eksistere et $\lambda$ så $f(\vec{x}+\lambda \vec{d}) = K$, og da $f$ er lineær følger det at $\mathcal{F}$ ikke kan indholde en linje. 
+Lad  $K \in \mathds{R}$ så $f(\mathcal{F}) \leq K$, da må der for et hvert $\vec{x} \in P$ og $\vec{d} \in \mathds{R}^n$ eksistere et $\lambda$ så $f(\vec{x}+\lambda \vec{d}) = K$, og da $f$ er lineær følger det at $\mathcal{F}$ ikke kan indeholde en linje. 
 Da $\mathcal{F} \neq \emptyset$ følger det af Sætning \ref{stn:eksistens}, at er eksistere en optimal løsning, som er en mulig basis løsning til det lineære minimerings programmerings problem.
 \end{proof}
 Det betyder at hvis der til et lineært programmerings problem skal eksistere en optimal løsning, så må løsnings mængden ikke indeholde en linje og objektfunktion på løsningsmængden skal være begrænset. 
-Er det ikke tilfældet må obejktfunktionen kunne tage værdierne $\infty$ og $-\infty$, og det vil derfor være løsningen på problemet, alt afhængig af om det var et henholdsvis maksimering eller minimerings problem.
+Er det ikke tilfældet må objektfunktionen kunne tage værdierne $\infty$ og $-\infty$, og det vil derfor være løsningen på problemet, alt afhængig af om det var et henholdsvis maksimering eller minimerings problem.
 
