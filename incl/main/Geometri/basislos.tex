@@ -2,20 +2,20 @@
 
 %Jeg har endnu ikke fået gennemgået beviserne til de to sætninger ordentligt. de er bare stjålet fra jer andre.
 
-Basisløsninger danner grundlaget for udregningen af den optimale løsning, hvilket beskrives og anvendes i Kapitel [indsæt ref til Kap simpLeX]. For at kunne beskrive netop basisløsninger er det nødvendigt først at introducere definitionen for \textbf{aktive betingelser}.%Ved ikke: Skal vi også bruge fed når ord introduceres i bindende tekst?
+Basisløsninger danner grundlaget for udregningen af den optimale løsning, hvilket beskrives og anvendes i Kapitel \ref{afsnit:simplex}. For at kunne beskrive netop basisløsninger er det nødvendigt først at introducere definitionen for \textbf{aktive betingelser}.%Ved ikke: Skal vi også bruge fed når ord introduceres i bindende tekst?
 
 \begin{defn}[Aktive betingelser]
-En betingelse siges at være \textbf{aktiv}, hvis det for en givet løsningsvektor $\vec{x}^*$ gælder, at $\vec{a}_i^T \vec{x}^* = b_i$.
+En betingelse siges at være \textbf{aktiv} for en givet løsningsvektor $\vec{x}$, hvis det gælder, at\\ $\vec{a}_i^T \vec{x}^* = b_i$.
 \label{def:aktiv}
 \end{defn}
 
 Generelt bliver aktive betingelser brugt, da de for uligheder repræsenterer en grænse for de mulige løsninger i en given retning, mens de for ligheder blot beskriver, at betingelsen er opfyldt.
-Yderligere anvendes skæringen mellem disse aktive betingelser, da den optimale løsning for lineære programmeringsproblemer findes i netop disse skæringer. Hvorfor dette netop er tilfældet bliver begrundet i Afsnit \ref{sec:ekstens}.
+Yderligere anvendes skæringen mellem disse aktive betingelser, da den optimale løsning for lineære programmeringsproblemer findes i netop disse skæringer. Hvorfor dette netop er tilfældet bliver begrundet i Afsnit \ref{sec:eksistens}.
 
 \begin{stn}[Lineært uafhængige rækker]
 Lad $\vec{x}^* \in \mathds{R}^n$ og $I = \{i | \vec{a_i}^T \vec{x}^* = b_i\}$ være mængden af indekser for aktive betingelser. Da er følgende ækvivalent
 \begin{enumerate}[label=(\alph*)]
-\item Mængden $R_a =\{\vec{a_i}| i\in I\}$ består af $n$ elementer, som er lineært uafhængige.
+\item Mængden $R_a =\{\vec{a_i}| i\in I\}$ indeholder vektorer, hvoraf $n$ af dem er lineært uafhængige.
 \item Spannet $span(R_a) = \mathds{R}^n$.
 \item Ligningssystemet $\vec{a_i}^T \vec{x}^* = b_i$, for $i \in I$ har en unik løsning.
 \end{enumerate}
@@ -23,15 +23,26 @@ Lad $\vec{x}^* \in \mathds{R}^n$ og $I = \{i | \vec{a_i}^T \vec{x}^* = b_i\}$ v�
 \end{stn} %Ved ikke: Bør det siges at $\vec{a_i}$ repræcentere en række, eller er det underforstået i rapporten da den altid gør det?
 
 \begin{proof}
-(a) => (c): Lad $A$ være en $n \times n$ matrix bestående af rækkerne $\vec{a_i}^T \in R_a$, og antag at alle $\vec{a_i}$ er lineært uafhængige. 
+	(a) <=> (b): Antag at der i $R_a$ er $n$ lineært uafhængige vektorer. Da der er $n$ lineært uafhængige vektorer må dimensionen af spannet af $R_a$ være $n$. Da $dim(span(R_a))=dim(\mathds{R}^n)=n$ og da $R_a \subseteq \mathds{R}^n$ må det følge af Sætning [4.59] at $span(R_a)=\mathds{R}^n$
+	
+	
+	
+	
+	Da er disse vektorer en basis for det underrum af $\mathds{R}^n$, som de udspænder. Da $dim(\mathds{R}^n)=dim(R_a)=n$ medfører det af sætning [4.59] at $span(R_a)=\mathds{R}^n$. Tilsvarende gælder det at hvis $span(R_a)=\mathds{R}^n$, vil kardinaliteten af en basis for 
+\end{proof}
+
+
+\begin{proof}
+(a) => (c): Lad $A$ være en $n \times n$ matrix bestående af rækkerne $\vec{a_i} \in R_a$, og antag at alle $\vec{a_i}$ er lineært uafhængige. 
 Antag nu for modstrid at ligningssystemet $A\vec{x} = \vec{b}$, hvor $\vec{b}$ har indgangende $b_i$ for $i \in I$, har to løsninger. 
 Da vil $A \vec{x} = \vec{b}$ og $A \vec{y} = \vec{b}$ hvorfor $A(\vec{x}-\vec{y}) = \vec{0}$.
 Derfor må søjlerne enten være lineært afhængige, eller $(\vec{x}-\vec{y})= \vec{0}$.
 Da der er $n$ lineært uafhængige rækker i $A$ må $rank(A) = n$, hvorfor alle søjler er lineært uafhængige, da $A$ er en $n \times n$ matrix.
 Det medfører at $\vec{x}-\vec{y} = \vec{0}$, hvorfor det kan konkluderes at løsningen til ligningssystemet er unikt da $ \vec{x}=\vec{y}$, og der derved er bevist modstrid.
-\\(c) => (a):Antag at der er en unik løsning til $A$ det medfører at $rank(A) = n$, hvorfor alle rækker må være lineært uafhængige, da $A$ er en $n \times n$ matrice. % s. 78-79 LinAlg
+\\(c) => (a): Antag at der er en unik løsning til $A\vec{x} =\vec{b}$. Det medfører at der er en pivotindgang i hver række hvorved: $rank(A) = n$. hvorfor alle rækker må være lineært uafhængige, da $A$ er en $n \times n$ matrice. % s. 78-79 LinAlg
 \\ (a) => (b): Da $R_a$ består af $n$ linært uafhængige $n$-dimentionelle vektorer, må $R_a$ udgøre en base for $\mathds{R}^n$, hvorfor $span(R_a) = \mathds{R}^n$.
-\\ (b) => (a): Antag for modstrid, at vektorene i $R_a$ ikke er lineært uafhængige, da vil der eksistere en vektor $\vec{a_i'} \in R_a$ som er en linear kombination af de andre vektorer, der må derfor eksistere en vektor $A\vec{x} = \vec{0}$, hvor $\vec{x} \neq \vec{0}$, da det kun kan lade sig gøre hvis $\vec{x}$ er ortogonal med alle rækker i $A$, kan $\vec{x}$ ikke være en linear kombination af vektorene i $R_a$.
+\\ (b) => (a): Antag for modstrid, at vektorene i $R_a$ ikke er lineært uafhængige, da vil der eksistere en vektor $\vec{a}_i \in R_a$ som er en linear kombination af de andre vektorer, der må derfor eksistere en vektor $A\vec{x} = \vec{0}$, hvor $\vec{x} \neq \vec{0}$.
+Da det kun kan lade sig gøre hvis $\vec{x}$ er ortogonal med alle rækker i $A$, kan $\vec{x}$ ikke være en linear kombination af vektorene i $R_a$.
 Hvorfor at $\vec{x} \notin span(R_a)$.
 Derfor kan $span(R_a) \neq \mathds{R}^n$, hvorfor der er opstået modstrid.
 \end{proof}
@@ -40,7 +51,7 @@ Derfor kan $span(R_a) \neq \mathds{R}^n$, hvorfor der er opstået modstrid.
 Lad $P$ være en polyide dannet af lineære bibetingelser, og lad $\vec{x}^*\in \mathds{R}^n$. Da er $\vec{x}^*$ en \textbf{basisløsning} hvis
 \begin{enumerate}[label=(\alph*)]
 \item Alle lighedskrav er aktive
-\item Der er $n$ lineært uafhængige aktive krav
+\item Der er $n$ lineært uafhængige aktive betingelser
 \end{enumerate}
 og en \textbf{mulig basisløsning} hvis
 \begin{enumerate}[label=(\alph*)]
@@ -50,7 +61,7 @@ og en \textbf{mulig basisløsning} hvis
 \label{def:basislosning}
 \end{defn}
 
-Enhver bibetingelse udspænder et rum, for hvilket betingelsen er opfyldt. Skæringen, af de aktive betingelser, danner derved et rum, som er fællesmængden, af betingelsernes udspændte rum. Skæringen, af en mængde af aktive betingelser, svarer derved til den mulige mængde af disse betingelser. Dog gælder det for basisløsninger pr. Definition \ref{def:basislosning}, at der for en basisløsning $\vec{x}$ skal være $n$ lineært uafhængige aktive betingelser, hvorved en basisløsningen kun er et enkelt punkt, hvilket er bevist igennem Sætning \ref{stn:uniklosning}. %Ved ikke, er en vektor og et punkt det samme?
+Enhver bibetingelse udspænder et rum, for hvilket betingelsen er opfyldt. Skæringen, af de aktive betingelser, danner derved et rum, som er fællesmængden, af betingelsernes udspændte rum. Skæringen, af en mængde af aktive betingelser, svarer derved til den mulige mængde af disse betingelser. Dog gælder det for basisløsninger pr. Definition \ref{def:basislosning}, at der for en basisløsning $\vec{x}$ skal være $n$ lineært uafhængige aktive betingelser, hvorved en basisløsningen er en unik vektor, hvilket er bevist igennem Sætning \ref{stn:uniklosning}. %Ved ikke, er en vektor og et punkt det samme?
 
 \begin{kor}[Endelig mængde af basisløsninger]
 Givet en endelig mængde af bibetingelser, vil der kun eksistere en endelig mængde af basisløsninger og derved også kun en endelig mængde mulige basisløsninger.
@@ -62,24 +73,41 @@ Betragt et lineært ligningssystem med $m$ uligheder og løsningsvektorer på fo
 \end{proof}
 
 \begin{stn}[Krav til basisløsninger]
-Lad $A\vec{x}=b$, $\vec{x}\geq 0$, hvor $A$ er $m\times n$ matrix med lineært uafhængige rækker. Da er $\vec{x}^*\in \mathds{R}^n$ en basisløsning hvis og kun hvis $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der eksisterer indekser $B(1), ..., B(m)$ således, at
+Lad $A\vec{x}=b$, $\vec{x}\geq 0$, hvor $A$ er en $m\times n$ matrix med lineært uafhængige rækker. Da er $\vec{x}^*\in \mathds{R}^n$ en basisløsning hvis og kun hvis $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der eksisterer indekser $B(1), ..., B(m)$ således, at
 \begin{enumerate}[label=(\alph*)]
-\item kolonerne $A_{B(1)}, ..., A_{B(m)}$ er lineært uafhængige
-\item $x_i = 0$ hvis $i \neq B(1),...,B(m)$
+\item Kolonerne $A_{B(1)}, ..., A_{B(m)}$ er lineært uafhængige
+\item $x_j = 0$ hvis $j \neq B(1),...,B(m)$.
 \end{enumerate}
 \end{stn}
 
 \begin{proof}
-Lad $I$ være mængden af indeks for de lineære uafhængige løsninger$I={B(1),\dots,B(m)}$. per definition er $\vec{b}=\sum_{j=1}^{n}\vec{x_j}A_j$ som er summen af alle rækkerne gange en løsning som giver $\vec{b}$, det må være det samme som $b=\sum_{j\in I}^{n}\vec{x_j}A_j+\sum_{j\notin I}^{n}\vec{x_j}A_j$, som er summen af alle de lineære uafhængige rækker og deres løsninger lagt sammen med summen af de lineære afhængige rækker og deres løsninger, men $\vec{x_j}$ til de lineære uafhængige løsninger er er i følge sætningen $x_i = 0$ hvis $i \neq B(1),...,B(m)$ så derfor må ligningen blive $b=\sum_{j\in I}^{n}\vec{x_j}A_j+0$, så derfor må $\vec{x}$ være en basis løsning.
-Modsat, hvis der antages at $\vec{x}$ er en basis løsning, så lad $x_{B(1)},\dots x_B(k)$ være alle ikke-nul komponenterne af $\vec{x}$. Eftersom $\vec{x}$ er en basis løsning, så må ligningssystemet af aktive bibetingelser $\sum_{i=1}^{n}A_ix_i=b$, hvor $x_i=0, i\neq B(1),\dots , B(k)$ have en unik løsning \textit{Pr. dif 2.2 i bert}, ligeledes må ligningen $\sum_{i=1}^{k}A_{B(i)}x_{B(i)}=b$ have en unik løsning og derfor må kolonerne $A_{B(1)}, ..., A_{B_(m)}$ være lineært uafhængige.\\
-Eftersom kolonerne $A_{B(1)}, ..., A_{B_(m)}$ er lineært uafhængige, så må der $k\leq m$, \textit{herefter følger tingende af sætning 1.3(b) i bertsimas, som jeg ikke er helt sikker på endnu}
+Først vises at (a) og (b) medfører at $\vec{x}$ er en basisløsning.
+Lad $I_m$ være mængden af indeks for de lineært uafhængige søjler  $I_m=\{B(1),\dots,B(m)\}$. Per definition er $\vec{b}=\sum_{j=1}^{n} x_j \vec{A}_j$, hvilket må være det samme som $\vec{b}=\sum_{j\in I_m} x_j \vec{A}_j+\sum_{j\notin I_m} x_j \vec{A}_j$, hvor summeringen er opdelt efter om kolonnerne har indeks $i \in I_m$. 
+Ifølge sætningens punkt (b) er $x_j=0$ for $j \notin I_m$. Derved bliver summeringen forkortet til $\vec{b}=\sum_{j\in I}x_j \vec{A}_j$. Da vektorerne $\vec{A}_j$ for $j \in I_m$ er lineært uafhængige vil ligningssystemet nødvendigvis have en unik løsning. Da der er $m$ aktive betingelser, vil det pr. Definition \ref{def:basislosning} at $\vec{x}$ er en basisløsning.
+
+% som er summen af alle de lineære uafhængige rækker og deres løsninger lagt sammen med summen af de lineære afhængige rækker og deres løsninger, men $\vec{x_j}$ til de lineære uafhængige løsninger er er i følge sætningen $x_i = 0$ hvis $i \neq B(1),...,B(m)$ så derfor må ligningen blive $b=\sum_{j\in I_m}^{n}x_j \vec{A}_j+0$,
+% 
+%så derfor må $\vec{x}$ være en basis løsning.
+
+Herefter vises at det at $\vec{x}$ er en basisløsning medfører (a) og (b). Antag at $\vec{x}$ er en basisløsning og lad $x_j$ for indekser $j \in I_k=\{B(1),\dots B(k)\}$ være alle ikke-nul komponenter af $\vec{x}$.
+Eftersom $\vec{x}$ er en basisløsning, så må ligningssystemet af aktive betingelser $\sum_{j=1}^{n}\vec{A}_jx_j=\vec{b}$, hvor $x_j=0$ for $j\notin I_k$ have en unik løsning. Dette gælder da en basisløsning har $n$ uafhængige aktive betingelser, hvilket ifølge Sætning \ref{stn:uniklosning} medfører at systemet har en unik løsning. 
+Ligeledes må ligningen $\sum_{j \in I_k}\vec{A}_jx_j=\vec{b}$ have en unik løsning og derfor må kolonerne $\vec{A}_{B(1)}, ..., \vec{A}_{B(k)}$ være lineært uafhængige. Derfor må det gælde at $k \leq m$. % Hvis ikke dette var tilfældet ville der eksistere flere $\vec{x}$ som opfylder ligningssystemet, hvilket modstrider at der er en unik løsning.\\
+%Eftersom kolonerne $\vec{A}_{B(1)}, ..., \vec{A}_{B(k)}$ er lineært uafhængige, så må det gælde at $k\leq m$. 
+Da $A$ har $m$ lineært uafhængige rækker, må $A$ også have $m$ lineært uafhængige kolonner, hvorved $Col(A)=\mathds{R}^m$.
+
+Den næste del af beviset viser, at der for enhver udvælgelse af indekser $I_k$ findes indekser $I_m$ således at $I_k \subseteq I_m$. 
+%Den næste del af beviset viser, at der for enhver udvælgelse af $k$ lineært uafhængige kolonner med indekser $I_k$, gælder at der findes en mængde af $m$ lineært uafhængige kolonner med indekser $I_m$, hvorom det gælder at $I_k \subseteq I_m$.
+Altså findes der indekser $B(k+1),...,B(m)$, således at kolonnerne med indekser $B(1),...,B(k),...,B(m)$ er lineært uafhængige. 
+
+Hvis alle $\vec{A}_j$ for $j \notin I_k$ er lineært afhængige af $\vec{A}_j$ for $j \in I_k$, gælder det at $span\left( \vec{A}_{B(1)},...,\vec{A}_{B(k)} \right)=Col(A)=\mathds{R}^m$, hvorved $k=m$. 
+Hvis der i stedet eksisterer en kolonne med indeks $j \notin I_k$ som er lineært uafhængig af disse kolonner, kan denne tilføjes til mængden af nu $k+1$ uafhængige vektorer. Denne proces kan gentages $m-k$ gange. Da $i \notin I_m$ medfører at $i \notin I_k$ gælder det derved at $\vec{x}_i =0$ for $i \notin I_m$
 \end{proof}
 
-\begin{alg}[Procedure for konstruktion af basisløsninger(bør ændres til procedure)]
+\begin{pro}[Procedure for konstruktion af basisløsninger]
 \noindent 1. Vælg $m$ lineært uafhængige koloner $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$\\
-2. Lad $x_i=0 \,\forall i\neq\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$\\
+2. Lad $x_i=0 \,\forall i\neq B(1),\dots,B(m)$\\
 3. Løs $A\vec{x}=\vec{b}$ for de ubekendte $x_{B(1)},\dots x_{B(m)}$
-\end{alg}
+\end{pro}
 
 \begin{comment}
 Der mangler bare generelt bindetekst mellem sætninger, fra at korollar 6.12 skal introduceres til at kapitlet skal afsluttes og føres videre til naboløsninger
@@ -87,7 +115,7 @@ Der mangler bare generelt bindetekst mellem sætninger, fra at korollar 6.12 ska
 
 \subsection{Naboløsninger}
 
-Til den senere anvendelse af simpLeX metoden anvendes også \textbf{naboløsninger}, som er defineret i Definition \ref{def:nabo}. Undersøgelsen af naboløsninger i SimpLeX metoden som en metode til at reducere antallet af basisløsninger som skal undersøges når den optimale løsning findes. %Bør omformuleres, er kringlet. Ved ikke: Er det realt det der sker? Ved ikke: Skal SimpLeX staves med stort?
+Til den senere anvendelse af simpLeX metoden anvendes også \textbf{naboløsninger}, som er defineret i Definition \ref{def:nabo}. Undersøgelsen af naboløsninger i simpLeX metoden som en metode til at reducere antallet af basisløsninger som skal undersøges når den optimale løsning findes. %Bør omformuleres, er kringlet. Ved ikke: Er det realt det der sker? Ved ikke: Skal SimpLeX staves med stort? Jeg tror da det er det der sker. og simplex er med lille. hermed rettet.
 
 \begin{defn}[Naboløsninger]
 	To basisløsninger i $\mathds{R}^n$ siges af være \textbf{naboløsninger}, hvis de deler præcis $n-1$ aktive lineært uafhængige bibetingelser.
@@ -114,6 +142,7 @@ De to basisløsninger $\vec{p}=\rvect{4 & 4}^T$ og $\vec{q}=\rvect{10 & 2}^T$ se
 	\captionof{figure}{Løsningsmængde med naboløsninger $p$ og $q$.}
 	\label{fig:nabo}
 	\end{center}
+	
 \label{eks:nabo}
 \end{eks}
 

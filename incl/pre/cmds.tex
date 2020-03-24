@@ -43,13 +43,24 @@
 { \refstepcounter{nyctr} 
 \vspace{0.3cm}
 \hrule \vspace{1mm}
-\textbf{Algoritme \thenyctr} \hspace{0.3cm} #1 \vspace{1mm}
+\noindent \textbf{Algoritme \thenyctr} \hspace{0.3cm} #1 \vspace{1mm}
 \hrule
 }{
 \hrule
   \vspace{0.3cm}
 }
 
+\newenvironment{pro}[1][]
+{ \refstepcounter{nyctr} 
+\vspace{0.3cm}
+\hrule \vspace{1mm}
+\noindent \textbf{Procedure \thenyctr} \hspace{0.3cm} #1 \vspace{1mm}
+\hrule
+\vspace{1mm}
+}{
+\hrule
+  \vspace{0.3cm}
+}
 
 
 \newenvironment{stn}[1][]
