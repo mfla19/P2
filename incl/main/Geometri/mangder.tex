@@ -11,6 +11,8 @@ hvor at $A$ er en $m \times n$ matrice.
 \end{defn}
 Hvis et lineært programmerings problem står på standard form $\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$, så kaldes dette stadig et polyhedron.\\
 
+Hvis der er en polyhedron $P=\{x|A\vec{x}=\vec{b},x\geq 0\}$ som består af alle bibetingelserne for problemet, så må der også findes en anden polyhedron $Q$, som består af alle de lineære uafhængige bibetingelserne for problemet. Det giver god mening, at fordi $P$ består af de samme bibetingelser som $Q$ og så lidt flere til, så er en løsning $\vec{x}$ til $P$ også en løsning til $Q$ og modsat er en løsning til $Q$ også en løsning til $P$ og derfor må $Q=P$, hvilket vil blive bevist i følgende sætning.
+
 \begin{stn} 
 Lad $P=\{\vec{x}|A\vec{x}=\vec{b},x\geq 0\}$ være en ikke-tom polyhedron, hvor $A$ er en $m\times n$ matrix med lineære uafhængige søjler.\\
 Antag at $rank(A)=k<m$. Betragt polyhedronen $Q=\{\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots ,A_{j_k}\vec{x}=b_{i_k}\}$, så er $Q=P$.
@@ -132,6 +134,5 @@ Derfor må $ \lambda \vec{z} + (1- \lambda) \vec{y} \in C_x$, hvorfor at $C_x$ e
 Og sætningen er bevist.
 \end{proof}
 
-Hvis der er en polyhedron $P=\{x|A\vec{x}=\vec{b},x\geq 0\}$ som består af alle bibetingelserne for problemet, så må der også findes en anden polyhedron $Q$, som består af alle de lineære uafhængige bibetingelserne for problemet. Det giver god mening, at fordi $P$ består af de samme bibetingelser som $Q$ og så lidt flere til, så er en løsning $\vec{x}$ til $P$ også en løsning til $Q$ og modsat er en løsning til $Q$ også en løsning til $P$ og derfor må $Q=P$, hvilket vil blive bevist i følgende sætning.
  
 %Lad $A'$ være en matrix med $A$s linear uafhængige bibetingelser så medføre det at $A\vec{x}=\vec{b}$ og $A\vec{x}=\vec{b}$, hvor $b\in $Row($A$) det betyder at $\exists \vec{x}:\vec{x}A=\vec{b}, \vec{x}A'=\vec{b}$ hvilket medføre at $b\in P$ og derfor må $Q\subset P$ og med der $P=Q$
