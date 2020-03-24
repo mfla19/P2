@@ -1,7 +1,7 @@
 \chapter{Geometri}
 Intro til Geometri
 \section{Hvilke typer af mængder beskæftiger vi os med?}
-I lineær programmering afsnittet, er løsningerne til et optimeringsproblem beskrevet som værende alle de $\vec{x}$ som overholder bibetingelserne. Dette er beskrevet som værende et polyhedron
+I lineær programmering afsnittet, er løsningerne til et optimeringsproblem beskrevet som værende alle de $\vec{x}$ som overholder bibetingelserne. Dette er beskrevet som værende et polyhedron.
 \begin{defn} [Polyhedron]
 Et \textbf{Polyhedron} er en mængde 
 \begin{align*}
@@ -10,19 +10,36 @@ Et \textbf{Polyhedron} er en mængde
 hvor at $A$ er en $m \times n$ matrice.
 \end{defn}
 Hvis et lineært programmerings problem står på standard form $\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$, så kaldes dette stadig et polyhedron.\\
+
+\begin{stn} 
+Lad $P=\{\vec{x}|A\vec{x}=\vec{b},x\geq 0\}$ være en ikke-tom polyhedron, hvor $A$ er en $m\times n$ matrix med lineære uafhængige søjler.\\
+Antag at $rank(A)=k<m$. Betragt polyhedronen $Q=\{\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots ,A_{j_k}\vec{x}=b_{i_k}\}$, så er $Q=P$.
+\end{stn}
+\begin{proof}
+Hvis $P=\{x|A\vec{x}=\vec{b},x\geq 0\}$ er en polyhedron, der består af alle bibetingelserne og har $rank(A)=k$, så må der være en $Q=\{\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots ,A_{j_k}\vec{x}=b_{i_k}\}$, der består af alle lineære uafhængig bibetingelser. Så må $P\subset Q$, eftersom alle elementerne i $P$ også tilfredsstiller bibetingelserne for $Q$.\\
+Eftersom $rank(A)=k$, så er $k$ rækkerummet af $A$ og så former rækkerne $\vec{a_1},\dots ,\vec{a_k}$ en basis for rækkerummet, derfor kan lineare kombinationen af rækkerne $a_i$ af $A$, skrives som $a_i=\sum_{j=1}^{k}{i j}\vec{a_j}$ for en skalar $c_{i j}$, lad så $\vec{x}$ være en del af $P$ så
+\begin{align*}
+\vec{a_i}\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{a_j}\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i} \qquad i=1,\dots,m.
+\end{align*}
+Lad nu $\vec{y}$ være en del af Q, så er $\vec{y}$ også en del af P, eftersom:
+\begin{align*}
+\vec{a_i}\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{a_j}\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i} \qquad i=1,\dots,m.
+\end{align*}
+Hvilket betyder $\vec{y}\in P$ og $Q\subset P$ og derved $P=Q$.
+\end{proof}
 Et polyhedron kan, alt efter bibetingelserne, være en mængde der strækker sig ud i det uendelige eller de kan være begrænset 
 Hvis der er med et maksimerings problem at gøre, kan det ses at bibetingelserne danner et område, men ved at minimeringsproblem, vil bibetingelserne ofte resultere i, at polyheronet strækker ud i det uendelige og derfor ikke længere er en form, men selvom dette er tilfældet, kaldes løsningsmængden stadig for et polyhedron.
 følgene definition omhandler et begrænset område
 \begin{defn} [Begrænset]
-Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksistere en konstant $K$ så $\forall \vec{x} \in S: |\vec{x}| \leq K$
+Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksistere en konstant $K$ så $\forall \vec{x} \in S: |\vec{x}| \leq K$.
 \end{defn}
-Med andre ord, hvis der findes en konstant, som er højere end den absolutte værdi af alle $\vec{x} \in S \in S$, hvis der ikke eksistere en konstant, som er støre end $|\vec{x}|$, så ville alle $\vec{x}$ gå mod uendeligt
+Med andre ord, hvis der findes en konstant, som er højere end den absolutte værdi af alle $\vec{x} \in S \in S$, hvis der ikke eksistere en konstant, som er støre end $|\vec{x}|$, så ville alle $\vec{x}$ gå mod uendeligt.
 
 \begin{defn}
 Lad $ \vec{a} \in \mathds{R}^n$, $\vec{a}\neq \vec{0}$ og $b$ være en skalar, da kaldes en mængde for:
 \begin{enumerate}
-\item En \textbf{Hyperplan} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = \vec{b}\}$.
-\\ \item En \textbf{Halfspace} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T} \vec{x} \geq \vec{b}\}$
+\item En \textbf{Hyperplan} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = \vec{b}\}$,
+\\ \item En \textbf{Halfspace} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T} \vec{x} \geq \vec{b}\}$.
 \end{enumerate}
 \end{defn}
 
@@ -32,7 +49,7 @@ Lad $ \vec{a} \in \mathds{R}^n$, $\vec{a}\neq \vec{0}$ og $b$ være en skalar, d
 Lad $S \subset \mathds{R}^n$  da er $S$ konveks, hvis der $\forall \vec{x}, \vec{y} \in S$ og et vilkårligt $\lambda \in [0,1]$ gælder at $\lambda \vec{x} + (1-\lambda) \vec{y} \in S$.
 \label{def:Konveks}
 \end{defn}
-Med andre ord så vil ligningen $\lambda \vec{x} + (1-\lambda) \vec{y}$, hvor $\lambda$ ligger i intervallet fra $0$ til $1$, danne en linje af elementer mellem $\vec{x}$ og $\vec{y}$, hvis alle disse elementer er inden som området $S$, så er mængden konveks
+Med andre ord så vil ligningen $\lambda \vec{x} + (1-\lambda) \vec{y}$, hvor $\lambda$ ligger i intervallet fra $0$ til $1$, danne en linje af elementer mellem $\vec{x}$ og $\vec{y}$, hvis alle disse elementer er inden som området $S$, så er mængden konveks.
 
 \begin{defn}[Konveks kombination og konveks huld]
 Lad $\vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n$, og $\lambda_1,..., \lambda_k \geq 0 $ være skalare, som opfylder $\sum_{i=1}^k \lambda_i =1$ da er
@@ -115,10 +132,6 @@ Derfor må $ \lambda \vec{z} + (1- \lambda) \vec{y} \in C_x$, hvorfor at $C_x$ e
 Og sætningen er bevist.
 \end{proof}
 
-\begin{stn}
-Lad $P=x|A\vec{x}=\vec{b},x\geq 0$ være en ikke-tom polyede, hvor $A$ er en $m\times n$ matrix med lineære uafhængige søjler.\\
-Antag at $rank(A)=k<m$. Betragt polyeden $Q=\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots ,A_{j_k}\vec{x}=b_{i_k}$, så er $Q=P$
-\end{stn}
-\textbf{Bevis}:
-Hvis $P=x|A\vec{x}=\vec{b},x\geq 0$ er en polyede der består af alle bibetingelserne, så må der være en $Q=\vec{x}|A_{j_1}\vec{x}=b_{i_1},\dots ,A_{j_k}\vec{x}=b_{i_k}$, der består af alle lineære uafhængig bibetingelser. så må $P\subset Q$ eftersom alle elementerne i $P$ også tilfredsstiller bibetingelserne som elementerne i $Q$ tilfredsstiller.
-Lad $A'$ være en matrix med $A$s linear uafhængige bibetingelser så medføre det at $A\vec{x}=\vec{b}$ og $A\vec{x}=\vec{b}$, hvor $b\in {rækker af A}$ det betyder at $\exists \vec{x}:\vec{x}A=\vec{b}, \vec{x}A'=\vec{b}$ hvilket medføre at $b\in P$ og derfor må $Q\subset P$ og med der $P=Q$
+Hvis der er en polyhedron $P=\{x|A\vec{x}=\vec{b},x\geq 0\}$ som består af alle bibetingelserne for problemet, så må der også findes en anden polyhedron $Q$, som består af alle de lineære uafhængige bibetingelserne for problemet. Det giver god mening, at fordi $P$ består af de samme bibetingelser som $Q$ og så lidt flere til, så er en løsning $\vec{x}$ til $P$ også en løsning til $Q$ og modsat er en løsning til $Q$ også en løsning til $P$ og derfor må $Q=P$, hvilket vil blive bevist i følgende sætning.
+ 
+%Lad $A'$ være en matrix med $A$s linear uafhængige bibetingelser så medføre det at $A\vec{x}=\vec{b}$ og $A\vec{x}=\vec{b}$, hvor $b\in $Row($A$) det betyder at $\exists \vec{x}:\vec{x}A=\vec{b}, \vec{x}A'=\vec{b}$ hvilket medføre at $b\in P$ og derfor må $Q\subset P$ og med der $P=Q$
