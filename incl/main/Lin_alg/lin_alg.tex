@@ -204,7 +204,7 @@ Multiplikation af to matricer gøres ikke ved af multiplicere på tilsvarende in
 \begin{defn} [Matrix produkt]
 Lad $A$ være en $m \times n$ matrix og $B$ være en $n \times p$ matrix. Da er en produktet $A \cdot B$ en $m \times p$ matrix, hvor indgangene er givet ved: 
 
-$$ad_{i,j} = \vec{a}_i \cdot \vec{B}_j$$
+$$ab_{i,j} = \vec{a}_i \cdot \vec{B}_j$$
 
 hvor $\vec{a}_i$ er den $i$'te række i $A$, og $\vec{B}_j$ er den $j$'te søjle i $B$
 \label{def:(matrixprodukt)}
@@ -235,53 +235,20 @@ Matrix produkt af $A$ og $B$ er dermed givet ved:
 \end{align*}
 \end{eks}
 
-Hvis matrix produktet af to matricer, A og B, giver identitetsmatricen, sigen B matrix at være den inverse matrix til A. 
-\begin{defn}[Invers matrix]
-Lad $A$ og $B$ være kvadratiske $m \times m$ matricer. Lad $AB=BA=I_m$, hvor $I_m$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til A. 
-\label{def(inversmatrix)}
-\end{defn}
-
-\begin{eks}
-Givet en matrix A og en matrix B,
-\begin{align*}
-A= \begin{bmatrix}
-1 & 3 \\
-1 & 2
-\end{bmatrix},
-B= \begin{bmatrix}
--2 & 3 \\
-1 & -1
-\end{bmatrix}
-\end{align*}
-kan det undersøges om B er den inverse matrix til A, ved at finde matrix produktet AB.
-\begin{align*}
-\begin{bmatrix}
-1 & 3 \\
-1 & 2
-\end{bmatrix}
-\cdot \begin{bmatrix}
--2 & 3 \\
-1 & -1
-\end{bmatrix}
-= \begin{bmatrix}
-1 & 0 \\
-0 & 1
-\end{bmatrix}
-\end{align*}
-Fordi de to matricers produkt bliver identitetsmatricen $I_2$, kan det konkluderes, at B er den inverse matrix til A.
-\end{eks}
-
-
 \input{incl/main/Lin_alg/lin_lign}
 
 \subsection{Invers matrix}
 
 Hvis matrix produktet af to matricer, A og B, giver identitetsmatricen, sigen B matrix at være den inverse matrix til A. 
 \begin{defn}[Invers matrix]
-Lad $A$ og $B$ være kvadratiske $n \times n$ matricer. Lad $AB=BA=I_n$, hvor $I_n$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til A. 
+Lad $A$ og $B$ være kvadratiske $n \times n$ matricer. Lad $AB=BA=I_n$, hvor $I_n$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til $A$. $B$ noteres da $A^{-1}$. 
 \label{def(inversmatrix)}
 \end{defn}
-Den inverse til en matrix, $A$, noteres som $A^{-1}$. Altså er $A^{-1}A=I_n$. Den inverse matrix kan bruges til at løse specifikke ligningssystemer. Lad $A$ være en $n \times n$ matrix, og $\vec{b}$ være en vektor i $\mathds{R}^n$. Betragt ligningssystemet: 
+Den inverse til matrix til $A$, er en entydig matrix. Forestiller man sig at der findes to inverse matricer til $A$, $B$ og $C$. Vil de to være den samme da: 
+\begin{align*}
+B=BI_n=B(AC)=(BA)C=I_nC=C
+\end{align*}
+Den inverse matrix kan bruges til at løse specifikke ligningssystemer. Lad $A$ være en $n \times n$ matrix, og $\vec{b}$ være en vektor i $\mathds{R}^n$. Betragt ligningssystemet: 
 \begin{align*}
 A \vec{x} &= \vec{b}\\
 A^{-1} A \vec{x} &= A^{-1} \vec{b}\\
@@ -292,7 +259,6 @@ Ved at gange den inverse matrix på begge sider af lighedstegnet, opnåes et udt
 \vec{x} &= A^{-1} \vec{b}.
 \end{align} 
 
-Løsningen til ligningssystemet kræver at den inverse matrix kan findes. 
 \begin{stn}
 Lad $A$ være en $n \times n$ matrix. Der gælder at: 
 \begin{enumerate}[label=(\alph*)]
@@ -311,8 +277,9 @@ I_n & A^{-1}
 \end{stn}
 
 \begin{proof}
-(a) Først lad $A$ være invertibel. Betragt nu en vektor $\vec(x)$ i $\mathds{R}^n$, som opfylder $A\vec{x}=\vec{0}$. Så fåes det at ligning $(4.1)$, at $\vec{x}=A^{-1} \vec{0}=\vec{0}$. Da løsningen af  $A\vec{x}=\vec(0)$ er $\vec{0}$ må $rang(A)=n$. Det betydet at antallet af pivot-søjler er det samme som antellet af søjler, samt antallet af rækker. Den reducerede trappeform af $A$ må derfor være identitetsmatricen. 
-Lad nu den reducerede trappeform af $A$ være identitesmatricen. Så må der findes en invertibel $n \times n$ matrix $P$ således at: $AP=I_n$
+(a) Først lad $A$ være invertibel. Betragt nu en vektor $\vec{x}$ i $\mathds{R}^n$, som opfylder $A\vec{x}=\vec{0}$. Så fåes det at ligning $(4.1)$, at $\vec{x}=A^{-1} \vec{0}=\vec{0}$. Da løsningen af  $A\vec{x}=\vec{0}$ er $\vec{0}$ må $rang(A)=n$. Det betydet at antallet af pivot-søjler er det samme som antellet af søjler, samt antallet af rækker. Den reducerede trappeform af $A$ må derfor være identitetsmatricen. 
+
+Lad nu den reducerede trappeform af $A$ være identitesmatricen. Så må der findes en invertibel $n \times n$ matrix $P$ således at: $PA=I_n$
 \begin{align*}
 A=I_nA=(P^{-1}P)A=P^{-1}(PA)=P^{-1}I_n=P^{-1}
 \end{align*}
