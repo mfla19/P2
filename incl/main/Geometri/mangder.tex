@@ -15,18 +15,18 @@ Hvis der er et polyeder $P=\{x\mid A\vec{x}=\vec{b},x\geq 0\}$ som består af al
 
 \begin{stn} 
 Lad $P=\{\vec{x}\mid A\vec{x}=\vec{b},x\geq 0\}$ være en ikke-tom polyeder, hvor $A$ er en $m\times n$ matrix.\\
-Antag at $rank(A)=k<m$ og at rækkerne $a_i$ for $i=1,\dots ,k$ er lineært uafhængig. Betragt polyeder $Q=\{\vec{x}\mid \vec{a_i}^T\vec{x}=b_{i}, \vec{x}\geq \vec{0}, i = 1,\dots	k\}$, så er $Q=P$.
+Antag at $rank(A)=k<m$ og at rækkerne $\vec{a_i}^T$ for $i=1,\dots ,k$ er lineært uafhængig. Betragt polyeder $Q=\{\vec{x}\mid \vec{a_i}^T\vec{x}=b_{i}, \vec{x}\geq \vec{0}, i = 1,\dots	k\}$, så er $Q=P$.
 \label{stn:PQ}
 \end{stn}
 \begin{proof}
-Hvis $P=\{x\mid A\vec{x}=\vec{b},x\geq 0\}$ er et polyeder, afgrænset af alle bibetingelserne og har $rank(A)=k$, så må der være et polyeder $Q=\{\vec{x}\mid A_{j_1}\vec{x}=b_{i_1},\dots ,A_{j_k}\vec{x}=b_{i_k}\}$, der består af alle lineært uafhængig bibetingelser. Så må $P\subset Q$, eftersom alle elementerne i $P$ også tilfredsstiller bibetingelserne for $Q$.\\
+Hvis $P=\{x\mid A\vec{x}=\vec{b},x\geq 0\}$ er et polyeder, afgrænset af alle bibetingelserne og har $rank(A)=k$, så må der være et polyeder $Q=\{\vec{x}\mid \vec{a_i}^T\vec{x}=b_{i}, \vec{x}\geq \vec{0}, i = 1,\dots	k\}$, der består af alle lineært uafhængig bibetingelser. Så må $P\subset Q$, eftersom alle elementerne i $P$ også tilfredsstiller bibetingelserne for $Q$.\\
 Eftersom $rank(A)=k$, så former rækkerne $\vec{a_1},\dots ,\vec{a_k}$ en basis for rækkerummet, derfor kan lineare kombinationen af rækkerne $a_i$ af $A$, skrives som $a_i=\sum_{j=1}^{k}{i j}\vec{a_j}$ for en skalar $c_{i j}$, lad så $\vec{x}$ være en del af $P$ så
 \begin{align*}
-\vec{a_i}\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{a_j}\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i}, \qquad i=1,\dots,m.
+\vec{a_i}^T\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{a_j}^T\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i}, \qquad i=1,\dots,m.
 \end{align*}
 Lad nu $\vec{y}$ være en del af $Q$, så er $\vec{y}$ også en del af $P$, eftersom:
 \begin{align*}
-\vec{a_i}\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{a_j}\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i}, \qquad i=1,\dots,m.
+\vec{a_i}^T\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{a_j}^T\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i}, \qquad i=1,\dots,m.
 \end{align*}
 Hvilket betyder $\vec{y}\in P$ og $Q\subset P$ og derved $P=Q$.
 \end{proof}
