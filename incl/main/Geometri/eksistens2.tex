@@ -1,0 +1,49 @@
+\section{Optimale løsning}
+\label{sec:eksistens}
+Hvis det lineære programmerings problem er konsistent, betyder det at der er en løsning til det, men bare fordi der er en løsning betyder det ikke at der er en optimal løsning.
+Hvis der skal eksistere en optimal løsning må løsningsmængden ikke indeholde en linje.
+\begin{defn}[Linje]
+Lad $P\subseteq \mathds{R}^n $ være en polyede, da indeholder $P$ en \textbf{linje}, hvis $\vec{x}+\lambda\vec{d} \in P$ for alle $\lambda \in \mathds{R}^n$, hvor $\vec{x}\in P$ og $\vec{d} \in \mathds{R}^n$.
+\label{def:linje}
+\end{defn}
+Det betyder, at der til en løsning kan lægges et vilkårligt stort multiplum af en vektor til, og summen vil stadig være en løsning, derfor må objektfunktionen nødvendigvis også kunne tage en vilkårlig stor værdi.
+\begin{prop}
+Lad løsningsmængden $\mathcal{F} = \{ \vec{x} \in \mathds{R}^n| A \vec{x} \geq b \} \subseteq \mathds{R}^n $  til det lineærer minimeringsproblem $\vec{c}^T\vec{x}$ indeholde en linje, da er løsningen $-\infty$.
+\end{prop}
+\begin{proof}
+Da $\mathcal{F}$ indeholder en linje, følger det af Definition \ref{def:linje}, at der eksistere en vektor $\vec{x} \in \mathcal{F}$ og en vektor $\vec{d} \in \mathds{R}^n$, så $\vec{x}+\lambda \vec{d} \in \mathcal{F}$, for alle $\lambda \in \mathds{R}^n$. 
+Derfor følger det at $\lambda$ kan vælges så $\vec{c}^T(\vec{x}+\lambda\vec{d}) = - \infty$, hvorfor løsningen må være $-\infty$.
+\end{proof}
+Bemærk, at da løsningsmængden indeholder en linje, kan løsningsmængden ikke være tom, er løsningsmængden tom, er problemet inkonsistent, og der eksistere derfor ikke en optimal løsning. 
+Er løsningsmængden ikke tom, og uden linjer, da eksistere der en optimal løsning, som viser sig at være en mulig basisløsning.
+\begin{stn}[Eksistens af optimal løsning]
+Hvis løsningsmængden $\mathcal{F} =\{\vec{x} \in \mathds{R}^n| A \vec{x} \geq b \} \neq \emptyset$, til det lineære minimeringsproblem $\vec{c}^T\vec{x}$, ikke indeholder en linje, da vil der eksistere en optimal løsning $\vec{x^{**}}$, som er en mulig basisløsning.
+\label{stn:eksistens}
+\end{stn}
+\begin{proof}
+Antag, at $\vec{x} \in \mathcal{F}$ ikke er en mulig basisløsning, og lad $I =\{i | \vec{a_i}^T\vec{x}=b_i\}$ betegne indeksene for de lineært uafhængige aktive bibetingelser knyttet til løsningen $\vec{x}$.
+Da $\vec{x}$ ikke er en mulig basisløsning, må $span(\{\vec{a_i}|i\in I\})$ være et ægte underrum til $\mathds{R}^n$, hvormed at der må eksistere en vektor $\vec{d} \in \mathds{R}^n$, så $\vec{a_i}^T\vec{d}=0$ for $i \in I$.
+Da må $\vec{a_i}^T(\vec{x}\pm \vec{d})= \vec{a_i}^T\vec{x}=b_i$.
+Vælg nu fortegn på $\vec{d}$ så $\vec{c}^T\vec{d}\leq 0$, da må $\vec{c}^T(\vec{x}+\lambda\vec{d}) \leq \vec{c}^T\vec{x}$ for en vilkårlig skalar $\lambda > 0$.
+Da løsningsmængden ikke indeholder en linje, vil der være en øvre grænse for $\lambda$ før $\vec{x}+\lambda\vec{d} \notin \mathcal{F}$, svarende til $\lambda$et, der opfylder $\vec{a_j}^T(\vec{x}+\lambda\vec{d})=b_j$, hvor $\vec{a_j} \not in \{\vec{a_i}|i\in I\}$ er den første bibetingelse der bliver aktiv, se Figur \ref{fig:eksistens}.
+Da $\vec{a_i}^T\vec{d}=0$ og $\vec{a_j}^T\vec{d} \neq 0$ medfører det at $\vec{a_i}\vec{a_j} =0$, hvorfor at bibetingelserne er lineært uafhængige. 
+Derfor kan $j$ tilføjes til $I$.
+Gentag til at $|I|=n$.
+\\ Antag nu, at $|I|=n$, derfor må $\vec{x}$ have $n$ aktive bibetingelser.
+Da $\vec{x}\in \mathcal{F}$ medfører det, at $\vec{x}$ overholder alle ligheds bibetingelser, og at $\vec{x}$ er en mulig løsning. 
+Derfor følger det af Definition \ref{def:basislosning}, at $\vec{x}$ er en mulig basisløsning.
+\\Derfor må der fra en vilkårlig løsning $\vec{x}\in \mathcal{F}$ kunne konstrueres en mulig basisløsning $\vec{x^*}$ så $\vec{c}^T\vec{x^T} \leq \vec{c}^T \vec{x}$.
+Dermed må den optimale løsning være den mulige basisløsning, der minimere objektfunktionen, hvorfor der eksistere en optimal løsning, som er en mulig basisløsning.
+\end{proof}
+\begin{figure}
+\begin{center}
+	\input{fig/tikz/eksistens}
+	\captionof{figure}{Der ligges et multiplum af en retnings vektor til vektor $\vec{x}$ til at summen gør betingelse $4$ aktiv.}
+	\label{fig:eksistens}
+\end{center}
+\end{figure}
+Det betyder at hvis det lineære programmerings problem er konsistent, da eksistere der enten en optimal løsning, blandt basisløsningerne eller den optimale løsning er $\pm \infty$.
+Det kunne derfor være relevant at finde en måde, hvor den optimale løsning blandt basisløsningerne kan findes, her kan gøres brug af simplex metoden.
+
+
+
