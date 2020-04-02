@@ -26,13 +26,13 @@ Da $\vec{x}$ ikke er en mulig basisløsning, må $span(\{\vec{a_i}|i\in I\})$ v�
 Da må $\vec{a_i}^T(\vec{x}\pm \vec{d})= \vec{a_i}^T\vec{x}=b_i$.
 Vælg nu fortegn på $\vec{d}$ så $\vec{c}^T\vec{d}\leq 0$, da må $\vec{c}^T(\vec{x}+\lambda\vec{d}) \leq \vec{c}^T\vec{x}$ for en vilkårlig skalar $\lambda > 0$.
 Da løsningsmængden ikke indeholder en linje, vil der være en øvre grænse for $\lambda$ før $\vec{x}+\lambda\vec{d} \notin \mathcal{F}$, svarende til $\lambda$et, der opfylder $\vec{a_j}^T(\vec{x}+\lambda\vec{d})=b_j$, hvor $\vec{a_j} \not in \{\vec{a_i}|i\in I\}$ er den første bibetingelse der bliver aktiv, se Figur \ref{fig:eksistens}.
-Da $\vec{a_i}^T\vec{d}=0$ og $\vec{a_j}^T\vec{d} \neq 0$ medfører det at $\vec{a_i}\vec{a_j} =0$, hvorfor at bibetingelserne er lineært uafhængige. 
+Da $\vec{a_i}^T\vec{d}=0$ og $\vec{a_j}^T\vec{d} \neq 0$ medfører det at $\vec{a_i}$ og $\vec{a_j}$  er lineært uafhængige. 
 Derfor kan $j$ tilføjes til $I$.
 Gentag til at $|I|=n$.
 \\ Antag nu, at $|I|=n$, derfor må $\vec{x}$ have $n$ aktive bibetingelser.
 Da $\vec{x}\in \mathcal{F}$ medfører det, at $\vec{x}$ overholder alle ligheds bibetingelser, og at $\vec{x}$ er en mulig løsning. 
 Derfor følger det af Definition \ref{def:basislosning}, at $\vec{x}$ er en mulig basisløsning.
-\\Derfor må der fra en vilkårlig løsning $\vec{x}\in \mathcal{F}$ kunne konstrueres en mulig basisløsning $\vec{x^*}$ så $\vec{c}^T\vec{x^T} \leq \vec{c}^T \vec{x}$.
+\\Derfor må der fra en vilkårlig løsning $\vec{x}\in \mathcal{F}$ kunne konstrueres en mulig basisløsning $\vec{x^*}$ så $\vec{c}^T\vec{x^*} \leq \vec{c}^T \vec{x}$.
 Dermed må den optimale løsning være den mulige basisløsning, der minimere objektfunktionen, hvorfor der eksistere en optimal løsning, som er en mulig basisløsning.
 \end{proof}
 \begin{figure}

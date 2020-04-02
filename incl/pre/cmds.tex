@@ -137,6 +137,16 @@
   \vspace{0.3cm}
 }
 
+\newenvironment{tab}[1][]
+{ \refstepcounter{nyctr}
+  \vspace{0.3cm}
+  \begin{stncol}
+\textbf{Tabel \thenyctr \hspace{0.3cm} #1} 
+  \newline
+}{
+  \end{stncol}
+  \vspace{0.3cm}
+}
 
 % Figur-makroer ----------------------------------------------------------------
 
