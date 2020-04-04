@@ -1,1 +1,50 @@
 \section{Store M-metode}
+
+For at kunne bruge simplex metoden, skal der først findes en mulig basis løsning. 
+Hvis der er givet et problem på formen $Ax \leq b$, hvor $b \geq 0$ er det relativt simpelt. 
+Her kan introduceres ikke-negative slack-variable $s$ og uligheden kan omskrives til $Ax+s=b$. 
+Vektoren $(x,s)$ hvor $x=0$ og $s=b$ er en mulig basis løsning, og den korresponderende basismatrix er dens identitet. 
+Generelt er det dog ikke let at finde en mulig basis løsning, og det kræver at løsning til et hjælpende lineært programmeringsproblem. \\
+
+Store-M metoden bygger på den to-fase simplex metode, som er en komplet algoritme til at løse lineære programmeringsproblemer på standardform. 
+Algoritmen er bygget op i to faser, hvor første fase går ud på .... \\
+%?? skal det med
+
+Idéen bag store-M metoden er at introducere en kostfunktion på formen
+\begin{align*}
+\sum\limits_{j=1}^n c_jx_j + M \sum\limits_{i=1}^m y_i,
+\end{align*}
+hvor $M$ er en stor positiv konstant, og $y_i$ er samme variable som i den første fase af to-fase simplex. 
+Hvis det originale problem har en mulig løsning, og dens optimale kost er endelig, vil de artificial (kunstige?) variable gå mod $0$, når $M$ er tilstrækkelig stor. 
+Det betyder, at den originale kostfunktion nu skal minimeres. 
+Når den reducerede kost er en funktion af $M$, vil $M$ altid blive behandlet som værende af større værdi, når der skal vurderes, om en reduceret kost er negativ. \\
+
+\begin{eks}
+Et lineært programmeringsproblem er givet.
+
+	\begin{center}
+	\begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}l<{$} r}
+	Minimer 		& 	x_1	 & + \ \ x_2 & + \ \ x_3 \\
+	med hensyn til 	&  	x_1	 & +   2 x_2 & +   3 x_3 &  	 & = 3 \\
+					&  -x_1	 & +   2 x_2 & +   6 x_3 & 		 & = 2 \\
+					&  \ \ 	 & \ \ 4 x_2 & +   9 x_3 & 		 & = 5 \\
+					&  \ \ 	 & \ \   	 & \ \ 3 x_3 & + x_4 & = 1 \\
+	og $x_1, \dots, x_4 \geq 0$.
+	\end{tabular}
+	\end{center}
+
+Der gives nu følgende problem til hjælp, hvor den unødvendige kunstige variabel $x_8$ er undladt.
+
+	\begin{center}
+	\begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} r}
+	Minimer 		&  	x_1	 & + \ \ x_2 & + \ \ x_3 &       & + Mx_5    & + Mx_6    & + Mx_7 \\
+	med hensyn til 	&  	x_1	 & +   2 x_2 & +   3 x_3 &       & + \ \ x_5 &           &        & = 3 \\
+					&  -x_1	 & +   2 x_2 & +   6 x_3 &       &           & + \ \ x_6 &        & = 2 \\
+					&        &     4 x_2 & +   9 x_3 &       &           &           & + \ \ x_7 & = 5 \\
+					&   	 &           &     3 x_3 & + x_4 &           &           &       & = 1 \\
+	og $x_1, \dots, x_7 \geq 0$.
+	\end{tabular}
+	\end{center}
+%ikke færdigt. + tabellerne skal fikses
+\end{eks}
+
