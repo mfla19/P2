@@ -4,11 +4,7 @@ For at kunne bruge simplex metoden, skal der først findes en mulig basis løsni
 Hvis der er givet et problem på formen $Ax \leq b$, hvor $b \geq 0$ er det relativt simpelt. 
 Her kan introduceres ikke-negative slack-variable $s$ og uligheden kan omskrives til $Ax+s=b$. 
 Vektoren $(x,s)$ hvor $x=0$ og $s=b$ er en mulig basis løsning, og den korresponderende basismatrix er dens identitet. 
-<<<<<<< HEAD
 Generelt er det dog ikke let at finde en mulig basis løsning, og det kræver en løsning til et hjælpende lineært programmeringsproblem. \\
-=======
-Generelt er det dog ikke let at finde en mulig basis løsning, og det kræver at løsning til et hjælpende lineært programmeringsproblem. \\
->>>>>>> master
 
 Store-M metoden bygger på den to-fase simplex metode, som er en komplet algoritme til at løse lineære programmeringsproblemer på standardform. 
 Algoritmen er bygget op i to faser, hvor første fase går ud på .... \\
@@ -26,31 +22,122 @@ Når den reducerede kost er en funktion af $M$, vil $M$ altid blive behandlet so
 \begin{eks}
 Et lineært programmeringsproblem er givet.
 
-	\begin{center}
-	\begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}l<{$} r}
+\begin{center}
+\begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}l<{$} r}
 	Minimer 		& 	x_1	 & + \ \ x_2 & + \ \ x_3 \\
 	med hensyn til 	&  	x_1	 & +   2 x_2 & +   3 x_3 &  	 & = 3 \\
 					&  -x_1	 & +   2 x_2 & +   6 x_3 & 		 & = 2 \\
 					&  \ \ 	 & \ \ 4 x_2 & +   9 x_3 & 		 & = 5 \\
 					&  \ \ 	 & \ \   	 & \ \ 3 x_3 & + x_4 & = 1 \\
 	og $x_1, \dots, x_4 \geq 0$.
-	\end{tabular}
-	\end{center}
+\end{tabular}
+\end{center}
 
 Der gives nu følgende problem til hjælp, hvor den unødvendige kunstige variabel $x_8$ er undladt.
 
-	\begin{center}
-	\begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} r}
-	Minimer 		&  	x_1	 & + \ \ x_2 & + \ \ x_3 &       & + Mx_5    & + Mx_6    & + Mx_7 \\
-	med hensyn til 	&  	x_1	 & +   2 x_2 & +   3 x_3 &       & + \ \ x_5 &           &        & = 3 \\
-					&  -x_1	 & +   2 x_2 & +   6 x_3 &       &           & + \ \ x_6 &        & = 2 \\
+\begin{center}
+\begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} r}
+	Minimer    		&  	x_1	 & + \ \ x_2 & + \ \ x_3 &       & + Mx_5    & + Mx_6    & + Mx_7 \\
+	med hensyn til 	&  	x_1	 & +   2 x_2 & +   3 x_3 &       & + \ \ x_5 &           &           & = 3 \\
+					&  -x_1	 & +   2 x_2 & +   6 x_3 &       &           & + \ \ x_6 &           & = 2 \\
 					&        &     4 x_2 & +   9 x_3 &       &           &           & + \ \ x_7 & = 5 \\
-					&   	 &           &     3 x_3 & + x_4 &           &           &       & = 1 \\
+					&   	 &           &     3 x_3 & + x_4 &           &           &           & = 1 \\
 	og $x_1, \dots, x_7 \geq 0$.
-	\end{tabular}
-	\end{center}
+\end{tabular}
+\end{center}
 
-%eks ikke færdigt. + tabellerne skal fikses
+En mulig basis løsning til det hjælpende problem fås ved at lade $(x_5, x_6, x_7, x_4) = b = (3,2,5,1)$. 
+Den korresponderende basismatrix er da identiteten. 
+Derudover er $c_B = (M,M,M,0)$. 
+Den reducerede kost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilket giver følgende tabel.
+
+\begin{center}
+\begin{tabular}{|c|c|ccccccc|}
+\hline
+	 &  & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ \\
+\hline
+	 & $-10M$ & 1 & $-8M+1$ & $-18M+1$ & 0 & 0 & 0 & 0 \\
+\hline
+	$x_5=$ & 3 & 1  & 2 & 3    & 0 & 1 & 0 & 0 \\
+	$x_6=$ & 2 & -1 & 2 & 6    & 0 & 0 & 1 & 0 \\
+	$x_7=$ & 5 & 0  & 4 & 9    & 0 & 0 & 0 & 1 \\
+	$x_4=$ & 1 & 0  & 0 & $3*$ & 1 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Den reducerede kost for $x_3$ er negativ når $M$ er stor nok. 
+Derfor er $x_3$ nu en del af basen, og $x_4$ er ikke. 
+For at sætte den reducerede kost af $x_3$ til nul, skal hele rækken multipliceres med $6M- \frac{1}{3}$, samt lægge det til den nulte række. 
+Den nye tabel vil så se ud som følger.
+
+\begin{center}
+\begin{tabular}{|c|c|ccccccc|}
+\hline
+	 &  & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ \\
+\hline
+	 & $-4M- \frac{1}{3}$ & 1 & $-8M+1$ & 0 & $6M- \frac{1}{3}$ & 0 & 0 & 0 \\
+\hline
+	$x_5=$ & 2 & 1 & 2 & 0 & -1 & 1 & 0 & 0 \\
+	$x_6=$ & 0 & -1 & $2*$ & 0 & -2 & 0 & 1 & 0 \\
+	$x_7=$ & 2 & 0 & 4 & 0 & -3 & 0 & 0 & 1 \\
+	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\frac{1}{3}$ & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Det ses nu, at den reducerede kost af $x_2$ er negativ når $M$ er tilstrækkelig stor, hvorfor $x_2$ nu bringes ind i basen og $x_6$ udgår. 
+Tabellen ser nu således ud.
+
+\begin{center}
+\begin{tabular}{|c|c|ccccccc|}
+\hline
+	 &  & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ \\
+\hline
+	 & $-4M- \frac{1}{3}$ & $-4M+ \frac{3}{2}$ & 0 & 0 & $-2M+ \frac{2}{3}$ & 0 & $4M- \frac{1}{2}$ & 0 \\
+\hline
+	$x_5=$ & 2 & $2*$ & 0 & 0 & 1 & 1 & -1 & 0 \\
+	$x_2=$ & 0 & $- \frac{1}{2}$ & 1 & 0 & -1 & 0 & $\frac{1}{2}$ & 0 \\
+	$x_7=$ & 2 & 2 & 0 & 0 & 1 & 0 & -2 & 1 \\
+	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\frac{1}{3}$ & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+På samme måde bringes $x_1$ nu ind i basen, samtidig med $x_5$ udgår. 
+
+\begin{center}
+\begin{tabular}{|c|c|ccccccc|}
+\hline
+	 &  & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ \\
+\hline
+	 & $- \frac{11}{6}$ & 0 & 0 & 0 & $-\frac{1}{12}$ & $2M-\frac{3}{4}$ & $2M+ \frac{1}{4}$ & 0 \\
+\hline
+	$x_1=$ & 1 & 1 & 0 & 0 & $\frac{1}{2}$ & $\frac{1}{2}$ & $-\frac{1}{2}$ & 0 \\
+	$x_2=$ & $\frac{1}{2}$ & 0 & 1 & 0 & $-\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & 0 \\
+	$x_7=$ & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 1 \\
+	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\frac{1}{3}*$ & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Nu bringes $x_4$ ind i basen, og $x_3$ udgår. 
+
+\begin{center}
+\begin{tabular}{|c|c|ccccccc|}
+\hline
+	 &  & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ \\
+\hline
+	 & $- \frac{7}{4}$ & 0 & 0 & $\frac{1}{4}$ & 0 & $2M-\frac{3}{4}$ & $2M+ \frac{1}{4}$ & 0 \\
+\hline
+	$x_1=$ & $\frac{1}{2}$ & 1 & 0 & $-\frac{3}{2}$ & 0 & $\frac{1}{2}$ & $-\frac{1}{2}$ & 0 \\
+	$x_2=$ & $\frac{5}{4}$ & 0 & 1 & $\frac{9}{4}$ & 0 & $\frac{1}{4}$ & $\frac{1}{4}$ & 0 \\
+	$x_7=$ & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 1 \\
+	$x_4=$ & 1 & 0 & 0 & 3 & 1 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Med en stor nok værdi for M er alle reducerede kost ikke-negative, og der er fundet en optimal løsning til det hjælpende problem.
+Alle de kunstige variable er blevet lig nul, hvorfor der nu haves en optimal løsning til det originale problem.  
 \end{eks}
-
-hello world!
