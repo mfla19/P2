@@ -1,0 +1,157 @@
+\chapter{Simplex Metoden}
+Af forrige kapitel fremgik det at den optimale løsning altid vil være en mulig basisløsning, og af Sætning 
+fremgår det hvordan en basisløsning findes. 
+Problemet er at hvis alle basisløsninger skal testes for et standard problem med uligheder, skal der testes $\binom{n}{m}$ muligheder. 
+Derfor er det nødvendigt at finde en metode, at finde den optimale løsning uden at skulle kigge på hvert enkelt tilfælde. 
+En af metoderne som kan anvendes er Simplex metoden, i dette kapitel vil Simplex metoden og forskellige implementeringer af metoden, derfor blive gennemgået med udgangspunkt i .
+\section{Udledning af Simplex metoden}
+Simplex metoden starter med en basisløsning, og går så i en mulig retning indtil at den finder en ny basisløsning.
+\begin{defn}[Mulig retning]
+Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retningen} fra $\vec{x}$, hvis der eksistere en positiv skalar $\theta > 0$ således at $\vec{x}+\theta\vec{d} \in P$ 
+\end{defn}
+Det er derfor nødvendigt at kunne skrive en basisløsning som et udtryk af en anden basisløsning og en mulig retnings vektor.
+\begin{stn}
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, da eksistere der en vektor $\vec{d}\in \mathds{R}^n$, og en skalar $\theta^*\geq 0$ så $\vec{y}= \vec{x} + \theta^* \vec{d}$ er en basisløsning til $\vec{x}$, hvis $P$ ikke indeholder en linje.
+\label{stn:matbagsim}
+\end{stn}
+Sætning \ref{stn:matbagsim} består af tre påstande, at der eksistere en vektor $\vec{d}$, en skalar $\theta^*$ og at $\vec{y}$ er en basisløsning.
+Derfor splittes sætningen op i lemmaer, og eksistensen af $\vec{d}$ vises først.
+\begin{lma}
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, da eksistere der en vektor $\vec{d}\in \mathds{R}^n$, så $\vec{x} + \vec{d} \in P$, og så $\vec{d}$ introducere $x_j$ og kun $x_j$ til basisløsningen.
+\label{lma:retningsvektor}
+\end{lma}
+\begin{proof}
+%Først konstrueres $\vec{d}$.
+Lad $B$ betegne basismatrixen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
+%Da $\vec{y}$ skal være en nabo basisløsning, må der eksistere en variable $x_j$ for $j \notin I_B$, så $x_j = 0$ for $\vec{x}$ og $\vec{x_j} \neq 0 $ for $\vec{y}$. 
+Da skal $\vec{d}$ introducere $x_j$ og kun $x_j$ til basisløsningen, konstruer derfor $\vec{d}$ så $x_j \neq 0$ for $\vec{x}+\vec{d}$, lad derfor $d_j=1$, og $d_i = 0$ for $i\notin I_B$ og $i \neq j$. 
+Bemærk at da $\vec{x}+ \theta^*\vec{d} \in P$ må
+\begin{align*}
+	A(\vec{x}+\theta^* \vec{d}) = A\vec{x} + \theta^* A \vec{d}  & = \vec{b} \qquad \Rightarrow
+	\\ A \vec{d} &= \vec{0}
+\end{align*}
+Lad nu $\vec{d}_B$ betegne indgangene i $\vec{d}$ så $d_i \in \vec{d}_B$ for $i \in I_B$. 
+Det følger derfor, at
+\begin{align*}
+A \vec{d} = \sum_{i \in I_B} \vec{A_i} \vec{d_i} + \vec{A_j} &= B\vec{d}_B + \vec{A_j} = 0 \qquad \Rightarrow
+\\ \vec{d}_B &= -B^{-1}\vec{A_j}.
+\end{align*}
+Bemærk, at $B^{-1}$ eksistere ifølge Sætning %Mangler.
+Det betyder at $\vec{d}_B = -B^{-1}\vec{A_j}$, mens at $d_j = 1$ og $d_i = 0$ for $i\notin I_B$ og $i \neq j$.
+\end{proof}
+Det fremgår af beviset for Lemma \ref{lma:retningsvektor} at $\vec{d}$ eksisterer og kan skrives som et udtryk af basismatricen til $\vec{x}$ og den $j$ søjle i $A$. 
+Vektoren $\vec{d}$ defineres derfor som den $j$te retningsvektor. 
+\begin{defn}[$j$te retningsvektor]
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning med basis matrix $B$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$, da er den \textbf{$j$te retningsvektor} givet ved $\vec{d}_B = - B^{-1} A_j$ $d_j = 1$ og $d_i = 0$ for $i\notin I_B$ og $i \neq j$.
+\end{defn}
+For at $\vec{y}$ kan være en basisløsning må den kun have $m$ basis variable, og da $\vec{d}$ introducere en ny variabel til løsningen, må $\theta^*$ skulle konstrueres så den fjerner en variable fra løsningen.
+\begin{lma}
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, $\vec{d}$ være den $j$te retningsvektor.
+Da eksistere der en skalar $\theta^* \geq 0$, så $\vec{x} + \theta^* \vec{d} \in P$, og så $\theta^* $ fjerne $x_l$ fra basisløsningen, hvis $P$ ikke indeholder en halvlinje.
+\label{lma:skalar}
+\end{lma}
+\begin{proof}
+Lad $B$ betegne basismatrixen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
+Antag først at $\vec{d}\geq \vec{0}$ da vil $\vec{x}+\theta^*\vec{d}$ altid overholde alle lighedsbetingelser og positivitets betingelser for $\theta^* \geq 0$. 
+Derfor vil $P$ indeholde en linje, da det går mod antagelsen om at $P$ ikke indeholder en linje, må mindst en indgang i $\vec{d}$ være negativ, kald denne for $d_i$.
+Da må 
+\begin{align*}
+ 0 &= x_i + \theta^* d_i \qquad \Rightarrow
+ \\ \theta^* = -\frac{d_i}{x_i}.
+\end{align*} 
+\\Hvis $\vec{x} + \theta^* \vec{d} \in P$, må intet $x_i$ blive mindre end $0$, hvorfor $x_l$ vælges så $\frac{x_i}{d_i}$ er så lille som muligt for $d_i < 0$. 
+Dermed bliver $\theta^* = \underset{i \in I_B}{\min}\{\frac{x_i}{d_i}\}$. 
+\end{proof}
+Bemærk at da det er antaget at ingen løsninger er degenrete, følger det af Sætning %Mangler
+, at $\theta^*$ fjerner en og kun en basisvariable fra løsningen.
+Igen kan $\theta$ defineres udfra formlen fundet i beviset for Lemma \ref{lma:skalar}.
+\begin{defn}[$j$te skalar]
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, $\vec{d}$ være den $j$te retningsvektor, og $P$ ikke indeholder en linje.
+Da er den \textbf{$j$te skalar} givet ved $\theta^* = \underset{i \in I_B}{\min}\{\frac{x_i}{d_i}\}$.
+\end{defn}
+Efter at have vist både eksistensen af $\vec{d}$ og skalaren $\theta^*$, kan det vises at $\vec{y}$ er en basisløsning. 
+Sætning \ref{stn:matbagsim} bevises derfor.
+\begin{proof}
+Det følger af Lemma \ref{lma:retningsvektor} og Lemma \ref{lma:skalar}, at $\vec{d}$ og $\theta^*$ eksistere. 
+For at vise at $\vec{y}$ er en basisløsning, bemærkes at $x_i = 0$ for $i \notin I_{B'} = I_B\setminus\{l\}\cup\{j\}$ og at Basismatrixen for $\vec{y}$ er matricen $B'$ med søjlerne $A_i$ for $i \in I_{B'}$. 
+Det følger derfor af Sætning
+at $\vec{y}$ er en basisløsning hvis søjlerne i $B'$ er lineært uafhængig.
+Antag derfor for modstrid at søjlerne er lineært afhængige, da følger det af Definition
+at
+\begin{align*}
+ \sum_{i \in I_{B'}} \lambda_i A_i = \vec{0}.
+\end{align*}
+Da $B$ og $B'$ kun er forskellige i en søjle, må
+\begin{align*}
+ \\ \sum_{i \in I_{B'}}  B^{-1} \lambda_i A_i  =\sum_{i \in I_{B'}\setminus \{j\}} \vec{e_i} + B^{-1} \lambda_j A_j = \vec{0}.
+\end{align*}
+Dvs. at søjlerne i $B'$ er lineært uafhængige, hvis $A_{jl} = 0$.
+Bemærk at $B^{-1} \lambda_j A_j = - \vec{d}_B$, hvis $l$te indgang pr. definition er forskellig fra $0$. 
+Hvorfor alle søjler $B'$ er lineært uafhængige, hvorfor at alle rækker er lineært uafhængige og $\vec{y}$ er en basisløsning.
+Bemærk at da $\vec{x}\in P$ og $\vec{d}$ og $\theta^*$ er konstrueret så $\vec{x}+\theta^*\vec{d} \in P$ må $\vec{y} \in P$, hvormed $\vec{y}$ er en mulig basisløsning.
+\end{proof}
+Det er nu vist, hvordan det er muligt at gå fra en basis løsning til en anden.
+ Bemærk at de to løsninger er naboløsninger, da det er antaget at ingen af dem er degenerate, og der derfor kun bliver introduceret en ny variable og fjernet en gammel, hvorfor at løsningerne må dele samme krav på nær et. 
+Det er nu nødvendigt at finde en måde, så at den basisløsning, som findes minimere objektfunktionen mere end den foregående, ellers vil alle basisløsninger stadig skulle tjekkes. 
+\begin{stn}
+Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, da er ændringen i obejktfunktionen ved at introducere $x_j$ til løsningen givet ved
+\begin{align*}
+ \Delta c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}.
+\end{align*}
+\end{stn}
+\begin{proof}
+Antag først at $x_j$ ikke er en basis variable til at starte med, da vil den $j$te retningsvektor introducere $x_j$ til løsningen, hvorfor,
+\begin{align*}
+\Delta c_j = \vec{c}^T(\vec{x}+ \vec{d}) - \vec{c}^T\vec{x} = \vec{c}^T\vec{d} = \sum_{i \in I_B} c_i d_i + c_j.
+\end{align*}
+Lad nu $\vec{c}_B = \rvect{c_{B(1)}& \cdots & c_{B(m)}}$, da vil
+\begin{align}
+\Delta c_j =\vec{c}_B\vec{d}_B+ c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}.
+\end{align}
+Antag nu at $x_j$ er en basisvariable da vil 
+\begin{align*}
+\Delta c_j = \vec{c}^T\vec{x}- \vec{c}^T\vec{x} = 0.
+\end{align*}
+Det undersøges derfor om $ c_j-\vec{c}_B B^{-1}\vec{A_j}= 0$, hvis $x_j$ er en basisvariable.
+\begin{align*}
+ \Delta c_j = c_j-\vec{c}_B^T B^{-1}\vec{A_j} = c_j - \vec{c}_B^T \vec{e_j} = c_j - c_j = 0.
+\end{align*}
+Det kan derfor konkluderes at $\Delta c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}$ for et hvert $x$.
+\end{proof}
+Det må derfor være bedst at gå enten i den retning hvor $\Delta c_j$ er størst eller $\theta^*\Delta c_j$ er størst. 
+Hvis der ikke sker en ændring eller ændringen forstører objektfunktionen på den fundene basisløsning nødvendigvis være optimal.
+\begin{stn}
+Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, så er $\vec{x}$ optimal, hvis og kun hvis $\Delta c_j \geq 0$ for alle $j$.
+\end{stn}.
+\begin{proof}
+Antag først at $\vec{x}$ er optimal, da vil $\vec{c}^T\vec{x} \leq \vec{c}^T\vec{y}$ for alle $\vec{y} \in P$. 
+Antag for modstrid at $\Delta c_j < 0$ for en basisvariable $x_j$, da følger det at $\vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c}^T\vec{x} + \Delta c_j \leq \vec{c}^T\vec{x}$, hvilket strider mod antagelsen om at $\vec{x}$ er optimal.
+
+
+Det følger af Sætning
+at den optimale løsning er en basisløsning, derfor kan det antages at $\vec{y}$ er en basisløsning, derfor må der eksistere et $\theta^*$ og en $\vec{d}$ så $\vec{y} = \vec{x}+ \theta^* \vec{d}$.
+Derfor må
+\begin{align*}
+	\vec{c}^T\vec{x}\leq \vec{c}^T\vec{y} = \vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c} + \theta^* \Delta c_j.
+\end{align*}
+Da $\theta^* \geq 0$ betyder det, at så længe $\Delta c_j \geq 0$ så er uligheden overholdt og $\vec{x}$ er optimal.
+\\ Antag nu at $\Delta c_j \geq 0$, da vil  
+\begin{align*}
+	\vec{c}^T\vec{x}\leq \vec{c}^T\vec{y} = \vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c} + \theta^* \Delta c_j.
+\end{align*}
+for et hvert $\vec{y} \in P$, hvorfor $\vec{x}$ er optimal.
+
+\end{proof}
+Det kan alt sammen opsumeres til Simplex metoden
+
+
+\begin{stn}
+Simplex metoden fungere
+\end{stn}
+\begin{proof}
+
+\end{proof}
+
+
+
+
