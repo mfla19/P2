@@ -1,7 +1,7 @@
 \chapter{Simplex Metoden}
 Af forrige kapitel fremgik det at den optimale løsning altid vil være en mulig basisløsning, og af Sætning 
 fremgår det hvordan en basisløsning findes. 
-Problemet er at hvis alle basisløsninger skal testes for et standard problem med uligheder, skal der testes $\binom{n}{m}$ muligheder. 
+Problemet er at hvis alle basisløsninger skal testes for et standard problem med uligheder, skal optil $\binom{n}{m}$ muligheder testes. 
 Derfor er det nødvendigt at finde en metode, at finde den optimale løsning uden at skulle kigge på hvert enkelt tilfælde. 
 En af metoderne som kan anvendes er Simplex metoden, i dette kapitel vil Simplex metoden og forskellige implementeringer af metoden, derfor blive gennemgået med udgangspunkt i .
 \section{Udledning af Simplex metoden}
@@ -98,6 +98,7 @@ Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, da er ændringen i ob
 \begin{align*}
  \Delta c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}.
 \end{align*}
+\label{stn:Deltac}
 \end{stn}
 \begin{proof}
 Antag først at $x_j$ ikke er en basis variable til at starte med, da vil den $j$te retningsvektor introducere $x_j$ til løsningen, hvorfor,
@@ -126,31 +127,59 @@ Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, så er $\vec{x}$ opti
 \begin{proof}
 Antag først at $\vec{x}$ er optimal, da vil $\vec{c}^T\vec{x} \leq \vec{c}^T\vec{y}$ for alle $\vec{y} \in P$. 
 Antag for modstrid at $\Delta c_j < 0$ for en basisvariable $x_j$, da følger det at $\vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c}^T\vec{x} + \Delta c_j \leq \vec{c}^T\vec{x}$, hvilket strider mod antagelsen om at $\vec{x}$ er optimal.
-
-
-Det følger af Sætning
-at den optimale løsning er en basisløsning, derfor kan det antages at $\vec{y}$ er en basisløsning, derfor må der eksistere et $\theta^*$ og en $\vec{d}$ så $\vec{y} = \vec{x}+ \theta^* \vec{d}$.
-Derfor må
+Antag nu, at $\Delta c_j \geq 0$ og lad $\vec{y}$ være en vilkårlig vektor i $P$, og lad $\vec{d}=\vec{y}-\vec{x}$.
+Bemærk at $A\vec{d} = A\vec{y}- A\vec{x} =  \vec{b} - \vec{b} =\vec{0}$.
+Lad nu $\vec{d}_B = \rvect{d_{B(1)} & \cdots & d_{B(m)}}^T$, og lad $N= \{i \leq n| i \neq B(1),...,B(m)\}$, da kan matrix-vektorproduktet omskrives til:
 \begin{align*}
-	\vec{c}^T\vec{x}\leq \vec{c}^T\vec{y} = \vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c} + \theta^* \Delta c_j.
+	B\vec{d}_B + \sum_{i \in N} \vec{A}_i d_i = \vec{0} \qquad \Rightarrow
+	\\ \vec{d}_B = - B^{-1}\sum_{i \in N} \vec{A}_i d_i
 \end{align*}
-Da $\theta^* \geq 0$ betyder det, at så længe $\Delta c_j \geq 0$ så er uligheden overholdt og $\vec{x}$ er optimal.
-\\ Antag nu at $\Delta c_j \geq 0$, da vil  
+Bemærk at det benyttes at $B$ er invertibel ifølge Sætning %Mangler
+Da tages objektfunktionen til $\vec{d}$ for at finde prisen for at gå fra $\vec{x}$ til $\vec{y}$.
 \begin{align*}
-	\vec{c}^T\vec{x}\leq \vec{c}^T\vec{y} = \vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c} + \theta^* \Delta c_j.
+ \vec{c}^T\vec{d} &= \vec{c}_B^T\vec{d}_B + \sum_{i \in N} c_i d_i 
+ \\&= \vec{c}_B^T(- B^{-1}\sum_{i \in N} \vec{A}_i d_i) + \sum_{i \in N} c_i d_i  
+ \\&= \sum_{i \in N} (- \vec{c}_B^T B^{-1} \vec{A}_i d_i) +  c_i d_i 
+ \\&= \sum_{i \in N} ( c_i - \vec{c}_B^TB^{-1}\vec{A}_i ) d_i
 \end{align*}
-for et hvert $\vec{y} \in P$, hvorfor $\vec{x}$ er optimal.
-
+Det følger af Sætning \ref{stn:Deltac} at $\Delta c_i = c_i - \vec{c}_B^TB^{-1}\vec{A}_i $, hvorfor
+\begin{align*}
+\vec{c}^T\vec{d} = \sum_{i \in N} \Delta c_i d_i.
+\end{align*}
+Da $\vec{x}$ er en basisløsning må $x_i = 0$ for $i \in N$, og da $\vec{y} \in P$ må $\vec{y} \geq \vec{0}$, dermed må $d_i = y_i - x_i \geq 0$, og da $\Delta c_i$ var antaget at være ikke negativ, medfører det at
+\begin{align*}
+\vec{c}^T\vec{d} = \vec{c}^T\vec{y}-\vec{c}^T\vec{x} \geq 0 \qquad \Rightarrow
+\\ \vec{c}^T\vec{x} \leq \vec{c}^T\vec{y}
+\end{align*}
+for et hvert $\vec{y} \in P$, da $\vec{y}$ var vilkårligt valgt, derfor må $\vec{x}$ være optimal.
 \end{proof}
-Det kan alt sammen opsumeres til Simplex metoden
-
-
+Det kan alt sammen opsummeres til Simplex metoden
+\begin{pro}[Procedure for Simplex metoden]
+\noindent 1. Vælg en basisløsning $\vec{x}$ med basismatrix $B$
+\\ 2. Beregn $\Delta c_j$ for alle $j \notin I_B$. 
+\\  		\qquad Hvis $\Delta c_j\geq 0$ for alle $j \notin I_B$ stop, $\vec{x}$ er optimal.
+\\		\qquad  Hvis $\Delta c_j < 0$ for en $j \notin I_B$ vælg mindste $c_j$.
+\\ 3. Find $\vec{d}_j$
+\\		\qquad  Hvis $d_i \geq 0 $ for alle $i \in I_B$ stop, den optimaleværdi er $- \infty$.
+\\		\qquad  Hvis $d_i < 0 $ for mindst et $i \in I_B$, vælg $B(l)$ så $\frac{x_{B(l)}}{d_{B(l)}}\leq \frac{x_i}{d_i} $ for ethvert $i \in I_B$
+\\ 4. Find $\theta^*$
+\\ 5. Find den nye basisvektor og basismatrix.
+\\ 6. Gå til step 2.
+\label{pro:simplex}
+\end{pro}
+Til sidst vises at Simplex metoden altid vil finde frem til den optimaleløsning efter et endeligt antal interationer.
 \begin{stn}
-Simplex metoden fungere
+Lad $P \neq \emptyset$, da stopper Simplex metoden efter et endeligt antal interationer, enten ved at finde den optimale løsning eller at den optimale værdi er $- \infty$
 \end{stn}
 \begin{proof}
-
-\end{proof}
+Antag først at Simplex metoden stopper efter step 2 i Program \ref{pro:simplex}, da følger det af Sætning 
+at basisløsninge er optimal, og Simplex metoden har derfor fundet den optimale løsning.
+\\ Antag nu at Simplex metoden stopper efter step 3 i Program \ref{pro:simplex}, da følger det af beviset for Lemma \ref{lma:skalar}, at $P$ indeholder en linje, hvorfor det følger af Sætning
+at den optimale værdi er $-\infty$.
+\\ Da der kun er en endelig mængde basisløsninger i følge Sætning 
+må Simplex metoden altid stoppe, med mindre, at den cirkulere igennem de samme basisløsninger.
+Da den $j$te retnings vektor altid vælges så $\Delta c_j < 0$, må den samme basisløsning aldrig kunne blive besøgt mere end en gang, hvorfor der ikke kan opstå en ring, og Simplex metoden må derfor stoppe efter et endeligt antal interationer.
+\end{proof} 
 
 
 
