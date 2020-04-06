@@ -1,0 +1,74 @@
+\section{Konveks}
+\begin{defn} [Konveks mængde]
+Lad $S \subset \mathds{R}^n$  da er $S$ konveks, hvis der $\forall \vec{x}, \vec{y} \in S$ og et vilkårligt $\lambda \in [0,1]$ gælder at $\lambda \vec{x} + (1-\lambda) \vec{y} \in S$.
+\label{def:Konveks}
+\end{defn}
+Med andre ord så vil ligningen $\lambda \vec{x} + (1-\lambda) \vec{y}$, hvor $\lambda$ ligger i intervallet fra $0$ til $1$, danne en linje af elementer mellem $\vec{x}$ og $\vec{y}$, hvis alle disse elementer er inden som området $S$, så er mængden konveks.
+
+\begin{stn}
+Lad $P =\{ \vec{x} \in \mathds{R}^n | A \vec{x} \geq \vec{b}\} $ være en poliede, da er $P$ konveks.
+\label{stn:polykon}
+\end{stn}
+\begin{proof}
+Lad $\vec{x}, \vec{y} \in P=\{ \vec{x} \in \mathds{R}^n | A \vec{x} \geq \vec{b}\}$ være to vilkårlige vektorer, da gælder at $A\vec{x} \geq \vec{b}$ hvilket medfører at $\lambda A \vec{x} \geq \lambda\vec{b}$, hvor $\lambda \in [0,1]$ er en skalar. 
+På ligefod må der derfor gælde at $(1-\lambda)A\vec{y} \geq (1-\lambda)\vec{b}$.
+De to uligheder adderes nu
+\begin{align*}
+\lambda A \vec{x} + (1-\lambda) A \vec{y} \geq \lambda \vec{b} + (1 - \lambda) \vec{b}
+\\  A (\lambda\vec{x} + (1-\lambda)\vec{y}) \geq \vec{b}.
+\end{align*}
+Derfor må $\lambda\vec{x} + (1-\lambda)\vec{y} \in P$.
+\end{proof}
+
+\begin{defn}[Konveks funktion]
+Lad $f:A\to B$ være en funktion, da er $f$ en \textbf{konveks funktion} hvis
+\begin{align*}
+	f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda)f(y), \qquad \forall x,y \in A, \forall \lambda \in [0,1]
+\end{align*}
+\end{defn}
+
+\begin{stn}
+En lineær funktion er en konveksfunktion.
+\label{stn:funkon}
+\end{stn}
+\begin{proof}
+Lad $f:A\to B$ være en lineær funktion, da følger det af Definition
+at 
+\begin{align*}
+f(\lambda x + (1-\lambda) y)  = f(\lambda x) + f((1-\lambda)y)  = \lambda f(x) + (1-\lambda)f(y)
+\end{align*}
+for alle $x,y \in A$ og $\lambda \in \mathds{R}$. 
+Derfor må det også gælde for $\lambda \in [0,1] \subset \mathds{R}$, hvorfor det kan konkluderes at $f$ er konveks.
+\end{proof}
+
+\begin{defn}[Lokalt optimal løsning]
+Lad $\vec{x} \in P$ være en løsnings til et lineært programerigns problem med objektfunktion $f$ da er $\vec{x}$ en lokal optimal løsning, hvis $f(\vec{x}) \leq f(\vec{y})$ for $|\vec{y}-\vec{x}|< \epsilon$ for et $\epsilon > 0$ og $\vec{y} \in P$.
+\end{defn}
+
+
+\begin{stn}
+Lad $\vec{x} \in P$ være en lokal optimal løsnings til et lineært programerignsproblem  med objektfunktion $f$.
+Da er  $f(\vec{x}) \leq f(\vec{y})$ for alle $\vec{y} \in P$.
+\end{stn}
+
+\begin{proof}
+Antag at $\vec{x}^* \in P$ er en optimal løsning.
+Da $P$ er en polyeder, følger det af Sætning \ref{stn:polykon}, at $P$ er konveks, hvormed $\lambda \vec{x}^* + (1-\lambda)\vec{x} \in P$. 
+Da $\lambda$ kan vælges til at være vilkårligt tæt på nul, må $|\lambda \vec{x}^* + (1-\lambda)\vec{x} - \vec{x}| < \epsilon$ da
+\begin{align*}
+ |\lambda \vec{x}^* + (1-\lambda)\vec{x} - \vec{x}| = | \lambda \vec{x}^* - \lambda\vec{x}| = \lambda|\vec{x}^* - \vec{x}| < \epsilon.
+\end{align*}
+Da $\vec{x}$ er en lokal optimal løsning, følger det, at
+\begin{align*}
+f(\vec{x}) \leq f(\lambda \vec{x}^* + (1-\lambda)\vec{x}).
+\end{align*}
+Da $f$ er lineær følger det af Sætning \ref{stn:funkon}, at $f$ er konveks, hvorfor
+\begin{align*}
+f(\vec{x}) \leq f(\lambda \vec{x}^* + (1-\lambda)\vec{x}) &\leq \lambda f(\vec{x}^*) + (1-\lambda)f(\vec{x}) \qquad \Rightarrow
+\\ f(\vec{x}) - f(\vec{x}) &\leq \lambda f(\vec{x}^*) + (1-\lambda)f(\vec{x}) \qquad \Rightarrow
+\\ 0 & \leq \lambda( f(\vec{x}^*) - f(\vec{x})),
+\end{align*}
+hvis $\lambda$ er lille nok.
+Da $\vec{x}^*$ er en optimal løsning, betyder det at $f(\vec{x}^*) \leq f(\vec{x})$, dermed vil højre siden af uligheden $0 \leq \lambda( f(\vec{x}^*) - f(\vec{x}))$ være negativ, med mindre at $f(\vec{x}^*) =f(\vec{x})$. 
+Det kan derfor konkluderes, hvis $\vec{x}$ er en lokal optimal løsning, så er $\vec{x}$ en optimal løsning.
+\end{proof}

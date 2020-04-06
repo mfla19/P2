@@ -1,0 +1,69 @@
+
+
+
+\begin{defn}[Konveks kombination]
+Lad $\vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n$, og $\lambda_1,..., \lambda_k \geq 0 $ være skalare, som opfylder $\sum_{i=1}^k \lambda_i =1$ da er $\sum_{i=1}^k \lambda_i \vec{x}^1$ en \textbf{konveks kombination}.
+\label{def:KonveksKombination}
+\end{defn}
+
+\begin{stn}[Konveks kombination]
+Lad $S\subset \mathds{R}^n$ være en konveks mængde, da
+\begin{align*}
+	\sum_{i=1}^k \lambda_i \vec{x}^i \in S, \qquad \vec{x}^1, ...,\vec{x}^k \in S.
+\end{align*}
+\label{stn:KonveksKombination}
+\end{stn}
+
+\begin{proof}
+For at vise Sætning \ref{stn:KonveksKombination} gøres brug af et induktionsbevis.
+Lav derfor induktionsstarten ved at betragte den konvekse kombination $\sum_{i=1}^2 \lambda_i \vec{x}^1$.
+Da $\sum_{i=1}^2 \lambda_i = \lambda_1 + \lambda_2 = 1$ ifølge Definition \ref{def:KonveksKombination} (a), må $\lambda_2 = (1 - \lambda_1)$.
+Det indsættes nu i den konvekse kombination af $\vec{x}^1$ og $\vec{x}^2$, hvorfor at $\lambda_1 \vec{x}^1+ (1-\lambda_1) \vec{x}^2$.
+Da $S$ er konveks følger det af Definition \ref{def:Konveks} at $\sum_{i=1}^2 \lambda_i \vec{x}^1 \in S$.
+\\Antag derefter at $\sum_{i=1}^k \lambda_i \vec{x}^i \in S$ som induktionshypotesen.
+\\ Det vises nu at induktionshypotesen medfører at Sætning \ref{stn:KonveksKombination} også gælder for $k+1$.
+Lav derfor induktionstrinnet ved at betragte 
+\begin{align*}
+	\sum_{i=1}^{k+1} \lambda_i \vec{x}^i &= \lambda_{k+1}\vec{x}^{k+1} + \sum_{i=1}^k \lambda_i \vec{x}^i
+	\\ &= \lambda_{k+1}\vec{x}^{k+1} + \frac{1-\lambda_{k+1}}{1-\lambda_{k+1}} \sum_{i=1}^k \lambda_i \vec{x}^i
+	\\ &= \lambda_{k+1}\vec{x}^{k+1} + (1-\lambda_{k+1}) \sum_{i=1}^k \frac{1}{1-\lambda_{k+1}} \lambda_i \vec{x}^i
+\end{align*}
+Observer da at da $\sum_{i=1}^{k+1} \lambda_i \vec{x}^i $ gælder
+\begin{align*}
+	\sum_{i=1}^{k+1} \lambda_i  & = 1
+	\\ \sum_{i=1}^{k} \lambda_i &= 1 - \lambda_{k+1}
+	\\ \frac{1}{1-\lambda_{k+1}} \sum_{i=1}^{k} \lambda_i &= \frac{1-\lambda_{k+1}}{1-\lambda_{k+1}} = 1.
+\end{align*}
+Derfor er $\sum_{i=1}^k \frac{1}{1-\lambda_{k+1}} \lambda_i \vec{x}^i$ en konveks kombination af $k$ elementer, hvorfor det følger af induktionshypotesen at $\sum_{i=1}^k \frac{1}{1-\lambda_{k+1}} \lambda_i \vec{x}^i \in S$, hvorfor at $\sum_{i=1}^{k+1} \lambda_i \vec{x}^i \in S$, og sætningen er bevist.
+\end{proof}
+
+\begin{defn}[Konveks huld]
+Lad $\vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n$, da er $C_{x} = \{\sum_{i=1}^k \lambda_i \vec{x}^1| \vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ et \textbf{konveks huld} for vektorene $\vec{x}^1, ...,\vec{x}^k$. 
+\label{def:Konvekshuld}
+\end{defn}
+
+\begin{stn}[Konvekse mængder]
+Konveks huldet $C_x = \{\sum_{i=1}^k \lambda_i \vec{x}^1| \vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ over en endelig mængde vektorer, er en konveks mængde
+\end{stn}
+
+\begin{proof}
+Lad $\vec{z}, \vec{y}\in C_x = \{\sum_{i=1}^k \lambda_i \vec{x}^i| \vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ være vilkårlige vektorer da må $\vec{z}= \sum_{i=1}^k \gamma_i \vec{x}^i, \vec{y}= \sum_{i=1}^k \eta_i \vec{x}^i$ for $\sum_{i=1}^k \gamma_i = 1$ og  $\sum_{i=1}^k \eta_i = 1$. 
+Derfor må
+\begin{align*}
+	\lambda \vec{z} + (1- \lambda) \vec{y} &= \lambda\sum_{i=1}^k \gamma_i \vec{x}^i + (1-\lambda)\sum_{i=1}^k \eta_i \vec{x}^i
+	\\ &=\sum_{i=1}^k (\lambda \gamma_i+(1-\lambda)\eta_i )\vec{x}^i,
+\end{align*}
+For $\lambda \in [0,1]$.
+Betragt nu konstanterne 
+\begin{align*}
+	\sum_{i=1}^k (\lambda \gamma_i+(1-\lambda)\eta_i ) &= \lambda \sum_{i=1}^k \gamma_i + (1 - \lambda) \sum_{i=1}^k \eta_i 
+	\\ &= \lambda \cdot 1 + (1 - \lambda) \cdot 1 = 1
+\end{align*}
+Hvorfor at $\lambda \vec{z} + (1- \lambda) \vec{y} $ er en konveks kombination af vektorene $\vec{x}^1, ...,\vec{x}^k $, ifølge Definition \ref{def:KonveksKombination}. 
+Derfor må $ \lambda \vec{z} + (1- \lambda) \vec{y} \in C_x$, hvorfor at $C_x$ er konveks ifølge Definition \ref{def:Konveks}.
+Og sætningen er bevist.
+\end{proof}
+
+\begin{defn}[Simplex]
+Lad $C_x$ være et konveks huld, af $k+1$ affint lineært uafhængige vektorer, da er $C_x$ en $k$-dimentionel \textbf{Simplex}.
+\end{defn}
