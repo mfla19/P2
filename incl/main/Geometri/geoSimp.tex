@@ -1,4 +1,5 @@
 \section{Simplex ud spændt af Basisløsninger}
+For at søjlerne i en basismatrix til en basisløsning skal kunne udspænde en simplex, skal basisløsningen være en løsning til et lineært programmerings problem på konveks form.
 \begin{defn}[Konveks form]
 Et lineært programmeringsproblem på formen:
 \begin{center}
@@ -9,9 +10,9 @@ og				& \vec{e}^T\vec{x} = 1\\
 og 				& \vec{x} \geq \vec{0}, 
 \end{tabular}
 \end{center}
-for $\vec{e} =\rvect{1 & \cdots & 1 }^T$,  siges at være på \textbf{konveks form}, og bibetingelsen $\vec{e}^T\vec{x} = 1$ kaldes konveksbibetingelsen.
+for $\vec{e} =\rvect{1 & \cdots & 1 }^T$,  siges at være på \textbf{konveks form}, og bibetingelsen $\vec{e}^T\vec{x} = 1$ kaldes \textbf{konveksbibetingelsen}.
 \end{defn}.
-
+Grunden til at $\vec{e}^T\vec{x}=1$ kaldes konveksbibetingelsen, er fordi den sørger for at $\vec{b}$ er en konvekskombination af søjlerne i matricen $A$.
 \begin{stn}[Konveks form]
 Et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan omskrives til konveks form.
 \end{stn}
@@ -37,13 +38,15 @@ A \vec{x} = \vec{0} = \vec{b}.
 \end{align*}
 Da det er antaget at $\vec{b} \neq \vec{0}$, må et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan omskrives til konveks form.
 \end{proof}
-
-\begin{defn}[Værdi af $\vec{x}$]
-Lad $f$ være en objektfunktion da er $f(\vec{x}) = z_x$  \textbf{værdien af $\vec{x}$}
-\end{defn}
-
+Så længe at $\vec{b}$ ikke er lig nulvektoren kan ethvert lineært programmerings problem derfor omskrives til konveks form. 
+Grunden til at $\vec{b}$ skal være forskellig fra nulvektoren, er fordi ellers så er nulvektoren en løsning, og den overholder som den eneste vektor ikke konveksbibetingelsen, da det ikke er tilladt at dividere med nul.
+%\begin{defn}[Værdi af $\vec{x}$]
+%Lad $f$ være en objektfunktion da er $f(\vec{x}) = z_x$  \textbf{værdien af $\vec{x}$}
+%\end{defn}
+\\Da vises det at søjlerne i en basismatrix til en basisløsning udspænder en simplex.
 \begin{stn}
-Lad $\vec{x}$ være en basisløsning til et lineært problem på konveks form, så $x_i = 0$ for $i \notin I_B = \{B(1),..., B(m)\}$. Så  $\vec{B}_i  = \rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ en simplex $S_x$, så $\vec{b}_x = \rvect{\vec{b}& z_x}^T \in S_x$
+Lad $\vec{x}$ være en basisløsning til et lineært problem på konveks form, så $x_i = 0$ for $i \notin I_B = \{B(1),..., B(m)\}$.
+ Så  $\vec{B}_i  = \rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ en simplex $S_x$, så $\vec{b}_x = \rvect{\vec{b}& z_x}^T \in S_x$
 \end{stn}
 Bemærk at da problemet er på konveks form vil $|I_B| = m+1$ hvis $A$ er en $n\times m$ matrix, da det i følge Sætning 
 kan antages at alle rækker er lineært uafhængige med $\vec{e}$.
@@ -67,15 +70,15 @@ Det følger af Definition
 at $\vec{b}_x\in S_x$ hvis der eksistere skalare der opfylder $\sum_{i=1}^{m+1} \lambda_i = 1$, så $\sum_{i=1}^{m+1}\lambda_i B_{B(i)}  = \vec{b}_x$.
 Da $\vec{x}$ er en basisløsning følger det at $B \vec{x}_B = \vec{b}_x$ og da $\vec{x}$ er betinget af konveksbetingelsen og $x_i = 0 $ for $i \notin I_B$ må $\sum_{i=1}^{m+1} x_{B(i)} = 1$, hvorfor det følger at $\vec{b}_x \in S_x$.
 \end{proof}
-
+Bemærk at beviset kun inddirekte beviser at søjlerne i en basismarix udspænder en simplex, det kan konkluderes da $B_i$ kun er affint lineær uafhængige fordi $A_{B(i)}$ er, derfor må de også udspænde en simplex, hvor $\vec{b}$ er et element.
 \begin{defn}[Simplex forbundet med basisløsning]
 Lad $\vec{x}$ være en basisløsning så $x_i = 0$ hvis $i \notin I_B$, da er $S_x$ \textbf{Simplexen forbundet med basisløsning $\vec{x}$} hvis simplexen er lig konvekshuldet udspændt af søjlerne af $\rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$.
 \end{defn}
-
+Grunden til at vektorene udvides, er fordi de udvidet vektorer, antages at være punkter i stedet, da vil kordinaterne svarende til indgangende i søjlerne i basismatrixen ligger i samme $m+1$ dimentionelle rum, mens at punkterne svarende til koeficenterne i objektfunktionen ligge i den $m+2$ dimension.  
+Derfor vil ændringen i værdien for opbejkfunktionen for to basisløsninger kunne ses som afstanden mellem de to simplexer forbundet med basisløsningerne i den $m+2$ dimention.
 \begin{prop}
 Afstanden mellem to simplex $S_x$ og $S_y$ forbundet med basisløsningerne $\vec{x}$ og $\vec{y}$ er $z_x - z_y$.
 \end{prop}
-
 \begin{proof}
 For at vise proportionen findes længden af $\rvect{B_x & \vec{c}_B}^T \vec{x} - \rvect{B_y & \vec{c}_y}^T \vec{y}$
 \begin{align*}
@@ -84,4 +87,6 @@ For at vise proportionen findes længden af $\rvect{B_x & \vec{c}_B}^T \vec{x} -
 \end{align*}
 Dermed kan det konkluderes at afstanden mellem to simplex $S_x$ og $S_y$ forbundet med basisløsningerne $\vec{x}$ og $\vec{y}$ er $z_x - z_y$.
 \end{proof}
+Det betyder at hvis objektfunktionen skal minimeres, skal der findes den simplex der ligger tættes på $z = 0$, hvorfor at der altid skal vælges en simplex der ligger lavere end den forrige, dvs. en simpelex, hvor at en ny basisvariable har en lavere koefficient $c_i$ end den gamle basisværdi.
+Det er det simplexmetoden tager udgangspunkt i.
 
