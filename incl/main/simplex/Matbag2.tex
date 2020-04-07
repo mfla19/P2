@@ -6,9 +6,9 @@ Derfor er det nødvendigt at finde en metode, at finde den optimale løsning ude
 En af metoderne som kan anvendes er Simplex metoden, i dette kapitel vil Simplex metoden og forskellige implementeringer af metoden, derfor blive gennemgået med udgangspunkt i .
 \section{Udledning af Simplex metoden}
 Simplex metoden starter med en basisløsning, og går så i en mulig retning indtil at den finder en ny basisløsning.
-\begin{defn}[Mulig retning]
-Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retningen} fra $\vec{x}$, hvis der eksistere en positiv skalar $\theta > 0$ således at $\vec{x}+\theta\vec{d} \in P$ 
-\end{defn}
+%\begin{defn}[Mulig retning]
+%Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retningen} fra $\vec{x}$, hvis der eksistere en positiv skalar $\theta > 0$ således at $\vec{x}+\theta\vec{d} \in P$ 
+%\end{defn}
 Det er derfor nødvendigt at kunne skrive en basisløsning som et udtryk af en anden basisløsning og en mulig retnings vektor.
 \begin{stn}
 Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, da eksistere der en vektor $\vec{d}\in \mathds{R}^n$, og en skalar $\theta^*\geq 0$ så $\vec{y}= \vec{x} + \theta^* \vec{d}$ er en basisløsning til $\vec{x}$, hvis $P$ ikke indeholder en linje.
