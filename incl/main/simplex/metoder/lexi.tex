@@ -1,1 +1,70 @@
-\section{Lexi pivot regel}
+\section{Lexi pivot regl}
+Lexi pivot regl er udviklet ud fra observstioner af simplex metodens opførsel. Ideen med metoden er at den skal sørge for at simplex metoden ikke køre rundt i cykler. Lexi pivot reglen er let at implementere i fuld tabel metoden. 
+\begin{defn}[Lexi mindre]
+En vektor $\vec{u} \in \mathds{R}^n$ siges at være Lexi mindre end en anden vektor $\vec{v} \in \mathds{R}^n$ hvis $\vec{u} \neq \vec{v}$ og den første ikke nul komponent af $\vec{u}-\vec{v}$ er negativ 
+\begin{align*}
+\vec{u} \overset{L}{<} \vec{v}
+\end{align*}
+\end{defn}
+\begin{eks}
+Tag udgangspunkt i de to vektorer: 
+\begin{align*}
+\vec{u}=
+\begin{bmatrix}
+0\\
+5\\
+8\\
+2\\
+\end{bmatrix}
+\text{og}
+\vec{v}= 
+\begin{bmatrix}
+1\\
+3\\
+1\\
+2\\
+\end{bmatrix}
+\end{align*}
+Da gælder det at $\vec{u} \overset{L}{<} \vec{v}$, da den første ikke nul komponent af $\vec{u}-\vec{v}$ er $-1$
+\end{eks}
+
+Fremgangsmåden for Lexi pivot regel er som følger.
+  
+\begin{pro}[Lexi pivot regl]
+\noindent 1. Vælg en vilkårlig indgangssøjle $\vec{A}_j$, det skal gælde at $\Delta c_j$ er negativ. Lad $\vec{u}=B^{-1}\vec{A}_j$ være den $j$'te søjle i simplex-tabellen. \\
+2. For hvert $i$, $u_i>0$, divider med den $i$'te række med $u_i$, og vælg den Lexi mindste række. Hvis $l$ er Lexi mindst, så udgår den $l$'te basis variabel,$x_{B(l)},$ af basen. 
+\end{pro}
+
+Bemærk at Lexi pivot reglen altid fører til et entydigt valg af variabel. Hvis dette ikke var tilfældet måtte det gælde at to rækker i tabllen er proportionelle. Da ville rangen af $B^{-1}A$ være mindre end $m$. Det samme ville være gældende for $A$. Det er i modstrid med antagelsen om at $A$ indeholder lineært uafhængige rækker. 
+
+\begin{defn}[Lexi positiv]
+En vektor $\vec{u} \neq \vec{0}$ kaldes Lexi positiv hvis den første ikke nul komponent er positiv. 
+\end{defn}
+
+ 
+\begin{stn}
+Antag at simplex tabellen fra algoritmens start kun indeholder Lexi positive rækker, bortset fra den nulte række. Følges Lexi pivot reglen så: 
+\begin{enumerate}[label=(\alph*)]
+\item Enhver række i simplex tabellen, foruden den nulte række, forbliver Lexi positiv gennem algoritmen. 
+\item Den nulte række vokser skarpt for hver iteration. 
+\item Simplex metoden slutter efter et endeligt antal iterationer. 
+\end{enumerate}
+\end{stn}
+
+\begin{proof}
+(a) Antag at alle rækker, foruden den nulte række, er Lexi positive, ved starten af en iteration. Antag at $x_j$ indgår i basen, og pivor rækken er den $l$'te række. Så følger det af Lexi pivot reglen at $u_l>0$ og
+\begin{align}
+\frac{(l'te \quad række)}{u_l} \overset{L}{<} \frac{(i'te \quad række)}{u_i}, \quad \quad \text{hvis} \quad  i \neq l \quad \text{og} \quad u_i>0
+\end{align}
+For at bestemme den nye tabel bliver den $l$'te række divideret med et positiv tal $u_l$, og forbliver derfor Lexi positiv. 
+
+Betragt nu den $i$'te række. antag at $u_i<0$
+
+
+(b)Ved starten af en iteration er den reducerede omkostning i pivot søjlen negativ. For at får den reducerede omkostning til at være lig $0$, skal en positiv muliplikation af pivorrækken lægges til. Da de næste rækker er Lexi positive, vil den nulte række vokse. 
+
+
+(c) Da den nulte række vokser ved hver iteration, vil den aldrig komme tilbage til den tidligere værdi. Den reducerede omkostning afhænger af den aktuelle basis, vil den samme basis ikke blive gentaget. Derfor må simplex metoden slutte efter et endeligt antal iterationer. 
+\end{proof}
+
+Det er det nødvendigt at simplex tabellen indeholder Lexi positive rækker. 
