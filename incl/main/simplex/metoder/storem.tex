@@ -1,21 +1,13 @@
 \section{Store M-metode}
 
-For at kunne bruge simplex metoden, skal der først findes en mulig basis løsning. 
-Hvis der er givet et problem på formen $Ax \leq b$, hvor $b \geq 0$ er det relativt simpelt. 
-Her kan introduceres ikke-negative slack-variable $s$ og uligheden kan omskrives til $Ax+s=b$. 
-Vektoren $(x,s)$ hvor $x=0$ og $s=b$ er en mulig basis løsning, og den korresponderende basismatrix er dens identitet. 
-Generelt er det dog ikke let at finde en mulig basis løsning, og det kræver en løsning til et hjælpende lineært programmeringsproblem. \\
+Den sidste metode der introduceres er Store M-metoden. Store M-metoden bygger på en to-fase simplex metode, som er en komplet algoritme til at løse lineære programmeringsproblemer på standardform. Algoritmen er bygget op i to faser, hvor Store M-metoden er en kombination af disse. 
 
-Store-M metoden bygger på den to-fase simplex metode, som er en komplet algoritme til at løse lineære programmeringsproblemer på standardform. 
-Algoritmen er bygget op i to faser, hvor første fase går ud på .... \\
-%?? skal det med
-
-Idéen bag store-M metoden er at introducere en kostfunktion på formen
+Idéen bag Store M-metoden er at introducere en kostfunktion på formen
 \begin{align*}
 \sum\limits_{j=1}^n c_jx_j + M \sum\limits_{i=1}^m y_i,
 \end{align*}
-hvor $M$ er en stor positiv konstant, og $y_i$ er samme variable som i den første fase af to-fase simplex. 
-Hvis det originale problem har en mulig løsning, og dens optimale kost er endelig, vil de artificial (kunstige?) variable gå mod $0$, når $M$ er tilstrækkelig stor. 
+hvor $M$ er en stor positiv konstant, og $y_i$ er kunstige (artificial?) variable. 
+Hvis det originale problem har en mulig løsning, og dens optimale kost er endelig, vil de kunstige variable gå mod $0$, når $M$ er tilstrækkelig stor. 
 Det betyder, at den originale kostfunktion nu skal minimeres. 
 Når den reducerede kost er en funktion af $M$, vil $M$ altid blive behandlet som værende af større værdi, når der skal vurderes, om en reduceret kost er negativ. \\
 
@@ -33,7 +25,7 @@ Et lineært programmeringsproblem er givet.
 \end{tabular}
 \end{center}
 
-Der gives nu følgende problem til hjælp, hvor den unødvendige kunstige variabel $x_8$ er undladt.
+Der gives nu følgende hjælpeproblem, hvor der er tilføjet kunstige variable.
 
 \begin{center}
 \begin{tabular}{l >{$}r<{$}	>{$}r<{$} >{$}l<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} >{$}r<{$} r}
@@ -46,7 +38,7 @@ Der gives nu følgende problem til hjælp, hvor den unødvendige kunstige variab
 \end{tabular}
 \end{center}
 
-En mulig basis løsning til det hjælpende problem fås ved at lade $(x_5, x_6, x_7, x_4) = b = (3,2,5,1)$. 
+En mulig basisløsning til hjælpeproblemet fås ved at lade $(x_5, x_6, x_7, x_4) = \vec{b} = (3,2,5,1)$. 
 Den korresponderende basismatrix er da identiteten. 
 Derudover er $c_B = (M,M,M,0)$. 
 Den reducerede kost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilket giver følgende tabel.
@@ -58,10 +50,10 @@ Den reducerede kost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilk
 \hline
 	 & $-10M$ & 1 & $-8M+1$ & $-18M+1$ & 0 & 0 & 0 & 0 \\
 \hline
-	$x_5=$ & 3 & 1  & 2 & 3    & 0 & 1 & 0 & 0 \\
-	$x_6=$ & 2 & -1 & 2 & 6    & 0 & 0 & 1 & 0 \\
-	$x_7=$ & 5 & 0  & 4 & 9    & 0 & 0 & 0 & 1 \\
-	$x_4=$ & 1 & 0  & 0 & $3*$ & 1 & 0 & 0 & 0 \\
+	$x_5=$ & 3 & 1  & 2 & 3   		 & 0 & 1 & 0 & 0 \\
+	$x_6=$ & 2 & -1 & 2 & 6			 & 0 & 0 & 1 & 0 \\
+	$x_7=$ & 5 & 0  & 4 & 9   		 & 0 & 0 & 0 & 1 \\
+	$x_4=$ & 1 & 0  & 0 & \textbf{3} & 1 & 0 & 0 & 0 \\
 \hline
 \end{tabular}
 \end{center}
@@ -78,10 +70,10 @@ Den nye tabel vil så se ud som følger.
 \hline
 	 & $-4M- \frac{1}{3}$ & 1 & $-8M+1$ & 0 & $6M- \frac{1}{3}$ & 0 & 0 & 0 \\
 \hline
-	$x_5=$ & 2 & 1 & 2 & 0 & -1 & 1 & 0 & 0 \\
-	$x_6=$ & 0 & -1 & $2*$ & 0 & -2 & 0 & 1 & 0 \\
-	$x_7=$ & 2 & 0 & 4 & 0 & -3 & 0 & 0 & 1 \\
-	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\frac{1}{3}$ & 0 & 0 & 0 \\
+	$x_5=$ & 2 	  & 1  & 2		    & 0 & -1 & 1 & 0 & 0 \\
+	$x_6=$ & 0 	  & -1 & \textbf{2} & 0 & -2 & 0 & 1 & 0 \\
+	$x_7=$ & 2	  & 0  & 4 		 & 0 & -3 & 0 & 0 & 1 \\
+	$x_3=$ & $\frac{1}{3}$ & 0 	 & 0 & 1  & $\frac{1}{3}$ & 0 & 0 & 0 \\
 \hline
 \end{tabular}
 \end{center}
@@ -96,7 +88,7 @@ Tabellen ser nu således ud.
 \hline
 	 & $-4M- \frac{1}{3}$ & $-4M+ \frac{3}{2}$ & 0 & 0 & $-2M+ \frac{2}{3}$ & 0 & $4M- \frac{1}{2}$ & 0 \\
 \hline
-	$x_5=$ & 2 & $2*$ & 0 & 0 & 1 & 1 & -1 & 0 \\
+	$x_5=$ & 2 & \textbf{2} & 0 & 0 & 1 & 1 & -1 & 0 \\
 	$x_2=$ & 0 & $- \frac{1}{2}$ & 1 & 0 & -1 & 0 & $\frac{1}{2}$ & 0 \\
 	$x_7=$ & 2 & 2 & 0 & 0 & 1 & 0 & -2 & 1 \\
 	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\frac{1}{3}$ & 0 & 0 & 0 \\
@@ -116,7 +108,7 @@ På samme måde bringes $x_1$ nu ind i basen, samtidig med $x_5$ udgår.
 	$x_1=$ & 1 & 1 & 0 & 0 & $\frac{1}{2}$ & $\frac{1}{2}$ & $-\frac{1}{2}$ & 0 \\
 	$x_2=$ & $\frac{1}{2}$ & 0 & 1 & 0 & $-\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & 0 \\
 	$x_7=$ & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 1 \\
-	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\frac{1}{3}*$ & 0 & 0 & 0 \\
+	$x_3=$ & $\frac{1}{3}$ & 0 & 0 & 1 & $\mathbf{\frac{1}{3}}$ & 0 & 0 & 0 \\
 \hline
 \end{tabular}
 \end{center}
@@ -138,6 +130,6 @@ Nu bringes $x_4$ ind i basen, og $x_3$ udgår.
 \end{tabular}
 \end{center}
 
-Med en stor nok værdi for M er alle reducerede kost ikke-negative, og der er fundet en optimal løsning til det hjælpende problem.
-Alle de kunstige variable er blevet lig nul, hvorfor der nu haves en optimal løsning til det originale problem.  
+Med en stor nok værdi for M er alle reducerede kostværdier ikke-negative, og der er fundet en optimal løsning til hjælpeproblemet.
+Alle de kunstige variable er blevet lig nul, hvorfor der nu ligeledes haves en optimal løsning til det originale problem.  
 \end{eks}
