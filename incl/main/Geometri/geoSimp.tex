@@ -14,16 +14,16 @@ for $\vec{e} =\rvect{1 & \cdots & 1 }^T$,  siges at være på \textbf{konveks fo
 \end{defn}.
 Grunden til at $\vec{e}^T\vec{x}=1$ kaldes konveksbibetingelsen, er fordi den sørger for at $\vec{b}$ er en konvekskombination af søjlerne i matricen $A$.
 \begin{stn}[Konveks form]
-Et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan omskrives til konveks form.
+Et hvert lineært programmeringsproblem med $ \vec{0} \notin P$ kan omskrives til konveks form.
 \end{stn}
 \begin{proof}
-I Kapitel 
+I Kapitel \ref{Afsnit:LinProg}
 er det gennemgået hvordan alle lineært programmerings problemer kan skrives på standard form med ligheder, derfor er det kun nødvendigt at vise at et hvert lineært programmerings problem på standard form med ligheder kan omskrives til konveks form.
 \\ Lad derfor $\vec{x} \neq \vec{0}$ være en løsning til et lineært programmerings problem på standard form med ligheder, da vil 
 \begin{align*}
 \vec{e}^T \vec{x} = \lambda,
 \end{align*}
-hvor lambda er en positiv skalar.
+hvor $\lambda$ er en positiv skalar.
 Da vil 
 \begin{align*}
 \vec{e}^T\vec{x}' = \vec{e}^T\frac{1}{\lambda}\vec{x} = 1.
@@ -32,14 +32,10 @@ For at sørge for at den konvekse form har samme løsningsmængde som det lineæ
 \begin{align*}
 A' \vec{x}' = \lambda A \frac{1}{\lambda} \vec{x} = A \vec{x} = \vec{b}.
 \end{align*}
-Lad nu $\vec{x} = \vec{0}$ være en løsning, da vil
-\begin{align*}
-A \vec{x} = \vec{0} = \vec{b}.
-\end{align*}
-Da det er antaget at $\vec{b} \neq \vec{0}$, må et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan omskrives til konveks form.
+Derfor må et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan omskrives til konveks form.
 \end{proof}
-Så længe at $\vec{b}$ ikke er lig nulvektoren kan ethvert lineært programmerings problem derfor omskrives til konveks form. 
-Grunden til at $\vec{b}$ skal være forskellig fra nulvektoren, er fordi ellers så er nulvektoren en løsning, og den overholder som den eneste vektor ikke konveksbibetingelsen, da det ikke er tilladt at dividere med nul.
+Så længe at nulvektoren ikke er en løsning kan ethvert lineært programmerings problem derfor omskrives til konveks form.
+Grunden til, nulvektoren ikke må være en løsning er, at prikproduktet af en vilkårlig vektor og nulvektoren vil altid give nul, hvorfor konveksbibetingelsen ikke kan overholdes.
 %\begin{defn}[Værdi af $\vec{x}$]
 %Lad $f$ være en objektfunktion da er $f(\vec{x}) = z_x$  \textbf{værdien af $\vec{x}$}
 %\end{defn}
@@ -48,7 +44,7 @@ Grunden til at $\vec{b}$ skal være forskellig fra nulvektoren, er fordi ellers 
 Lad $\vec{x}$ være en basisløsning til et lineært problem på konveks form, så $x_i = 0$ for $i \notin I_B = \{B(1),..., B(m)\}$.
  Så  $\vec{B}_i  = \rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ en simplex $S_x$, så $\vec{b}_x = \rvect{\vec{b}& z_x}^T \in S_x$
 \end{stn}
-Bemærk at da problemet er på konveks form vil $|I_B| = m+1$ hvis $A$ er en $n\times m$ matrix, da det i følge Sætning 
+Bemærk at da problemet er på konveks form vil $|I_B| = m+1$ hvis $A$ er en $n\times m$ matrix, da det i følge Sætning \ref{stn:PQ}
 kan antages at alle rækker er lineært uafhængige med $\vec{e}$.
 \begin{proof}
 For at $\rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ udspænder en simplex, skal vektorene være affint lineært uafhængige.
@@ -61,7 +57,7 @@ Betragt nu kun $\sum_{i = 1}^{m} \lambda_i (\vec{A}_{B(i)} - \vec{A}_{B(m+1)} = 
 \begin{align*}
 \sum_{i = 1}^{m} \lambda'_i \vec{A}_{B(i)} = \vec{A}_{B(m+1)},
 \end{align*}
-hvor $\lambda'_i = \lambda_i/(\sum_{i=1}^m \lambda_i$.
+hvor $\lambda'_i = \lambda_i/(\sum_{i=1}^m \lambda_i)$.
 Derfor følger derfor at hvis de ikke er affint lineært uafhængige, så er $\vec{A}_{B(m+1)}$ en linear kombination af $\vec{A}_{B(i)}$ for $i  \in i,..., m$.
 Det strider mod at $\vec{x}$ er en basisløsning, og søjlerne $\vec{A}_i$ svare til basis variablene for $i \in I_B$, derfor må vektorerne være affint lineært uafhængige. 
 Dermed udgør alle konveksekombinationer af $B_i$ for $i \in I_B$ en simplex, $S_x$.
