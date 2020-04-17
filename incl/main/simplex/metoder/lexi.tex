@@ -30,9 +30,9 @@ Da gælder det at $\vec{u} \overset{L}{<} \vec{v}$, da den første ikke nul komp
 
 Fremgangsmåden for Lexi pivot regel er som følger.
   
-\begin{pro}[Lexi pivot regl]
-\noindent 1. Vælg en vilkårlig indgangssøjle $\vec{A}_j$, det skal gælde at $\Delta c_j$ er negativ. Lad $\vec{u}=B^{-1}\vec{A}_j$ være den $j$'te søjle i simplex-tabellen. \\
-2. For hvert $i$, $u_i>0$, divider med den $i$'te række med $u_i$, og vælg den Lexi mindste række. Hvis $l$ er Lexi mindst, så udgår den $l$'te basis variabel,$x_{B(l)},$ af basen. 
+\begin{pro}{Lexi pivot regl}
+Vælg en vilkårlig indgangssøjle $\vec{A}_j$, det skal gælde at $\Delta c_j$ er negativ. Lad $\vec{u}=B^{-1}\vec{A}_j$ være den $j$'te søjle i simplex-tabellen.
+For hvert $i$, $u_i>0$, divider med den $i$'te række med $u_i$, og vælg den Lexi mindste række. Hvis $l$ er Lexi mindst, så udgår den $l$'te basis variabel,$x_{B(l)},$ af basen. 
 \end{pro}
 
 Bemærk at Lexi pivot reglen altid fører til et entydigt valg af variabel. Hvis dette ikke var tilfældet måtte det gælde at to rækker i tabllen er proportionelle. Da ville rangen af $B^{-1}A$ være mindre end $m$. Det samme ville være gældende for $A$. Det er i modstrid med antagelsen om at $A$ indeholder lineært uafhængige rækker. 

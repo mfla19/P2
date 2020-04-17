@@ -155,19 +155,24 @@ Da $\vec{x}$ er en basisløsning må $x_i = 0$ for $i \in N$, og da $\vec{y} \in
 for et hvert $\vec{y} \in P$, da $\vec{y}$ var vilkårligt valgt, derfor må $\vec{x}$ være optimal.
 \end{proof}
 Det kan alt sammen opsummeres til Simplex metoden
-\begin{pro}[Procedure for Simplex metoden]
-\noindent 1. Vælg en basisløsning $\vec{x}$ med basismatrix $B$
-\\ 2. Beregn $\Delta c_j$ for alle $j \notin I_B$. 
-\\  		\qquad Hvis $\Delta c_j\geq 0$ for alle $j \notin I_B$ stop, $\vec{x}$ er optimal.
-\\		\qquad  Hvis $\Delta c_j < 0$ for en $j \notin I_B$ vælg mindste $c_j$.
-\\ 3. Find $\vec{d}_j$
-\\		\qquad  Hvis $d_i \geq 0 $ for alle $i \in I_B$ stop, den optimaleværdi er $- \infty$.
-\\		\qquad  Hvis $d_i < 0 $ for mindst et $i \in I_B$, vælg $B(l)$ så $\frac{x_{B(l)}}{d_{B(l)}}\leq \frac{x_i}{d_i} $ for ethvert $i \in I_B$
-\\ 4. Find $\theta^*$
-\\ 5. Find den nye basisvektor og basismatrix.
-\\ 6. Gå til step 2.
-\label{pro:simplex}
+
+\begin{pro}[label=pro:simplex,numbers=none,xleftmargin=0em]{Procedure for Simplex metoden}
+1. Vælg en basisløsning $\vec{x}$ med basismatrix $B$
+2. Beregn $\Delta c_j$ for alle $j \notin I_B$. 
+   Hvis $\Delta c_j\geq 0$ for alle $j \notin I_B$ 
+   	   stop, $\vec{x}$ er optimal.
+   Hvis $\Delta c_j < 0$ for en $j \notin I_B$
+       vælg mindste $c_j$.
+3. Find $\vec{d}_j$
+   Hvis $d_i \geq 0 $ for alle $i \in I_B$ 
+       stop, den optimaleværdi er $- \infty$.
+   Hvis $d_i < 0 $ for mindst et $i \in I_B$ 
+       vælg $B(l)$ så $\frac{x_{B(l)}}{d_{B(l)}}\leq \frac{x_i}{d_i} $ for ethvert $i \in I_B$
+4. Find $\theta^*$
+5. Find den nye basisvektor og basismatrix.
+6. Gå til step 2.
 \end{pro}
+
 Til sidst vises at Simplex metoden altid vil finde frem til den optimale løsning efter et endeligt antal interationer.
 \begin{stn}
 Lad $P \neq \emptyset$, da stopper Simplex metoden efter et endeligt antal interationer, enten ved at finde den optimale løsning eller at den optimale værdi er $- \infty$.

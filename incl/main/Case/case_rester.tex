@@ -1,0 +1,89 @@
+
+\begin{comment}
+\textit{Det vil føre til en matrix på $M+N+1 \times M*N+M+N+1$, så med to af hver => min 6x8}
+Dette kan udskrives til følgende hvor der er to opgaver og to ansatte
+\begin{align*}
+\text{Maximer:}  
+L_{1} ( p_{11} +  p_{21}) + L_{2} ( p_{21} +  p_{22}) 
+\\\qquad \text{ med hensyn til:}
+\\T_1 \leq p_{11} + p_{21} 
+\\ T_2 \leq  p_{12} + p_{22}
+\\ O_{1} \geq n_{11} p_{11} + n_{12} p_{12}
+\\ O_{2} \geq n_{21} p_{21} + n_{21} p_{22}
+\\ p_{ij} \geq 0, i,j = 1, 2.
+\end{align*}
+\end{comment}
+
+
+%\begin{alg}[Lexi pivot regel]
+%minrække = liste af indeks for rækker i A, for hvilke A[række][pivot søjle] > 0\\
+%\textbf{Hvis} len(minrække) == 0:\\
+%\textbf{Returner} -1 (Uendeligt lav cost)\\
+%\textbf{for} søjle \textbf{i} range(len(A[0])):\\
+%$\theta$ = [A[række][søjle]/A[række][pivot søjle] for række i min række]\\
+%minrække = [rækker i minrække for hvilke $\theta$[række] = min($\theta$)]\\
+%\textbf{hvis} længde af minrække == 1:\\
+%\textbf{returner} minrække[0]
+%\end{alg}
+
+
+%\begin{alg}[label={alg:storem}]{Store-M algoritmen}
+%"""s=status
+% 0: igang
+% 1: færdig. løsning nået
+%-1: uendeligt lav cost"""
+%def $\textbf{storeM}$(A,I_B):
+%    s=0
+%    while s==0: #kører iterationer indtil løsning fundet
+%        s,A,I_B=$\textbf{storeM\_iter}$(s,A,I_B)
+%
+%def $\textbf{storeM\_iter}$(s,A,I_B): 
+%    for i in range(1,len(A[0])): 
+%        if A[0][i] < 0: # finder søjle med $\overline{c}_i$<0
+%            piv_søjle = i
+%        elif i == len(A[0])-1: #hvis ingen reduceret cost er negative så afsluttes
+%            s=1 
+%            return s,A,I_B
+%            
+%    L,minrække=$\textbf{lexi}$(A,piv_søjle) #finder den lexi-mindste række
+%    if L == -1: #uendeligt lav cost,
+%        s=-1
+%        return s,A,I_B
+%            
+%    piv_punkt = A[L][piv_søjle] 
+%    for søjle in range(len(A[0])): #dividerer piv række med piv punkt
+%        A[L][søjle] /= piv_punkt
+%            
+%    for række in range(len(A)): #trækker piv række fra andre rækker
+%        if række != L:
+%            række_trækfra = A[række][piv_søjle]
+%            for søjle in range(len(A[0])):
+%                A[række][søjle] -= række_trækfra*A[L][søjle]
+%
+%    I_B[L-1]=piv_søjle #ny variabel indsættes i indeks for basis
+%    return s,A,I_B
+%
+%\end{alg}
+
+
+%Den nye cost vektor bliver derved til:
+%\begin{align*}
+%c=\sum_{i=1}^M L_i \sum_{j=1}^N p_{ij}+M \sum_{j=1}^{N} a_j
+%\end{align*}
+
+
+
+
+
+
+
+%\begin{align*}
+%\text{Minimer:}  \sum_{i=1}^M L_i \sum_{j=1}^N p_{ij}
+%\\\qquad \text{ med hensyn til:}
+%\\ T_i \geq \sum_{j=1}^N p_{ij}
+%\\ O_{j} = \sum_{i=1}^M n_{ij} p_{ij}
+%\\ p_{ij} \geq 0.
+%\end{align*}
+
+
+

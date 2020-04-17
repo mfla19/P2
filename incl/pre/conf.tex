@@ -75,20 +75,46 @@
 % Kildekode --------------------------------------------------------------------
 % Syntax highlighting for Python-kode
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\definecolor{commentgreen}{RGB}{2,112,10}
 \lstdefinestyle{custompy}{
-  belowcaptionskip=\baselineskip,
+  %belowcaptionskip=\baselineskip,
   breaklines=true,
   language=Python,
   showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{AAUblue1},
-  commentstyle=\itshape\color{AAUgrey3},
-  identifierstyle=\color{AAUblue2},
-  stringstyle=\color{AAUteal},
+  %identifierstyle=\color{orange},
+  stringstyle=\color{black},
+  tabsize=4,
+  %numberblanklines=false,
+  columns=flexible,
+  numbers=left,
+  xleftmargin=2em,
+  morekeywords={hvis,returner,i,ellers},
+  mathescape=true,
+  extendedchars=\true,
+  literate=%
+  {æ}{{\ae}}1
+  {å}{{\aa}}1
+  {ø}{{\o}}1
+  {Æ}{{\AE}}1
+  {Å}{{\AA}}1
+  {Ø}{{\O}}1,
+  escapeinside={(*}{*)},
 }
-\lstset{language=Python,style=custompy,captionpos=b}
-\renewcommand{\lstlistingname}{Kildekode}
-\renewcommand{\lstlistlistingname}{Kildekode}
+%\lstset{extendedchars=\true}
+%\lstset{literate=%
+%{æ}{{\ae}}1
+%{å}{{\aa}}1
+%{ø}{{\o}}1
+%{Æ}{{\AE}}1
+%{Å}{{\AA}}1
+%{Ø}{{\O}}1
+%}
+%
+\lstset{language=Python,style=custompy}
+%
+%\lstset{escapeinside={(*}{*)}}
+%\renewcommand{\lstlistingname}{Kildekode}
+%\renewcommand{\lstlistlistingname}{Kildekode}
 
 % Indstillinger for autoref ----------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing#autoref
@@ -99,4 +125,4 @@
 \def\figureautorefname{Figur}
 \def\tableautorefname{Tabel}
 \def\algorithmautorefname{Algoritme}
-\def\lstinputlistingautorefname{Kildekode}
+%\def\lstinputlistingautorefname{Kildekode}

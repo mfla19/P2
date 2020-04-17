@@ -39,29 +39,34 @@
 \newcounter{nyctr}
 \numberwithin{nyctr}{chapter}
 
-\newenvironment{alg}[1][]
-{ \refstepcounter{nyctr} 
+\lstnewenvironment{alg}[2][]
+{\refstepcounter{nyctr}\lstset{basicstyle=\small\normalfont,
+  keywordstyle=\bfseries\color{AAUblue1},
+  commentstyle=\itshape\color{commentgreen},#1}  
 \vspace{0.3cm}
 \hrule \vspace{1mm}
-\noindent \textbf{Algoritme \thenyctr} \hspace{0.3cm} #1 \vspace{1mm}
+\noindent \textbf{Algoritme \thenyctr} \hspace{0.3cm} #2 \vspace{1mm}
 \hrule
 }{
+\vspace{1mm}
 \hrule
   \vspace{0.3cm}
 }
 
-\newenvironment{pro}[1][]
-{ \refstepcounter{nyctr} 
+\lstnewenvironment{pro}[2][]
+{\refstepcounter{nyctr} \lstset{basicstyle=\small\normalfont,
+  keywordstyle=\color{black},
+  commentstyle=\itshape\color{black},#1}  
 \vspace{0.3cm}
 \hrule \vspace{1mm}
-\noindent \textbf{Procedure \thenyctr} \hspace{0.3cm} #1 \vspace{1mm}
+\noindent \textbf{Procedure \thenyctr} \hspace{0.3cm} #2 \vspace{1mm}
 \hrule
 \vspace{1mm}
 }{
+\vspace{1mm}
 \hrule
   \vspace{0.3cm}
 }
-
 
 \newenvironment{stn}[1][]
 { \refstepcounter{nyctr}
@@ -205,3 +210,25 @@
     \end{minipage}
   \end{figure}
 }
+%
+%\lstdefinelanguage{kode}{
+%    morekeywords={i,hvis,returner,for,def},
+%    sensitive=false, % keywords are not case-sensitive
+%    morecomment=[l]{//}, % l is for line comment
+%    morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+%    morestring=[b]" % defines that strings are enclosed in double quotes
+%}
+%\lstset
+%{ %Formatting for code in appendix
+%    language=kode,
+%    basicstyle=\ttfamily\footnotesize,
+%    numbers=left,
+%    xleftmargin=2em,
+%    %frame=single,
+%    %framexleftmargin=1.5em
+%    stepnumber=1,
+%    showstringspaces=false,
+%    tabsize=1,
+%    breaklines=true,
+%    breakatwhitespace=false,
+%}

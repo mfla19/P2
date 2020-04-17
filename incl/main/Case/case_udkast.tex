@@ -72,59 +72,62 @@ da $B^{-1}=B=I_{M+N}$ og da det derved gælder at $B^{-1}A=I_{M+N}A=A$.
 Når den fulde tabel er sat op for problemet ligesom i fuld tabel vil den kunne løses ligesom med fuld tabel metoden.
 For netop denne case er der nogle faktorer, som betyder at problemet bliver simplificeret lidt.
 Da alle indgange i $B^{-1}$ og $\vec{x}_B$ er positive, vil alle rækker ifølge Sætning \ref{stn:lexi} forblive lexi-positive. Hvorved der ikke er brug for at bytte om på søjlerne.
-Da der findes en unik variabel i hver betingelse, garanterer dette at rækkerne er lineært uafhængige, hvorved de fundne basisløsninger har dimension 1. Derved er det ikke nødvendigt at tage højde for eventuelle tilfælde med lineært afhængige rækker.
+Da der findes en unik variabel i hver betingelse, garanterer dette at rækkerne er lineært uafhængige, hvorved de fundne basisløsninger har dimension 1. Derved er det ikke nødvendigt at tage højde for eventuelle tilfælde med lineært afhængige rækker. Derved er det udelukkende nødvendigt at undersøge 3 scenariar: 
+\begin{itemize}
+\item problemet har en endelig mindste cost. \item problemet har en uendeligt lav mindste cost.
+\item problemet har ingen løsning.
+\end{itemize}
+
+\newpage
+
+\begin{alg}[label={alg:lexi}]{Lexi pivot algoritme}
+def $\textbf{lexi}$(A,piv_søjle):
+	minrække = [rækker i $I_B$ for hvilke A[række][pivot søjle] > 0]
+	Hvis len(minrække) == 0:
+		returner -1 #Uendeligt lav cost
+	for søjle i range(len(A[0])):
+		$\theta$ = [$\frac{x_{B(i)}}{u_i}$ for række i minrække]
+		minrække = [rækker i minrække for hvilke $\theta$[række] = min($\theta$)]
+		hvis længde af minrække == 1:
+			returner minrække[0] #række fundet og returneres
+
+\end{alg}
 
 
+\begin{alg}[label={alg:storem2}]{Store-M algoritmen}
+def $\textbf{storeM}$(A,I_B):
+    while true: #kører iterationer indtil løsning fundet
+    	for i in range(1,len(A[0])): 
+        	if A[0][i] < 0: # finder søjle med ${\color{commentgreen} \overline{c}_i}$<0
+            	piv_søjle = i
+        	elif i == len(A[0])-1: #hvis ingen reduceret cost er negative så afsluttes
+				break
+            
+    	L,minrække=$\textbf{lexi}$(A,piv_søjle) #finder den lexi-mindste række
+    	if L == -1: #uendeligt lav cost,
+			break
+            
+    	piv_punkt = A[L][piv_søjle] 
+    	for søjle in range(len(A[0])): #dividerer piv række med piv punkt
+        	A[L][søjle] /= piv_punkt
+            
+    	for række in range(len(A)): #trækker piv række fra andre rækker
+        	if række != L:
+            	række_trækfra = A[række][piv_søjle]
+            	for søjle in range(len(A[0])):
+                	A[række][søjle] -= række_trækfra*A[L][søjle]
 
+    	I_B[L-1]=piv_søjle #ny variabel indsættes i indeks for basis
 
+	for indeks in $I_B$: 
+		if indeks > M*N+M: #kunstige variable stadig i basis. Ingen mulig løsning fundet
+			cost = $\infty$
+	if L == -1: # uendeligt lav cost
+		cost = $-\infty$
+	else: #løsning fundet
+		cost = $-A[0][0]$
+\end{alg}
 
-
-
-
-
-
-
-
-\begin{comment}
-\textit{Det vil føre til en matrix på $M+N+1 \times M*N+M+N+1$, så med to af hver => min 6x8}
-Dette kan udskrives til følgende hvor der er to opgaver og to ansatte
-\begin{align*}
-\text{Maximer:}  
-L_{1} ( p_{11} +  p_{21}) + L_{2} ( p_{21} +  p_{22}) 
-\\\qquad \text{ med hensyn til:}
-\\T_1 \leq p_{11} + p_{21} 
-\\ T_2 \leq  p_{12} + p_{22}
-\\ O_{1} \geq n_{11} p_{11} + n_{12} p_{12}
-\\ O_{2} \geq n_{21} p_{21} + n_{21} p_{22}
-\\ p_{ij} \geq 0, i,j = 1, 2.
-\end{align*}
-\end{comment}
-
-
-
-
-%Den nye cost vektor bliver derved til:
-%\begin{align*}
-%c=\sum_{i=1}^M L_i \sum_{j=1}^N p_{ij}+M \sum_{j=1}^{N} a_j
-%\end{align*}
-
-
-
-
-
-
-
-%\begin{align*}
-%\text{Minimer:}  \sum_{i=1}^M L_i \sum_{j=1}^N p_{ij}
-%\\\qquad \text{ med hensyn til:}
-%\\ T_i \geq \sum_{j=1}^N p_{ij}
-%\\ O_{j} = \sum_{i=1}^M n_{ij} p_{ij}
-%\\ p_{ij} \geq 0.
-%\end{align*}
-
-
-
-
-
-
-
+\begin{eks}[Case eksempel]
+Lad en virksomhed have 5 medarbejdere, som skal have udført 4 opgaver og lad parametrene være givet som:
+\end{eks}
