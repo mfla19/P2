@@ -1,28 +1,28 @@
 \chapter{Simplex Metoden}
-Af forrige kapitel fremgik det at den optimale løsning altid vil være en mulig basisløsning, og af Sætning \ref{stn:kravtilbasis}
+Af forrige kapitel fremgik det, at den optimale løsning altid vil være en mulig basisløsning, og af Sætning \ref{stn:kravtilbasis}
 fremgår det, hvordan en basisløsning findes. 
-Problemet er at hvis alle basisløsninger skal testes for et standard problem med uligheder, skal optil $\binom{n}{m}$ muligheder testes. 
-Derfor er det nødvendigt at finde en metode, at finde den optimale løsning uden at skulle kigge på hvert enkelt tilfælde. 
-En af metoderne som kan anvendes er Simplex metoden, i dette kapitel vil Simplex metoden og forskellige implementeringer af metoden, derfor blive gennemgået med udgangspunkt i .
+Problemet er, at hvis alle basisløsninger skal testes for et standard problem med uligheder, skal optil $\binom{n}{m}$ muligheder testes. 
+Derfor er det nødvendigt, at finde en metode, hvorpå den optimale løsning kan findes uden at skulle kigge på hvert enkelt tilfælde. 
+En af metoderne, som kan anvendes, er Simplex metoden. I dette kapitel vil Simplex metoden, og forskellige implementeringer af metoden, derfor blive gennemgået med udgangspunkt i .
 \section{Udledning af Simplex metoden}
-Simplex metoden starter med en basisløsning, og går så i en mulig retning indtil at den finder en ny basisløsning.
+Simplex metoden starter med en basisløsning, og går så i en mulig retning indtil den finder en ny basisløsning.
 %\begin{defn}[Mulig retning]
 %Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retningen} fra $\vec{x}$, hvis der eksistere en positiv skalar $\theta > 0$ således at $\vec{x}+\theta\vec{d} \in P$ 
 %\end{defn}
-Det er derfor nødvendigt at kunne skrive en basisløsning som et udtryk af en anden basisløsning og en mulig retnings vektor.
+Det er derfor nødvendigt at kunne skrive en basisløsning som et udtryk af en anden basisløsning og en mulig retningsvektor.
 \begin{stn}
-Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, da eksistere der en vektor $\vec{d}\in \mathds{R}^n$, og en skalar $\theta^*\geq 0$ så $\vec{y}= \vec{x} + \theta^* \vec{d}$ er en basisløsning til $\vec{x}$, hvis $P$ ikke indeholder en linje.
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning. Da eksisterer der en vektor $\vec{d}\in \mathds{R}^n$, og en skalar $\theta^*\geq 0$ så $\vec{y}= \vec{x} + \theta^* \vec{d}$ er en basisløsning til $\vec{x}$, hvis $P$ ikke indeholder en linje.
 \label{stn:matbagsim}
 \end{stn}
-Sætning \ref{stn:matbagsim} består af tre påstande, at der eksistere en vektor $\vec{d}$, en skalar $\theta^*$ og at $\vec{y}$ er en basisløsning.
+Sætning \ref{stn:matbagsim} består af tre påstande; at der eksisterer en vektor $\vec{d}$, en skalar $\theta^*$ og at $\vec{y}$ er en basisløsning.
 Derfor splittes sætningen op i lemmaer, og eksistensen af $\vec{d}$ vises først.
 \begin{lma}
-Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, da eksistere der en vektor $\vec{d}\in \mathds{R}^n$, så $\vec{x} + \vec{d} \in P$, og så $\vec{d}$ introducere $x_j$ og kun $x_j$ til basisløsningen.
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning. Da eksisterer der en vektor $\vec{d}\in \mathds{R}^n$, så $\vec{x} + \vec{d} \in P$, og så $\vec{d}$ introducerer $x_j$ og kun $x_j$ til basisløsningen.
 \label{lma:retningsvektor}
 \end{lma}
 \begin{proof}
 %Først konstrueres $\vec{d}$.
-Lad $B$ betegne basismatrixen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
+Lad $B$ betegne basismatricen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
 %Da $\vec{y}$ skal være en nabo basisløsning, må der eksistere en variable $x_j$ for $j \notin I_B$, så $x_j = 0$ for $\vec{x}$ og $\vec{x_j} \neq 0 $ for $\vec{y}$. 
 Da skal $\vec{d}$ introducere $x_j$ og kun $x_j$ til basisløsningen, konstruer derfor $\vec{d}$ så $x_j \neq 0$ for $\vec{x}+\vec{d}$, lad derfor $d_j=1$, og $d_i = 0$ for $i\notin I_B$ og $i \neq j$. 
 Bemærk at da $\vec{x}+ \theta^*\vec{d} \in P$ må
@@ -46,13 +46,13 @@ Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\ge
 \end{defn}
 For at $\vec{y}$ kan være en basisløsning må den kun have $m$ basis variable, og da $\vec{d}$ introducere en ny variabel til løsningen, må $\theta^*$ skulle konstrueres så den fjerner en variable fra løsningen.
 \begin{lma}
-Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, $\vec{d}$ være den $j$te retningsvektor.
-Da eksistere der en skalar $\theta^* \geq 0$, så $\vec{x} + \theta^* \vec{d} \in P$, og så $\theta^* $ fjerne $x_l$ fra basisløsningen, hvis $P$ ikke indeholder en halvlinje.
+Lad $\vec{x} \in P =\{\vec{x}\in \mathds{R}^n \mid A\vec{x}= \vec{b}, \vec{x}\geq \vec{0}\}$ være en basisløsning, og $\vec{d}$ være den $j$te retningsvektor.
+Da eksisterer en skalar $\theta^* \geq 0$, så $\vec{x} + \theta^* \vec{d} \in P$, og så $\theta^* $ fjerner $x_l$ fra basisløsningen, hvis $P$ ikke indeholder en halvlinje.
 \label{lma:skalar}
 \end{lma}
 \begin{proof}
-Lad $B$ betegne basismatrixen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
-Antag først at $\vec{d}\geq \vec{0}$ da vil $\vec{x}+\theta^*\vec{d}$ altid overholde alle lighedsbetingelser og positivitets betingelser for $\theta^* \geq 0$. 
+Lad $B$ betegne basismatricen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
+Antag først at $\vec{d}\geq \vec{0}$ da vil $\vec{x}+\theta^*\vec{d}$ altid overholde alle lighedsbetingelser og positivitetsbetingelser for $\theta^* \geq 0$. 
 Derfor vil $P$ indeholde en linje, da det går mod antagelsen om at $P$ ikke indeholder en linje, må mindst en indgang i $\vec{d}$ være negativ, kald denne for $d_i$.
 Da må 
 \begin{align*}
@@ -73,10 +73,10 @@ Efter at have vist både eksistensen af $\vec{d}$ og skalaren $\theta^*$, kan de
 Sætning \ref{stn:matbagsim} bevises derfor.
 \begin{proof}
 Det følger af Lemma \ref{lma:retningsvektor} og Lemma \ref{lma:skalar}, at $\vec{d}$ og $\theta^*$ eksistere. 
-For at vise at $\vec{y}$ er en basisløsning, bemærkes at $x_i = 0$ for $i \notin I_{B'} = I_B\setminus\{l\}\cup\{j\}$ og at Basismatrixen for $\vec{y}$ er matricen $B'$ med søjlerne $A_i$ for $i \in I_{B'}$. 
+For at vise at $\vec{y}$ er en basisløsning, bemærkes at $x_i = 0$ for $i \notin I_{B'} = I_B\setminus\{l\}\cup\{j\}$ og at Basismatricen for $\vec{y}$ er matricen $B'$ med søjlerne $A_i$ for $i \in I_{B'}$. 
 Det følger derfor af Sætning \ref{stn:kravtilbasis},
-at $\vec{y}$ er en basisløsning, hvis søjlerne i $B'$ er lineært uafhængig.
-Antag derfor for modstrid at søjlerne er lineært afhængige, da følger det af Definition \ref{defn_lin_uafh},
+at $\vec{y}$ er en basisløsning, hvis søjlerne i $B'$ er lineært uafhængige.
+Antag derfor for modstrid, at søjlerne er lineært afhængige, da følger det af Definition \ref{defn_lin_uafh},
 at
 \begin{align*}
  \sum_{i \in I_{B'}} \lambda_i A_i = \vec{0}.
@@ -87,8 +87,8 @@ Da $B$ og $B'$ kun er forskellige i en søjle, må
 \end{align*}
 Dvs. at søjlerne i $B'$ er lineært uafhængige, hvis $A_{jl} = 0$.
 Bemærk at $B^{-1} \lambda_j A_j = - \vec{d}_B$, hvis $l$te indgang pr. definition er forskellig fra $0$. 
-Hvorfor alle søjler $B'$ er lineært uafhængige, hvorfor at alle rækker er lineært uafhængige og $\vec{y}$ er en basisløsning.
-Bemærk at da $\vec{x}\in P$ og $\vec{d}$ og $\theta^*$ er konstrueret så $\vec{x}+\theta^*\vec{d} \in P$ må $\vec{y} \in P$, hvormed $\vec{y}$ er en mulig basisløsning.
+Alle søjler i $B'$ er altså lineært uafhængige, hvorfor alle rækker er lineært uafhængige og $\vec{y}$ er en basisløsning.
+Bemærk, at da $\vec{x}\in P$ og $\vec{d}$ og $\theta^*$ er konstrueret så $\vec{x}+\theta^*\vec{d} \in P$ må $\vec{y} \in P$, hvormed $\vec{y}$ er en mulig basisløsning.
 \end{proof}
 Det er nu vist, hvordan det er muligt at gå fra en basis løsning til en anden.
  Bemærk at de to løsninger er naboløsninger, da det er antaget at ingen af dem er degenerate, og der derfor kun bliver introduceret en ny variable og fjernet en gammel, hvorfor at løsningerne må dele samme krav på nær et. 
@@ -120,7 +120,7 @@ Det undersøges derfor om $ c_j-\vec{c}_B B^{-1}\vec{A_j}= 0$, hvis $x_j$ er en 
 Det kan derfor konkluderes at $\Delta c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}$ for et hvert $x$.
 \end{proof}
 Det må derfor være bedst at gå enten i den retning hvor $\Delta c_j$ er størst eller $\theta^*\Delta c_j$ er størst. 
-Hvis der ikke sker en ændring eller ændringen forstører objektfunktionen på den fundene basisløsning nødvendigvis være optimal.
+Hvis der ikke sker en ændring eller ændringen forstørrer objektfunktionen må den fundne basisløsning nødvendigvis være optimal.
 \begin{stn}
 Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, så er $\vec{x}$ optimal, hvis og kun hvis $\Delta c_j \geq 0$ for alle $j$.
 \label{stn:optimalDeltaC}
@@ -168,18 +168,18 @@ Det kan alt sammen opsummeres til Simplex metoden
 \\ 6. Gå til step 2.
 \label{pro:simplex}
 \end{pro}
-Til sidst vises at Simplex metoden altid vil finde frem til den optimaleløsning efter et endeligt antal interationer.
+Til sidst vises at Simplex metoden altid vil finde frem til den optimale løsning efter et endeligt antal interationer.
 \begin{stn}
-Lad $P \neq \emptyset$, da stopper Simplex metoden efter et endeligt antal interationer, enten ved at finde den optimale løsning eller at den optimale værdi er $- \infty$
+Lad $P \neq \emptyset$, da stopper Simplex metoden efter et endeligt antal interationer, enten ved at finde den optimale løsning eller at den optimale værdi er $- \infty$.
 \end{stn}
 \begin{proof}
 Antag først at Simplex metoden stopper efter step 2 i Program \ref{pro:simplex}, da følger det af Sætning \ref{stn:optimalDeltaC}
-at basisløsninge er optimal, og Simplex metoden har derfor fundet den optimale løsning.
+at basisløsningen er optimal, og Simplex metoden har derfor fundet den optimale løsning.
 \\ Antag nu at Simplex metoden stopper efter step 3 i Program \ref{pro:simplex}, da følger det af beviset for Lemma \ref{lma:skalar}, at $P$ indeholder en linje, hvorfor det følger af Afsnit \ref{sec:eksistens},
 at den optimale værdi er $-\infty$.
 \\ Da der kun er en endelig mængde basisløsninger i følge Korollar \ref{kor:endeligbasis}
 må Simplex metoden altid stoppe, med mindre, at den cirkulere igennem de samme basisløsninger.
-Da den $j$te retnings vektor altid vælges så $\Delta c_j < 0$, må den samme basisløsning aldrig kunne blive besøgt mere end en gang, hvorfor der ikke kan opstå en ring, og Simplex metoden må derfor stoppe efter et endeligt antal interationer.
+Da den $j$te retningsvektor altid vælges så $\Delta c_j < 0$, må den samme basisløsning aldrig kunne blive besøgt mere end en gang, hvorfor der ikke kan opstå en ring, og Simplex metoden må derfor stoppe efter et endeligt antal interationer.
 \end{proof} 
 
 
