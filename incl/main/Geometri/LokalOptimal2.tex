@@ -1,0 +1,65 @@
+\section{Lokal optimal løsning}
+Når først en optimal løsning er fundet, er det nødvendigt at tjekke, at der ikke er tale om en lokal optimal løsning.
+\begin{defn}[Lokalt optimal løsning]
+Lad $\vec{x} \in P$ være en løsnings til et lineært programerigns problem med objektfunktion $f$ da er $\vec{x}$ en lokal optimal løsning, hvis $f(\vec{x}) \leq f(\vec{y})$ for $|\vec{y}-\vec{x}|< \epsilon$ for et $\epsilon > 0$ og $\vec{y} \in P$.
+\end{defn}
+Betragt beviset for Sætning \ref{stn:eksistens}, her konstrueres hele tiden en mere optimal løsning end den foregående, ved at lægge et multiplum af en retningsvektor til den originale vektor, så en ny betingelse blev aktiv.
+Der vil derfor kunne opstå et lokalt minimum, hvis der ikke eksistere en sådan retningsvektor, men der er en løsning som er mere optimal, se Figur \ref{fig:lokaltmin}.
+\begin{figure}
+\begin{center}
+	\input{fig/tikz/lokaltmin}
+	\captionof{figure}{Bemærk at der ikke eksistere en retningsvektor $\vec{d}$, så der kan konstueres en bedre løsning, uden at overskride betingelse $2$, derfor vil løsningsvektor $\vec{x}$ fremstå optimal, selvom at løsningsvektor $\vec{y}$ er mere optimal. Løsningsvektor $\vec{x}$ er et lokalt minimum.}
+	\label{fig:lokaltmin}
+\end{center}
+\end{figure}
+Det er dog ikke alle mængder, hvor der kan forekomme lokale optimale løsninger, ved fremgangsmåden fra beviset for Sætning \ref{stn:eksistens}.
+\begin{defn} [Konveks mængde]
+Lad $S \subset \mathds{R}^n$  da er $S$ konveks, hvis der $\forall \vec{x}, \vec{y} \in S$ og et vilkårligt $\lambda \in [0,1]$ gælder at $\lambda \vec{x} + (1-\lambda) \vec{y} \in S$.
+\label{def:Konveks}
+\end{defn}
+En konveksmængde er en mængde der opfylder at det vægtede gennemsnit af et hvert par af elementer også tilhører mængden, det betyder at der altid kan findes en retningsvektor mellem et hvert punkt i mængden.
+Helt generelt gælder det, hvis løsningsmængden til et lineært ligningsproblem er konveks, så vil en hver lokal optimal løsning, være en optimal løsning.
+\begin{stn}
+Lad $\vec{x} \in P$ være en lokal optimal løsnings til et lineært programerignsproblem  med objektfunktion $f$.
+Da er  $f(\vec{x}) \leq f(\vec{y})$ for alle $\vec{y} \in P$ hvis $P$ er konveks.
+\end{stn}
+\begin{proof}
+Antag at $\vec{x}^* \in P$ er en optimal løsning.
+Da $P$ er konveks medfører det at $\lambda \vec{x}^* + (1-\lambda)\vec{x} \in P$. 
+Da $\lambda$ kan vælges til at være vilkårligt tæt på nul, må $|\lambda \vec{x}^* + (1-\lambda)\vec{x} - \vec{x}| < \epsilon$ da
+\begin{align*}
+ |\lambda \vec{x}^* + (1-\lambda)\vec{x} - \vec{x}| = | \lambda \vec{x}^* - \lambda\vec{x}| = \lambda|\vec{x}^* - \vec{x}| < \epsilon.
+\end{align*}
+Da $\vec{x}$ er en lokal optimal løsning, følger det, at
+\begin{align*}
+f(\vec{x}) \leq f(\lambda \vec{x}^* + (1-\lambda)\vec{x}).
+\end{align*}
+Da $f$ er lineær følger det af Definition \ref{def:linfunk}, at 
+\begin{align*}
+f(\vec{x}) \leq f(\lambda \vec{x}^* + (1-\lambda)\vec{x}) &= \lambda f(\vec{x}^*) + (1-\lambda)f(\vec{x}) \qquad \Rightarrow
+\\ f(\vec{x}) - f(\vec{x}) &=\lambda f(\vec{x}^*) + (1-\lambda)f(\vec{x}) \qquad \Rightarrow
+\\ 0 & = \lambda( f(\vec{x}^*) - f(\vec{x})),
+\end{align*}
+hvis $\lambda$ er lille nok.
+Da $ \lambda$ kan være forskellig fra nul må det medføre, at $f((\vec{x}^*) - f(\vec{x}) = 0$, hvorfor $f(\vec{x}^*) =f(\vec{x})$. 
+Det kan derfor konkluderes, hvis $\vec{x}$ er en lokal optimal løsning, så er $\vec{x}$ en optimal løsning.
+\end{proof}
+Løsningsmængden  for et standard problem, vil altid være konveks.
+\begin{stn}
+Lad $P =\{ \vec{x} \in \mathds{R}^n | A \vec{x} \geq \vec{b}\} $ være en polyede, da er $P$ konveks.
+\label{stn:polykon}
+\end{stn}
+\begin{proof}
+Lad $\vec{x}, \vec{y} \in P=\{ \vec{x} \in \mathds{R}^n | A \vec{x} \geq \vec{b}\}$ være to vilkårlige vektorer, da gælder at $A\vec{x} \geq \vec{b}$ hvilket medfører at $\lambda A \vec{x} \geq \lambda\vec{b}$, hvor $\lambda \in [0,1]$ er en skalar. 
+På ligefod må der derfor gælde at $(1-\lambda)A\vec{y} \geq (1-\lambda)\vec{b}$.
+De to uligheder adderes nu
+\begin{align*}
+\lambda A \vec{x} + (1-\lambda) A \vec{y} \geq \lambda \vec{b} + (1 - \lambda) \vec{b}
+\\  A (\lambda\vec{x} + (1-\lambda)\vec{y}) \geq \vec{b}.
+\end{align*}
+Derfor må $\lambda\vec{x} + (1-\lambda)\vec{y} \in P$.
+\end{proof}
+Det betyder derfor at et hvert lineært programmerings problem kun har optimale løsninger, da det er vist i Kapitel \ref{Afsnit:LinProg}, hvordan ethvert lineært programmerings problem kan skrives på standard form.
+
+\input{incl/main/Geometri/Konvexhuld2}
+\input{incl/main/Geometri/geoSimp}
