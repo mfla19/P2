@@ -1,0 +1,100 @@
+\begin{defn}
+En basis $B = \{\vec{v}_i,..., \vec{v}_k\}$ for  et underrum $W$ til $\mathds{R}^n$ kaldes en \textbf{ortogonal basis}, hvis 
+$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$.
+\\En ortogonal basis er \textbf{ortonormal} hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
+\end{defn}
+
+\begin{lma}
+Lad $\vec{v}, \vec{u} \in \mathds{R}^n$, og $\vec{v}\neq \vec{0}$, $\vec{u} \neq \vec{0}$ da er $\vec{v} \bot \vec{u}$ hvis og kun vis $\vec{v}^T\vec{u} = 0$.
+\label{lma:vinkelret}
+\end{lma}
+\begin{proof}
+For at vise Lemma \ref{lma:vinkelret}, vises først at $\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}$, hvor $\theta$ er vinklen mellem de to vektorer. 
+Betragt derfor trekanten med siderne $\Vert\vec{v}\Vert , \Vert\vec{u}\Vert$ og $\Vert\vec{v-u}\Vert$, da følger det af cosinusrelationerne, at 
+\begin{align*}
+\Vert\vec{v}\Vert^2 +  \Vert\vec{u}\Vert^2 - 2\Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta} &= \Vert\vec{v-u}\Vert^2 
+\\ &= \vec{v-u}^T\vec{v-u} = \sum_{i=1}^n (v_i- u_i)^2 = \sum_{i=1}^n v_i^2 + u_i^2 - 2 v_iu_i = \Vert\vec{v}\Vert^2 +  \Vert\vec{u}\Vert^2 - 2\vec{v}^T\vec{u}.
+\end{align*}
+Dermed kan det konkluderes,  at $\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}$.
+\\Antag nu at $\vec{v}$ og $\vec{u}$ er ortogonale, da vil $\theta= \pi/2$ hvorfor at 
+\begin{align*}
+\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\pi/2}= \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cdot0 = 0.
+\end{align*}
+Dermed er vektorproduktet nul når vektorene er ortogonale.
+Antag til sidst at $\vec{v}^T\vec{u}=0$, da vil 
+\begin{align*}
+0 = \vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}
+\end{align*}
+Da hverken $\vec{v}$ eller $\vec{u}$ er lig $\vec{0}$ må $\cos{\theta} = 0 $, hvorfor det kan konkluderes at de må være ortogonale.
+\end{proof}
+
+
+\begin{stn}[Gceram-Schmidt processen]
+Lad $\{\vec{u}_1, ..., \vec{u}_k\}$ være en basis for underrummet $W$ til $\mathds{R}^n$, og lad 
+$\vec{v}_1 = \vec{u}_1$, og $\vec{v}_i= \vec{u}_i - \sum_{j=1}^{i-1} \frac{\vec{u}_i^T \vec{v}_j}{\Vert\vec{v}_j\Vert}\vec{v}_j$ for $i \geq 2$.
+Da udgør $B = \{\vec{v}_1,..., \vec{v}_k\}$ en ortogonal basis for $W$.
+\label{stn:gram}
+\end{stn}
+\begin{proof}
+For at $B$ er en ortogonal basis for $W$ laves et induktionsbevis, lad derfor først $k= 1$, da $\vec{u}_1\neq \vec{0}$ og udgør en basis for $W$, så må $\vec{v}_1 = \vec{u}_1$ nødvendigvis også gøre det.
+Da $B$ kun består af en vektor, må den være ortogonal.
+\\Antag, at $B$ er en ortogonal basis for $W$ for $k=n$, da vises det at det medføre at $B$ også er en ortogonal basis for  $W$ når $k = n+1$.
+\\Betragt derfor elementet 
+\begin{align*}
+\vec{v}_{n+1} = \vec{u}_{n+1} - \sum_{i=1}^n \frac{\vec{u}_{n+1}^T\vec{v}_i}{\Vert\vec{v}_i\Vert^2}\vec{v}_i.
+\end{align*}
+Da $\vec{v}_1,...,\vec{v}_n$ er antaget til at være ortogonale, medfører det at
+\begin{align*}
+\vec{v}_j^T\vec{v}_{n+1} &= \vec{v}_j^T\vec{u}_{n+1} - \sum_{i=1}^n \frac{\vec{u}_{n+1}^T\vec{v}_i}{\Vert\vec{v}_i\Vert^2}\vec{v}_j^T\vec{v}_i
+\\ &= \vec{v}_j^T\vec{u}_{n+1} - \frac{\vec{u}_{n+1}^T\vec{v}_j}{\Vert\vec{v}_j\Vert^2}\vec{v}_j^T\vec{v}_j
+\\ & = \vec{v}_j^T\vec{u}_{n+1} -  \frac{\vec{u}_{n+1}^T\vec{v}_j}{\Vert\vec{v}_j\Vert^2}\Vert\vec{v}_j\Vert^2
+\\ & =\vec{v}_j^T\vec{u}_{n+1} - \vec{v}_j^T\vec{u}_{n+1} = 0 , 
+\end{align*}
+for $j = 1,...,n$. 
+Derfor kan det konkluderes at $\vec{v}_{n+1}$ er ortogonal med $\vec{v}_1,...,\vec{v}_n$, derfor følger det af Lemma % mangler 
+at $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ er lineær uafhængige.
+Da $\vec{v}_{n+1}$ er lineær afhængig af $\vec{u}_{n+1}$ må $span\{\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}\} = span\{\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}\}$.
+Derfor må $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, og $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ må udgøre en ortogonal basis for $W$.
+\end{proof}
+
+
+\begin{kor}
+Et hvert underrum $W$ til $\mathds{R}^n$ har en ortogonal og ortonormal basis.
+\end{kor}
+\begin{proof}
+Af Sætning \ref{stn:gram} fremgår det hvordan enhver basis kan konstrueres til en ortogonal basis. 
+For at konstruere en ortonomal basis, betragt et vilkårligt element $\vec{v}_i$ fra en ortogonal basis, og definer vektoren $\vec{u}_i = \frac{1}{\Vert\vec{v}_i\Vert}\vec{v}_i$, da vil $\{\vec{u}_1,...,\vec{u}_n\}$ udgøre en ortonormal basis. 
+\end{proof}
+
+
+\begin{defn}
+En delmængde vektorer $S^{\bot} \subseteq \mathds{R}^n$ kaldes det \textbf{ortogonale komplement} til delmængden $S \subseteq \mathds{R}^n$, hvis 
+\begin{align*}
+	S^{\bot} = \{\vec{v} \in \mathds{R}^n \mid \vec{v}^T\vec{u} = 0, \, \forall \vec{u} \in S\}
+\end{align*}
+\label{def:ortokom}
+\end{defn}
+
+\begin{prop}
+Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$ så er  $\vec{v}=\vec{0}$.
+\end{prop}
+\begin{proof}
+Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$ så følger det af Definition \ref{def:ortokom} at $\vec{v}^T\vec{v} = 0$.
+Dermed så $\vec{v}^T\vec{v} = \sum_{i=1}^n v_i^2 =0$, hvilket kun er muligt, hvis $v_i = 0$ for ethvert $i = 1,..., n$, hvorfor at $\vec{v}=\vec{0}$.
+\end{proof}
+
+
+\begin{stn}
+Lad $W$ være et underrum til $\mathds{R}^n$, da for et hvert $\vec{u} \in \mathds{R}^n$ eksistere der unikke vektorer $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så $\vec{u}= \vec{w}+\vec{z}$
+\end{stn}
+
+\begin{kor}
+Lad $B$  og $B^{\bot}$ udgøre en basis for henholdsvis underrummet $W$ til $\mathds{R}^n$, og dets ortogonale komplement $W^{\bot}$, da vil $\{B, B^{\bot}\}$ være en basis for $\mathds{R}^n$
+\end{kor}
+
+\begin{kor}
+Lad $W$ være et underrum til $\mathds{R}^n$, da er $\dim {W} + \dim {W^{\bot}} = n$.
+\end{kor}
+ 
+
+ 
