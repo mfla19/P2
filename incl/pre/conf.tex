@@ -78,6 +78,7 @@
 \definecolor{commentgreen}{RGB}{2,112,10}
 \lstdefinestyle{custompy}{
   %belowcaptionskip=\baselineskip,
+  frame=top,frame=bottom,
   breaklines=true,
   language=Python,
   showstringspaces=false,
@@ -87,8 +88,12 @@
   %numberblanklines=false,
   columns=flexible,
   numbers=left,
-  xleftmargin=2em,
-  morekeywords={hvis,returner,i,ellers},
+  xleftmargin=20pt,
+  framexleftmargin=20pt,
+  framexrightmargin=0pt,
+  framexbottommargin=5pt,
+  framextopmargin=5pt,
+  morekeywords={hvis,returner,i,ellers,hvilke},
   mathescape=true,
   extendedchars=\true,
   literate=%

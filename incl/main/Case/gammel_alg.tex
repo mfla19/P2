@@ -1,0 +1,47 @@
+\begin{alg}[label={alg:lexi}]{Lexi pivot algoritme}
+def $\textbf{lexi}$(A,piv_søjle):
+	minrække = [rækker i $I_B$ for hvilke A[række][pivot søjle] > 0]
+	Hvis len(minrække) == 0:
+		returner -1 #Uendeligt lav cost
+	for søjle i range(len(A[0])):
+		$\theta$ = [$\frac{x_{B(i)}}{u_i}$ for række i minrække]
+		minrække = [rækker i minrække for hvilke $\theta$[række] = min($\theta$)]
+		hvis længde af minrække == 1:
+			returner minrække[0] #række fundet og returneres
+
+\end{alg}
+
+
+\begin{alg}[label={alg:storem2}]{Store-M algoritmen}
+def $\textbf{storeM}$(A,I_B):
+    while true: #kører iterationer indtil løsning fundet
+    	for i in range(1,len(A[0])): 
+        	if A[0][i] < 0: # finder søjle med ${\color{commentgreen} \overline{c}_i}$<0
+            	piv_søjle = i
+        	elif i == len(A[0])-1: #hvis ingen reduceret cost er negative så afsluttes
+				break
+            
+    	L,minrække=$\textbf{lexi}$(A,piv_søjle) #finder den lexi-mindste række
+    	if L == -1: #uendeligt lav cost,
+			break
+            
+    	piv_punkt = A[L][piv_søjle] 
+    	for søjle in range(len(A[0])): #dividerer piv række med piv punkt
+        	A[L][søjle] /= piv_punkt
+            
+    	for række in range(len(A)): #trækker piv række fra andre rækker
+        	if række != L:
+            	række_trækfra = A[række][piv_søjle]
+            	for søjle in range(len(A[0])):
+                	A[række][søjle] -= række_trækfra*A[L][søjle]
+
+    	I_B[L-1]=piv_søjle #ny variabel indsættes i indeks for basis
+
+	for indeks in $I_B$: 
+		if indeks > M*N+M: #kunstige variable stadig i basis. Ingen mulig løsning fundet
+			cost = $\infty$
+	if L == -1: # uendeligt lav cost
+		cost = $-\infty$
+	else: #løsning fundet
+		cost = $-A[0][0]$
+\end{alg}

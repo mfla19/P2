@@ -32,41 +32,78 @@
 {enforce breakable, colback={white}, boxrule=0pt, colframe={gray!100}, leftrule=3.5pt, sharp corners
 } % boks til eksempler
 
-%\newtcolorbox{algoboks}
-%{colback={white}, boxrule=0pt, toprule=1pt, bottomrule=1pt, colframe=black, sharp corners
-%}
 
-\newcounter{nyctr}
+\newcounter{nyctr} %tæller til alting
 \numberwithin{nyctr}{chapter}
 
+\DeclareCaptionFormat{listing}{\rule{\dimexpr\textwidth\relax}{0.4pt}\par\vskip1pt #1#2#3} %laver captions til listings med en linje over.
+
+\captionsetup[lstlisting]{format=listing,singlelinecheck=false, margin=0pt,labelsep=quad,
+labelfont={up,bf}} %setup af captions til alg.
+
+\lstdefinestyle{ingental}{
+numbers=none,xleftmargin=0em,  framexleftmargin=0em}
+
+% laver et nyt dokument, hvor referencer til algoritmer gemmes
+\newcommand{\lstlistalgname}{Liste med Algoritmer}
+\lst@UserCommand\lstlistofalg{\bgroup 
+	\let\contentsname\lstlistalgname
+    \let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{loa}}
+    \tableofcontents \egroup}
+
+%laver nyt dokument hvor referencer til procedurer gemmes
+\newcommand{\lstlistproname}{Liste med procedurer}
+\lst@UserCommand\lstlistofpro{\bgroup
+    \let\contentsname\lstlistproname
+    \let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{lop}}
+    \tableofcontents \egroup}
+
 \lstnewenvironment{alg}[2][]
-{\refstepcounter{nyctr}\lstset{basicstyle=\small\normalfont,
-  keywordstyle=\bfseries\color{AAUblue1},
-  commentstyle=\itshape\color{commentgreen},#1}  
-\vspace{0.3cm}
-\hrule \vspace{1mm}
-\noindent \textbf{Algoritme \thenyctr} \hspace{0.3cm} #2 \vspace{1mm}
-\hrule
-}{
-\vspace{1mm}
-\hrule
-  \vspace{0.3cm}
-}
+{\renewcommand{\lstlistingname}{Algoritme}
+\refstepcounter{nyctr} 
+\addcontentsline{loa}{lstlisting}{\protect\numberline{\thenyctr} #2}
+\lstset{basicstyle=\small\normalfont, keywordstyle=\bfseries\color{AAUblue1}, commentstyle=\itshape\color{commentgreen},#1,caption={#2}} 
+}{}
+
+
 
 \lstnewenvironment{pro}[2][]
-{\refstepcounter{nyctr} \lstset{basicstyle=\small\normalfont,
-  keywordstyle=\color{black},
-  commentstyle=\itshape\color{black},#1}  
-\vspace{0.3cm}
-\hrule \vspace{1mm}
-\noindent \textbf{Procedure \thenyctr} \hspace{0.3cm} #2 \vspace{1mm}
-\hrule
-\vspace{1mm}
-}{
-\vspace{1mm}
-\hrule
-  \vspace{0.3cm}
-}
+{\refstepcounter{nyctr}
+\addcontentsline{lop}{lstlisting}{\protect\numberline{\thenyctr} #2}
+\renewcommand{\lstlistingname}{Procedure}
+\lstset{basicstyle=\small\normalfont,keywordstyle=\normalfont,
+#1,caption={#2}} 
+}{}
+
+%\lstnewenvironment{alg}[2][]
+%{\refstepcounter{nyctr}\lstset{basicstyle=\small\normalfont,
+%  keywordstyle=\bfseries\color{AAUblue1},
+%  commentstyle=\itshape\color{commentgreen},#1}  
+%\vspace{0.3cm}
+%\hrule \vspace{1mm}
+%\noindent \textbf{Algoritme \thenyctr} \hspace{0.3cm} #2 \vspace{1mm}
+%\hrule
+%}{
+%\vspace{1mm}
+%\hrule
+%  \vspace{0.3cm}
+%}
+
+
+%\lstnewenvironment{pro}[2][]
+%{\refstepcounter{nyctr} \lstset{basicstyle=\small\normalfont,
+%  keywordstyle=\color{black},
+%  commentstyle=\itshape\color{black},#1}  
+%\vspace{0.3cm}
+%\hrule \vspace{1mm}
+%\noindent \textbf{Procedure \thenyctr} \hspace{0.3cm} #2 \vspace{1mm}
+%\hrule
+%\vspace{1mm}
+%}{
+%\vspace{1mm}
+%\hrule
+%  \vspace{0.3cm}
+%}
 
 \newenvironment{stn}[1][]
 { \refstepcounter{nyctr}
