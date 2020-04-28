@@ -45,14 +45,14 @@ labelfont={up,bf}} %setup af captions til alg.
 numbers=none,xleftmargin=0em,  framexleftmargin=0em}
 
 % laver et nyt dokument, hvor referencer til algoritmer gemmes
-\newcommand{\lstlistalgname}{Liste med Algoritmer}
+\newcommand{\lstlistalgname}{Algoritmer}
 \lst@UserCommand\lstlistofalg{\bgroup 
 	\let\contentsname\lstlistalgname
-    \let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{loa}}
+    \let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{lok}}
     \tableofcontents \egroup}
 
 %laver nyt dokument hvor referencer til procedurer gemmes
-\newcommand{\lstlistproname}{Liste med procedurer}
+\newcommand{\lstlistproname}{Procedurer}
 \lst@UserCommand\lstlistofpro{\bgroup
     \let\contentsname\lstlistproname
     \let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{lop}}
@@ -61,7 +61,7 @@ numbers=none,xleftmargin=0em,  framexleftmargin=0em}
 \lstnewenvironment{alg}[2][]
 {\renewcommand{\lstlistingname}{Algoritme}
 \refstepcounter{nyctr} 
-\addcontentsline{loa}{lstlisting}{\protect\numberline{\thenyctr} #2}
+\addcontentsline{lok}{lstlisting}{\protect\numberline{\thenyctr} #2}
 \lstset{basicstyle=\small\normalfont, keywordstyle=\bfseries\color{AAUblue1}, commentstyle=\itshape\color{commentgreen},#1,caption={#2}} 
 }{}
 
