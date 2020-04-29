@@ -238,7 +238,6 @@ Matrix produkt af $A$ og $B$ er dermed givet ved:
 \input{incl/main/Lin_alg/lin_lign}
 
 \subsection{Invers matrix}
-
 Hvis matrix produktet af to matricer, A og B, giver identitetsmatricen, sigen B matrix at være den inverse matrix til A. 
 \begin{defn}[Invers matrix]
 Lad $A$ og $B$ være kvadratiske $n \times n$ matricer. Lad $AB=BA=I_n$, hvor $I_n$ er identitetsmatricen. Så er A invertibel og B er den inverse matrix til $A$. $B$ noteres da $A^{-1}$. 
@@ -283,7 +282,7 @@ Lad nu den reducerede trappeform af $A$ være identitesmatricen. Så må der fin
 \begin{align*}
 A=I_nA=(P^{-1}P)A=P^{-1}(PA)=P^{-1}I_n=P^{-1}
 \end{align*}
-Da $P$ er invertibel må $P{-1}$ også være invertibel. Derfor er $A$ invertibel. 
+Da $P$ er invertibel må $P^{-1}$ også være invertibel. Derfor er $A$ invertibel. 
 
 (b) Betragt matricen $[A \quad I_n]$. Enhver $n \times n$ matrix, $A$, kan skrives som en matrix, $R$, på reduceret trappeform, ved hjælp af elementære rækkeoperationer. Udføres de samme rækkeoperationer på $n \times 2n$ matricen, $[A \quad I_n]$, tranformeres denne til $[R \quad B]$. Betragt en invertibel matrix $P$, som opfyldet at: $P[A \quad I_n]=[R \quad B]$. Så følger det at:  
 \begin{align*}
@@ -335,6 +334,83 @@ A^{-1} =\begin{bmatrix}
 \end{bmatrix}.
 \end{align*}
 \end{eks}
+
+\subsection{Elementærmatricer og invertibilitet}
+Generelt kaldes en $n \times n$ matrix $E$ en elementærmatrix, hvis der på identitetsmatricen $I_n$ kan udføres én elementær rækkeoperation, så der fås $E$. 
+
+\begin{eks}
+En matrix $E$ er givet ved
+\begin{align*}
+E =\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 2 \\
+0 & 0 & 1 
+\end{bmatrix}.
+\end{align*}
+Her er der lagt to gange række $3$ til række $2$ på identitetsmatricen $I_3$ for at få $E$.
+
+Det ses også, at givet følgende matrix
+\begin{align*}
+A =\begin{bmatrix}
+1 & 2 \\
+3 & 4 \\
+5 & 6 
+\end{bmatrix}
+\end{align*}
+så er
+\begin{align*}
+EA =\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 2 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 \\
+3 & 4 \\
+5 & 6
+\end{bmatrix}
+=\begin{bmatrix}
+1 & 2 \\
+13 & 16 \\
+5 & 6
+\end{bmatrix}.
+\end{align*}
+Det ses altså, at den rækkeoperation, der blev udført på $I_3$ for at få $E$, er samme rækkeoperation, der kan udføres på $A$ for at få $EA$. 
+\end{eks}
+
+\begin{defn}
+Enhver elementærmatrix er invertibel. Den inverse af en elementærmatrix er også en elementærmatrix. 
+\end{defn}
+
+Enhver rækkeoperation kan laves omvendt. For eksempel kan den matrix der fås, ved at lægge to gange den første række til anden række, ændres tilbage ved at tage $-2$ gange den første række og lægge til den anden række i den nye matrix. På den måde opnås den inverse af en elementærmatrix. \\
+Ud fra et antal elementære rækkeoperationer kan der opnås en matrix på reduceret trappeform. Dette kan ligeledes opnås, ved at gange samme antal elementærmatricer, som elementære rækkeroperationer, på den givne matrix. 
+Hvis $A$ er en $m \times n$ matrix på reduceret trappeform $R$, findes der elementærmatricer $E_1$, $E_2$, \dots, $E_k$, så 
+\begin{align*}
+E_k E_{k-1} \dotsm E_1 A = R.
+\end{align*}
+
+Hvis $P = E_k E_{k-1} \dotsm E_1$, så er $P$ et produkt af elementærmatricer og derfor invertibel. Derudover er $PA = R$. 
+
+\begin{stn}
+Lad $A$ være en $m \times n$ matrix på reduceret trappeform $R$. Da findes der en invertibel $m \times m$ matrix $P$ så $PA=R$. 
+\end{stn}
+
+\begin{proof}
+Der findes en invertibel matrix $P$ således at $P[A \quad \vec{b}] = [R \quad \vec{c}]$. Derfor
+\begin{align*}
+[PA \quad P\vec{b}] = P[A \quad \vec{b}] = [R \quad \vec{c}],
+\end{align*}
+og altså $PA = R$ og $P\vec{b}=\vec{c}$. Da $P$ er invertibel, følger det at $A = P^{-1}R$ og $\vec{b}=P^{-1}\vec{c}$.
+Hvis $\vec{v}$ er en løsning til $A\vec{x}=\vec{b}$, så $A\vec{v}=\vec{b}$. Så
+\begin{align*}
+R\vec{v} = (PA)\vec{v} = P(A\vec{v}) = P\vec{b}=\vec{c}. 
+\end{align*} 
+Hvorfor $\vec{v}$ er en løsning til $R\vec{x}=\vec{c}$. Antag at $\vec{v}$ er en løsning til $R\vec{x} = \vec{c}$. Så er $R\vec{v} = \vec{c}$, og derfor
+\begin{align*}
+A\vec{v} = (P^{-1}R)\vec{v} = P^{-1}R\vec{v} = P^{-1}\vec{c} = \vec{b}. 
+\end{align*}
+Derfor er $\vec{v}$ en løsning til $A\vec{x} = \vec{b}$. Udtrykkene $A\vec{x} = \vec{b}$ og $R\vec{x} = \vec{c}$ har altså samme løsninger.
+\end{proof}
 
 \input{incl/main/Lin_alg/Determinant}
 \input{incl/main/Lin_alg/undspanbas}
