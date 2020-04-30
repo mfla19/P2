@@ -391,14 +391,28 @@ E_k E_{k-1} \dotsm E_1 A = R.
 
 Hvis $P = E_k E_{k-1} \dotsm E_1$, så er $P$ et produkt af elementærmatricer og derfor invertibel. Derudover er $PA = R$. 
 
-\begin{stn}
+\begin{stn}\label{stn:mn_invertibel}
 Lad $A$ være en $m \times n$ matrix på reduceret trappeform $R$. Da findes der en invertibel $m \times m$ matrix $P$ så $PA=R$. 
 \end{stn}
 
+Sætning \ref{stn:mn_invertibel} følger af følgende resultat. 
+
+\begin{kor}
+Matrix-ligningen $A\vec{x}=\vec{b}$ har samme løsninger som $R\vec{x}=\vec{c}$ hvor $\begin{bmatrix} R & \vec{c} \end{bmatrix}$ er matricen $\begin{bmatrix} A & \vec{b} \end{bmatrix}$ på reduceret trappeform.
+\end{kor}
+
 \begin{proof}
-Der findes en invertibel matrix $P$ således at $P[A \quad \vec{b}] = [R \quad \vec{c}]$. Derfor
+Der findes en invertibel matrix $P$ således at $P \begin{bmatrix} A & \vec{b} \end{bmatrix} = \begin{bmatrix} R & \vec{c} \end{bmatrix}$. Derfor
 \begin{align*}
-[PA \quad P\vec{b}] = P[A \quad \vec{b}] = [R \quad \vec{c}],
+\begin{bmatrix} 
+PA & P\vec{b} 
+\end{bmatrix} =
+P \begin{bmatrix}
+A & \vec{b}
+\end{bmatrix} =
+\begin{bmatrix}
+R \vec{c}
+\end{bmatrix},
 \end{align*}
 og altså $PA = R$ og $P\vec{b}=\vec{c}$. Da $P$ er invertibel, følger det at $A = P^{-1}R$ og $\vec{b}=P^{-1}\vec{c}$.
 Hvis $\vec{v}$ er en løsning til $A\vec{x}=\vec{b}$, så $A\vec{v}=\vec{b}$. Så
