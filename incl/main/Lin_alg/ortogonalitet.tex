@@ -1,17 +1,16 @@
 \subsection{Ortogonal og Ortonormal basis}
-Et speciel tilfælde af en basis er en ortogonal basis og en ortonormal basis.
+To sær tilfælde af basis er ortogonal basis og en ortonormal basis.
 \begin{defn}
 En basis $B = \{\vec{v}_i,..., \vec{v}_k\}$ for  et underrum $W$ til $\mathds{R}^n$ kaldes en \textbf{ortogonal basis}, hvis 
-$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$.
-\\En ortogonal basis er \textbf{ortonormal} hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
+$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$. En ortogonal basis er \textbf{ortonormal} hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
 \end{defn}
-En måde at tjekke om to vektore er ortogonale, er ved beregne deres vektor produkt.
+For at vise at en basis er ortogonal, er det nødvendigt at vise, at alle vektorer er indbyrdes ortogonale, her kan gøres brug af deres indbyrdes vektorprodukt.
 \begin{lma}
 Lad $\vec{v}, \vec{u} \in \mathds{R}^n$, og $\vec{v}\neq \vec{0}$, $\vec{u} \neq \vec{0}$ da er $\vec{v} \bot \vec{u}$ hvis og kun vis $\vec{v}^T\vec{u} = 0$.
 \label{lma:vinkelret}
 \end{lma}
 \begin{proof}
-For at vise Lemma \ref{lma:vinkelret}, vises først at $\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}$, hvor $\theta$ er vinklen mellem de to vektorer. 
+For at vise Lemma \ref{lma:vinkelret}, vises først, at $\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}$, hvor $\theta$ er vinklen mellem de to vektorer. 
 Betragt derfor trekanten med siderne $\Vert\vec{v}\Vert , \Vert\vec{u}\Vert$ og $\Vert\vec{v-u}\Vert$, da følger det af cosinusrelationerne, at 
 \begin{align*}
 \Vert\vec{v}\Vert^2 +  \Vert\vec{u}\Vert^2 - 2\Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta} &= \Vert\vec{v-u}\Vert^2 
@@ -21,7 +20,7 @@ Betragt derfor trekanten med siderne $\Vert\vec{v}\Vert , \Vert\vec{u}\Vert$ og 
 \\&= \Vert\vec{v}\Vert^2 +  \Vert\vec{u}\Vert^2 - 2\vec{v}^T\vec{u}.
 \end{align*}
 Dermed kan det konkluderes,  at $\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}$.
-\\Antag nu at $\vec{v}$ og $\vec{u}$ er ortogonale, da vil $\theta= \pi/2$ hvorfor at 
+\\Antag nu, at $\vec{v}$ og $\vec{u}$ er ortogonale, da vil $\theta= \pi/2$, hvormed
 \begin{align*}
 \vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\pi/2}= \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cdot0 = 0.
 \end{align*}
@@ -32,23 +31,23 @@ Antag til sidst at $\vec{v}^T\vec{u}=0$, da vil
 \end{align*}
 Da hverken $\vec{v}$ eller $\vec{u}$ er lig $\vec{0}$ må $\cos{\theta} = 0 $, hvorfor det kan konkluderes at de må være ortogonale.
 \end{proof}
-Det kan benyttes til at vise at to vektorer der er ortogonale også er lineært uafhængige.
+Her af følger, at to ortogonale vektorer er lineært uafhængige.
 \begin{lma}
 Lad $\vec{u}, \vec{v} \in \mathds{R}^n$, så $\vec{v} \neq \vec{0}$ og $\vec{u} \neq \vec{0}$, da er $\vec{v}$ og $\vec{u}$ lineært uafhængige hvis $\vec{v} \bot \vec{u}$.
 \label{lma:ortolinuaf}
 \end{lma}
 \begin{proof}
-Lad $\vec{v}, \vec{u}$ være ortogonale, og antag for modstrid at de også er lineært afhængige.
+Lad $\vec{v}, \vec{u}$ være ortogonale, og antag for modstrid, at de også er lineært afhængige.
 Da gælder at $\vec{v} = \lambda \vec{u}$, for en skalar $\lambda$.
-Da $\vec{v}$ og $\vec{u}$ er ortogonale følger det af Lemma \ref{lma:vinkelret}, at 
+Da $\vec{v}$ og $\vec{u}$ er ortogonale, følger det af Lemma \ref{lma:vinkelret}, at 
 \begin{align*}
 \vec{v}^T\vec{u} = \lambda\vec{u}^T\vec{u} = \lambda \Vert \vec{u} \Vert^2 = 0.
 \end{align*}
-Hvis $\lambda = 0$ vil $\vec{v}= \vec{0}$, og hvis $\Vert \vec{u} \Vert = 0$ vil $\vec{u} = \vec{0}$, hvorfor der er opstået modstrid, hvorfor at $\vec{v}$ og $\vec{u}$ er lineær uafhængige.
+Hvis $\lambda = 0$ vil $\vec{v}= \vec{0}$, og hvis $\Vert \vec{u} \Vert = 0$ vil $\vec{u} = \vec{0}$, hvorfor der er opstået modstrid, derfor er $\vec{v}$ og $\vec{u}$ lineært uafhængige.
 \end{proof}
-Det betyder også at en hver mængde af ortogonale vektorer som udspænder et underrum, er i følge Sætning 
-en basis for det underrum.
-Det viser sig at en hver basis kan omskrives til en ortogonal basis ved brug af Gram-Schmidt processen.
+Det medfører, at enhver mængde af ortogonale vektorer, som udspænder et underrum, i følge Definition \ref{def:basis} er
+en basis for underrummet.
+Er der derimod tale om en ikke ortogonal basis, kan den omdannes til sådanne ved brug af Gram-Schmidt processen.
 \begin{stn}[Gram-Schmidt processen]
 Lad $\{\vec{u}_1, ..., \vec{u}_k\}$ være en basis for underrummet $W$ til $\mathds{R}^n$, og lad 
 $\vec{v}_1 = \vec{u}_1$, og $\vec{v}_i= \vec{u}_i - \sum_{j=1}^{i-1} \frac{\vec{u}_i^T \vec{v}_j}{\Vert\vec{v}_j\Vert}\vec{v}_j$ for $i \geq 2$.
@@ -56,9 +55,9 @@ Da udgør $B = \{\vec{v}_1,..., \vec{v}_k\}$ en ortogonal basis for $W$.
 \label{stn:gram}
 \end{stn}
 \begin{proof}
-For at $B$ er en ortogonal basis for $W$ laves et induktionsbevis, lad derfor først $k= 1$, da $\vec{u}_1\neq \vec{0}$ og udgør en basis for $W$, så må $\vec{v}_1 = \vec{u}_1$ nødvendigvis også gøre det.
+For at $B$ er en ortogonal basis for $W$ laves et induktionsbevis, lad derfor først $k= 1$, da $\vec{u}_1\neq \vec{0}$ og udgør en basis for $W_1$, så må $\vec{v}_1 = \vec{u}_1$ nødvendigvis også gøre det.
 Da $B$ kun består af en vektor, må den være ortogonal.
-\\Antag, at $B$ er en ortogonal basis for $W$ for $k=n$, da vises det at det medføre at $B$ også er en ortogonal basis for  $W$ når $k = n+1$.
+\\Antag, at $B$ er en ortogonal basis for $W_n$ for $k=n$, da vises det, at det medføre, at $B$ også er en ortogonal basis for  $W_{n+1}$ når $k = n+1$.
 \\Betragt derfor elementet 
 \begin{align*}
 \vec{v}_{n+1} = \vec{u}_{n+1} - \sum_{i=1}^n \frac{\vec{u}_{n+1}^T\vec{v}_i}{\Vert\vec{v}_i\Vert^2}\vec{v}_i.
@@ -71,40 +70,43 @@ Da $\vec{v}_1,...,\vec{v}_n$ er antaget til at være ortogonale, medfører det a
 \\ & =\vec{v}_j^T\vec{u}_{n+1} - \vec{v}_j^T\vec{u}_{n+1} = 0 , 
 \end{align*}
 for $j = 1,...,n$. 
-Derfor kan det konkluderes at $\vec{v}_{n+1}$ er ortogonal med $\vec{v}_1,...,\vec{v}_n$, derfor følger det af Lemma \ref{lma:ortolinuaf}, at $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ er lineær uafhængige.
-Da $\vec{v}_{n+1}$ er lineær afhængig af $\vec{u}_{n+1}$ må $span\{\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}\} = span\{\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}\}$.
-Derfor må $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, og $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ må udgøre en ortogonal basis for $W$.
+Derfor kan det konkluderes at $\vec{v}_{n+1}$ er ortogonal med $\vec{v}_1,...,\vec{v}_n$, hvormed det følger af Lemma \ref{lma:ortolinuaf}, at $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ er lineær uafhængige.
+Da $\vec{v}_1,...,\vec{v}_n$ er en basis for $W_n$, må $\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}$ være en basis for $W_{n+1}$, fordi $span(\vec{v}_1,...,\vec{v}_n) = span(\vec{u}_1,...,\vec{u}_n) = W_n$ pr. induktionsantagelsen. 
+Da $\vec{v}_{n+1}$ er lineær afhængig af $\vec{u}_{n+1}$ må $span\{\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}\} = span\{\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}\}$, og $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, hvorfor $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ udgør en ortogonal basis for $W$.
 \end{proof}
-Derfor må det nødvendigvis følge at et hvert underrum har en ortogonal basis.
+Derfor følger det, at et hvert underrum har en ortogonal basis.
 \begin{kor}
 Et hvert underrum $W$ til $\mathds{R}^n$ har en ortogonal og ortonormal basis.
 \end{kor}
 \begin{proof}
-Af Sætning \ref{stn:gram} fremgår det hvordan enhver basis kan konstrueres til en ortogonal basis. 
+Af Sætning \ref{stn:gram} fremgår det, hvordan enhver basis kan konstrueres til en ortogonal basis. 
 For at konstruere en ortonomal basis, betragt et vilkårligt element $\vec{v}_i$ fra en ortogonal basis, og definer vektoren $\vec{u}_i = \frac{1}{\Vert\vec{v}_i\Vert}\vec{v}_i$, da vil $\{\vec{u}_1,...,\vec{u}_n\}$ udgøre en ortonormal basis. 
+Da $\Vert\vec{u}_i\Vert^2 = \frac{1}{\Vert\vec{v}_i\Vert^2}\Vert\vec{v}_i\Vert^2 = 1$.
 \end{proof}
-Til en hver ortogonal mængde er der en tilhørende ortogonal komplementær mængde.
-\begin{defn}
+
+\subsubsection{Ortogonal komplement}
+Ortogonalitet kan også bruges til at generere en ny delmængde af $\mathds{R}^n$ ud fra en given delmængde.
+\begin{defn}[Ortogonal komplement]
 En delmængde vektorer $S^{\bot} \subseteq \mathds{R}^n$ kaldes det \textbf{ortogonale komplement} til delmængden $S \subseteq \mathds{R}^n$, hvis 
 \begin{align*}
 	S^{\bot} = \{\vec{v} \in \mathds{R}^n \mid \vec{v}^T\vec{u} = 0, \, \forall \vec{u} \in S\}
 \end{align*}
 \label{def:ortokom}
 \end{defn}
-Den ortogonale komplementær mængde indeholder alle de elementer som der er ortogonale til den originale mængde
+Det ortogonale komplement indeholder dermed alle de elementer, der er ortogonale til mængden.
 \begin{prop}
-Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$ så er  $\vec{v}=\vec{0}$.
+Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$, så er  $\vec{v}=\vec{0}$.
 \label{prop:nulortokomp}
 \end{prop}
 \begin{proof}
 Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$ så følger det af Definition \ref{def:ortokom} at $\vec{v}^T\vec{v} = 0$.
-Dermed så $\vec{v}^T\vec{v} = \sum_{i=1}^n v_i^2 =0$, hvilket kun er muligt, hvis $v_i = 0$ for ethvert $i = 1,..., n$, hvorfor at $\vec{v}=\vec{0}$.
+Dermed så $\vec{v}^T\vec{v} = \sum_{i=1}^n v_i^2 =0$, hvilket kun er muligt, hvis $v_i = 0$ for ethvert $i = 1,..., n$, hvorfor $\vec{v}=\vec{0}$.
 \end{proof}
-Dermed indeholder både den originale mængde og den ortogonale komplementær mængde nulvektoren, og den ortogonale komplementær mængde 
-adskiller sig derfor fra den klassiske komplementær mængde, hvis fællesmængde mængde med original mængden er den tomme mængde.
-Men de mængden og dens ortogonale komplementær mængde kan stadig udspænde hele $\mathds{R}^n$.
-\begin{stn}
-Lad $W$ være et underrum til $\mathds{R}^n$, da for et hvert $\vec{u} \in \mathds{R}^n$ eksistere der unikke vektorer $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så $\vec{u}= \vec{w}+\vec{z}$.
+Dermed indeholder både mængden og dets ortogonale komplement nulvektoren, da nulvektoren er ortogonal til enhver vektor i følge Lemma \ref{lma:vinkelret}. 
+Det resultere i, at det ortogonale komplement aldrig kan være lig den tommemængde.
+En mængde og dens ortogonale komplement har den egenskab at de tilsammen udspænder hele $\mathds{R}^n$.
+\begin{stn}[$\mathds{R}^n$ udspændt af $W$ og $W^{\bot}$]
+Lad $W$ være et underrum til $\mathds{R}^n$, da eksistere der entydige vektorer  $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så $\vec{u}= \vec{w}+\vec{z}$ for en hver $\vec{u} \in \mathds{R}^n$.
 \label{stn:Rnorto}
 \end{stn}
 \begin{proof}
@@ -118,33 +120,28 @@ for $j=1,...,k$, da $\{\vec{v}_1,...,\vec{v}_k\}$ er en ortonormal basis.
 \begin{align*}
 \vec{v}_j\vec{z} = \vec{v}_j\vec{u}- \vec{v}_j\vec{w} = 0
 \end{align*}
-hvorfor at $\vec{z} \in W^{\bot}$. 
-Då $\vec{u}$ er valgt vilkårligt, må der eksistre vektorer $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så ethvert $\vec{u} \in \mathds{R}^n$ så $\vec{u}= \vec{w}+\vec{z}$.
-\\Så vises at $\vec{w}$ og $\vec{z}$ er entydige.
+må $\vec{z} \in W^{\bot}$. 
+Då $\vec{u}$ er valgt vilkårligt, medfører det, at der eksisterer vektorer $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så ethvert $\vec{u} \in \mathds{R}^n$ så $\vec{u}= \vec{w}+\vec{z}$.
+\\Så vises, at $\vec{w}$ og $\vec{z}$ er entydige.
 Lad derfor $\vec{w}' \in W$ og $\vec{z}' \in W^{\bot}$ så $\vec{u}= \vec{w}' + \vec{z}'$.
-Da må $\vec{w} + \vec{z} = \vec{w}' + \vec{z}'$, hvorfor at $\vec{w}-\vec{w}' = \vec{z}-\vec{z}'$.
-Det følger derfor at $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W$ og $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W^{\bot}$, hvorfor det følger af Proportion \ref{prop:nulortokomp} at $\vec{w}-\vec{w}' = \vec{z}-\vec{z}' = \vec{0}$, hvorfor at $\vec{w}= \vec{w}'$ og $\vec{z}=\vec{z}'$ og entydigheden er bevist.
+Da må $\vec{w} + \vec{z} = \vec{w}' + \vec{z}'$, hvorfor $\vec{w}-\vec{w}' = \vec{z}-\vec{z}'$.
+Det følger derfor, at $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W$ og $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W^{\bot}$, hvilket, ifølge Proportion \ref{prop:nulortokomp}, betyder, at $\vec{w}-\vec{w}' = \vec{z}-\vec{z}' = \vec{0}$, hvormed $\vec{w}= \vec{w}'$ og $\vec{z}=\vec{z}'$ og entydigheden er bevist.
 \end{proof}
-Det må derfor følge at forenigsmængden af basen for mængden og den ortogonale komplment er en basis for $\mathds{R}^n$
+Derfor vil, foreningsmængden af en delmængde af $\mathds{R}^n$ og dets ortogonale komplements baser udgøre en basis for $\mathds{R}^n$.
 \begin{kor}
 Lad $B$  og $B^{\bot}$ udgøre en basis for henholdsvis underrummet $W$ til $\mathds{R}^n$, og dets ortogonale komplement $W^{\bot}$, da vil $\{B, B^{\bot}\}$ være en basis for $\mathds{R}^n$.
 \label{kor:basisRnorto}
 \end{kor}
 \begin{proof}
-Det følger af Sætning \ref{stn:Rnorto} at et hvert element i $\mathds{R}^n$ kan skrives som en linear kombination af af et element fra $W$ og et fra $W^{\bot}$ derfor må $span\{B, B^{\bot}\} = \mathds{R}^n$. 
-Da $B$ og $B^{bot}$ er lineært uafhængige i følge Lemma \ref{lma:ortolinuaf} følger det af Sætning 
-at $\{B, B^{\bot}\}$ udgør en basis for $\mathds{R}^n$.
+Det følger af Sætning \ref{stn:Rnorto}, at et hvert element i $\mathds{R}^n$ kan skrives som en linear kombination af af et element fra $W$ og et fra $W^{\bot}$, derfor må $span\{B, B^{\bot}\} = \mathds{R}^n$. 
+Da $B$ og $B^{bot}$ er lineært uafhængige i følge Lemma \ref{lma:ortolinuaf} følger det af Korollar \ref{kor:serbase}, at $\{B, B^{\bot}\}$ udgør en basis for $\mathds{R}^n$.
 \end{proof}
-Derfor må summen af dimentionen af de to underrum også nødvendigvis være lig $n$.
-\begin{kor}
-Lad $W$ være et underrum til $\mathds{R}^n$, da er $\dim {W} + \dim {W^{\bot}} = n$.
-\end{kor}
-\begin{proof}
-Af Korolar \ref{kor:basisRnorto} følger at $\{B, B^{\bot}\}$ er en basis for $\mathds{R}^n$, hvorfor at
+\begin{bem}
+Det følger derfor af \ref{kor:basisRnorto}, at
 \begin{align}
-\dim{\mathds{R}^n} = \dim{span\{B, B^{\bot}\}} = \dim{W} + \dim{W^{\bot}}.
+\dim{\mathds{R}^n} = \dim{span\{B, B^{\bot}\}} = \dim{W} + \dim{W^{\bot}} = n.
 \end{align}
-\end{proof}
+\end{bem}
  
 
  
