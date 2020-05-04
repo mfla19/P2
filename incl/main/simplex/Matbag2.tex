@@ -6,7 +6,7 @@ Derfor er det nødvendigt, at finde en metode, hvorpå den optimale løsning kan
 En af metoderne, som kan anvendes, er Simplex metoden. I dette kapitel vil Simplex metoden, og forskellige implementeringer af metoden, derfor blive gennemgået med udgangspunkt i .
 \section{Udledning af Simplex metoden}
 Simplex metoden starter med en basisløsning, og går så i en mulig retning indtil den finder en ny basisløsning.
-%\begin{defn}[Mulig retning]
+\begin{defn}[Mulig retning]
 %Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retningen} fra $\vec{x}$, hvis der eksistere en positiv skalar $\theta > 0$ således at $\vec{x}+\theta\vec{d} \in P$ 
 %\end{defn}
 Det er derfor nødvendigt at kunne skrive en basisløsning som et udtryk af en anden basisløsning og en mulig retningsvektor.
@@ -52,7 +52,7 @@ Da eksisterer en skalar $\theta^* \geq 0$, så $\vec{x} + \theta^* \vec{d} \in P
 \end{lma}
 \begin{proof}
 Lad $B$ betegne basismatricen til $\vec{x}$, så $\vec{A_{B(i)}}$ er en søjle i $B$ for et index $I_B =\{B(1),...,B(m)\}$. 
-Antag først at $\vec{d}\geq \vec{0}$ da vil $\vec{x}+\theta^*\vec{d}$ altid overholde alle lighedsbetingelser og positivitetsbetingelser for $\theta^* \geq 0$. 
+Antag først, at $\vec{d}\geq \vec{0}$, da vil $\vec{x}+\theta^*\vec{d}$ altid overholde alle lighedsbetingelser og positivitetsbetingelser for $\theta^* \geq 0$. 
 Derfor vil $P$ indeholde en linje, da det går mod antagelsen om at $P$ ikke indeholder en linje, må mindst en indgang i $\vec{d}$ være negativ, kald denne for $d_i$.
 Da må 
 \begin{align*}
