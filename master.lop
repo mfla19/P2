@@ -1,4 +1,14 @@
+<<<<<<< HEAD
+\contentsline {lstlisting}{\numberline {7.14} Procedure for konstruktion af basisløsninger}{55}{nyctr.7.14}%
+\contentsline {lstlisting}{\numberline {8.8} Procedure for Simplex metoden}{68}{nyctr.8.8}%
+\contentsline {lstlisting}{\numberline {8.11} Procedure for Fuld tabel metoden}{70}{nyctr.8.11}%
+\contentsline {lstlisting}{\numberline {8.15} Lexi pivot regl}{73}{nyctr.8.15}%
+=======
 \contentsline {lstlisting}{\numberline {7.14} Procedure for konstruktion af basisl\IeC {\o }sninger}{55}{nyctr.7.14}% 
 \contentsline {lstlisting}{\numberline {8.9} Procedure for Simplex metoden}{68}{nyctr.8.9}% 
 \contentsline {lstlisting}{\numberline {8.12} Procedure for Fuld tabel metoden}{70}{nyctr.8.12}% 
 \contentsline {lstlisting}{\numberline {8.16} Lexi pivot regl}{73}{nyctr.8.16}% 
+<<<<<<< HEAD
+=======
+>>>>>>> temp2
+>>>>>>> master
