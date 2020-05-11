@@ -1,0 +1,75 @@
+\section{Standard maksimums- og minimumsproblemer}
+I et standard maksimumsproblem gælder det for alle bibetingelserne, at den lineære funktion af variablene er mindre end eller lig en konstant, mens det i et standard minimumsproblem gælder, at funktionerne er større eller lig en konstant. For begge problemer er variablene positivt begrænsede. %Bibetingelserne er vel ligninger, og ikke funktioner, og det er vel bibetingelserne der er begrænset og ikke objektfunktionen selv? 
+
+Som beskrevet i Afsnit \ref{afsnit:lign_sys} kan et lineært ligningssystem opskrives med et matrix-vektor produkt. Tilsvarende gælder det for objektfunktionen, at denne kan skrives som et produkt af to vektorer. Det tillader derved definitionen af standard maksimumsproblemet med disse produkter i Definition \ref{def:std_maksmin}. %Er lidt kringlet formuleret
+
+\begin{defn}[Standard maksimums- og minimumsproblemer]
+	Lad $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$ i objektfunktionen, og lad $m \times n$ matricen $A=[A_{ij}]$ for $i=1,...,m$ og $j=1,...,n$, og lad $\vec{b}=\rvect{b_1 & b_2 & \cdots & b_m}^T$.\\ %Jeg tror ikke at maticen er begrænset af \vec{b}
+	Da er standard maksimumsproblemet defineret som\\
+\begin{center}
+\begin{tabular}{l	>{$}l<{$}}
+Maksimer 		& \vec{c}^T\vec{x} \\
+med hensyn til 	& A\vec{x} \leq \vec{b}\\
+og 				& \vec{x} \geq \vec{0},
+\end{tabular}
+\end{center}
+og standard minimumsproblemet er defineret som\\
+\begin{center}
+\begin{tabular}{l	>{$}l<{$}}
+Minimer			& \vec{c}^T\vec{x} \\
+med hensyn til 	& A\vec{x} \geq \vec{b}\\
+og 				& \vec{x} \geq \vec{0}.
+\end{tabular}
+\end{center}
+\label{def:std_maksmin}
+\end{defn}
+
+
+%\begin{defn}[Standard minimum problem]
+%	Lad $\vec{x}= [x_1, x_2,\cdots, x_n]^T$ være \textbf{løsningsvektoren}, med koefficienter $\vec{c}= [c_1, c_2,\cdots, c_n]^T$ i objektfunktionen, og lad $m \times n$ matrixen $A=[A_{ij}]$ for $i=1,2,\cdots,m$ og $j=1,2,\cdots,n$ være begrænset af konstanterne $\vec{b}=[b_1, b_2,\cdots, b_m]^T$.
+%	Da er standard minimum problemet defineret som\\
+%\begin{center}
+%\begin{tabular}{l	>{$}l<{$}}
+%Minimer			& \vec{c}^T\vec{x} \\
+%med hensyn til 	& A\vec{x} \geq \vec{b}\\
+%og 				& \vec{x} \geq \vec{0}
+%\end{tabular}
+%\end{center}
+%\label{def:std_min}
+%\end{defn} %Hvorfor byttes der rundt på b og c? i min og max?
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Det betyder at et hvert lineært programmerings problem kan omskrives så det står på standardform.
+\begin{defn}[Standard minimumsproblemer]
+Lad $f(\vec{x}) = \vec{c}^T\vec{x}$ betegne objektfunktionen til et lineært minimeringsproblem, for $\vec{x},\vec{c} \in\mathds{R}^n$, lad $m \times n$ matricen $A=[A_{ij}]$ for $i=1,...,m$ og $j=1,...,n$, og lad $\vec{b} \in  \mathds{R}^n$.
+Der er standard minimumsproblemet defineret som\\
+\begin{center}
+\begin{tabular}{l	>{$}l<{$}}
+Minimer			& \vec{c}^T\vec{x} \\
+med hensyn til 	& A\vec{x} \geq \vec{b}\\
+og 				& \vec{x} \geq \vec{0}.
+\end{tabular}
+\end{center}
+Består ligningssystemet af ligheder kaldes problemet; \textbf{standard minimumsproblem med ligheder}.
+\label{def:std_maksmin}
+\end{defn}
+Bemærk at på samme måde som bibetingelserne kan omskrives, kan et minimeringsproblem laves til et maksimeringsproblem ved at multiplicere med $-1$, hvorfor at alle definitioner og sætninger er ækvivalente. Derfor defineres begreber og sætninger kun for minimums problemer, mens eksemplerne illustrere maksimums problemer.
+\begin{eks}[Standard maksimumsproblem]
+Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimumsproblem, skal alle relationer i bibetingelserne være mindre end eller lig med.
+Bibetingelse nr. 3 skal derved omskrives. Dette kan gøres ved at multiplicere begge sider af uligheden med $-1$, da dette vender ulighedstegnet. Derved bliver Eksempel \ref{eks:maksprob1} omskrevet til et standard maksimumsproblem.\\
+\begin{center}
+\begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
+Maksimer 		& 		4x_1	&	+3 x_2	& \\
+med hensyn til 	&  \ \ 	-2 x_1	& 	+4 x_2	& \leq 8\\
+				&  		x_1		& 	+3 x_2	& \leq 16\\
+				&  \ \ 	x_1		& 			& \leq 10\\
+og $x_1 \geq 0, x_2\geq 0$.
+\end{tabular}
+\end{center}
+\label{eks:maksprob2}
+\end{eks}

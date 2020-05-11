@@ -1,0 +1,170 @@
+\section{Udledning af Simplex metoden}
+Simplex metoden starter med en basisløsning, og går så i en mulig retning indtil den finder en ny basisløsning.
+\begin{defn}[Mulig retning]
+Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retningen} fra $\vec{x}$, hvis der eksistere en positiv skalar $\theta > 0$ således at $\vec{x}+\theta\vec{d} \in P$ 
+\end{defn}
+Derfor skal den mulige retning introducere en ny basisvariable til løsningen,
+\begin{lma}[Den $j$te retningsvektor]
+Lad $\vec{x} \in P$ være en basisløsning med basis matrix $B$ og $\vec{d}_j  \in \mathds{R}_n$ en muligretnings vektor så $\vec{x}' = \vec{x}+ \theta\vec{d}_j$ introducere basisvariablen $x_j'$ og kun $x_j'$ til løsningen, for en skalar $\theta$.
+Da vil $\vec{d}_j$ være givet; så $\vec{d}_B = -B^{-1}\vec{A}_j$, $d_j = 1$ og $d_i = 0$ for $i \neq j$ og $ i,j \notin I_B$.
+\label{lma:retningsvektor}
+\end{lma}
+\begin{proof}
+Hvis $\vec{x}'$ skal introducere $x_j'$ til løsningen skal $x_j + \theta d_j > 0$. 
+Da $x_j = 0$ ifølge af antagelsen om, at $\vec{x}$ er en basisløsning, og $\theta$ er en skalar kan $d_j$ sættes lig $1$ uden at miste genereiltet. 
+På samme måde må $d_i = 0$ for $i \neq j$ og $i \notin I_B$, da $x_i' = 0$, for ikke at introducere $x_i'$ til løsningen.
+Da $\vec{d}$ er en mulig retnings vektor, vil $\vec{x}' \in P$, hvormed at $A\vec{x}' = A\vec{x}+ \theta A\vec{d}_j = \vec{b}$. 
+Fordi $A\vec{x} = \vec{b}$, medfører det, at $A\vec{d}_j = \vec{0}$.
+Det følger derfor, at
+\begin{align*}
+A\vec{d}_j = B \vec{d}_B + \sum_{i \notin I_B} \vec{A}_id_i = B\vec{d}_B + \vec{A}_j = \vec{0} \Rightarrow
+\\ \vec{d}_j = -B^{-1}\vec{A_J}.
+\end{align*}
+Bemærk at $B^{-1}$ eksister ifølge Sætning. 
+Lemmaet er hermed bevist.
+\end{proof}
+Men den nye vektor $\vec{x}'$ må kun have $m$ basisvariable for at være en basisløsning, og da $\vec{d}_j$ introducere en ny variabel til løsningen, skal $\theta^*\vec{d}$ også fjerne en variable fra  løsningen.
+\begin{lma}[Den $j$te skalar]
+Lad $\vec{x} \in P$ være en basisløsning med basis matrix $B$, $\vec{d}_j$ den $j$te retningsvektor så $I_d = \{i \mid d_i < 0, \, i  \in I_B\}$, og $\theta^* = \min_{i \in I_d}\{\frac{x_i}{|d_i|}\}=\frac{x_l}{|d_l|} > 0$ . 
+Så vil $\vec{x}' = \vec{x}+ \theta^* \vec{d}_j \in P$ fjerne $x_l'$ fra løsningen, hvis $P$ ikke indeholder en positiv halvlinje.
+\label{lma:skalar}
+\end{lma}
+\begin{bem}
+Da $\vec{d}_j$ er en muligretnings vektor er $x_i\neq 0$ for $i \in I_d$, hvorfor $\theta^* > 0$.
+\end{bem}
+\begin{proof}
+Antag først at $I_d = \emptyset$ da vil $x_i' \geq 0$ for $\forall \theta \geq 0$. 
+Hvormed at $\vec{x}' \in P$ for $\forall \theta \geq 0$, og $P$ vil derfor indeholde en positiv halvlinje, hvormed det kan konkluderes at $P$ ikke er tom, og $\theta^*$ eksistere.
+Derfor må $x_l' = x_l + \theta^* d_l = x_l + \frac{x_l}{|d_l|}d_l = x_l - x_l = 0$, dermed fjerne $\vec{x}'$ $x_l$ fra løsningen.
+Tilsidst vises at $\vec{x}' \in P$, betragt derfor $x_i' = x_i + \theta^* d_i$ for $i \neq l$, $i \in I_d$ da vil
+\begin{align*}
+x_i' = x_i + \theta^* d_i = x_i + \frac{x_l}{|d_l|}d_i \geq x_i + \frac{x_i}{|d_i|}d_i = 0,
+\end{align*}
+da $d_i < 0$ og $\frac{x_l}{|d_l|} \leq \frac{x_i}{|d_i|}$, hvorfor alle indgange forbliver ikke negative, og $\vec{x}'$ er dermed en mulig løsning.
+\end{proof}
+\begin{bem}
+At $x'_j = \theta^* >  0$ da $d_j = 1$ og $\theta^* > 0$, og $\vec{x}'$ fjerner derfor ikke $x_j'$ fra løsningen.
+\end{bem}
+Dermed har $\vec{x}'$ $m$ basisvariable under antagelsen om, at $\vec{x}'$ ikke er degenerate, er $\vec{x}'$ degererate ville der ikke være et entydigt indeks $l$ som opfyldte at $min_{i \in I_d}\{\frac{x_i}{|d_i|}\}=\frac{x_l}{|d_l|}$, hvormed at flere af basis variablene  vil blive 0. 
+\begin{stn}
+Lad $\vec{x}\in P$ være en mulig basis løsning, med basis matrix $B$, da vil $\vec{x}' = \vec{x}+ \theta^*\vec{d}_j$ også være en mulig basisløsning, hvis $P$ ikke indeholder en positiv halvlinje.
+\end{stn}
+\begin{proof}
+For at vise at $\vec{x}'$ er en basisløsning, bemærkes at $x_i = 0$ for $i \notin I_{B'} = I_B\setminus\{l\}\cup\{j\}$ og, at basismatricen for $\vec{x}'$ er matricen $B'$ med søjlerne $\vec{A}_i$ for $i \in I_{B'}$. 
+Det følger derfor af Sætning \ref{stn:kravtilbasis},
+at $\vec{x}'$ er en basisløsning, hvis søjlerne i $B'$ er lineært uafhængige.
+Antag derfor for modstrid, at søjlerne er lineært afhængige, da følger det af Definition \ref{defn_lin_uafh},
+at
+\begin{align*}
+ \sum_{i \in I_{B'}} \lambda_i \vec{A}_i = \vec{0}.
+\end{align*}
+Da $B$ og $B'$ kun er forskellige i en søjle, må
+\begin{align*}
+ \\ \sum_{i \in I_{B'}}  B^{-1} \lambda_i \vec{A}_i  =\sum_{i \in I_{B'}\setminus \{j\}} \vec{e_i} + B^{-1} \lambda_j \vec{A}_j = \vec{0}.
+\end{align*}
+Dvs. at søjlerne i $B'$ er lineært uafhængige, hvis $A_{jl} = 0$.
+Bemærk at $B^{-1} \lambda_j A_j = - \vec{d}_B$, hvis $l$te indgang pr. definition er skarpt mindre end $0$, og $A_{jl} \neq 0$.
+Alle søjler i $B'$ er altså lineært uafhængige, hvorfor alle rækker er lineært uafhængige og $\vec{x}'$ er en basisløsning.
+Bemærk, at da $\vec{x}\in P$ og $P$ ikke indeholder en positiv halvlinje vil $\vec{x}' \in P$ ifølge Lemma \ref{lma:skalar}, hvormed $\vec{x}'$ er en mulig basisløsning.
+\end{proof}
+Det er nu vist, hvordan det er muligt at gå fra en basis løsning til en anden.
+ Bemærk at de to løsninger er naboløsninger, da det er antaget at ingen af dem er degenerate, og der derfor kun bliver introduceret en ny variable og fjernet en gammel, hvorfor at løsningerne må dele samme krav på nær et. 
+Det er nu nødvendigt at finde en måde, så at den basisløsning, som findes minimere objektfunktionen mere end den foregående, ellers vil alle basisløsninger stadig skulle tjekkes. 
+\begin{stn}[Ændring i omkostning]
+Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, da er ændringen i obejktfunktionen ved at introducere $x_j$ til løsningen givet ved
+\begin{align*}
+ \Delta c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}.
+\end{align*}
+\label{stn:Deltac}
+\end{stn}
+\begin{proof}
+Antag først, at $x_j$ ikke er en basis variable til at starte med, da vil den $j$te retningsvektor introducere $x_j$ til løsningen, hvorfor,
+\begin{align*}
+\Delta c_j = \vec{c}^T(\vec{x}+ \vec{d}) - \vec{c}^T\vec{x} = \vec{c}^T\vec{d} = \sum_{i \in I_B} c_i d_i + c_j.
+\end{align*}
+Lad nu $\vec{c}_B = \rvect{c_{B(1)}& \cdots & c_{B(m)}}$, da vil
+\begin{align}
+\Delta c_j =\vec{c}_B\vec{d}_B+ c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}.
+\end{align}
+Antag nu, at $x_j$ er en basisvariable da vil 
+\begin{align*}
+\Delta c_j = \vec{c}^T\vec{x}- \vec{c}^T\vec{x} = 0.
+\end{align*}
+Det undersøges derfor om $ c_j-\vec{c}_B B^{-1}\vec{A_j}= 0$, hvis $x_j$ er en basisvariable.
+\begin{align*}
+ \Delta c_j = c_j-\vec{c}_B^T B^{-1}\vec{A_j} = c_j - \vec{c}_B^T \vec{e_j} = c_j - c_j = 0.
+\end{align*}
+Det kan derfor konkluderes at $\Delta c_j = c_j-\vec{c}_B B^{-1}\vec{A_j}$ for et hvert $x$.
+\end{proof}
+Det må derfor være bedst at gå enten i den retning hvor $\Delta c_j$ er størst eller $\theta^*\Delta c_j$ er størst. 
+Hvis der ikke sker en ændring eller ændringen forstørrer objektfunktionen må den fundne basisløsning nødvendigvis være optimal.
+\begin{stn}[Optimal omkostning]
+Lad $\vec{x}$ være en basisløsning, med basismatrix $B$, så er $\vec{x}$ optimal, hvis og kun hvis $\Delta c_j \geq 0$ for alle $j$.
+\label{stn:optimalDeltaC}
+\end{stn}.
+\begin{proof}
+Antag først, at $\vec{x}$ er optimal, da vil $\vec{c}^T\vec{x} \leq \vec{c}^T\vec{y}$ for alle $\vec{y} \in P$. 
+Antag for modstrid, at $\Delta c_j < 0$ for en basisvariable $x_j$, da følger det, at $\vec{c}^T(\vec{x}+\theta^*\vec{d}) = \vec{c}^T\vec{x} + \Delta c_j \leq \vec{c}^T\vec{x}$, hvilket strider mod antagelsen om, at $\vec{x}$ er optimal.
+Antag nu, at $\Delta c_j \geq 0$ og lad $\vec{y}$ være en vilkårlig vektor i $P$, og lad $\vec{d}=\vec{x}'-\vec{x}$.
+Bemærk, at $A\vec{d} = A\vec{x}'- A\vec{x} =  \vec{b} - \vec{b} =\vec{0}$.
+Lad nu $\vec{d}_B = \rvect{d_{B(1)} & \cdots & d_{B(m)}}^T$, og lad $N= \{i \leq n| i \neq B(1),...,B(m)\}$, da kan matrix-vektorproduktet omskrives til:
+\begin{align*}
+	B\vec{d}_B + \sum_{i \in N} \vec{A}_i d_i = \vec{0} \qquad \Rightarrow
+	\\ \vec{d}_B = - B^{-1}\sum_{i \in N} \vec{A}_i d_i
+\end{align*}
+Bemærk, at det benyttes, at $B$ er invertibel ifølge Sætning %Mangler
+Da tages objektfunktionen til $\vec{d}$ for at finde omkostningen for at gå fra $\vec{x}$ til $\vec{x}'$.
+\begin{align*}
+ \vec{c}^T\vec{d} &= \vec{c}_B^T\vec{d}_B + \sum_{i \in N} c_i d_i 
+ \\&= \vec{c}_B^T(- B^{-1}\sum_{i \in N} \vec{A}_i d_i) + \sum_{i \in N} c_i d_i  
+ \\&= \sum_{i \in N} (- \vec{c}_B^T B^{-1} \vec{A}_i d_i) +  c_i d_i 
+ \\&= \sum_{i \in N} ( c_i - \vec{c}_B^TB^{-1}\vec{A}_i ) d_i
+\end{align*}
+Det følger af Sætning \ref{stn:Deltac} at $\Delta c_i = c_i - \vec{c}_B^TB^{-1}\vec{A}_i $, hvorfor
+\begin{align*}
+\vec{c}^T\vec{d} = \sum_{i \in N} \Delta c_i d_i.
+\end{align*}
+Da $\vec{x}$ er en basisløsning må $x_i = 0$ for $i \in N$, og da $\vec{x}' \in P$ må $\vec{x}' \geq \vec{0}$, dermed må $d_i = x_i' - x_i \geq 0$, og da $\Delta c_i$ var antaget at være ikke negativ, medfører det at
+\begin{align*}
+\vec{c}^T\vec{d} = \vec{c}^T\vec{y}-\vec{c}^T\vec{x} \geq 0 \qquad \Rightarrow
+\\ \vec{c}^T\vec{x} \leq \vec{c}^T\vec{x}'
+\end{align*}
+for et hvert $\vec{x}' \in P$, da $\vec{x}'$ var vilkårligt valgt, derfor må $\vec{x}$ være optimal.
+\end{proof}
+Det kan alt sammen opsummeres til Simplex metoden
+
+\begin{pro}[label=pro:simplex,style=ingental]{Procedure for Simplex metoden}
+1. Vælg en basisløsning $\vec{x}$ med basismatrix $B$
+2. Beregn $\Delta c_j$ for alle $j \notin I_B$. 
+   Hvis $\Delta c_j\geq 0$ for alle $j \notin I_B$ 
+   	   stop, $\vec{x}$ er optimal.
+   Hvis $\Delta c_j < 0$ for en $j \notin I_B$
+       vælg mindste $c_j$.
+3. Find $\vec{d}_j$
+   Hvis $d_i \geq 0 $ for alle $i \in I_B$ 
+       stop, den optimaleværdi er $- \infty$.
+   Hvis $d_i < 0 $ for mindst et $i \in I_B$ 
+       vælg $B(l)$ så $\frac{x_{B(l)}}{d_{B(l)}}\leq \frac{x_i}{d_i} $ for ethvert $i \in I_B$
+4. Find $\theta^*$
+5. Find den nye basisvektor og basismatrix.
+6. Gå til step 2.
+\end{pro}
+
+Til sidst vises at Simplex metoden altid vil finde frem til den optimale løsning efter et endeligt antal interationer.
+\begin{stn}
+Lad $P \neq \emptyset$, da stopper Simplex metoden efter et endeligt antal interationer, enten ved at finde den optimale løsning eller at den optimale værdi er $- \infty$.
+\end{stn}
+\begin{proof}
+Antag først, at Simplex metoden stopper efter step 2 i Program \ref{pro:simplex}, da følger det af Sætning \ref{stn:optimalDeltaC}
+at basisløsningen er optimal, og Simplex metoden har derfor fundet den optimale løsning.
+\\ Antag nu, at Simplex metoden stopper efter step 3 i Program \ref{pro:simplex}, da følger det af beviset for Lemma \ref{lma:skalar}, at $P$ indeholder en linje, hvorfor det følger af Afsnit \ref{sec:eksistens},
+at den optimale værdi er $-\infty$.
+\\ Da der kun er en endelig mængde basisløsninger i følge Korollar \ref{kor:endeligbasis}
+må Simplex metoden altid stoppe, med mindre, at den cirkulere igennem de samme basisløsninger.
+Da den $j$te retningsvektor altid vælges så $\Delta c_j < 0$, må den samme basisløsning aldrig kunne blive besøgt mere end en gang, hvorfor der ikke kan opstå en ring, og Simplex metoden må derfor stoppe efter et endeligt antal interationer.
+\end{proof} 
+
+
+
+
+

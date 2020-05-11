@@ -1,0 +1,34 @@
+\subsection{Naboløsninger}
+
+Til den senere anvendelse af simplex metoden anvendes også \textbf{naboløsninger}, som er defineret i Definition \ref{def:nabo}. Undersøgelsen af naboløsninger i simplex metoden som en metode til at reducere antallet af basisløsninger, som skal undersøges når den optimale løsning findes. %Bør omformuleres, er kringlet. Ved ikke: Er det realt det der sker? Ved ikke: Skal SimpLeX staves med stort? Jeg tror da det er det der sker. og simplex er med lille. hermed rettet.
+
+\begin{defn}[Naboløsninger]
+	To basisløsninger i $\mathds{R}^n$ siges af være \textbf{naboløsninger}, hvis de deler præcis $n-1$ aktive lineært uafhængige bibetingelser.
+	\label{def:nabo}
+\end{defn}
+
+Et eksempel på naboløsninger ses i Eksempel \ref{eks:nabo}.
+
+\begin{eks}[Naboløsninger]
+De to basisløsninger $\vec{p}=\rvect{4 & 4}^T$ og $\vec{q}=\rvect{10 & 2}^T$ set på Figur \ref{fig:nabo} er naboløsninger, da de har $n-1$ fælles aktive betingelser, hvilket for dette eksempel er $1$ betingelse, nemlig betingelse (2). Basisløsningen $\vec{p}$ har (1) og (2) som aktive betingelser, mens $\vec{q}$ har (2) og (3) som aktive betingelser. %ved ikke, om nemlig bør slettes.
+	
+	\begin{center}
+	\begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$} r}
+	Maksimer 		& 		4x_1	&	+3 x_2	& \\
+	med hensyn til 	&  \ \ 	-2 x_1	& 	+4 x_2	& \leq 8 	& \quad (1)\\
+					&  		x_1		& 	+3 x_2	& \leq 16	& \quad (2)\\
+					&  \ \ 	x_1		& 			& \leq 10	& \quad (3)\\
+	og $x_1 \geq 0$ (4), $x_2\geq 0$ (5).
+	\end{tabular}
+	\end{center}
+	
+	\begin{center}
+	\input{fig/tikz/linprog4}
+	\captionof{figure}{Løsningsmængde med naboløsninger $p$ og $q$.}
+	\label{fig:nabo}
+	\end{center}
+	
+\label{eks:nabo}
+\end{eks}
+
+%ved ikke: Må et afsnit slutte med et eksempel?

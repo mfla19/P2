@@ -1,0 +1,15 @@
+\subsection{Degenererede basisløsninger}
+I følge af \textit{def for basisløsning (b)} skal en basis løsning, have $n$ lineære uafhængige aktive betingelser i $\mathds{R}^n$, dette giver muligheden for, at der er mere en $n$ lineære uafhængige aktive betingelser (Der kan selvfølge i $\mathds{R}^n$ ikke være mere end $n$ lineære uafhængige aktive betingelser). Sådan en basisløsning kaldes for en Degenereret basisløsning. Der vil i denne rapport, ikke blive arbejdet med degenereret basisløsninger, da der menes at rapports indhold i forvejen er tilstrækkeligt, dette kan komme til at give nogle problematikker senere i Simplex-metoden, der for den til at terminere for tidligt, så derfor defineres degenereret basisløsninger, for at vise en forståelse for emnet eksistens
+\begin{defn}[Degenereret basisløsning]
+En basisløsning $\vec{x}\in \mathds{R}^n$ siges at være en \textbf{Degenereret basisløsning}, hvis basisløsningen har mere en $n$ aktive betingelser
+\end{defn}
+
+Det vil sige, at for $\vec{x}\in \mathds{R}^2$, vil $\vec{x}$ være degenereret, hvis $\vec{x}$ ligger på et skæringspunkt af $3$ betingelser.
+\textit{måske et eksempel}\\
+\subsubsection{Degenereret basisløsninger i standard form}
+En basisløsning til en polyede på standard form, vil $m$ lighedsbetingelser altid være aktive. Derfor må, at have mere end $n$ aktive betingelser, være at mere end $n-m$ variabler er $0$
+\begin{defn}
+En polyede på standard form $P =\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$ og lad $\vec{x}$ være en basisløsning. Lad $m$ være mængden af rækker i $A$. Så er $\vec{x}$ en degenereret basisløsning, hvis mere end $n-m$ komponenter af $\vec{x}$ er $0$
+\end{defn}
+Dette vil dog næsten ikke ske, hvis komponenterne af $A$ og $\vec{b}$ er valgt tilfældigt.
+Det der sker er, at når der bliver valgt $m$ rækker af $A$ som danner basis og $m$ variabler bliver udregnet til en basisløsning, så opfylder denne løsning også et andet krav, og derfor vil der under rækkeoperationerne resultere i, at en af de valgte variabler bliver $0$

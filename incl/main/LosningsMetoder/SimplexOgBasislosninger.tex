@@ -1,0 +1,88 @@
+\section{Simplex og Basisløsninger}
+For at søjlerne i en basismatrix til en basisløsning skal kunne udspænde en simplex, skal basisløsningen være en løsning til et lineært programmerings problem på konveks form.
+\begin{defn}[Konveks form]
+Et lineært programmeringsproblem på formen:
+\begin{center}
+\begin{tabular}{l	>{$}l<{$}}
+Minimer			& \vec{c}^T\vec{x} \\
+med hensyn til 	& A\vec{x} = \vec{b}\\
+og				& \vec{e}^T\vec{x} = 1\\
+og 				& \vec{x} \geq \vec{0}, 
+\end{tabular}
+\end{center}
+for $\vec{e} =\rvect{1 & \cdots & 1 }^T$,  siges at være på \textbf{konveks form}, og bibetingelsen $\vec{e}^T\vec{x} = 1$ kaldes \textbf{konveksbibetingelsen}.
+\end{defn}.
+Grunden til at $\vec{e}^T\vec{x}=1$ kaldes konveksbibetingelsen, er fordi den sørger for at $\vec{b}$ er en konvekskombination af søjlerne i matricen $A$.
+\begin{stn}[Konveks form]
+Et hvert lineært programmeringsproblem med $ \vec{0} \notin P$ kan omskrives til konveks form.
+\end{stn}
+\begin{proof}
+I Kapitel \ref{Afsnit:LinProg}
+er det gennemgået hvordan alle lineært programmerings problemer kan skrives på standard form med ligheder, derfor er det kun nødvendigt at vise at et hvert lineært programmerings problem på standard form med ligheder kan omskrives til konveks form.
+\\ Lad derfor $\vec{x} \neq \vec{0}$ være en løsning til et lineært programmerings problem på standard form med ligheder, da vil 
+\begin{align*}
+\vec{e}^T \vec{x} = \lambda,
+\end{align*}
+hvor $\lambda$ er en positiv skalar.
+Da vil 
+\begin{align*}
+\vec{e}^T\vec{x}' = \vec{e}^T\frac{1}{\lambda}\vec{x} = 1.
+\end{align*}
+For at sørge for at den konvekse form har samme løsningsmængde som det lineære programmerings problem på standard form med ligheder, multipliceres $A$ med $\lambda$, hvorefter at
+\begin{align*}
+A' \vec{x}' = \lambda A \frac{1}{\lambda} \vec{x} = A \vec{x} = \vec{b}.
+\end{align*}
+Derfor må et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan omskrives til konveks form.
+\end{proof}
+Så længe at nulvektoren ikke er en løsning kan ethvert lineært programmerings problem derfor omskrives til konveks form.
+Grunden til, nulvektoren ikke må være en løsning er, at prikproduktet af en vilkårlig vektor og nulvektoren vil altid give nul, hvorfor konveksbibetingelsen ikke kan overholdes.
+%\begin{defn}[Værdi af $\vec{x}$]
+%Lad $f$ være en objektfunktion da er $f(\vec{x}) = z_x$  \textbf{værdien af $\vec{x}$}
+%\end{defn}
+\\Da vises det at søjlerne i en basismatrix til en basisløsning udspænder en simplex.
+\begin{stn}
+Lad $\vec{x}$ være en basisløsning til et lineært problem på konveks form, så $x_i = 0$ for $i \notin I_B = \{B(1),..., B(m)\}$.
+ Så  $\vec{B}_i  = \rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ en simplex $S_x$, så $\vec{b}_x = \rvect{\vec{b}& z_x}^T \in S_x$
+\end{stn}
+Bemærk at da problemet er på konveks form vil $|I_B| = m+1$ hvis $A$ er en $n\times m$ matrix, da det i følge Sætning \ref{stn:PQ}
+kan antages at alle rækker er lineært uafhængige med $\vec{e}$.
+\begin{proof}
+For at $\rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ udspænder en simplex, skal vektorene være affint lineært uafhængige.
+Derfor vises først at $\rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ er affint lineært uafhængige.
+Antag for modstrid at de ikke er, da vil der eksistere skalare forskelligt fra $0$ så
+\begin{align*}
+\sum_{i = 1}^{m} \lambda_i (\vec{A}_{B(i)} - \vec{A}_{B(m+1)} =  \vec{0} \qquad \wedge \qquad \sum_{i=1}^{m} \lambda_i (c_i - c_{m+1})= 0.
+\end{align*}
+Betragt nu kun $\sum_{i = 1}^{m} \lambda_i (\vec{A}_{B(i)} - \vec{A}_{B(m+1)} =  \vec{0}$, det medføre at
+\begin{align*}
+\sum_{i = 1}^{m} \lambda'_i \vec{A}_{B(i)} = \vec{A}_{B(m+1)},
+\end{align*}
+hvor $\lambda'_i = \lambda_i/(\sum_{i=1}^m \lambda_i)$.
+Derfor følger derfor at hvis de ikke er affint lineært uafhængige, så er $\vec{A}_{B(m+1)}$ en linear kombination af $\vec{A}_{B(i)}$ for $i  \in i,..., m$.
+Det strider mod at $\vec{x}$ er en basisløsning, og søjlerne $\vec{A}_i$ svare til basis variablene for $i \in I_B$, derfor må vektorerne være affint lineært uafhængige. 
+Dermed udgør alle konveksekombinationer af $B_i$ for $i \in I_B$ en simplex, $S_x$.
+\\ Så vises det at $\vec{b} \in S_x$. 
+Det følger af Definition
+at $\vec{b}_x\in S_x$ hvis der eksistere skalare der opfylder $\sum_{i=1}^{m+1} \lambda_i = 1$, så $\sum_{i=1}^{m+1}\lambda_i B_{B(i)}  = \vec{b}_x$.
+Da $\vec{x}$ er en basisløsning følger det at $B \vec{x}_B = \vec{b}_x$ og da $\vec{x}$ er betinget af konveksbetingelsen og $x_i = 0 $ for $i \notin I_B$ må $\sum_{i=1}^{m+1} x_{B(i)} = 1$, hvorfor det følger at $\vec{b}_x \in S_x$.
+\end{proof}
+Bemærk at beviset kun inddirekte beviser at søjlerne i en basismarix udspænder en simplex, det kan konkluderes da $B_i$ kun er affint lineær uafhængige fordi $A_{B(i)}$ er, derfor må de også udspænde en simplex, hvor $\vec{b}$ er et element.
+\begin{defn}[Simplex forbundet med basisløsning]
+Lad $\vec{x}$ være en basisløsning så $x_i = 0$ hvis $i \notin I_B$, da er $S_x$ \textbf{Simplexen forbundet med basisløsning $\vec{x}$} hvis simplexen er lig konvekshuldet udspændt af søjlerne af $\rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$.
+\end{defn}
+Grunden til at vektorene udvides, er fordi de udvidet vektorer, antages at være punkter i stedet, da vil kordinaterne svarende til indgangende i søjlerne i basismatrixen ligger i samme $m+1$ dimentionelle rum, mens at punkterne svarende til koeficenterne i objektfunktionen ligge i den $m+2$ dimension.  
+Derfor vil ændringen i værdien for opbejkfunktionen for to basisløsninger kunne ses som afstanden mellem de to simplexer forbundet med basisløsningerne i den $m+2$ dimention.
+\begin{prop}
+Afstanden mellem to simplex $S_x$ og $S_y$ forbundet med basisløsningerne $\vec{x}$ og $\vec{y}$ er $z_x - z_y$.
+\end{prop}
+\begin{proof}
+For at vise proportionen findes længden af $\rvect{B_x & \vec{c}_B}^T \vec{x} - \rvect{B_y & \vec{c}_y}^T \vec{y}$
+\begin{align*}
+ \Vert \rvect{B_x & \vec{c}_B}^T \vec{x} - \rvect{B_y & \vec{c}_y}^T \vec{y} \Vert & =  \Vert \rvect{\vec{b} & z_x}^T  - \rvect{\vec{b} & z_y}^T  \Vert
+ \\ & = \Vert \rvect{0 & z_x - z_y}^T \Vert = z_x - z_y.
+\end{align*}
+Dermed kan det konkluderes at afstanden mellem to simplex $S_x$ og $S_y$ forbundet med basisløsningerne $\vec{x}$ og $\vec{y}$ er $z_x - z_y$.
+\end{proof}
+Det betyder at hvis objektfunktionen skal minimeres, skal der findes den simplex der ligger tættes på $z = 0$, hvorfor at der altid skal vælges en simplex der ligger lavere end den forrige, dvs. en simpelex, hvor at en ny basisvariable har en lavere koefficient $c_i$ end den gamle basisværdi.
+Det er det simplexmetoden tager udgangspunkt i.
+

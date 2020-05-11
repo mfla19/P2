@@ -1,0 +1,117 @@
+\section{Niveaumængder}
+\textbf{Fokus: Sammenskriv, ændre til Niveau mængder og drag paralleller til retningsvektorer}
+
+\begin{defn}
+Lad $ \vec{a} \in \mathds{R}^n$, $\vec{a}\neq \vec{0}$ og $b$ være en skalar, da kaldes en mængde for:
+\begin{enumerate}
+\item En \textbf{Hyperplan} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = \vec{b}\}$,
+\\ \item En \textbf{Halfspace} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T} \vec{x} \geq \vec{b}\}$.
+\end{enumerate}
+\end{defn}
+
+
+En måde at finde den optimale løsning for lineære programmerings problemer med få variable er ved introduktionen af niveaukurver.
+\begin{defn}[Niveaukurver]
+Lad $f(\vec{x})= \vec{c}^T\vec{x}$ være en funktion, da er en \textbf{niveaukurve} mængden 
+\begin{align*}
+N_z = \{\vec{x}| f(\vec{x}) = z, z \in \mathds{R}\}
+\end{align*}
+\end{defn}
+Niveau kurver er dermed den mængde af vektorer, der har samme funktionsværdi for objektfunktionen. 
+De vektorer udspænder en linje, som er ortogonal med koefficentvektoren $\vec{c}$.
+\begin{stn}[Niveaukurven er ortogonal med $\vec{c}$]
+Lad $N_z$ betegne en niveaukurve, til objektfunktionen $f(\vec{x})= \vec{c}^T\vec{x}$, da er $\vec{c}$ ortogonal med linjen udspændt af $N_z$.
+\end{stn}
+\begin{proof}
+Lad $\vec{x}, \vec{y} \in N_z$ da er linjen udspændt af $N_z$ parallel med differensvektoren $\vec{x}-\vec{y}$.
+Tages prikproduktet af differensvektoren og vektor $\vec{c}$, fåes at
+\begin{align*}
+\vec{c}^T(\vec{x}-\vec{y}) = \vec{c}^T\vec{x} -\vec{c}^T\vec{y} = z - z = 0,
+\end{align*}
+hvorfor at vektor $\vec{c}$ og differencevektoren er ortogonale, og dermed må vektor $\vec{c}$ også være orthogonal med linjen udspændt af $N_z$.
+\end{proof}
+Den optimale løsning findes så ved at finde det mindste $z$ for hvilken niveaukurven har en ikke-tom skæring med den mulige mængde. 
+Hvilket gøres ved at flytte kurven så langt i den modsatte retningen af $\vec{c}$ som muligt.
+\begin{stn}[Optimal løsning og -værdi fundet ved niveaukurver]
+Lad $f(\vec{x})=\vec{c}^T\vec{x}$ betegne objektfunktionen til et standard minimerings problem med løsningsmængde $\mathcal{F}$, da vil den optimale løsning være givet ved 
+\begin{align*}
+\vec{x^*}=\underset{k}{\min} \, k \cdot \vec{c} \in \mathcal{F}.
+\end{align*}
+og den optimale værdi er givet ved
+\begin{align*}
+z^* = \underset{k}{\min} \, k \cdot \Vert \vec{c} \Vert ^2
+\end{align*}
+\label{stn:niveau}
+\end{stn}
+\begin{proof}
+Det følger af Sætning %mangler
+, at en løsningsvektor $\vec{x}$ kan omskrives til summen af en vektor parallel med $\vec{c}$, kaldet $\vec{x}_p$, og en vektor orthogonal med $\vec{c}$, kaldet $\vec{x}_o$. 
+Dermed kan objektfunktionen omskrives til
+\begin{align*}
+	f(\vec{x}) & \ = \ \vec{c}^T\vec{x}\\
+	f(\vec{x_p}+\vec{x_o}) & \ = \ 
+	\vec{c}^T\vec{x_p}+\vec{c}^T\vec{x_o} \ = \ 
+	\vec{c}^T\vec{x_p} \ = \ 
+	k\cdot \vec{c}^T\vec{c} \ = \ 
+	k \cdot \Vert \vec{c} \Vert ^2.
+\end{align*}
+Dermed kan det konkluderes at den optimale løsning er en vektor $\vec{x^*}=\underset{k}{min} k \cdot \vec{c} \in \mathcal{F}$, og den optimale værdi er $z* = \underset{k}{min}k \cdot \Vert \vec{c} \Vert ^2$
+\end{proof}
+Af Sætning \ref{stn:niveau} følger det også, at den optimale værdi er den vinkelrette afstand fra origo og  linjen udspændt af niveaukurven. 
+Det følger af at den optimale værdi er givet, som et multiplum af længden af $\vec{c}$, der står vinkelret på linjen udspændt af niveaukurven.
+i
+Dette kan ses i  for et maksimerings problem i Eksempel \ref{eks:maksprob3}.
+
+
+\begin{eks}[Optimal løsning fundet grafisk]
+Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \ref{fig:maksprob3} indtegnet for programmeringsprogblemet fra Eksempel \ref{eks:maksprob2}.
+
+	\begin{center}	
+		\input{fig/tikz/linprog3}
+		\captionof{figure}{Optimal løsning i den mulige mængde fundet som skæring med ligningen $z=46$.}
+		\label{fig:maksprob3}
+	\end{center}
+	
+På figuren ses det, at den største funktionsværdi $z=46$ findes i skæringen mellem bibetingelse 2 og 3.
+Ved at løse bibetingelse 2 og 3 som 2 ligninger med 2 ubekendte findes det at den optimale løsning er $\vec{x}=\rvect{10 & 2}^T.$
+\label{eks:maksprob3}
+\end{eks}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Niveaukurver}
+Niveaukurver dannes ved fastsættelsen af en funktionsværdi $z=\vec{c}^T \vec{x}$. Niveaukurven er derved mængden af alle vektorer $\vec{x}$, som løser ligningen. Da målet er at maksimere $z$, er målet at finde den største $z$ for hvilken niveaukurven har en ikke-tom skæring med den mulige mængde. 
+
+En løsningsvektor $\vec{x}$ kan omskrives til summen af en vektor parallel med $\vec{c}$, kaldet $\vec{x}_p$, og en vektor orthogonal med $\vec{c}$, kaldet $\vec{x}_o$. Her gælder det derved at, $\vec{x}_p=k\cdot \vec{c}$ for en skalar $k$, og at $\vec{x}_o^T \vec{c}=0$. Dette er muligt, da vektorrummet der er orthogonalt med $\vec{c}$ har dimension $n-1$, mens rummet dannet af $\vec{c}$ har dimension $1$. Da vil vektorrummet dannet af summen af disse rum have dimension $n$, da de to rum er orthononale. Derved kan alle løsningsvektorer $\vec{x}$ udtrykkes som summen af en vektor fra hvert af de to rum.
+
+\begin{align*}
+	f(\vec{x}) & \ = \ \vec{c}^T\vec{x}\\
+	f(\vec{x_p}+\vec{x_o}) & \ = \ 
+	\vec{c}^T\vec{x_p}+\vec{c}^T\vec{x_o} \ = \ 
+	\vec{c}^T\vec{x_p} \ = \ 
+	k\cdot \vec{c}^T\vec{c} \ = \ 
+	k \cdot \Vert \vec{c} \Vert ^2
+\end{align*}
+Da funktionsværdien derved er lig $k \cdot \Vert \vec{c} \Vert ^2$ gælder det derved om at maksimere $k$ for maksimeringsproblemer og at minimere $k$ for minimeringsproblemer. 
+
+
+Dette kan ses i Eksempel \ref{eks:maksprob3}.
+\begin{comment}
+Bør niveaukurve defineres????? Hvordan kan dette bruges, for at finde $z$ er egentlig bare en omskrivning, så der mangler noget argumentation for at $z$ bliver større jo længere væk fra origo man er, hvilket giver ret god mening, men er svært at argumentere for uden at starte på geometri, så måske hele dette afsnit skulle flyttes, måske skal alt om løsninger skal flyttes til geometri?
+\end{comment}
+
+
+\begin{eks}[Optimal løsning fundet grafisk]
+Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \ref{fig:maksprob3} indtegnet for programmeringsprogblemet fra Eksempel \ref{eks:maksprob2}.
+
+	\begin{center}	
+		\input{fig/tikz/linprog3}
+		\captionof{figure}{Optimal løsning i den mulige mængde fundet som skæring med ligningen $z=46$.}
+		\label{fig:maksprob3}
+	\end{center}
+	
+På figuren ses det, at den største funktionsværdi $z=46$ findes i skæringen mellem bibetingelse 2 og 3.
+Ved at løse bibetingelse 2 og 3 som 2 ligninger med 2 ubekendte findes det at den optimale løsning er $\vec{x}=\rvect{10 & 2}^T.$
+\label{eks:maksprob3}
+\end{eks}
