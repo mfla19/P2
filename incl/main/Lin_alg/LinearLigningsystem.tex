@@ -60,59 +60,9 @@ a_{m,1} & a_{m,2} & \dots & a_{m,n} & b_n
 
 Totalmatricen laves ved at tilføje vektor $\vec{b}$ til koefficientmatricen $A$. Totalmatricen noteres således som $[A \ \vec{b}]$. Den lodrette streg mellem koefficienterne og konstanterne er ikke nødvendig, men kan tilføjes for at vise, at der er tale om en totalmatrix.\\
 
-Løsningen til et lineært ligningssystem er en vektor i $\mathds{R}^n$, som ser således ud:
-
-\begin{align*}
-\begin{bmatrix}
-s_1 \\
-s_2 \\
-\vdots \\
-s_n
-\end{bmatrix}
-\end{align*}
-
-Hvis $A$ er en $m \times n$ matrix, er en vektor $\vec{u}$  i $\mathds{R}^n$ en løsning til $A \vec{x}= \vec{b}$ hvis og kun hvis $A \vec{u}= \vec{b}$.
-
-\begin{eks}
-Følgende lineære ligningssystem er givet
-
-\begin{align*}
-8x_1+6x_2+4x_3 = 50 \\
-2x_1+4x_2+6x_3 = 30.
-\end{align*}
-
-Dette kan så skrives i en matrix,
-
-\begin{align*}
-\begin{bmatrix}
-8 & 6 & 4 & 50 \\
-2 & 4 & 6 & 30
-\end{bmatrix}.
-\end{align*}
-
-Følgende vektor er en løsning til dette ligningssystem.
-
-\begin{align*}
-\begin{bmatrix}
-2 \\
-5 \\
-1
-\end{bmatrix}.
-\end{align*}
-
-Sætter man løsningen ind som variable fås følgende resultat,
-
-\begin{align*}
-8 \cdot 2 + 6 \cdot 5 + 4 \cdot 1 = 50 \\
-2 \cdot 2 + 4 \cdot 5 + 6 \cdot 1 = 30.
-\end{align*}
-
-Det ses, at vektoren giver en rigtig løsning til ligningssystemet, fordi alle ligningerne går op når vektoren indsættes. 
-
-\end{eks}
 
 \subsection{Elementære rækkeoperationer}
-Når et lineært ligningssystem skal løses, skal flere trin gennemføres. Først skrives ligningssystemet op som en totalmatrix. Herefter findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. De tre typer af elementære rækkeoperationer gennemgås i Definition \ref{defn_elemen_operation}. \\
+Når et lineært ligningssystem skal løses, skal flere trin gennemføres. Først skrives ligningssystemet op som en totalmatrix. Herefter findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. 
 
 \begin{defn}[Elementære rækkeoperationer]
 Der findes 3 elementære rækkeoperationer
@@ -123,14 +73,17 @@ Der findes 3 elementære rækkeoperationer
 \end{enumerate}
 \label{defn_elemen_operation}
 \end{defn}
- 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Generelt kaldes en $n \times n$ matrix $E$ en elementærmatrix, hvis der på identitetsmatricen $I_n$ kan udføres én elementær rækkeoperation, så der fås $E$. 
+Enhvert elementær rækkeoperation kan blive udført ved matrix multiplikation. Til dette bruges elementærmatricer.  
+
+\begin{defn}[Elementærmatrix]
+En matrix, $E$, kaldes en \textbf{elementærmatrix} hvis den kan opnåes ved at udføre én elementær rækkeoperation på $I_n$ 
+\label{def:elematrix}
+\end{defn}
+
 
 \begin{eks}
-En matrix $E$ er givet ved
+En elementærmatrix $E$ er givet ved
 \begin{align*}
 E =\begin{bmatrix}
 1 & 0 & 0 \\
@@ -138,9 +91,9 @@ E =\begin{bmatrix}
 0 & 0 & 1 
 \end{bmatrix}.
 \end{align*}
-Her er der lagt to gange række $3$ til række $2$ på identitetsmatricen $I_3$ for at få $E$.
+$E$ er opnået ved en udskriftning. To gange række $3$ lægges til række $2$ i identitetsmatricen $I_3$ for at opnå $E$.
 
-Det ses også, at givet følgende matrix
+Det ses, at givet følgende matrix
 \begin{align*}
 A =\begin{bmatrix}
 1 & 2 \\
@@ -169,83 +122,34 @@ EA =\begin{bmatrix}
 Det ses altså, at den rækkeoperation, der blev udført på $I_3$ for at få $E$, er samme rækkeoperation, der kan udføres på $A$ for at få $EA$. 
 \end{eks}
  
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{eks}[Rækkeoperationer]
-\textbf{Ombytning}\\
-Herunder ses et eksempel på to rækker der ombyttes i en matrix.\\
 
-\begin{align*}
-A= \begin{bmatrix}
-0 & 2 & 3 \\
-1 & 4 & 7
-\end{bmatrix}
-\sim \begin{bmatrix}
-1 & 4 & 7 \\
-0 & 2 & 3
-\end{bmatrix} = B.
-\end{align*}
+Målet med elementære rækkeoperationer er, at opnå reduceret trappeform. En ledende indgang i en matrix, er den første indgang i en række der ikke er lig 0. 
 
-\textbf{Scaling} \\
-Et eksempel på scaling ses nedenfor, hvor første række multipliceres med $2$.\\
-
-\begin{align*}
-A= \begin{bmatrix}
-2 & 1 & 3 \\
-0 & 4 & 8 \\
-1 & 7 & 1
-\end{bmatrix}
-\sim \begin{bmatrix}
-4 & 2 & 6 \\
-0 & 4 & 8 \\
-1 & 7 & 1
-\end{bmatrix} = B.
-\end{align*}
-
-\textbf{Udskiftning}\\
-Et eksempel på udskiftning ses herunder, hvor $2$ gange række 2 trækkes fra række 1.\\
-
-\begin{align*}
-A= \begin{bmatrix}
-1 & 4 & 7 \\
-0 & 2 & 3
-\end{bmatrix}
-\sim \begin{bmatrix}
-1 & 0 & 1 \\
-0 & 2 & 3
-\end{bmatrix} = B.
-\end{align*}
-\end{eks}
-
-Målet med elementære rækkeoperationer er, at opnå trappeform og derefter reduceret trappeform. En ledende indgang i en matrix, er den første indgang i en række der ikke er lig 0. 
-
-\begin{defn}[Trappeform]
-En matrix siges at være på trappeform hvis følgende tre betingelser er opfyldt. 
+\begin{defn}[Reduceret trappeform (RT form)]
+En matrix siges at være på reduceret trappeform hvis følgende betingelser er opfyldt.
 \begin{enumerate}
 \item Enhver række forskellig fra 0, ligger over enhver nul-række.
 \item Den ledende indgang i en række forskellig fra 0, ligger i en søjle til højre for søjlen med den ledende indgang i rækken ovenfor.
 \item Hvis en søjle indeholder en ledende indgang, vil alle indgange under den ledende i søjlen være lig 0.
-\end{enumerate}
-\label{defn_trappe}
-\end{defn}
-
-De positioner i matricen, hvor der er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Samtidig siges et ligningssystem at være uløseligt, hvis der er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere med 0, hvilket ikke er muligt.\\
-Når en matrx er på trappeform kan der udføres flere rækkeoperationer for at få den på reduceret trappeform.
-
-\begin{defn}
-Hvis en matrix overholder betingelserne for at være på trappeform og samtidig overholder nedenstående to betingelser, siges matricen at være på reduceret trappeform.
-\begin{enumerate}
 \item Hvis en søjle indeholder en ledende indgang i en hvilken som helst række, skal alle andre indgange i søjlen være $0$.
 \item Den ledende indgang i hver ikke-nul-række skal være $1$.
 \end{enumerate}
+\label{def:reducerettrappeform}
+\end{defn}
+Før en række kommer på reduceret trappeform, kommer den først på trappeform. En matrice siges at være på trappeform når de første $3$ betingelser i Definotion \ref{def:reducerettrappeform} er opfyldt. \\
+
+De indgange i matricen, som er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Samtidig siges et ligningssystem at være uløseligt, hvis i der totalmatricen er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere med 0, hvilket ikke er muligt.\\
+
+\begin{defn}
+Lad $A$ være en $m \times n$ matrix. 
+Da er \textbf{rangen} af $A$ antallet af pivot-søjler i $A$, og noteres $rang(A)$. 
+\textbf{Nulliteten} af $A$ noteres $null(A)$ og er antallet af ikke-pivot-søjler i $A$. \\
+Derudover gælder $rang(A) + null(A) = n$.
 \end{defn}
 
-Når der skal findes en løsning på et ligningssystem skrives det først på reduceret trappeform, hvorefter hver variabel isoleres. 
-Dermed findes en generel løsning i form af en vektor som beskrevet tidligere. % det er da ikke tidligere beskrevet?
-
 \begin{eks}
-Et eksempel på en matrix på trappeform ses herunder. I matricen er pivotindgangene $(1,1)$, $(2,2)$ og $(3,4)$.
+Et eksempel på en totalmatrix på trappeform ses herunder. I matricen er pivotindgangene $(1,1)$, $(2,2)$ og $(3,4)$. Altså må $rang(A)=3$ og $null(A)=2$. 
 \begin{align*}
 A= \begin{bmatrix}
 2 & 4 & 2 & 6 & 8 \\
@@ -291,7 +195,8 @@ Denne matrix reduceres nu ved hjælp af rækkeoperationer til reduceret trappefo
 0 & 0 & 0 & 1 & 2
 \end{bmatrix}.
 \end{align*}
-Nu er matricen på reduceret trappeform. Som det ses, er det ligegyldigt, hvad der står i de søjler, der ikke er pivot-søjler. Dette ligningssystem har derfor uendeligt mange løsninger. Nu isoleres alle variable, så en løsning kan findes:
+Nu er matricen på reduceret trappeform. Som det ses, er det ligegyldigt, hvad der står i de søjler, der ikke er pivot-søjler. Dette er en fri variabel og ligningssystemet har derfor uendeligt mange løsninger.\\ 
+Nu isoleres alle variable, så en løsning kan findes:
 \begin{align*}
 x_1 &= 12 + 3x_3 \\
 x_2 &= -7 - 2x_3 \\
@@ -327,16 +232,6 @@ x_3 \\
 \end{align*}
 \end{eks}
 
-De variable, der ikke har en pivot-søjle, kaldes frie variable, fordi deres værdier ikke påvirker løsningen til ligningssystemet. \\
-
-I forlængelse heraf, kan man kigge på matricens \textbf{rang} og \textbf{nullitet}. 
-\begin{defn}
-Lad $A$ være en $m \times n$ matrix på reduceret trappeform. 
-Da er \textbf{rangen} af $A$ defineret som antallet af pivot-søjler i $A$, og noteres $rang(A)$. 
-\textbf{Nulliteten} af $A$ noteres $null(A)$ og er defineret som antallet af ikke-pivot-søjler i $A$, altså $n - rang(A)$. \\
-Derudover gælder $rang(A) + null(A) = n$.
-\end{defn}
-
 
 Et ligningssystem kan siges at være lineært afhængig eller lineært uafhængig.
 
@@ -352,13 +247,12 @@ x_1=x_2= \dots =x_k=0
 ellers kaldes de lineært afhængige.
 \label{defn_lin_uafh}
 \end{defn}
-
 Det kan altså siges, at et ligningssystem er lineært uafhængigt, hvis der kun er en løsning, så der ingen frie variable er. Hvis et ligningssystem har frie variable, er der uendeligt mange løsninger og kaldes derfor lineært afhængigt. 
 
 \begin{defn}[Affint lineært uafhængig]
 Lad $\vec{x}_1,..., \vec{x}_{k+1} \in \mathds{R}^n$ for $k \leq n$, da er vektorerne \textbf{affint lineært uafhængige}, hvis 
 $\vec{x}_1- \vec{
-*x}_{k+1},...,\vec{x}_k- \vec{x}_{k+1}$ er lineært uafhængige.
+x}_{k+1},...,\vec{x}_k- \vec{x}_{k+1}$ er lineært uafhængige.
 \end{defn}
 
 
