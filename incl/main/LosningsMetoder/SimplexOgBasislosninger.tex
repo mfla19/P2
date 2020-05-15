@@ -1,5 +1,5 @@
-\section{Simplex og Basisløsninger}
-For at søjlerne i en basismatrix til en basisløsning skal kunne udspænde en simplex, skal basisløsningen være en løsning til et lineært programmerings problem på konveks form.
+\subsection{Simplex og Basisløsninger}
+For at en basisløsning kan blive repræcensteret ved en simplex, kræver det dog at basisløsningen er en løsning til et lineært programmerings problem på konveks form.
 \begin{defn}[Konveks form]
 Et lineært programmeringsproblem på formen:
 \begin{center}
@@ -36,13 +36,13 @@ Derfor må et hvert lineært programmeringsproblem med $\vec{b}\neq \vec{0}$ kan
 \end{proof}
 Så længe at nulvektoren ikke er en løsning kan ethvert lineært programmerings problem derfor omskrives til konveks form.
 Grunden til, nulvektoren ikke må være en løsning er, at prikproduktet af en vilkårlig vektor og nulvektoren vil altid give nul, hvorfor konveksbibetingelsen ikke kan overholdes.
-%\begin{defn}[Værdi af $\vec{x}$]
-%Lad $f$ være en objektfunktion da er $f(\vec{x}) = z_x$  \textbf{værdien af $\vec{x}$}
-%\end{defn}
-\\Da vises det at søjlerne i en basismatrix til en basisløsning udspænder en simplex.
+Dermed vil en basisløsning til stort set hvilket som helst lineært programmerings problem, kunne repræsenteres ved en simplex, der består af alle konvekse kombinationer af søjlerne i den tilhørende basis matrix $B$, vel og mærket, hvis at søjlerne i $B$ er affint lineært uafhængige.
 \begin{stn}
-Lad $\vec{x}$ være en basisløsning til et lineært problem på konveks form, så $x_i = 0$ for $i \notin I_B = \{B(1),..., B(m)\}$.
- Så  $\vec{B}_i  = \rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$ en simplex $S_x$, så $\vec{b}_x = \rvect{\vec{b}& z_x}^T \in S_x$
+Lad $\vec{x}$ være en basisløsning til et lineært problem på konveks form, med basismatrix $B$, da vil
+\begin{align*}
+S_x = \{\vec{v} \in \mathds{R}^{m+2} \mid \vec{v} = \sum_{i=1}^{m+1} \lambda_i \rvect{\vec{B}_i & c_i}^T, \sum_{i=1}^{m+1} \lambda = 1\}
+\end{align*}
+være en simplex, og $\vec{b}_x = \rvect{\vec{b}& z_x}^T \in S_x$.
 \end{stn}
 Bemærk at da problemet er på konveks form vil $|I_B| = m+1$ hvis $A$ er en $n\times m$ matrix, da det i følge Sætning \ref{stn:PQ}
 kan antages at alle rækker er lineært uafhængige med $\vec{e}$.
@@ -70,8 +70,8 @@ Bemærk at beviset kun inddirekte beviser at søjlerne i en basismarix udspænde
 \begin{defn}[Simplex forbundet med basisløsning]
 Lad $\vec{x}$ være en basisløsning så $x_i = 0$ hvis $i \notin I_B$, da er $S_x$ \textbf{Simplexen forbundet med basisløsning $\vec{x}$} hvis simplexen er lig konvekshuldet udspændt af søjlerne af $\rvect{\vec{A}_i & c_i}^T$ for $i \in I_B$.
 \end{defn}
-Grunden til at vektorene udvides, er fordi de udvidet vektorer, antages at være punkter i stedet, da vil kordinaterne svarende til indgangende i søjlerne i basismatrixen ligger i samme $m+1$ dimentionelle rum, mens at punkterne svarende til koeficenterne i objektfunktionen ligge i den $m+2$ dimension.  
-Derfor vil ændringen i værdien for opbejkfunktionen for to basisløsninger kunne ses som afstanden mellem de to simplexer forbundet med basisløsningerne i den $m+2$ dimention.
+Grunden til at vektorene udvides, er fordi de udvidet vektorer, antages at være punkter i stedet, da vil koordinaterne svarende til indgangende i søjlerne i basismatrixen ligger i samme $m+1$ dimentionelle rum, mens at punkterne svarende til koefficienterne i objektfunktionen ligge i den $m+2$ dimension.  
+Derfor vil ændringen i værdien for objektfunktionen for to basisløsninger kunne ses som afstanden mellem de to simplexer forbundet med basisløsningerne i den $m+2$ dimension.
 \begin{prop}
 Afstanden mellem to simplex $S_x$ og $S_y$ forbundet med basisløsningerne $\vec{x}$ og $\vec{y}$ er $z_x - z_y$.
 \end{prop}

@@ -1,30 +1,65 @@
-\subsection{Invers matrix}
-Hvis matrixproduktet af to matricer, $A$ og $B$, giver identitetsmatricen, siges $B$ at være den inverse matrix til $A$. 
-\begin{defn}[Invers matrix]
-Lad $A$ og $B$ være kvadratiske $n \times n$ matricer. Lad $AB=BA=I_n$, hvor $I_n$ er identitetsmatricen. Så er $A$ invertibel og $B$ er den inverse matrix til $A$. $B$ noteres da $A^{-1}$. 
-\label{def(inversmatrix)}
-\end{defn}
-I forlængelse af dette er det værd at bemærke, at den inverse matrix til A er en entydig matrix.
-\begin{stn}\label{stn:invers_unik}
-Den inverse matrix til $A$ er en entydig/unik matrix. 
+\section{Den inverse matrix}
+En anden måde at løse et ligningssystem $A\vec{x} = \vec{b}$ på, er ved at finde en matrix $A'$ som opfylder, at $A'A = I_n$.
+Hvorefter at $\vec{x}$ vil kunne findes som
+\begin{align}
+\vec{x}= I_n\vec{x} = A'A\vec{x} = A'\vec{b}.
+\label{lig:A'b}
+\end{align}
+Bemærk, at $A'$ derfor vil udgøre et invers element til $A$, og $A'$ kan derfor kun eksistere, hvis at funktionen
+\begin{align*}
+f(\vec{x}) = A \vec{x} 
+\label{lig:funktion}
+\end{align*}
+er bijektiv.
+For, at den er injektiv, skal alle søjler være lineært uafhængige, og derfor skal der forekomme en pivot-indgang i hver søjle.
+Mens at der skal forekomme en pivot indgang i enhver række for, at $f$'s ko-domæne er lig dens værdimængde, og den derfor vil være surjektiv. 
+Det betyder, at der en matrix $A'$ kun vil kunne eksistere, hvis at $A$s RT form er lig identitetsmatricen, og $A$ skal derfor være kvadratisk.
+Et resultat af at $f$ er bijektiv, er at $\vec{x}$ fra Ligning \eqref{lig:A'b}, er entydigt bestemt, derfor må $A'$ også være entydigt bestemt.
+\begin{stn}
+Lad $A$ være en $n \times n $ matrix, hvis der eksistere en matrix $A'$ så $AA'= A'A = I_n$ da er $A'$ entydigt bestemt.
+\label{stn:endtydiginvers}
 \end{stn}
 \begin{proof}
-Antag at der findes to inverse matricer til $A$, disse kaldes $B$ og $C$. De to matricer vil være den samme da: 
+Antag for modstrid at der eksistere to matricer $A'$ og $A^*$ så $A' \neq A^*$, og $A'A= AA' = I_n$ og $A^*A = AA^* = I_n$, da vil
 \begin{align*}
-B=BI_n=B(AC)=(BA)C=I_nC=C
+A' = (A^*A)A' = A^*(AA') = A^*.
 \end{align*}
+Dermed opstår der modstrid, og $A'$ må være entydigt bestemt.
 \end{proof}
-Den inverse matrix kan bruges til at løse specifikke ligningssystemer. Lad $A$ være en $n \times n$ matrix, og $\vec{b}$ være en vektor i $\mathds{R}^n$. Betragt ligningssystemet: 
+Det betyder at $A'$ kan defineres som den inverse matrice til $A$.
+\begin{defn}[Invers matrix]
+Lad $A$ og $A'$ være kvadratiske $n \times n$ matricer, hvorom der gælder, at $AA'=A'A=I_n$. 
+Så siges $A$ at være invertibel, og $A'$ udgør den inverse matrix til $A$; $A^{-1}$. 
+\label{def(inversmatrix)}
+\end{defn}
+Et eksempel på en invertibel matrix er en elementær matrix.
+\begin{lma}
+Lad $E \in \mathds{R}^{n\times n}$ \textbf{?!?} være en elementær matrix, da er $E$ invertibel.
+\label{lma:Einvertibel}
+\end{lma}
+\begin{proof}
+Af Definition \ref{def:elematrix}, fremgår det, at $E$ er den matrix der forekommer når en række operation $r$ udførers på $I_n$, derfor vil $E^{-1}$ være en inverse rækkeopration af $r$ udført på $I_n$. %Må det være den inverse?? 
+Derfor eksistere $E^{-1}$, hvis et $r^{-1}$ eksistere. 
+Da både multiplikation og addition er invertible i de reelle tal, og det altid er muligt at ombytte to rækker tilbage, vil enhver rækkeoperation have en invers, og $E$ er derfor invertibel.
+\end{proof}
+Derfor må det være muligt at gå fra den RT form for en matrix $A$ tilbage til $A$.
+\begin{lma}
+Lad $R$ være den reducerede trappe form af $n\times m$ matricen $A$, så eksistere der en invertible matix $P$ så $PA = R$
+\label{lma:PA=R}
+\end{lma}
+\begin{proof}
+Da $R$ er RT formen til $A$ betyder det, at der eksistere et multiplum af elementær matricer så
 \begin{align*}
-A \vec{x} &= \vec{b}\\
-A^{-1} A \vec{x} &= A^{-1} \vec{b}\\
-I_n \vec{x} &= A^{-1} \vec{b}.
-\end{align*} 
-Ved at gange den inverse matrix på begge sider af lighedstegnet, opnåes et udtryk for den entydige løsning til ligningssystemet: 
-\begin{align}
-\vec{x} &= A^{-1} \vec{b}.
-\end{align} 
-
+\left( E_k \dotsm E_2 E_1 \right) A = R.
+\end{align*}.
+Lad nu $P = E_k E_{k-1} \dotsm E_1$, da vil $PA = R$.
+Da $E_k$ betegner en elementær matrix følger det af Lemma \ref{lma:Einvertibel} at $E_k^{-1}$ eksistere, hvorfor at 
+\begin{align*}
+\left( E_1^{-1}\dotsm E_{k-1}^{-1} E_k^{-1} \right) P = E_1^{-1}\dotsm \left( E_{k-1}^{-1}\left( E_k^{-1}E_k \right) E_{k-1}\right)\dotsm E_1 = E_1^{-1}\dotsm \left( E_{k-1}^{-1}  E_{k-1} \right) \dotsm E_1 = I_n.
+\end{align*}
+Derfor vil $E_1^{-1}\dotsm E_{k-1}^{-1} E_k^{-1} = P^{-1}$, og $P$ er dermed invertibel.
+\end{proof}
+Eksistensen af matircen $P$ kan bruges til at skabe en fremgangsmåde, til at finde den inverse matrix til en matrix $A$.
 \begin{stn}
 Lad $A$ være en $n \times n$ matrix. Der gælder at: 
 \begin{enumerate}[label=(\alph*)]
@@ -41,115 +76,34 @@ I_n & A^{-1}
 \end{align*}
 \label{stn:inversmatrix}
 \end{stn}
-
 \begin{proof}
-(a) Først lad $A$ være invertibel. Betragt nu en vektor $\vec{x}$ i $\mathds{R}^n$, som opfylder $A\vec{x}=\vec{0}$. Så fåes det at ligning $(4.1)$, at $\vec{x}=A^{-1} \vec{0}=\vec{0}$. Da løsningen af  $A\vec{x}=\vec{0}$ er $\vec{0}$ må $rang(A)=n$. Det betydet at antallet af pivot-søjler er det samme som antellet af søjler, samt antallet af rækker. Den reducerede trappeform af $A$ må derfor være identitetsmatricen. 
-
-Lad nu den reducerede trappeform af $A$ være identitesmatricen. Så må der findes en invertibel $n \times n$ matrix $P$ således at: $PA=I_n$
+(a) Lad først $A$ være invertibel. 
+Betragt nu en vektor $\vec{x}$ i $\mathds{R}^n$, som opfylder, at $A\vec{x}=\vec{0}$.
+Så fåes det, af Ligning \eqref{lig:A'b}, at $\vec{x}=A^{-1} \vec{0}=\vec{0}$.
+Da løsningen af  $A\vec{x}=\vec{0}$ er $\vec{0}$ må $rang(A)=n$.
+Det betydet, at antallet af pivot-søjler er det samme som antallet af søjler, samt antallet af rækker. 
+RT formen af $A$ må derfor være identitetsmatricen. 
+\\%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Lad nu den reducerede trappeform af $A$ være identitetsmatricen.
+Da følger det af Lemma \ref{lma:PA=R}, at der eksistere en invertibel $n \times n$  matrix $P$ således at: $PA=I_n$.
+Derfor vil der gælde ,at
 \begin{align*}
 A=I_nA=(P^{-1}P)A=P^{-1}(PA)=P^{-1}I_n=P^{-1}
 \end{align*}
-Da $P$ er invertibel må $P^{-1}$ også være invertibel. Derfor er $A$ invertibel. 
-
-(b) Betragt matricen $[A \quad I_n]$. Enhver $n \times n$ matrix, $A$, kan skrives som en matrix, $R$, på reduceret trappeform, ved hjælp af elementære rækkeoperationer. Udføres de samme rækkeoperationer på $n \times 2n$ matricen, $[A \quad I_n]$, tranformeres denne til $[R \quad B]$. Betragt en invertibel matrix $P$, som opfyldet at: $P[A \quad I_n]=[R \quad B]$. Så følger det at:  
+Da $P$ er invertibel må $P^{-1}$ også være invertibel. 
+Dermed er $A$ invertibel. 
+\\ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(b) Da $A$ er invertibel, følger det af Sætning \ref{stn:inversmatrix} (a), at RT formen af $A$ er $I_n$, derfor følger det, af Lemma \ref{lma:PA=R}, at der eksisterer en matrix $P$ så $PA = I_n$. 
+Af Definition \ref{def(inversmatrix)} og Sætning \ref{stn:entydiginvers}, følger det, at $P = A^{-1}$.
+Betragt nu matricen $\rvect{A&I_n}$ da vil
 \begin{align*}
-[R \quad B]=P[A \quad I_n]=[PA \quad PI_n]=[PA \quad P]. 
+P \rvect{A & I_n} = \rvect{I_n & P} = \rvect{I_n & A^{-1}}.
 \end{align*}
-Så er $PA=R$ og $P=B$. Hvis $R \neq I_n$ så er $A$ ikke invertibel. Derfor må $R=I_n$, og dermed er $PA=I_n\Leftrightarrow P=A^{-1}$. P er da lig med både $A^{-1}$ og $B$, og $A^{-1}=B$. 
-$$[A \quad I_n]\sim[R \quad B]=[PA \quad P]=[I_n \quad A^{-1}]$$
+Da $P$ per definition er produktet af elementærmatricerne, der svare til de rækkeoperationer, som bliver brugt til at bringe $A$ på RT form, betyder det, at den inverse matrix til $A$, kan fremstilles ved at udføre samme rækkeoperationer på $I_n$ som vil føre til $A$s RT form.
 \end{proof}
+Det betyder at med mindre, at den inverse matrix er åbenlys skal der stadig bruges rækkeoperationer til at løse Ligningen \eqref{lig:A'b}, og det kan derfor ikke altid betale sig at finde den inverse, hvis den skulle eksistere.
 
-\begin{eks}
-Givet en matrix A ønskes det nu at finde en inverse. 
-\begin{align*}
-A= \begin{bmatrix}
-1 & 3 \\
-1 & 2
-\end{bmatrix}
-\end{align*}
-Først opstilles $[A \quad I_n]$ matricen: 
-\begin{align*}
-\begin{bmatrix}
-1 & 3 & 1 & 0 \\
-1 & 2 & 0 & 1
-\end{bmatrix}.
-\end{align*}
-Nu udførers elementære rækkeoperationer således at $A$ transformeres til $I_n$. 
-\begin{align*}
-\begin{bmatrix}
-1 & 3 & 1 & 0 \\
-1 & 2 & 0 & 1
-\end{bmatrix}.
-\sim \begin{bmatrix}
-1 & 3 & 1 & 0 \\
-0 & -1 & -1 & 1
-\end{bmatrix}.
-\sim \begin{bmatrix}
-1 & 3 & 1 & 0 \\
-0 & 1 & 1 & -1
-\end{bmatrix}.
-\sim \begin{bmatrix}
-1 & 0 & -2 & 3 \\
-0 & 1 & 1 & -1
-\end{bmatrix}.
-\end{align*}
-Det er nu muligt at aflæse $A^{-1}$:
-\begin{align*}
-A^{-1} =\begin{bmatrix}
--2 & 3\\
-1 & -1 
-\end{bmatrix}.
-\end{align*}
-\end{eks}
 
-\subsection{Elementærmatricer og invertibilitet}
 
-\begin{defn}
-Enhver elementærmatrix er invertibel. Den inverse af en elementærmatrix er også en elementærmatrix. 
-\end{defn}
 
-Enhver rækkeoperation kan laves omvendt. For eksempel kan den matrix der fås, ved at lægge to gange den første række til anden række, ændres tilbage ved at tage $-2$ gange den første række og lægge til den anden række i den nye matrix. På den måde opnås den inverse af en elementærmatrix. \\
-Ud fra et antal elementære rækkeoperationer kan der opnås en matrix på reduceret trappeform. Dette kan ligeledes opnås, ved at gange samme antal elementærmatricer, som elementære rækkeroperationer, på den givne matrix. 
-Hvis $A$ er en $m \times n$ matrix på reduceret trappeform $R$, findes der elementærmatricer $E_1$, $E_2$, \dots, $E_k$, så 
-\begin{align*}
-E_k E_{k-1} \dotsm E_1 A = R.
-\end{align*}
 
-Hvis $P = E_k E_{k-1} \dotsm E_1$, så er $P$ et produkt af elementærmatricer og derfor invertibel. Derudover er $PA = R$. 
-
-\begin{stn}\label{stn:mn_invertibel}
-Lad $A$ være en $m \times n$ matrix på reduceret trappeform $R$. Da findes der en invertibel $m \times m$ matrix $P$ så $PA=R$. 
-\end{stn}
-
-\begin{comment}
-Sætning \ref{stn:mn_invertibel} følger af følgende resultat. 
-
-\begin{kor}
-Matrix-ligningen $A\vec{x}=\vec{b}$ har samme løsninger som $R\vec{x}=\vec{c}$ hvor $\begin{bmatrix} R & \vec{c} \end{bmatrix}$ er matricen $\begin{bmatrix} A & \vec{b} \end{bmatrix}$ på reduceret trappeform.
-\end{kor}
-
-\begin{proof}
-Der findes en invertibel matrix $P$ således at $P \begin{bmatrix} A & \vec{b} \end{bmatrix} = \begin{bmatrix} R & \vec{c} \end{bmatrix}$. Derfor
-\begin{align*}
-\begin{bmatrix} 
-PA & P\vec{b} 
-\end{bmatrix} =
-P \begin{bmatrix}
-A & \vec{b}
-\end{bmatrix} =
-\begin{bmatrix}
-R \vec{c}
-\end{bmatrix},
-\end{align*}
-og altså $PA = R$ og $P\vec{b}=\vec{c}$. Da $P$ er invertibel, følger det at $A = P^{-1}R$ og $\vec{b}=P^{-1}\vec{c}$.
-Hvis $\vec{v}$ er en løsning til $A\vec{x}=\vec{b}$, så $A\vec{v}=\vec{b}$. Så
-\begin{align*}
-R\vec{v} = (PA)\vec{v} = P(A\vec{v}) = P\vec{b}=\vec{c}. 
-\end{align*} 
-Hvorfor $\vec{v}$ er en løsning til $R\vec{x}=\vec{c}$. Antag at $\vec{v}$ er en løsning til $R\vec{x} = \vec{c}$. Så er $R\vec{v} = \vec{c}$, og derfor
-\begin{align*}
-A\vec{v} = (P^{-1}R)\vec{v} = P^{-1}R\vec{v} = P^{-1}\vec{c} = \vec{b}. 
-\end{align*}
-Derfor er $\vec{v}$ en løsning til $A\vec{x} = \vec{b}$. Udtrykkene $A\vec{x} = \vec{b}$ og $R\vec{x} = \vec{c}$ har altså samme løsninger.
-\end{proof}
-\end{comment}

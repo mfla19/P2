@@ -1,23 +1,25 @@
 \section{Simplex og Basisløsninger}
-En anden tilgang til at finde den optimale løsningsværdi på, er ved at betragte sammenhængen mellem forskellige simplexer og basisløsninger. 
-Derfor vil dette afsnit belyse begrebet simplex og hvordan det kan bruges til at 
-
-
-
+Den anden tager udgangspunkt i resultatet fra Sætning \ref{stn:eksistens}, der siger at en \textbf{optimal løsning ?!?} altid er en basisløsning, og viser hvordan simplexer kan bruges til at vælge en basis, som vil føre til en basisløsning med optimal værdi.
+Der vil derfor med udgangspunkt i %indsæt kilde
+blive gennemgået definitionen for en simplex og hvordan det kan bruges til at udtrykke en basisløsning.
 \subsection{Simplex}
-Ud over at mængder kan være konvekse så kan lineare kombinationer også være konvekse.
+For at kunne definere en simplex, er det nødvendigt først at introducere begreberne konvekskombination og konvekshyslser.
 \begin{defn}[Konveks kombination]
 Lad $\vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n$, og $\lambda_1,..., \lambda_k \geq 0 $ være skalare, som opfylder $\sum_{i=1}^k \lambda_i =1$ da er $\sum_{i=1}^k \lambda_i \vec{x}^1$ en \textbf{konveks kombination}.
 \label{def:KonveksKombination}
 \end{defn}
-Dermed er en konveks kombination et særtilfælde af lineære kombinationer, hvor skalerne summer til $1$.
-På samme måde er der et særtilfælde af et span, kaldet et konveks hylster, som er alle konvekse kombinationer udspændt af en mængde vektorer.
+En konveks kombination er dermed et sær tilfælde af en lineær kombination, hvor skalrene summer til $1$.
 \begin{defn}[Konveks hylster]
 Lad $\vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n$, da er $C_{x} = \{\sum_{i=1}^k \lambda_i \vec{x}_i| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ et \textbf{konveks hylster} for vektorene $\vec{x}_1, ...,\vec{x}_k$. 
 \label{def:Konvekshuld}
 \end{defn}
-Efter som at enhver konveks kombination af elementer fra en konveks mængde er et element i mængden, vil det give mening at konvekshuldet også var en konveks mængde.
-\begin{stn}[Konvekse mængder]
+Mens, at mængden af alle konvekse kombinationer af en given mængde vektorer, kaldes et konvekshylster, og minder derfor om spandet af en mængde vektorer.
+Et særtilfælde af konveksehylstre er en simplex.
+\begin{defn}[Simplex]
+Lad $C_x$ være et konveks huld, af $k+1$ affint lineært uafhængige vektorer, da er $C_x$ en $k$-dimentionel \textbf{Simplex}.
+\end{defn}
+Eftersom det konveksehylster, kun består af konvekse kombinationer, vil det give mening at det udgør en konveks mængde.
+\begin{stn}
 Konveks huldet $C_x = \{\sum_{i=1}^k \lambda_i \vec{x}_1| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ over en endelig mængde vektorer, er en konveks mængde
 \end{stn}
 \begin{proof}
@@ -37,8 +39,5 @@ Hvorfor at $\lambda \vec{z} + (1- \lambda) \vec{y} $ er en konveks kombination a
 Derfor må $ \lambda \vec{z} + (1- \lambda) \vec{y} \in C_x$, hvorfor at $C_x$ er konveks ifølge Definition \ref{def:Konveks}.
 Og sætningen er bevist.
 \end{proof}
-Et særtilfælde af konvekshuld er kaldet en simplex.
-\begin{defn}[Simplex]
-Lad $C_x$ være et konveks huld, af $k+1$ affint lineært uafhængige vektorer, da er $C_x$ en $k$-dimentionel \textbf{Simplex}.
-\end{defn}
-Simplex metoden bygger på at betragte forskellige simplexer, og så finde den simplex, hvis skæring med $\vec{b}$ er lig den optimale løsning, det kan lade sig gøre da søjlerne i en basismatrix til en basisløsning udspænder en simplex.
+Dermed er en simplex en konveks mængde udspændt af affint lineære vektorer.
+Dette kan bruges til geometrisk at repræsenterer basisløsninger og deres basis matrix.
