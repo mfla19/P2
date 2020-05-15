@@ -1,12 +1,10 @@
 \section{Vektorer}
-En vektor er et objekt defineret ved en retning og en længde, som kan repræsenteres som matrix, der enten kun har en sølje eller en række.
-Det vil sige at en vektor er et særtilfælde af en matrix, og alle regneregler for matricer gør sig derfor gældende for vektorer, men ikke alle regneregler for vektorer kan bruges for matricer.
-En vektor med kun en søjle kaldes en søjlevektor, mens en vektor med kun en række kaldes en rækkevektor.
-Vektorer anvendes blandt andet til at repræsentere  rækker og søjler i matricer. 
+En vektor er et objekt defineret ved en retning og en længde, som kan repræsenteres som en matrix, der enten kun har én sølje eller én række.
+Det vil sige, at en vektor er et særtilfælde af en matrix, og alle regneregler for matricer, gør sig derfor gældende for vektorer, men ikke alle regneregler for vektorer kan bruges for matricer.
+En vektor med kun én søjle kaldes en søjlevektor, mens en vektor med kun én række kaldes en rækkevektor.
+Vektorer anvendes blandt andet til at repræsentere rækker og søjler i matricer. 
 I dette tilfælde er vektorerne derved delmatricer af den originale matrix.
 Indgangene i en vektor kaldes vektorens vektorkomponenter, og vil være udgjort af vektorens koordinator.
-
-
 
 \begin{defn}[Søjlevektor]
 Lad $\underset{m \times n}{A}$ være en matrix, så vil en \textbf{søjlevektor} være en delmatrix med kun en søjle og alle søjlens rækkekomponenter
@@ -38,9 +36,9 @@ Vektoren $\vec{v}$ siges at have dimension $n$ og tilhører $\mathds{R}^n$.
 \end{defn}
 Bemærk at hvis henholdsvis $m$ eller $n$ er $1$, så er matricen i forvejen en vektor.\\
 \\
-Ved addition af to vektorer, placeres vektorerne så de former et parallelogram, hvis sider udgøres af vektorene, da følger af parallelogram loven at diagonalen er summen af de to vektorer.
+Ved addition af to vektorer, placeres vektorerne i samme begyndelsespunkt, så de udspænder to sider af et parallelogram. Da følger af parallelogram-loven, at diagonalen af det fulde parallelogram er summen af de to vektorer.
 Repræsenteres  vektorene som en matrix, er summen af vektorene, en ny matrix, hvis $i$te indgang er summen af de to vektores $i$te indgange. 
-Bemærk derfor at det ikke er muligt at lægge to vektorer sammen af forskellig dimension, det er heller ikke muligt at finde summen af en søjle- og rækkevektor selvom de har samme dimension.
+Bemærk derfor, at det ikke er muligt at lægge to vektorer sammen af forskellig dimension. Det er heller ikke muligt at finde summen af en søjle- og rækkevektor, selvom de har samme dimension.
 
 %Addition af to vektorer kan repræsenteres grafisk med pile, ved at tage to ikke-nul vektorer $\vec{u}$ og $\vec{v}$ og forme et parallelogram med vektorene som parallelogrammets sider. I følge parallelogram loven vil diagonalen af parallelogrammet være de to vektor lagt sammen $\vec{u}+\vec{v}$.
 %Mangler firgur 1.3 fra lial bogen
@@ -145,7 +143,7 @@ Da er deres sum
 \end{align*}
 \end{eks}
 
-Hvis en vektor kan lægges til en anden vektor, så må det også være muligt at skalere den. Det vil sige multiplicere den med en konstant, eftersom $2\vec{v}=\vec{v}+\vec{v}$.\\ %giver god mening, men det lyder som et bevis
+Hvis en vektor kan lægges til en anden vektor, må det også være muligt at skalere den. Det vil sige multiplicere den med en konstant, eftersom $2\vec{v}=\vec{v}+\vec{v}$.\\ %giver god mening, men det lyder som et bevis
 \begin{figure}[h]
 \begin{center}
 \input{fig/tikz/vektorskalar}
@@ -153,7 +151,7 @@ Hvis en vektor kan lægges til en anden vektor, så må det også være muligt a
 \end{center}
 \label{fig:vektorskalar}
 \end{figure}
-Derfor må den nye vektors komponenter, være den originale vektors komponenter multipliceret med skalaren.
+Derfor må den nye vektors komponenter være den originale vektors komponenter multipliceret med skalaren.
 \begin{defn}[Vektor skalar]
 Lad $\vec{v}, \vec{u}$ være en vektorer i $\mathds{R}^n$, og $k$ en skalar, så $\vec{u} = k \cdot \vec{v}$, da er den $i$te indgang i $\vec{u}$ givet ved $u_i = k\cdot v_i$.
 % da er et \textbf{vektor skalar} produktet af den vektorens komponenter multipliceret med konstanten.
@@ -184,7 +182,7 @@ Lad $\vec{v}, \vec{u}$ være en vektorer i $\mathds{R}^n$, og $k$ en skalar, så
 %\end{align*}
 \end{defn}
 \begin{eks}
-En vektor $\vec{x}$ med komponenterne $2$ og $3$ skal skaleres med skalaren $k=3$, hvilket gøres ved at multiplicere konstanten med begge komponenter.
+En vektor $\vec{x}$ med komponenterne $2$ og $3$ skal skaleres med skalaren $k=3$, hvilket gøres ved at multiplicere konstanten på begge komponenter.
 \begin{align*}
 \vec{x}=\begin{bmatrix}
 2\\
@@ -212,14 +210,14 @@ k\vec{x}=3
 %Lad $\vec{u}, \vec{v} \in \mathds{R}^n$ være vektorer, %da er $\vec{u}-\vec{v}= \vec{u} + (-1) \vec{v}$.
 %\end{defn}
 
-\subsection{Matrix-vector produkt}
+\subsection{Matrix-vektor produkt}
 %To vektorer af samme dimension kan prikkes sammen ved at multiplicere deres $i$te indgange med hinanden og så finde summen af produktorne
 %\begin{defn}[Prikproduktet]
 %Lad $\vec{v}, \vec{u} \in \mathds{R}^n$ være to vektorer, da er \textbf{prikproduktet} givet ved $\langle\vec{v},\vec{u}\rangle = \sum_{i=1}^n v_i \cdot u_i.$
 %\end{defn}
 %Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svare til en $m$ dimentional vektor , hvis $i$te indgang er prikproduktet af den $i$te række og den $n$ dimensionalle vektor. 
 %Dette lægger grundlaget for hvordan matricer ganges sammen, eftersom en vektor også kan ses som en $n\times1$ matrix. 
-Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svare til summen af vektorskalar produktet mellem den $j$te søjle i matricen, og den $j$te indgang i vektoren, for enhver søjle i matricen.
+Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svarer til summen af vektorskalar-produktet mellem den $j$te søjle i matricen, og den $j$te indgang i vektoren, for enhver søjle i matricen.
 \begin{defn}[Matrix-vektor produkt]
 Lad $A$ være en $m\times n$ matrix og $\vec{v}\in \mathds{R}^n$ vektor. 
 Da vil $A \vec{v} = \sum_{j=1}^n \vec{A_j}v_j = \vec{u}$, hvor $\vec{u} \in \mathds{R}^m$.
@@ -245,8 +243,8 @@ Da vil $A \vec{v} = \sum_{j=1}^n \vec{A_j}v_j = \vec{u}$, hvor $\vec{u} \in \mat
 %\end{align*}
 \label{def:matrixvektorprodukt}
 \end{defn}
-Bemærk at en $m \times n$ matrix kun kan multipliceres med en $n$ dimentionel søjlevektor ud fra Definition \ref{def:matrixvektorprodukt}, produktet mellem en $m$ dimensional rækkevektor og en $m \times n$ matrix, kan defineres på samme måde, så resultatet bliver en $n$ dimentionel vektor. 
-Et ser tilfælde af et matrix-vektor mulitiplikation er når to vektorer multipliceres sammen, dette kaldes et prikprodukt.
+Bemærk at en $m \times n$ matrix kun kan multipliceres med en $n$ dimensionel søjlevektor ud fra Definition \ref{def:matrixvektorprodukt}. Produktet mellem en $m$ dimensionel rækkevektor og en $m \times n$ matrix, kan defineres på samme måde, så resultatet bliver en $n$ dimensionel vektor. 
+Et særtilfælde af en matrix-vektor mulitiplikation er, når to vektorer multipliceres sammen. Dette kaldes et prikprodukt.
 \begin{defn}[Prikproduktet]
 Lad $\vec{v}, \vec{u} \in \mathds{R}^n$ være to vektorer, da er \textbf{prikproduktet} givet ved $\langle\vec{v},\vec{u}\rangle = \sum_{i=1}^n v_i \cdot u_i = \vec{v}^T \cdot \vec{u} $
 \end{defn}
@@ -310,11 +308,10 @@ A\vec{x}= \begin{bmatrix}
 \end{align*}
 \end{eks}
 \subsection{Standard basis vektorer}
-Standard basis vektorer, er vektorer som har længden $1$ og følger akserne i det rum $\mathds{R}^n$ vektoren er i.
-Standard basis vektorer i $\mathds{R}^n$ skrives som $\vec{e_i}$, hvor $i\in \{1,..,n\}$ og $i$ er den vektor komponent som har værdien $1$ og resten $0$.
+Standard basis vektorer er vektorer, hvis koordinater alle er $0$ pånær én, der har længden $1$ ud af aksen i det rum, $\mathds{R}^n$, vektoren er i. Standard basis vektorer i $\mathds{R}^n$ skrives som $\vec{e_i}$, hvor $i\in \{1,..,n\}$, hvor $i$ er den vektorkomponent, som har værdien $1$. 
 
-\begin{defn}[Standart basis vektorer]
-Lad $\vec{e_i}\in\mathds{R}^n$ være vektor med hvis $j$te indgang er givet ved
+\begin{defn}[Standard basis vektorer]
+Lad $\vec{e_{i,j}}\in\mathds{R}^n$ være en vektor hvis $j$te indgang er givet ved
 \begin{align*}
 e_j=\begin{cases} 0, \quad j \neq i
 \\ 1 , \quad j = i \end{cases}.
