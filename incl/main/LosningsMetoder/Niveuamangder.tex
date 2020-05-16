@@ -1,4 +1,5 @@
 \section{Niveaumængder}
+Niveaumængder tager udgangs punkt i samme logik som i beviset for Sætning \ref{stn:eksistens}, og giver en metode til at finde en retningsvektor som vil reducere objektfunktionen.
 En Niveaumængde er mængden af alle de vektorer i løsningsmængden, der har samme funktionsværdi $z$ for objektfunktionen.
 \begin{defn}[Niveaumængden]
 Lad $f(\vec{x})= \vec{c}^T\vec{x}$ være en objektfunktion, da kaldes
@@ -16,17 +17,18 @@ Det ses at hyperplanet har følgende egenskab.
 \begin{stn}
 Lad $N_z$ betegne niveaumængden, da er $\vec{c}$ ortogonal med hyperplanet beskrevet af $N_z$.
 \end{stn}
+Bemærk at $\vec{c}$ ikke er ortogonal med $\vec{x}\in N_Z$ men med hyperplanet bestående af de punkter som $N_z$ repræsenterer.
 \begin{proof}
 Lad $\vec{x}, \vec{y} \in N_z$ da er hyperplanet beskrevet af $N_z$ parallel med $\vec{x}-\vec{y}$.
 Tages prikproduktet af $\vec{x}-\vec{y}$ og $\vec{c}$, fåes at
 \begin{align*}
 \vec{c}^T(\vec{x}-\vec{y}) = \vec{c}^T\vec{x} -\vec{c}^T\vec{y} = z - z = 0,
 \end{align*}
-hvorfor at $\vec{c}$ og $\vec{x}-\vec{y}$ er ortogonale i følge Lemma \ref{lma:vinkelret}, og dermed må $\vec{c}$ også være orthogonal med hyperplanet beskrevet af $N_z$.
+hvorfor $\vec{c}$ og $\vec{x}-\vec{y}$ er ortogonale i følge Lemma \ref{lma:vinkelret}, og dermed må $\vec{c}$ også være orthogonal med hyperplanet beskrevet af $N_z$.
 \end{proof}
 Den optimale værdi findes så ved at finde, det mindste $z$ for hvilket niveau-hyperplanet har en ikke-tom skæring med den mulige mængde. 
 Hvilket gøres ved at flytte hyperplanet så langt i den modsatte retningen af $\vec{c}$ som muligt.
-\begin{stn}[Optimal løsning og -værdi fundet ved niveaukurver]
+\begin{stn}
 Lad $f(\vec{x})=\vec{c}^T\vec{x}$ betegne objektfunktionen til et standard minimerings problem med løsningsmængde $P$, da vil den 
 optimale værdi er givet ved
 \begin{align*}
@@ -35,7 +37,7 @@ z^* = \underset{k}{\min} \, k \cdot \Vert \vec{c} \Vert ^2
 \label{stn:niveau}
 \end{stn}
 \begin{proof}
-Da $N_z$ er et ægte underrum til $\mathds{R_n}$ følger det af Sætning \ref{stn:Rnorto}, at $\vec{x}$ kan omskrives til summen af en vektor parallel med $\vec{c}$, kaldet $\vec{x}_p$, og en vektor orthogonal med $\vec{c}$, kaldet $\vec{x}_o$. 
+Da $N_z$ er et ægte underrum til $\mathds{R_n}$ følger det af Sætning \ref{stn:Rnorto}, at $\vec{x}$ kan omskrives til summen af en vektor parallel med $\vec{c}$, kaldet $\vec{x}_p$, og en vektor der er orthogonal med $\vec{c}$, kaldet $\vec{x}_o$. 
 Dermed kan objektfunktionen omskrives til
 \begin{align*}
 	f(\vec{x}) & \ = \ \vec{c}^T\vec{x}\\
@@ -49,8 +51,6 @@ Derfor kan det konkluderes, at den optimale værdi er $z* = \underset{k}{min}k \
 \end{proof}
 Af Sætning \ref{stn:niveau} følger det også, at den optimale værdi er den vinkelrette afstand fra origo og  hyperplanet beskrevet  af niveaumængden, da den optimale værdi er givet, som et multiplum af længden af $\vec{c}$, der står vinkelret på hyperplanet beskrevet  af niveaumængden.
 Dette kan ses i  for et maksimerings problem i Eksempel \ref{eks:maksprob3}.
-
-
 \begin{eks}[Optimal løsning fundet grafisk]
 Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \ref{fig:maksprob3} indtegnet for programmeringsprogblemet fra Eksempel \ref{eks:maksprob2}.
 
@@ -64,7 +64,7 @@ På figuren ses det, at den største funktionsværdi $z=46$ findes i skæringen 
 Ved at løse bibetingelse 2 og 3 som 2 ligninger med 2 ubekendte findes det at den optimale løsning er $\vec{x}=\rvect{10 & 2}^T.$
 \label{eks:maksprob3}
 \end{eks}
-
+Dermed kan niveaumængden bruges til at finde retningsvektoren fra beviset for Sætning \ref{stn:eksistens}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\texttt{
