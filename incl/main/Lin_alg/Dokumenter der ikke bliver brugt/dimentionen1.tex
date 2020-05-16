@@ -1,5 +1,6 @@
 \section{Dimensionen af underrum}
-Dimensionen af et underrum, indeholder indformation om, hvorvidt en delmængde af vektorer fra underrummet er lineært uafhængige, om de udgør en basis for underrummet, men også om delmængden er lig underrummet. 
+Dimensionen af et underrum, indeholder indformation om, hvorvidt en delmængde af vektorer fra underrummet er lineært uafhængige, om de udgør en basis for underrummet, men også om delmængden er lig underrummet.
+Hvis delmængden af vektorer er indeholdt i et underrum, vil de kun kunne være lineært uafhængige, hvis delmængden maksimalt indeholder et antal vektorer svarende til underrummets dimension. 
 Da delmængden ellers ville udspænde et underrum som vil indeholde vektorer, der ikke er indeholdt i det originale underrum.
 \begin{kor}
 Lad $V$ være et underrum til $\mathds{R}^n$ med $\dim{V}=k$, da vil enhver lineært uafhængig delmængde af $V$ maksimalt indeholde $k$ vektorer.
@@ -28,7 +29,6 @@ Lad $V$ og $W$ være underrum til $\mathds{R}^n$, og lad $V \subseteq W$, da vil
 \end{stn}
 \begin{proof}
 Af Korolar \ref{kor:linearuafhangighedunderrum} følger det at en hver lineær uafhængig delmængde $S$ af $W$ vil indeholde mindre end eller lig med $\dim{W}$ vektorer, hvorfor at ethvert underrum udspændt af $S$ vil have $\dim{span(S)} \leq \dim{W}$.
-\\%
+
 Lad $B_V$ være en base for $V$, hvorfor at $|B_V| = \dim{V} = \dim{W}$, og da $B_V$ er lineært uafhængig følger det af Korolar \ref{kor:serbase} at $V = span(B_V) = W$.
 \end{proof}
-Det følger derfor, at hvis en basis for et underrum til $\mathds{R}^n$ udvides til at indeholde $n$ lineært uafhængige vektorer så vil basen udgøre en basis for $\mathds{R}^n$.

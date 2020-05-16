@@ -1,39 +1,5 @@
-\section{Fra span til base}
-Da spannet af to mængder er det samme, hvis deres snitmængde er lineært afhængig af deres fælles mængde, betyder det at hvis deres fælles mængde er lineært uafhængig da er fællesmængden en basis for spannet.
-Derfor kan enhver mængde af lineært afhængige vektorer blive til basis, ved at fjerne vektorer til de resterne er lineært uafhængige.
-\begin{stn}
-Lad $S=\{\vec{v_1}, ..., \vec{k}\}$, for $\vec{v_1}, ..., \vec{k} \in \mathds{R}^n$ og lad $span(S) = V$ være et underrum til $\mathds{R}^n$ da er kan $S$ gøres til en basis for $V$ ved at fjerne vektorer fra $S$.
-\label{stn:reduceringbasis}
-\end{stn}
-\begin{proof}
-Antag uden at miste generealitet at de først $l$ vektorer i $S$ er  lineært uafhængige, da vil $\vec{v_i}$, for $i = l+1,...,k$ være en linear kombination af $\{\vec{v_i} | i = 1,...,l\}$. 
-Derfor følger det af Sætning \ref{stn:akvivalentespan} at $V = span(\{\vec{v_i}| j =1,...,k\}) =span(\{\vec{v_i}| j=1,...,l\})$.
-Da alle vektorer i $\{\vec{v_i}| j=1,...,l\}$ er lineært uafhængige følger det af Definition \ref{def:basis} at $\{\vec{v_i}| j=1,...,l\}$ er en basis for $V$. 
-Derfor bliver $S$ en basis ved at fjerne $\{\vec{v_i}| i = l+1,...,k\}$.
-\end{proof}
-Udspænder delmængden derimod et underrum til et andet underrum kan der tilføjes lineært uafhængige vektorer til delmængden, til den udspænder underrummet.
-\begin{stn}
-Lad $S=\{\vec{v_1}, ..., \vec{v_k}\}$ være en delmængde for underrummet $V$ til $\mathds{R}^n$, for $\vec{v_1}, ..., \vec{v_k} \in \mathds{R}^n$ være lineært uafhængige vektorer, da vil $S$ kunne udvides til en basis for $V$ ved at tilføje ekstra vektorer.
-\end{stn}
-\begin{proof}
-Observer at $span(S) \subseteq V$, og at $S$ er en basis for $span(S)$.
-Lad $\vec{v_{k+1}} \in V$ være lineært uafhængig med $\vec{v_1}, ..., \vec{v_k}$, så vil $span(S\cup\{\vec{v_{k+1}}\}) \subseteq V$ med basis $S\cup\{\vec{v_{k+1}}\}$. 
-Gentag til der ikke er flere vektorer i $V$ som er lineært uafhængig med delmængden af vektorer, og kald mængden $S_V$.
-Bemærk at $span(S_V) \subseteq V$.
-Det vises nu at $V \subseteq span(S_V)$. 
-Af Definiton \ref{def:span} indeholder $span(S_V)$ alle vektorer som er en linear kombination af vektorerne i $S_V$, og da der ikke er nogle vektorer i $V$ som er lineært uafhængig til $S_V$ pr konstruktion af $S_V$, må $V$ være indeholdt i $S_V$. 
-Hvorfor $V \subseteq span(S_V)$, hvilket medfører at $V = span(S_V)$, med basis $S_V$. 
-Da $S_V$ var konstrueret ved at tilføje vektorer til $S$ er sætningen hermed bevist.
-\end{proof}
-Det betyder at en basis til et underrum er det størst mulige antal lineært uafhængige vektorer i underrummet, en anden måde at betragte det på er også at en basis til underrummet er den mindste mulige mængde af vektorer som udspænder underrummet.
-%\begin{stn}
-%Lad $S=\{\vec{v_1},..., \vec{v_K}\} \subseteq \mathds{R}^n$ så $\dim(span(S)) = m$ da
-%\begin{enumerate}[label=\alph*]
-%\item $\exists S_m =\{\vec{v_{B(1)}},...,\vec{v_{B(m)}}\}\subseteq S$ så $span(S_m) = span(S)$, hvor $B(1),...,B(m)$ er indeks.
-%\item Lad $S_k = \{\vec{v_1},..., \vec{v_k}\} \subseteq S$ og $k \leq m$, da $\exists S_{m-k} = \{v_{B(k+1)},...,v_{B(m)}\} \subseteq S\setminus S_k$ så $span(S_k \cup S_{m-k}) = span(S)$.
-%\end{enumerate} 
-%\end{stn}
-
+\subsection{Fra span til base}
+Ligesom at en basis kan udvides til at udgøre en basis for et underrum af højere dimension end basens kardinalitet, kan et span reduceres til en basis.
 \begin{stn}[Fra span til basis]
 Lad $S=\{\vec{v_1},..., \vec{v_K}\} \subseteq \mathds{R}^n$ så $\dim(span(S)) = m$, og $B(1),...,B(m)$ betegne et indeks, da
 \begin{enumerate}[label=\alph*]
@@ -48,13 +14,6 @@ Antag at der eksistere en vektor $\vec{v_{B(k+1)}} \in S$, som opfylder at $\vec
 \\Antag nu at der ikke eksistere en vektor $\vec{v_{B(k+1)}} \in S$, som opfylder at $\vec{v_{B(k+1)}} \notin span(S_k)$, hvorfor $span(S) = span(S_k)$, og $\dim{span(S)}=\dim{span(S_k)}= m$.
 Da $S_k$ kun indeholder lineært uafhængige vektorer medfører det at $S_k$ er en basis for $S$.
 \\Da $\dim(span(S)) = m$ og $\dim{span(S_k)}=k$ må det følge af Definition \ref{def:dim}, og Definition \ref{def:basis}, at der skal tilføjes $m-k$ vektorer til $S_k$ for at $S_k$ er en basis til $S$.
-%
-%
-%
-%Da $\dim(span(S)) = m$ må det følge af Definition \ref{def:dim}, og Definition \ref{def:basis}, at der må være mindst $m-k$ vektorer i $S_k$ i $S \setminus S_k$, der ikke tilhører $span(S_k)$. 
-%Tilføj nu en vektor $\vec{v_{B(k+1)}} \in S$, som opfylder at $\vec{v_{B(k+1)}} \notin span(S_k)$ til $S_k$.
-%Gentag til $m=k$, hvilket svare til at tilføje $m-k$ vektorer til $S_k$. 
-%Er $k=m$ medføre det, at $span(S_k) = span (S)$, hvorfor at $S_k$ må udgøre en basis for $S$.
 \end{proof} 
 Dermed kan en mængde af vektorer altid reduceres eller udvides til at udgøre en basis for et underrum.
 
