@@ -59,7 +59,7 @@ Løsningsvektoren og cost vektoren bliver derved:
 \vec{x}^T &= \ \ \rvect{p_{11} ... p_{1H} & ... & p_{G1} ... p_{GH} & s_1 ... s_G & a_1 ... a_H}.\\
 \vec{c}^T &=\kbordermatrix{
 & \times H & & \times H & \times G & \times H \\
-&L_1 ... L_1 & ... & L_G...L_G & 0...0 & M...M
+&L_1 & ... & L_G & 0 & M
 },
 \end{align*}
 hvor f.eks. $\times H$ betyder at denne indgang udgør $H$ indgange af vektoren.
@@ -101,7 +101,7 @@ Derved bliver den reducerede cost vektor til:
 \begin{align*}
 \bar{c}=	& \kbordermatrix{
 & & & & \times (G+H)\\
-&L_1-Mn_{11} \ \dots \ L_1-Mn_{1H} & \dots & L_G-Mn_{G1} \ \dots \  L_G-Mn_{GH} & 0 \dots 0}
+&L_1-Mn_{11} \ \dots \ L_1-Mn_{1H} & \dots & L_G-Mn_{G1} \ \dots \  L_G-Mn_{GH} & 0}
 \end{align*}
 
 Den første simplex tabel kan hermed for et problem med $G=2$ og $H=3$ opskrives som:\\
