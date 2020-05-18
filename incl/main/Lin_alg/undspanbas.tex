@@ -38,39 +38,39 @@ c\vec{w}= c\sum_{i=1}^k c_i \vec{v_i}  = \sum_{i=1} c \cdot c_i \vec{v_i}.
 \end{align*}
 Hvorfor at $c\vec{w} \in span(S)$, og betingelse (c), er opfyldt.
 \\Tilsidst vises det at $\vec{0} \in span(S)$.
-Da nul vektoren kan skrives som den linear kombination af vektorene i $S$, $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det at $\vec{0} \in span(S)$, hvorfor at $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
+Da nul vektoren kan skrives som den linear kombination af vektorene i $S$; $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det, at $\vec{0} \in span(S)$, hvorfor at $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
 \end{proof}
-Det betyder at spannet er et underrum udspændt af alle de mulige lineære kombinationer af en mængde vektorer. 
+Det betyder, at spannet er et underrum udspændt af alle de mulige lineære kombinationer af en mængde vektorer. 
 Derfor må to mængder vektorer som er lineært afhængig af hinanden derfor udspænde samme underrum.
 \begin{stn}[Ækvivalente span]
 Lad $S = \{\vec{v_1},...,\vec{v_k}\}$ og $S_u = \{\vec{v_1},...,\vec{v_k}, \vec{u}\}$ være mængder af vektorer i $\mathds{R}^n$, da $span(S) = span(S_u)$, hvis og kun hvis $u \in span(S)$.
 \label{stn:akvivalentespan}
 \end{stn}
 \begin{proof}
-Antag først at $\vec{u} \in span(S)$, da er $\vec{u}$ en linear kombination af $v_1,..., v_k$, hvorfor
+Antag først, at $\vec{u} \in span(S)$, da er $\vec{u}$ en linear kombination af $v_1,..., v_k$, hvorfor
 \begin{align*}
-span(S_u) &= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \vec{u}  =\vec{b}\}
-\\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \sum_{i=1}^k C_i \vec{v_i} = \vec{b}\}
-\\&= \{ \vec{b} \in \mathds{R}^n| \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k K_j \vec{v_i} = \vec{b}\} = span(S)
+span(S_u) &= \{ \vec{b} \in \mathds{R}^n\mid \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \vec{u}  =\vec{b}\}
+\\&= \{ \vec{b} \in \mathds{R}^n\mid \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \sum_{i=1}^k C_i \vec{v_i} = \vec{b}\}
+\\&= \{ \vec{b} \in \mathds{R}^n\mid \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k K_j \vec{v_i} = \vec{b}\} = span(S)
 \end{align*}
 hvor $c_j, C_j, c_{k+1}, K_j$ er vilkårlige skalare.
-\\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor at de samme vektorer som er en linear kombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linear kombination $\vec{v_1},..., \vec{v_k}$, hvorfor $\vec{u}$ må være en linear kombination af  $\vec{v_1},..., \vec{v_k}$, derfor følger det af Definition \ref{def:span} at $\vec{u} \in span(S)$.
+\\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor de samme vektorer som er en linear kombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linear kombination $\vec{v_1},..., \vec{v_k}$, dermed må $\vec{u}$ være en linear kombination af  $\vec{v_1},..., \vec{v_k}$, hvorefter det følger af Definition \ref{def:span}, at $\vec{u} \in span(S)$.
 \end{proof}
 Derfor må den mindste mængde vektorer, som udspænder et underrum, være lineært uafhængige.
 Denne mængde af vektorer kaldes en basis.
 \begin{defn}[Basis]
-Lad $S =\{v_1,...,v_k\}$ hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er lineært uafhængige, og lad $V$ være et underrum til $\mathds{R}^n$, da er $S$ en \textbf{basis} til $V$, hvis $V = span(S)$.
+Lad $S =\{v_1,...,v_k\}$, hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er lineært uafhængige, og lad $V$ være et underrum til $\mathds{R}^n$, da er $S$ en \textbf{basis} til $V$, hvis $V = span(S)$.
 \label{def:basis}
 \end{defn}
 Antallet af vektorerne i basen vil være konstant.
 \begin{stn}[Kardinalteten af en basis]
-Lad $V$ være et ikke tomt underrum til $\mathds{R}^n$, og lad $B$ og $B'$ udgøre en basis for $V$, da vil $|B|=|B'|$
+Lad $V$ være et ikke tomt underrum til $\mathds{R}^n$, og lad $B$ og $B'$ udgøre en basis for $V$, da vil $|B|=|B'|$.
 \label{stn:basiskardinalitet}
 \end{stn}
 \begin{proof}
 Lad $B$ bestå af $k$ vektorer og $B'$ af $p$ vektorer, antag for modstrid $k < p$, da vil der eksistere to matricer $A_{B}$ og $A_{B'}$, hvis søjler er vektorerne fra henholdsvis $B$ og $B'$.
-Hvis $rank(A_{B}) = rank(A_{B'}) = k$ da vil vektorerne i $B'$ være lineært afhængig, hvorfor at $B'$ ikke er en basis.
-Hvis $rank(A_{B}) < rank(A_{B'} )$ da vil der eksistere en vektor $\vec{b} \in \mathds{R}^n$ hvor der eksistere en løsning til $A_{B'}\vec{x} = \vec{b}$, men ikke til ligningssystemet $A_B \vec{x}=\vec{b}$, hvorfor at $span(B) \neq span(B')$ hvorfor at både $B$ og $B'$ ikke kan være basis til $V$ af Definition \ref{def:basis}.
+Hvis $rank(A_{B}) = rank(A_{B'}) = k$ da vil vektorerne i $B'$ være lineært afhængig, hvorfor $B'$ ikke er en basis.
+Hvis $rank(A_{B}) < rank(A_{B'} )$ da vil der eksistere en vektor $\vec{b} \in \mathds{R}^n$, hvor der eksistere en løsning til $A_{B'}\vec{x} = \vec{b}$, men ikke til ligningssystemet $A_B \vec{x}=\vec{b}$, hvorfor $span(B) \neq span(B')$, derfor kan både $B$ og $B'$ ikke være basis til $V$ af Definition \ref{def:basis}.
 Derfor følger det at $p=k$.
 \end{proof}
 Hvilket fører til denne definition.
@@ -79,7 +79,7 @@ Lad $B$ være en basis for et ikke tomt underrum $V$ til $\mathds{R}^n$, da er \
 \label{def:dim}
 \end{defn}
 Selvom der ikke kan være forskellige antal vektorer i en basis, kan forskellige vektorer udgøre en basis for samme underrum.
-Den mest kendte basis for $\mathds{R}^n$ er standardvektorene, og ved notationen $\rvect{a & b}$ forståes den lineære kombination
+Den mest kendte basis for $\mathds{R}^n$ er standardvektorene, og ved notationen $\rvect{a & b}^T$ forståes den lineære kombination
 \begin{align*}
 \begin{bmatrix} a \\ b \end{bmatrix} = a\begin{bmatrix} 1 \\0 \end{bmatrix} + b \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
 \end{align*}
