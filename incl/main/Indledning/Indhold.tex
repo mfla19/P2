@@ -1,43 +1,33 @@
-\section{Indhold}
-For at besvare problemformuleringen vil dette projekt med udgangspunkt \cite{bert} og \cite{lay} give en introduktion til lineære programmerings problemmer.
-Da senere løsningsmetoder og beviser kræver at problemerne er på standard form eller standard form med ligheder, hvor alle bibetingelser er 
-lineært uafhængige, vil der blive givet en gennemgang af, hvordan lineære programmerings problemer kan omskrives så de overholder disse betingelser.
+\section{Løsning af problemformulering}
+For at besvare problemformuleringen vil dette projekt med udgangspunkt \citep{bert} og \citep{lay} give en introduktion til lineære programmerings problemer. 
+Da senere løsningsmetoder og beviser kræver, at problemerne er på standardform eller standardform med ligheder, og at alle bibetingelser er lineært uafhængige, vil der blive givet en gennemgang af, hvordan lineære programmerings problemer kan omskrives så de overholder disse betingelser.
 
-De forskellige løsnings metoder har til formål at finde en løsning, som har en optimal funktions værdi, for objekt funktionen tilknyttet det lineære
-lignings problem.
+De forskellige løsnings metoder har til formål at finde en løsning, som har en optimal funktions værdi, for objekt funktionen tilknyttet det lineære programmeringsproblem.
 Bemærk, at der kan være flere forskellige løsninger, som har samme funktionsværdi, og derfor er der ikke tale om at finde den optimale løsning. 
-Der er dog sammenhæng mellem, hvilke løsninger som har optimal funktionsværdi, og det viser sig at den optimale værdi skal findes blandt basisløsningernes
-funktions værdi, derfor vil der blive givet en gennemgang af basisløsninger og hvordan de findes.
-Der ud over vil det vist, at der altid er en optimal værdi, og at hvis den findes vil der altid være tale om en global optimal værdi.
+Der er dog sammenhæng mellem, hvilke løsninger som har optimal funktionsværdi, og det viser sig at den optimale værdi skal findes blandt basisløsningernes funktions værdi, derfor vil der blive givet en gennemgang af basisløsninger og hvordan de findes.
+Der ud over vil det blive vist, at så længe at problemet er konsistens og ikke indeholder en halvlinje, så eksistere en optimal værdi, som hvis findes altid vil være global.
 
 Herefter gennemgås to geometriske løsningsmetoder.
-Den ene; niveaumængder giver et overblik over hvordan forskellige løsninger med samme funktionsværdi ligger i løsnings mængden, og kan derfor bruges til 
-at finde den optimale værdi. 
-De giver et godt overblik for lineære programmerings problemer af en til tre variable, da de giver en metode til at forstå problemet grafisk, men 
-er ikke optimal når der skal bruges flere variable.
+Den ene; niveaumængder giver et overblik over, hvordan forskellige løsninger med samme funktionsværdi ligger i løsnings mængden, og kan derfor bruges til at finde den optimale værdi. 
+Niveaumængder giver et godt overblik for lineære programmerings problemer af en til tre variable, da de giver en metode til at forstå problemet grafisk, men er ikke optimal når der skal bruges flere variable.
 
-Den anden tager udgangs punkt i resultatet om at den optimale værdi kan findes bland funktionsværdierne for basisløsningerne, og giver derfor en geometrisk
-forståelse af basisløsninger, ved at kigge på simplexer der er udspændt af søjlerne i basismatricerne.
-Løsningen fungere igen godt for en til tre variable, men der efter bliver den igen uoverskuelig.
+Den anden tager udgangs punkt i resultatet om, at den optimale værdi kan findes bland funktionsværdierne for basisløsningerne, og giver derfor en geometrisk forståelse af basisløsninger, ved at kigge på simplexer, der er udspændt af søjlerne i basismatricerne.
+Løsningsmetoden fungere igen godt for en til tre variable, men derefter bliver den igen uoverskuelig.
 Derfor introduceres en metode, som systematisere metoden, kaldet Simplex metoden.
 
 Simplex metoden, udledes derfor og så betragtes forskellige implementerings muligheder.
 Den første er Fuld Tabel, som er valgt fordi den er let at overskue, og derfor giver et godt overblik over de forskellige trin i Simplex metoden.
-Men da Fuld Tabel ikke i sig selv tager højde for at basis variablene skal være ikke negative, for at der er tale om en mulig løsning, ind føres Lexis-pivot regel.
-Fuld Tabel kræver også at en basis løsning er kendt på forhånd, og da det ikke altid er lige til at finde en basis løsning, introducere Store M metoden,
-som er en udbygning af Fuld Tabel, hvor det ikke er nødvendigt at kende en basisløsning til at starte med.
+Men da Fuld Tabel ikke i sig selv tager højde for, at basisvariablene skal være ikke negative, for at der er tale om en mulig løsning, indføres Den Leksikografiske Pivot Regel.
+Fuld Tabel kræver også, at en basisløsning er kendt på forhånd, og da det ikke altid er lige til at finde en basisløsning, introducere Store M Metoden, som er en udbygning af Fuld Tabel, hvor det ikke er nødvendigt at kende en basisløsning til at starte med.
 
-Det er Store-M metoden, der så vil blive anvendt til at optimere lønnings udgifterne for en virksomhed, og der er derfor blevet udarbejdet et python program
-til formålet, som vil blive gennemgået, og anvendt på en tænkt case; hvor en virksomhed har 2 medarbejdere, som skal have udført 3 opgaver. 
+Det er Store-M Metoden, der så vil blive anvendt til at optimere lønningsudgifterne for en virksomhed, og der er derfor blevet udarbejdet et python program til formålet, som vil blive gennemgået, og anvendt på en tænkt case; hvor en virksomhed har 2 medarbejdere, som skal have udført 3 opgaver. 
 Hvis den ene arbejder 5 timer på første opgave og 10 timer på den tredje, og den anden arbejder 10 timer på den første og 20 timer på den anden vil det resultere i den optimale værdi, som kan beregnes til 7800 kr. Den optimale værdi svare til den mindste løn som skal udbetales.
 
+Projektet inkludere også et appendiks vedrørende lineær algebra, som er skrevet med udgangspunkt i \citep{lial}, da blandt andet Simplex metoden er bygget på rækkeoperationer. 
 
-Projektet har valgt at prioritere løsningsmetoder for deres overskuelighed frem for deres effektivitet, og det kunne derfor være relevant i et fremtidigt projekt,
-at betragte tidskompleksisten af metoderne, og undersøge om der er andre løsningsmetoder eller implementeringer af Simplex metoden med lavere tidskompleksitet.
-Der er også truffet et aktivt valg om, at se bort fra degenererede løsninger, og da de kan påvirke hvordan Simplex metoden skal implementeres, kunne dette også
-være relevant at undersøge i fremtiden, og så implementere i python programmet, så det bliver mere universelt.
+
+Projektet har valgt at prioritere løsningsmetoder for deres overskuelighed frem for deres effektivitet, og det kunne derfor være relevant i et fremtidigt projekt, at betragte tidskompleksisten af metoderne, og undersøge om der er andre løsningsmetoder eller implementeringer af Simplex metoden med lavere tidskompleksitet.
+Der er også truffet et aktivt valg om, at se bort fra degenererede løsninger, og da de kan påvirke, hvordan Simplex metoden skal implementeres, kunne dette også være relevant at undersøge i fremtiden, og så implementere i python programmet, så det bliver mere universelt.
 En anden ting er, at projektet kun belyser, hvordan den optimale værdi findes, og det er derfor underordnet, hvilken løsning der findes. 
-Men er der tale om en virkelig case, kunne det være relevant at fremlægge alle løsninger som vil fører til den optimale værdi, så virksomheden selv ville 
-kunne vælge, hvilken de havde lyst til at implementere, da løsnings metoderne kun tager højde for et givent antal parametre.
-Det kunne derfor være relevant, at undersøge, om der er en sammenhæng mellem lineære programmerings problemer og antallet af løsninger med optimal værdi,
-samt finde en metode til at finde alle de løsninger som føre til en optimal værdi, uden at skulle tjekke alle løsninger.
+Men er der tale om en virkelig case, kunne det være relevant at fremlægge alle løsninger som vil fører til den optimale værdi, så virksomheden selv ville kunne vælge, hvilken de havde lyst til at implementere, da løsnings metoderne kun tager højde for et givent antal parametre.
+Det kunne derfor være relevant, at undersøge, om der er en sammenhæng mellem lineære programmerings problemer og antallet af løsninger med optimal værdi, samt finde en metode til at finde alle de løsninger, som føre til en optimal værdi, uden at skulle tjekke alle løsninger.
