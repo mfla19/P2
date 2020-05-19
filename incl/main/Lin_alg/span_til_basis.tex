@@ -10,8 +10,8 @@ Lad $S=\{\vec{v_1},..., \vec{v_K}\} \subseteq \mathds{R}^n$ så $\dim(span(S)) =
 \end{stn}
 Bemærk at udsagn (a) er et særtilfælde af udsagn (b) med $k=0$, hvor med det kun er nødvendigt at bevise udsagn (b).
 \begin{proof}
-Antag at der eksistere en vektor $\vec{v_{B(k+1)}} \in S$, som opfylder at $\vec{v_{B(k+1)}} \notin span(S_k)$, dermed kan $S_k$ ikke udgøre en basis for $span(S)$, tilføj derfor $\vec{v_{B(k+1)}}$ til $S_k$, gentag til der ikke eksistere en $\vec{v_{B(k+1)}} \in S$ der er lineært uafhængig af $S_k$. 
-\\Antag nu at der ikke eksistere en vektor $\vec{v_{B(k+1)}} \in S$, som opfylder at $\vec{v_{B(k+1)}} \notin span(S_k)$, hvorfor $span(S) = span(S_k)$, og $\dim{span(S)}=\dim{span(S_k)}= m$.
+Antag at der eksistere en vektor $\vec{v}_{B(k+1)} \in S$, som opfylder at $\vec{v}_{B(k+1)} \notin span(S_k)$, dermed kan $S_k$ ikke udgøre en basis for $span(S)$, tilføj derfor $\vec{v}_{B(k+1)}$ til $S_k$, gentag til der ikke eksistere en $\vec{v}_{B(k+1)} \in S$ der er lineært uafhængig af $S_k$. 
+\\Antag nu at der ikke eksistere en vektor $\vec{v}_{B(k+1)} \in S$, som opfylder at $\vec{v}_{B(k+1)} \notin span(S_k)$, hvorfor $span(S) = span(S_k)$, og $\dim{span(S)}=\dim{span(S_k)}= m$.
 Da $S_k$ kun indeholder lineært uafhængige vektorer medfører det at $S_k$ er en basis for $S$.
 \\Da $\dim(span(S)) = m$ og $\dim{span(S_k)}=k$ må det følge af Definition \ref{def:dim}, og Definition \ref{def:basis}, at der skal tilføjes $m-k$ vektorer til $S_k$ for at $S_k$ er en basis til $S$.
 \end{proof} 
