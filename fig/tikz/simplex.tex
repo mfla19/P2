@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+  %x-aksen
+  	\draw[->] (-1,0)--(6,0) node[right]{$x$}; 
+  %y-aksen
+  	\draw[->] (0,-1)--(0,4.2) node[above]{$z$};
+  	
+  	
+%Punkter
+    \node[] (A) at (0.5,0.3) {$A$};
+    \node[] (B) at (5, 3.5) {$B$};
+    \node[] (C) at (3.5, 4) {$C$};
+    \node[] (D) at (1, 2) {$D$};
+    \node[] (b) at ( 2.5, 0) {$b$};
+    
+%Simplexer
+    \path[thick, color=blue] (A) edge (B);
+    \path[thick, color=blue] (D) edge (B);
+    \path[thick, color=blue] (D) edge (C);
+
+% Z
+ 	\draw[domain=0:4,variable=\y, thick, color = orange] 	plot({2.5},{\y});   
+  	
+\end{tikzpicture}

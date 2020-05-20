@@ -5,7 +5,7 @@
 
 % Dokumenttypen 'book' er valgt pga. dens mange fleksible indstillinger
 % Se https://tex.stackexchange.com/a/36989/118167
-\documentclass[11pt,a4paper,twoside,openright,danish]{book}
+\documentclass[11pt,a4paper,twoside,openany,danish]{book}
 
 % Variabler, som bruges til automatisk at indsætte titel, forfattere, osv. på
 % forsiden og titelbladet.
@@ -57,7 +57,7 @@
 % \include indsætter et sideskift og indholdet fra den givne stil.
 
 %\include{incl/main/reminders}
-\include{incl/main/indledning}
+\include{incl/main/Indledning/IndledningMaster}
 %\begingroup
 %\tikzset{every picture/.style={scale=0.5}}%
 \include{incl/main/linProg/LinearProgrameringMaster}
@@ -67,7 +67,7 @@
 \include{incl/main/LosningsMetoder/LosningsMetoderMaster}
 \include{incl/main/simplex/SimplexMetodenMaster}
 \include{incl/main/Case/case_udkast}
-\include{incl/main/Konklussion}
+%\include{incl/main/Konklussion}
 % Appendicer indsættes inde i en appendices-blok og bliver nummereret med
 % bogstaver i stedet for tal
 \begin{appendices}

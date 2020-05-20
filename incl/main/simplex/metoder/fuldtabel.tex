@@ -1,131 +1,127 @@
-\subsection{Fuld tabel metoden}
-Fuld tabel metoden, er en metode til Simplex, hvor der ved hjælp af tilføjet slat værdier, for at lave uligheder om til ligheder, laves elementære rækkeoperationer på både bibetingelserne og objektfunktionen.\\
-%Indtil $\vec{x}$ får nogle værdier, vil resultatet af objektfunktionen være $0$, derfor når der bliver lavet rækkeaberrationer på objektfunktionen, så vil resultatet også ændre sig. 
-\\
-%procedure for maksimeringsproblem
+\subsection{Fuld tabel}
+Fuld tabel metoden, er en metode til Simplex. For et standard minimeringsproblem $\vec{c}^T\vec{x}$, med bibetingelserne $A\vec{x} \geq \vec{b}$, kan ved brug af slack-variable omskrives til $A\vec{x}=\vec{b}$. Givet en aktuel basis, $B$, kan ligheden også udtrykkes som  $B^{-1}\vec{b}=B^{-1}A\vec{x}$. Fuld tabel metoden bruger $m \times (n+1)$ matricen $B^{-1}[\vec{b}|A]$.\\
+
 \begin{defn}[Simplex Tabel]
-Lad $z=\vec{c}^T\vec{x}$ være en objektfunktion, med lineæret uafhængige bibetingelser for et maksimeringsproblem $	\vec{a}_i^T\vec{x} \ \leq \  b_i, \text{for} i \in \{1,2,\cdots, m\}$ så er en \textbf{Simplex Tabel}\\
+Lad $z=\vec{c}^T\vec{x}$ være en objektfunktion, med lineæret uafhængige bibetingelser for et minimeringsproblem $A\vec{x} \geq \vec{b}$ så er en \textbf{Simplex Tabel}\\
 \begin{center}
-\begin{tabular}{| l | c | r |}
+\begin{tabular}{| c | c |}
   \hline
-  $\vec{x}^T$&$\vec{S}^T$& \\ \hline			
-  $\vec{a_i}^T$ & $I_m$ & $\vec{b}$ \\ \hline
-  $\vec{c}^T$ & $\vec{0}^T$ & $z$ \\
-  \hline  
+  $-\vec{c_B}\vec{x}_B$&$\Delta\vec{c}$ \\ \hline			
+  $B^{-1}\vec{b}$ & $B^{-1}A$ \\ \hline
 \end{tabular}
 \end{center}
+Hvor $-\vec{c_B}\vec{x}_B$ er det negative af den aktuelle omkostning. 
 \end{defn}
+
+
 På mere udvidet form, vil Simplex Tabellen se således ud.
 \begin{center}
-\begin{tabular}{| l  c  c | c  c  c |r |}
+\begin{tabular}{| r|r r r|}
   \hline	
-  $x_1$&$\dots$&$x_n$&$S_1$&$dots$&$S_m$&\\ \hline		
-  $a_{1 1}$ & $\dots$ & $a_{1 n}$ & $1$ & $\dots$ & $0$ & $b_1$\\
-  $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$\\
-  $a_{m 1}$ & $\dots$ & $a_{m n}$ & $0$ & $\dots$ & $1$ & $b_m$\\ \hline
-  $c_1$ & $\dots$ & $c_n$ & $0$ & $\dots$ & $0$ & $z$ \\ \hline  
+  $-\vec{c_B}\vec{x}_B$&$\Delta c_1 $ & $\dots$ &$\Delta c_n$\\ \hline	
+  $x_{B(1)}$ &	| & & |\\	
+  $\vdots$  & $B^{-1}\vec{A}_1$ & $\hdots$ & $B^{-1}\vec{A}_n$\\
+   $x_{B(m)}$ &	| & & |\\
+   \hline
 \end{tabular}
 \end{center}
-Læg mærke til, at slat værdierne i forvejen danner Pivot-indgange i for af identitetsmatrix, fra tidligere vides det, at hvis der betragtes de søjler, hvor der dannes pivot, så vil alle andre søjlers værder blive $0$. Dette kan anvendes, til at danne Pivot i søjler, hvor $x_1\dots x_n$ får værdier.\\
-Når der bliver lavet elementære rækkeoperationer, for at danne Pivot $\vec{A_j}$, så skal der også elementære rækkeoperationer på
-$\left[\vec{c}^T | z\right]$ og derfor, ændres maksimummet. Dette kan checkes, ved at løse objektfunktionen, med den bestemte $\vec{x}$.
+Søjlen $B^{-1}\vec{b}$ kaldes den nulte søjle, mens den øverste række kaldes en nulte række.
+
 \begin{pro} [label=pro:simplex,numbers=none,xleftmargin=0em] {Procedure for Fuld tabel metoden}
-1. Tilføj en slat værdi $S_1\dots S_m$, til hver lineære bibetingelse og lav uligheder om til ligheder.
-2. Opsæt Simplex tabel.
-3. Vælg den søjle $\vec{A_j}$, hvor $\vec{c}^T$ har størst ikke negativ værdi.
-4. I den j'te søjle, find den værdi $a_{i j}$ der har størst ratio med $b_i$.
-5. Vælg denne $a_{i j}$ til at være pivot indganen for søjlen, og brug elementære rækkeoperationer, til at lave $a_{i j}=1$ og resten af $\vec{A_j}=0$.(Dette inkludere $c_j$).
-6. Nu vil der i cellen, hvor der tidligere stod $z$ nu stå $z-d$, for $d\in \mathds{R}$, løs $z-d=0$ for $z$ dette er nu den største værdi for $z$.
-Gentag fra trin. 3 indtil der ikke er flere ikke negative værdier i $\vec{c}^T$.
+1. Start med en tabel til basismatricen $B$ og den tilhørende løsning $\vec{x}$
+2. Undersøg den reducerede omkostning i den nulte række. Hvis de alle er ikke negative, er den aktuelle løsning optimal. Elles vælges et $j$, hvor $\Delta c_j <0$
+3. Betragt vektoren $\vec{u}=B^{-1}\vec{A}_j$, som er den $j$'te søjle i tabellen. Hvis alle komponenterne i $\vec{u}$ er negative, er den optimale omkostning $-\infty$
+4. For hvert $i$, hvor $u_i$ er positiv, beregn forholdet $x_{B(i)}/u_i$. lad $l$ være indeks for rækken, hvor forholdet er mindst. Søjlen $\vec{A}_{B(l)}$ forlader bases, og $\vec{A}_j$ indgår i basen. 
+5.Læg et multiplum af den $l$'te række til alle rækker, således at $u_l$ bliver $1$ og alle andre indgange i pivot søjlen bliver $0$
+6.Start igen fra trin 2. 
 \end{pro}
 
 \begin{eks}[Fuld Tabel Metoden]
+Betragt det lineære progammeringsproblem. 
 \begin{center}
-\begin{tabular}{ l  c  c  r }
-Maksimer $z$ =&$x_1$ & $+2x_2$&\\
-I forhold til: &$x_1$ & & $\leq 2$\\
-& &$x_2$ & $\leq 2$\\
-&$x_1$&$+x_2$&$\leq 3$\\
-$x_1,x_2\geq 0$
-\end{tabular}
-\end{center}
-Trin. 1\\
-\begin{center}
-\begin{tabular}{ l  c  c  c  c  c  r }
-Maksimer $z$ =&$x_1$ & $+2x_2$&&&&\\
-I forhold til: &$x_1$&&$S_1$&&& $\leq 2$\\
-&&$x_2$ &&$S_2$ && $\leq 2$\\
-&$x_1$&$+x_2$&&&$S_3$&$\leq 3$\\
-$x_1,x_2\geq 0$
-\end{tabular}
-\end{center}
-Trin. 2\\
-\begin{center}
-\begin{tabular}{| l  c  | c  c  c | r |}
-\hline
-$1$&$0$&$1$&$0$&$0$&$2$\\
-$0$&$1$&$0$&$1$&$0$&$2$\\
-$1$&$1$&$0$&$0$&$1$&$3$\\ \hline
-$1$&$2$&$0$&$0$&$0$&$z$\\
-\hline
+\begin{tabular}{ l c c  c  r }
+Minimer &$-10x_1$&$-12x_2$ & $-12x_3$&\\
+I forhold til: &$x_1$&+$2x_2 $&+$2x_3$ & $\leq 20$\\
+&$2x_1$& $+x_2$& $2x_3$ & $\leq 20$\\
+&$2x_1$&$+2x_2$&$+x_3$&$\leq 20$\\
+$x_1,x_2,x_3\geq 0$
 \end{tabular}
 \end{center}
 
-Bemærk at: $x_1,x_2=0,S_1=2, S_2=2, S_3=3$ er en løsning, men hvor $z=0$.\\
-Trin. 3\\
-Søjle $\vec{a_2}$ har størst ikke negativ værdig.\\
-Trin. 4\\
+Nu indførers slack-variable, så ulighederne bliver til ligheder. 
 \begin{center}
-$\frac{a_{1 2}}{b_1}=\frac{0}{2}$\\
-$\frac{a_{2 2}}{b_2}=\frac{1}{2}$\\
-$\frac{a_{3 2}}{b_3}=\frac{1}{3}$\\
-\end{center}
-Nu har $a_{2 2}$ størst ratio og vil derfor være pivot indgangen for $\vec{a_2}$.\\
-Trin. 5
-Elementære rækkeoperationer udføres.\\
-\begin{center}
-\begin{tabular}{| l  c  | c  c  c | r |}
-\hline
-$1$&$0$&$1$&$0$&$0$&$2$\\
-$0$&$1$&$0$&$1$&$0$&$2$\\
-$1$&$0$&$0$&$-1$&$1$&$1$\\ \hline
-$1$&$0$&$0$&$0$&$0$&$z-4$\\
-\hline
+\begin{tabular}{ l c c  c c c c r }
+Minimer &$-10x_1$&$-12x_2$ & $-12x_3$&&&\\
+I forhold til: &$x_1$&+$2x_2 $&+$2x_3$ &$+x_4$&& &$=20$\\
+&$2x_1$& $+x_2$& $2x_3$ & & $+x_5$ &&$=20$\\
+&$2x_1$&$+2x_2$&$+x_3$&&&$+x_6$&$=20$\\
+$x_1,x_2,x_3,x_4,x_5,x_6\geq 0$
 \end{tabular}
 \end{center}
-Trin. 6\\ 
-En løsning er $x_2=2, S_1=2, x_1, S_2, S_3=0$, hvor $z=4$.\\
-Trin. 3\\
-Søjle $\vec{a_1}$ har størst ikke negativ værdig.\\
-Trin. 4\\
+
+Trin. 1\\
+Nu er $\vec{x}=(0,0,0,20,20,20)$ en mulig basisløsning, hvor $B(1)=4,B(2)=5,B(3)=6$. Og den tilhørende basis matrix er identitesmatricen, $I_3$. 
 \begin{center}
-$\frac{a_{1 1}}{b_1}=\frac{1}{2}$\\
-$\frac{a_{2 1}}{b_2}=\frac{0}{2}$\\
-$\frac{a_{3 1}}{b_3}=\frac{1}{1}$\\
+\begin{tabular}{r| r|r r r r r r|}
+  \hline	
+  &$0$&$-10$ &$-10$&$-10$&$0$&$0$&$0$\\ \hline	
+  $x_4=$&$20$&$1$&$2$&$2$&$1$&$0$&$0$\\	
+  $x_5=$&$20$&$2$&$1$&$2$&$0$&$1$&$0$\\
+  $x_6=$&$20$&$2$&$2$&$1$&$0$&$0$&$1$\\
+   \hline
+\end{tabular}
 \end{center}
-$a_{3 1}$ har størst ratio \\
-Trin. 5 Elementære rækkeoperationer udføres.\\
+
+Trin 2\\
+I den nulte række findes 3 negative værdier. Den reducerede omkostning for $x_1$ er negativ. Den indgår derfor i basen. \\
+\\
+Trin 3\\
+$\vec{u}=(1,2,2)$ Alle komponenteren er positive. Defor fortsætter procedureren. \\
+\\
+Trin 4\\
+For at bestemme hvilken række der skal være pivot række udrenges forholdet $x_{B(i)}/u_i$. 
+\begin{align*}
+x_{B(1)}/u_1=\frac{20}{1}=20\\
+x_{B(2)}/u_2=\frac{20}{2}=10\\
+x_{B(3)}/u_3=\frac{20}{2}=10\\
+\end{align*}
+Det ses at forholdet for $i=2$ og $i=3$ er det samme. $l$ vælges til at være $2$. \\
+\\
+Trin 5\\
+Den nye tabel er givet ved:
 \begin{center}
-\begin{tabular}{| l  c  | c  c  c | r |}
-\hline
-$0$&$0$&$1$&$1$&$-1$&$1$\\
-$0$&$1$&$0$&$1$&$0$&$2$\\
-$1$&$0$&$0$&$-1$&$1$&$1$\\ \hline
-$0$&$0$&$0$&$-1$&$-1$&$z-5$\\
-\hline
-\end{tabular}\\
+\begin{tabular}{r| r|r r r r r r|}
+  \hline	
+  &$100$&$0$ &$-7$&$-2$&$0$&$5$&$0$\\ \hline	
+  $x_4=$&$10$&$0$&$1.5$&$1$&$1$&$-0.5$&$0$\\	
+  $x_1=$&$10$&$1$&$0.5$&$1$&$0$&$0.5$&$0$\\
+  $x_6=$&$0$&$0$&$1$&$-1$&$0$&$-1$&$1$\\
+   \hline
+\end{tabular}
 \end{center}
-Trin. 6 \\
-En løsning er $x_1=1, x_2=2, S_1, S_2, S_3=0$, hvor $z=5$.\\
-Der er nu ikke flere ikke negative værdier i $\vec{c}T$ og den maksimale værdi for $z=5$.
+I denne tabel er den reducerede omkostning for $x_2$ og $x_3$ negativ. Derfor gennemgås procedureren igen, fra trin 2.\\
+$x_3$ vælges til at indgå i basen. Efter procedureren har kørt igen er tabellen givet ved. 
+\begin{center}
+\begin{tabular}{r| r|r r r r r r|}
+  \hline	
+  &$120$&$0$ &$-4$&$0$&$2$&$4$&$0$\\ \hline	
+  $x_3=$&$10$&$0$&$1.5$&$1$&$1$&$-0.5$&$0$\\	
+  $x_1=$&$0$&$1$&$-1$&$0$&$-1$&$1$&$0$\\
+  $x_6=$&$10$&$0$&$2.5$&$0$&$1$&$-1.5$&$1$\\
+   \hline
+\end{tabular}
+\end{center}
+Den reducerede omkostning for $x_2$ er stadig negativ. Derfor gennemgåes procedureren igen fra trin 2. Når $x_2$ indgår i basen er tabellen givet ved. 
+\begin{center}
+\begin{tabular}{r| r|r r r r r r|}
+  \hline	
+  &$136$&$0$ &$0$&$0$&$3.6$&$1.6$&$1.6$\\ \hline	
+  $x_3=$&$4$&$0$&$0$&$1$&$0.4$&$0.4$&$-0.6$\\	
+  $x_1=$&$4$&$1$&$0$&$0$&$-0.6$&$0.4$&$0.4$\\
+  $x_2=$&$4$&$0$&$1$&$0$&$0.4$&$-0.6$&$0.4$\\
+   \hline
+\end{tabular}
+\end{center}
+Der er nu ingen negative komponenter i den nulte række. Derfor er den nuværende basisløsning, $\vec{x}=(4,4,4,0,0,0)$, den optimale løsning. 
 \end{eks}
 
-%noter til selv
-
-%Du har ikke skrevet at alle andre søjler bliver = 0 
-%Hele afsnittet skal måske skrives om til et minimeringsproblem
-
-
-
-
-%$B^{-1}\left[\vec{b}\mid A\right]$

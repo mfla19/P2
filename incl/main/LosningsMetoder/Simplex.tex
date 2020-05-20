@@ -1,5 +1,5 @@
 \section{Simplex og Basisløsninger}
-Den anden tager udgangspunkt i resultatet fra Sætning \ref{stn:eksistens}, der siger at en \textbf{optimal løsning ?!?} altid er en basisløsning, og viser hvordan simplexer kan bruges til at vælge en basis, som vil føre til en basisløsning med optimal værdi.
+Den anden løsningsmetode tager udgangspunkt i resultatet fra Sætning \ref{stn:eksistens}, der siger at en \textbf{optimal løsning ?!?} altid er en basisløsning, og viser hvordan simplexer kan bruges til at vælge en basis, som vil føre til en basisløsning med optimal værdi.
 Derfor vil definitionen for en simplex, og hvordan det kan bruges til at udtrykke en basisløsning blive gennemgået i dette afsnit.
 \subsection{Simplex}
 For at kunne definere en simplex, er det nødvendigt først at introducere begreberne konvekskombination og konvekshyslser.
@@ -7,7 +7,7 @@ For at kunne definere en simplex, er det nødvendigt først at introducere begre
 Lad $\vec{x}^1, ...,\vec{x}^k \in \mathds{R}^n$, og $\lambda_1,..., \lambda_k \geq 0 $ være skalare, som opfylder $\sum_{i=1}^k \lambda_i =1$ da er $\sum_{i=1}^k \lambda_i \vec{x}^1$ en \textbf{konveks kombination}.
 \label{def:KonveksKombination}
 \end{defn}
-En konveks kombination er dermed et sær tilfælde af en lineær kombination, hvor skalrene summer til $1$.
+En konveks kombination er dermed et særtilfælde af en linear kombination, hvor skalrene summer til $1$.
 \begin{defn}[Konveks hylster]
 Lad $\vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n$, da er $C_{x} = \{\sum_{i=1}^k \lambda_i \vec{x}_i| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ et \textbf{konveks hylster} for vektorene $\vec{x}_1, ...,\vec{x}_k$. 
 \label{def:Konvekshuld}
@@ -16,27 +16,29 @@ Mens, at mængden af alle konvekse kombinationer af en given mængde vektorer, k
 Et særtilfælde af konveksehylstre er en simplex.
 \begin{defn}[Simplex]
 Lad $C_x$ være et konveks huld, af $k+1$ affint lineært uafhængige vektorer, da er $C_x$ en $k$-dimentionel \textbf{Simplex}.
+\label{def:simplex}
 \end{defn}
-Eftersom det konveksehylster, kun består af konvekse kombinationer, vil det give mening at det udgør en konveks mængde.
-\begin{stn}
-Konveks huldet $C_x = \{\sum_{i=1}^k \lambda_i \vec{x}_1| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ over en endelig mængde vektorer, er en konveks mængde
-\end{stn}
-\begin{proof}
-Lad $\vec{z}, \vec{y}\in C_x = \{\sum_{i=1}^k \lambda_i \vec{x}_i| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ være vilkårlige vektorer da må $\vec{z}= \sum_{i=1}^k \gamma_i \vec{x}_i, \vec{y}= \sum_{i=1}^k \eta_i \vec{x}_i$ for $\sum_{i=1}^k \gamma_i = 1$ og  $\sum_{i=1}^k \eta_i = 1$. 
-Derfor må
-\begin{align*}
-	\lambda \vec{z} + (1- \lambda) \vec{y} &= \lambda\sum_{i=1}^k \gamma_i \vec{x}_i + (1-\lambda)\sum_{i=1}^k \eta_i \vec{x}_i
-	\\ &=\sum_{i=1}^k (\lambda \gamma_i+(1-\lambda)\eta_i )\vec{x}_i,
-\end{align*}
-For $\lambda \in [0,1]$.
-Betragt nu konstanterne 
-\begin{align*}
-	\sum_{i=1}^k (\lambda \gamma_i+(1-\lambda)\eta_i ) &= \lambda \sum_{i=1}^k \gamma_i + (1 - \lambda) \sum_{i=1}^k \eta_i 
-	\\ &= \lambda \cdot 1 + (1 - \lambda) \cdot 1 = 1
-\end{align*}
-Hvorfor at $\lambda \vec{z} + (1- \lambda) \vec{y} $ er en konveks kombination af vektorene $\vec{x}_1, ...,\vec{x}_k $, ifølge Definition \ref{def:KonveksKombination}. 
-Derfor må $ \lambda \vec{z} + (1- \lambda) \vec{y} \in C_x$, hvorfor at $C_x$ er konveks ifølge Definition \ref{def:Konveks}.
-Og sætningen er bevist.
-\end{proof}
-Dermed er en simplex en konveks mængde udspændt af affint lineære vektorer.
-Dette kan bruges til geometrisk at repræsenterer basisløsninger og deres basis matrix.
+%Eftersom det konveksehylster, kun består af konvekse kombinationer, vil det give mening at det udgør en konveks mængde.
+%\begin{stn}
+%Konveks huldet $C_x = \{\sum_{i=1}^k \lambda_i \vec{x}_1| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ over en endelig mængde vektorer, er en konveks mængde
+%\end{stn}
+%\begin{proof}
+%Lad $\vec{z}, \vec{y}\in C_x = \{\sum_{i=1}^k \lambda_i \vec{x}_i| \vec{x}_1, ...,\vec{x}_k \in \mathds{R}^n, \sum_{i=1}^k \lambda_i =1\}$ være vilkårlige vektorer da må $\vec{z}= \sum_{i=1}^k \gamma_i \vec{x}_i, \vec{y}= \sum_{i=1}^k \eta_i \vec{x}_i$ for $\sum_{i=1}^k \gamma_i = 1$ og  $\sum_{i=1}^k \eta_i = 1$. 
+%Derfor må
+%\begin{align*}
+%	\lambda \vec{z} + (1- \lambda) \vec{y} &= \lambda\sum_{i=1}^k \gamma_i \vec{x}_i + (1-\lambda)\sum_{i=1}^k \eta_i \vec{x}_i
+%	\\ &=\sum_{i=1}^k (\lambda \gamma_i+(1-\lambda)\eta_i )\vec{x}_i,
+%\end{align*}
+%For $\lambda \in [0,1]$.
+%Betragt nu konstanterne 
+%\begin{align*}
+%	\sum_{i=1}^k (\lambda \gamma_i+(1-\lambda)\eta_i ) &= \lambda \sum_{i=1}^k \gamma_i + (1 - \lambda) \sum_{i=1}^k \eta_i 
+%	\\ &= \lambda \cdot 1 + (1 - \lambda) \cdot 1 = 1
+%\end{align*}
+%Hvorfor at $\lambda \vec{z} + (1- \lambda) \vec{y} $ er en konveks kombination af vektorene $\vec{x}_1, ...,\vec{x}_k $, ifølge Definition \ref{def:KonveksKombination}. 
+%Derfor må $ \lambda \vec{z} + (1- \lambda) \vec{y} \in C_x$, hvorfor at $C_x$ er konveks ifølge Definition \ref{def:Konveks}.
+%Og sætningen er bevist.
+%\end{proof}
+%Dermed er en simplex en konveks mængde udspændt af affint lineære vektorer.
+%Dette kan bruges til geometrisk at repræsenterer basisløsninger og deres basis matrix.
+Simplexer kan da bruges til at repræcenterer en basisløsning.

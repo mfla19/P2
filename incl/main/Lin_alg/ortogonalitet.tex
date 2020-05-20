@@ -2,7 +2,7 @@
 Ortogonal- og ortonormalbasis er special tilfælde af baser for et underrum.
 \begin{defn}[Ortogonal- og ortonormalbasis]
 En basis $B = \{\vec{v}_i,..., \vec{v}_k\}$ for  et underrum $W$ til $\mathds{R}^n$ kaldes en \textbf{ortogonal basis}, hvis 
-$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$. En ortogonal basis er \textbf{ortonormal} hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
+$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$. En ortogonal basis er \textbf{ortonormal}, hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
 \end{defn}
 For at vise, at en basis er ortogonal, er det nødvendigt at vise, at alle vektorer er indbyrdes ortogonale, her kan gøres brug af deres indbyrdes vektorprodukt.
 \begin{lma}
@@ -72,7 +72,7 @@ Da $\vec{v}_1,...,\vec{v}_n$ er antaget til at være ortogonale, medfører det a
 for $j = 1,...,n$. 
 Derfor kan det konkluderes at $\vec{v}_{n+1}$ er ortogonal med $\vec{v}_1,...,\vec{v}_n$, hvormed det følger af Lemma \ref{lma:ortolinuaf}, at $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ er lineær uafhængige.
 Da $\vec{v}_1,...,\vec{v}_n$ er en basis for $W_n$, må $\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}$ være en basis for $W_{n+1}$, fordi $span(\vec{v}_1,...,\vec{v}_n) = span(\vec{u}_1,...,\vec{u}_n) = W_n$ pr. induktionsantagelsen. 
-Da $\vec{v}_{n+1}$ er lineær afhængig af $\vec{u}_{n+1}$ må $span(\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}) = span(\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1})$, og $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, hvorfor $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ udgør en ortogonal basis for $W$.
+Da $\vec{v}_{n+1}$ er lineær afhængig af $\vec{u}_{n+1}$ må $span(\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}) = span(\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1})$, og $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, hvorfor $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ udgør en ortogonal basis for $W_{n+1}$.
 \end{proof}
 Derfor følger det, at et hvert underrum har en ortogonal basis.
 \begin{kor}
