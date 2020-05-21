@@ -1,0 +1,49 @@
+\section{Niveaumængder}
+
+En niveaumængde beskriver mængden alle de mulige vektorer $\vec{x}$, som i funktionen $f(\vec{x})$ giver en bestemt funktionsværdi $z$. 
+\begin{defn}[Niveaumængde]
+Lad $f(\vec{x})= \vec{c}^T\vec{x}$ være en objektfunktion, da kaldes
+\begin{align*}
+N_z = \{\vec{x}| f(\vec{x}) = z, z \in \mathds{R}\}
+\end{align*}
+for en \textbf{niveaumængde}.
+\end{defn}
+
+For et minimeringsproblem er målet derved at finde den mindste værdi $z$ for hvilken der findes en vektor $\vec{x}$, så $f(\vec{x})=z$ og hvor $\vec{x}$ overholder alle problemets betingelser.
+
+Den mulige mængde beskriver alle vektorer $\vec{x}$, som opfylder betingelserne. Derved er målet at finde den mindste mulige $z$ for hvilken der er en ikke-tom skæring mellem niveaumængden $N_z$ og den mulige mængde.
+
+\begin{stn}
+Lad $N_z$ betegne en niveaumængde for en funktion $f(\vec{x})=\vec{c}^T\vec{x}$, da er $\vec{c}$ ortogonal med denne niveaumængde.
+\end{stn}
+
+Bemærk, at $\vec{c}$ ikke er ortogonal med $\vec{x}\in N_Z$ men med niveaumængden.
+\begin{proof}
+Lad $\vec{x}, \vec{y} \in N_z$ da er niveaumængden beskrevet af $N_z$ parallel med $\vec{x}-\vec{y}$.
+Tages prikproduktet af $\vec{x}-\vec{y}$ og $\vec{c}$, fåes at
+\begin{align*}
+\vec{c}^T(\vec{x}-\vec{y}) = \vec{c}^T\vec{x} -\vec{c}^T\vec{y} = z - z = 0,
+\end{align*}
+hvorfor $\vec{c}$ og $\vec{x}-\vec{y}$ er ortogonale i følge Lemma \ref{lma:vinkelret}, og dermed må $\vec{c}$ også være orthogonal med niveaumængden $N_z$.
+\end{proof}
+
+Denne teori er i Eksempel \ref{eks:maksprob3} anvendt til at finde punktet med den optimale værdi for et givet programmeringsproblem.
+
+\begin{eks}[Optimal løsning fundet grafisk]
+Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \ref{fig:maksprob3} indtegnet for programmeringsprogblemet fra Eksempel \ref{eks:maksprob2}.
+
+	\begin{center}	
+		\input{fig/tikz/linprog3}
+		\captionof{figure}{Optimal løsning i den mulige mængde fundet som skæring med ligningen $z=46$.}
+		\label{fig:maksprob3}
+	\end{center}
+	
+På figuren ses det, at den største funktionsværdi $z=46$ findes i skæringen mellem bibetingelse 2 og 3.
+Ved at løse bibetingelse 2 og 3 som 2 ligninger med 2 ubekendte findes det at den optimale løsning er $\vec{x}=\rvect{10 & 2}^T.$
+\label{eks:maksprob3}
+\end{eks}
+
+
+
+
+

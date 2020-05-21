@@ -1,17 +1,20 @@
 \section{Niveaumængder}
-Niveaumængder tager udgangs punkt i samme logik som beviset for Sætning \ref{stn:eksistens}, og giver en metode til at finde en retningsvektor, som vil reducere objektfunktionen.
+Niveaumængder tager udgangspunkt i samme logik som beviset for Sætning \ref{stn:eksistens}, 
+%og giver en metode til at finde en retningsvektor, som vil reducere objektfunktionen.
 %En Niveaumængde er mængden af alle de vektorer i løsningsmængden, der har samme funktionsværdi $z$ for objektfunktionen.
-\begin{defn}[Niveaumængden]
+\begin{defn}[Niveaumængde]
 Lad $f(\vec{x})= \vec{c}^T\vec{x}$ være en objektfunktion, da kaldes
 \begin{align*}
 N_z = \{\vec{x}| f(\vec{x}) = z, z \in \mathds{R}\}
 \end{align*}
-for \textbf{niveaumængden}.
+for en \textbf{niveaumængde}.
 \end{defn}
-Det betyder at, hvis der er tale om et lineært programmerings problem med to variable, vil niveaumængden beskrive en kurve, også kendt som en niveaukurve, mens med tre variable er der tale om et plan. 
+Det betyder at, hvis der er tale om et lineært programmeringsproblem med to variable, vil niveaumængden beskrive en kurve, også kendt som en niveaukurve, mens med tre variable er der tale om et plan. 
 Helt generelt beskriver niveaumængden et hyperplan.
 \begin{defn}[Hyperplan]
-Lad $ \vec{a} \in \mathds{R}^n$, $\vec{a}\neq \vec{0}$ og $b$ være en skalar, da kaldes en mængde for et \textbf{Hyperplan} hvis $\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = \vec{b}\}$.
+Lad $ \vec{a} \in \mathds{R}^n$, $\vec{a}\neq \vec{0}$ og $b$ være en skalar, da kaldes en mængde på formen
+ $$\{ \vec{x} \in \mathds{R}^n | \vec{a}^{T}\vec{x} = b\}$$
+for et \textbf{hyperplan}.
 \end{defn}
 Det ses, at hyperplanet har følgende egenskab.
 \begin{stn}
@@ -47,10 +50,12 @@ Dermed kan objektfunktionen omskrives til
 	k\cdot \vec{c}^T\vec{c} \ = \ 
 	k \cdot \Vert \vec{c} \Vert ^2.
 \end{align*}
-Derfor kan det konkluderes, at den optimale værdi er $z* = \underset{k}{min}k \cdot \Vert \vec{c} \Vert ^2$
+Derfor kan det konkluderes, at den optimale værdi er $z* = \underset{k}{\min}k \cdot \Vert \vec{c} \Vert ^2$
 \end{proof}
 Af Sætning \ref{stn:niveau} følger det også, at den optimale værdi er den vinkelrette afstand fra origo og  hyperplanet beskrevet  af niveaumængden, da den optimale værdi er givet, som et multiplum af længden af $\vec{c}$, der står vinkelret på hyperplanet beskrevet  af niveaumængden.
 Dette kan ses i  for et maksimerings problem i Eksempel \ref{eks:maksprob3}.
+
+
 \begin{eks}[Optimal løsning fundet grafisk]
 Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \ref{fig:maksprob3} indtegnet for programmeringsprogblemet fra Eksempel \ref{eks:maksprob2}.
 
