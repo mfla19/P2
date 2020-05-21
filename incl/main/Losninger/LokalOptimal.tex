@@ -1,7 +1,7 @@
 \subsection{Lokal optimal løsning}
 Når først en optimal løsning er fundet, er det nødvendigt at tjekke, at der ikke er tale om en lokal optimal løsning.
 \begin{defn}[Lokalt optimal løsning]
-Lad $\vec{x} \in P$ være en løsnings til et lineært programerigns problem med objektfunktion $f$ da er $\vec{x}$ en lokal optimal løsning, hvis $f(\vec{x}) \leq f(\vec{y})$ for $|\vec{y}-\vec{x}|< \epsilon$ for et $\epsilon > 0$ og $\vec{y} \in P$.
+Lad $\vec{x} \in P$ være en løsnings til et minimeringsproblem med objektfunktion $f$, da er $\vec{x}$ en \textbf{lokal optimal løsning}, hvis der for en naboløsning $\vec{y}$ gælder $f(\vec{x}) \leq f(\vec{y})$ for $|\vec{y}-\vec{x}|< \epsilon$ for et $\epsilon > 0$ og $\vec{y} \in P$.
 \end{defn}
 Betragt beviset for Sætning \ref{stn:eksistens}, her konstrueres hele tiden en mere optimal løsning end den foregående, ved at lægge et multiplum af en retningsvektor til den originale vektor, så en ny betingelse blev aktiv.
 Der vil derfor kunne opstå et lokalt minimum, hvis der ikke eksistere en sådan retningsvektor, men der er en løsning som er mere optimal, se Figur \ref{fig:lokaltmin}.

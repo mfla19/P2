@@ -2,10 +2,10 @@
 
 %Jeg har endnu ikke fået gennemgået beviserne til de to sætninger ordentligt. de er bare stjålet fra jer andre.
 
-Basisløsninger danner grundlaget for udregningen af den optimale løsning, hvilket beskrives og anvendes i Kapitel \ref{afsnit:simplex}. For at kunne beskrive netop basisløsninger er det nødvendigt først at introducere definitionen for \textbf{aktive betingelser}.%Ved ikke: Skal vi også bruge fed når ord introduceres i bindende tekst?
+Basisløsninger danner grundlaget for udregningen af den optimale løsning, hvilket beskrives og anvendes i Kapitel \ref{afsnit:simplex}. For at kunne beskrive netop basisløsninger er det nødvendigt først at introducere definitionen for aktive betingelser.%Ved ikke: Skal vi også bruge fed når ord introduceres i bindende tekst?
 
 \begin{defn}[Aktive betingelser]
-En betingelse siges at være \textbf{aktiv} for en givet løsningsvektor $\vec{x}^*$, hvis det gælder, at\\ $\vec{a}_i^T \vec{x}^* = b_i$.
+En betingelse siges at være en \textbf{aktiv betingelse} for en givet løsningsvektor $\vec{x}^*$, hvis det gælder, at\\ $\vec{a}_i^T \vec{x}^* = b_i$.
 \label{def:aktiv}
 \end{defn}
 
@@ -32,9 +32,9 @@ Vektoren $\vec{d}$ vil da være orthogonal på alle $\vec{a}_i$ for $i \in I$ og
 Tilsvarende antages det nu at der kun er en unik løsning til ligningssystemet. For modstrid antages det at $R_a$ ikke udspænder hele $\mathds{R}^n$ Der kan derved vælges en vektor $\vec{d}$ som er orthogonal til $span(R_a)$ hvorved $\vec{a}_i^T(\vec{x}+\vec{d})=\vec{b}$. Derved er $\vec{x}$ ikke en unik løsning og der er opstået modstrid.
 \end{proof}
 	
+Nu hvor aktive betingelser og lineært uafhængige rækker er definere, kan basisløsninger definere og beskrives
 
-
-\begin{defn}[Basisløsning]
+\begin{defn}[Basisløsning og mulig basisløsning]
 Lad $P$ være et polyeder dannet af lineære bibetingelser, og lad $\vec{x}^*\in \mathds{R}^n$. Da er $\vec{x}^*$ en \textbf{basisløsning}, hvis
 \begin{enumerate}[label=(\alph*)]
 \item Alle lighedskrav er aktive
@@ -47,8 +47,10 @@ og en \textbf{mulig basisløsning}, hvis
 \end{enumerate}
 \label{def:basislosning}
 \end{defn}
+Det vil sige at en basisløsning ligger ikke inden for løsningsmængden, da der kun er $n$ krav opfyldt, der vil derfor være mindst $1$ krav der ikke er opfyldt og ud fra dette vil problemet ikke være løst.
 
-Enhver bibetingelse udspænder et rum, for hvilket betingelsen er opfyldt. Skæringen, af de aktive betingelser, danner derved et rum, som er fællesmængden af betingelsernes udspændte rum. Skæringen af en mængde af aktive betingelser svarer derved til den mulige mængde af disse betingelser. Dog gælder det for basisløsninger pr. Definition \ref{def:basislosning}, at der for en basisløsning $\vec{x}$ skal være $n$ lineært uafhængige aktive betingelser, hvorved en basisløsningen er en unik vektor, hvilket er bevist igennem Sætning \ref{stn:uniklosning}. %Ved ikke, er en vektor og et punkt det samme?
+%der skal måske lige laves en merge her
+Enhver bibetingelse udspænder et rum, for hvilket betingelsen er opfyldt. Skæringen, af de aktive betingelser, danner derved et rum, som er fællesmængden af betingelsernes udspændte rum. Skæringen, af en mængde af aktive betingelser, svarer derved til den mulige mængde af disse betingelser. Dog gælder det for basisløsninger pr. Definition \ref{def:basislosning}, at der for en basisløsning $\vec{x}$ skal være $n$ lineært uafhængige aktive betingelser, hvorved en basisløsningen er en unik vektor, hvilket er bevist igennem Sætning \ref{stn:uniklosning}. %Ved ikke, er en vektor og et punkt det samme?
 
 \begin{kor}[Endelig mængde af basisløsninger]
 Givet en endelig mængde af bibetingelser, vil der kun eksistere en endelig mængde af basisløsninger og derved også kun en endelig mængde mulige basisløsninger.
@@ -61,7 +63,7 @@ Betragt et lineært ligningssystem med $m$ uligheder og løsningsvektorer på fo
 \end{proof}
 
 \begin{stn}[Krav til basisløsninger]
-Lad $A\vec{x}=b$, $\vec{x}\geq 0$, hvor $A$ er en $m\times n$ matrix med lineært uafhængige rækker. Da er $\vec{x}^*\in \mathds{R}^n$ en basisløsning hvis og kun hvis $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der eksisterer indekser $B(1), ..., B(m)$ således, at
+Lad $A\vec{x}=\vec{b}$ og $\vec{x}\geq 0$, hvor $A$ er en $m\times n$ matrix med lineært uafhængige rækker. Da er $\vec{x}^*\in \mathds{R}^n$ en basisløsning hvis og kun hvis $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der eksisterer indekser $B(1), ..., B(m)$ således, at
 \begin{enumerate}[label=(\alph*)]
 \item Kolonerne $A_{B(1)}, ..., A_{B(m)}$ er lineært uafhængige og
 \item $x_j = 0$, hvis $j \neq B(1),...,B(m)$.
@@ -93,17 +95,19 @@ Hvis der i stedet eksisterer en kolonne med indeks $j \notin I_k$ som er lineær
 \end{proof}
 
 \begin{pro}{Procedure for konstruktion af basisløsninger}
-\noindent 1. Vælg $m$ lineært uafhængige koloner $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$\\
-2. Lad $x_i=0 \,\forall i\neq B(1),\dots,B(m)$\\
-3. Løs $A\vec{x}=\vec{b}$ for de ubekendte $x_{B(1)},\dots x_{B(m)}$
+Vælg $m$ lineært uafhængige koloner $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$
+Lad $x_i=0 \,\forall i\neq B(1),\dots,B(m)$
+Løs $A\vec{x}=\vec{b}$ for de ubekendte $x_{B(1)},\dots x_{B(m)}$
 \end{pro}
-
+En Basis løsning lavet med denne procedure, så længde den ikke er negativ, kaldes den for en mulig basisløsning. Og fordi en mulig basisløsning er en basisløsning, så kan en mulig basisløsning findes, ved at lave basisløsninger.\\
+Hvis $\vec{x}^*$ er en basisløsning, kaldes indgangene $x^*_{B(1)},\dots ,x^*_{B(m)}$ for basis variabler, hvor $x_i=0 \,\forall i\neq B(1),\dots,B(m)$ kaldes for ikke-basis variabler.\\ %måske et andet ord
+Søjlerne $A_{B(1)},\dots ,A_{B(m)}$ kaldes for basis søjlerne og da de er lineært uafhængige, så danne de en basis for $\mathds{R}^m$\\
+To baser kan være forskellige, men de vil blive betragtet som værende to forskellige mængder $\{B(1),\dots,B(m)\}$ af basis indekser, hvis disse to mængde består af de samme basis indekser, så vil de blive betragtet som værende samme basis.\\
+Hvis søjlerne $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$, bliver sat ved siden af hinanden, så der dannes $m\times m$ matrixen $B$, som kaldes en basis matrix. ligeledes dannes vektoren $\vec{x}_{B}$ bestående af basis variablerne. Basis variablerne er bestemt ved at løse ligningen $B\vec{x}_B=\vec{b}$ således at en unik løsning er givet ved $\vec{x}_B=B^{-1}\vec{b}$
 \begin{defn}
-$\vec{x}_B = \rvect{x_{B(1)}, ..., x_{B(m)}}^T\\
-B=\rvect{\vec{A}_{B(1)},...,\vec{A}_{B(m)}}\\
-I_B =\{B(1),...,B(m)\}$
-\end{defn}
+Betragt en $m\times m$ basis matrix $B$ dannet af lineært uafhængige søjler fra $A$ i $A\vec{x}=\vec{b}$
 
+\end{defn}
 
 \begin{comment}
 Der mangler bare generelt bindetekst mellem sætninger, fra at korollar 6.12 skal introduceres til at kapitlet skal afsluttes og føres videre til naboløsninger
