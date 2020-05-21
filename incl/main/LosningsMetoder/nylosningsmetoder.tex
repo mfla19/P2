@@ -1,4 +1,3 @@
-\section{Niveaumængder}
 
 En niveaumængde beskriver mængden alle de mulige vektorer $\vec{x}$, som i funktionen $f(\vec{x})$ giver en bestemt funktionsværdi $z$. 
 \begin{defn}[Niveaumængde]
@@ -27,9 +26,20 @@ Tages prikproduktet af $\vec{x}-\vec{y}$ og $\vec{c}$, fåes at
 hvorfor $\vec{c}$ og $\vec{x}-\vec{y}$ er ortogonale i følge Lemma \ref{lma:vinkelret}, og dermed må $\vec{c}$ også være orthogonal med niveaumængden $N_z$.
 \end{proof}
 
+Vælges en vektor $\vec{x}=k\vec{c}$ vil denne vektor være en del af en niveaukurve hvor $\vec{c}^T\vec{x}=k\Vert\vec{c}\Vert^2=z$. Ved at isolere for k findes det at $k=\frac{z}{\Vert\vec{c}\Vert^2}$, når $k\vec{c}$ er en del af niveaukurven.
+
+%Da $k$ er direkte proportionel med $z$ kan den optimale værdi i et maksimeringsproblem findes hvor  en funktion af $z$, kan den optimale værdi i et maksimeringsproblem findes for den niveaukurve, hvor 
+
+En optimal løsning kan derved findes i maksimeringsproblemer, ved at finde den største mulige $k\vec{c}$, hvor den tilsvarende niveaumængde skærer den mulige mængde. Altså, er afstanden mellem niveamængden og origo større jo større $z$ er. Tilsvarende må det gælde modsat for minimeringsproblemer. 
+Altså kan en niveaumængde vises geometrisk, som en mængde, der er orthogonal på $\vec{c}$ og indeholder vektoren $k=z\frac{\vec{c}}{\Vert\vec{c}\Vert^2}$.
+
+%
+%Dette betyder derved at der ved grafisk at undersøge en mulig mængde vil være muligt for minimeringsproblemer af finde den optimale løsning der hvor en skæringen mellem niveaukurven og den mulige mængde er ikke-nul og hvor skæringen går igennem den vektor $\vec{c}k$ med mindst mulig $k$.
+%dette fungerer tilsvarende med størst mulig $k$ for maksimeringsproblemer.
+
 Denne teori er i Eksempel \ref{eks:maksprob3} anvendt til at finde punktet med den optimale værdi for et givet programmeringsproblem.
 
-\begin{eks}[Optimal løsning fundet grafisk]
+\begin{eks}[Optimal løsning fundet grafisk for maksimeringsproblem]
 Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \ref{fig:maksprob3} indtegnet for programmeringsprogblemet fra Eksempel \ref{eks:maksprob2}.
 
 	\begin{center}	
@@ -40,6 +50,7 @@ Niveaukurverne $46=\vec{c}^T \vec{x}$ og $25=\vec{c}^T \vec{x}$ er på Figur \re
 	
 På figuren ses det, at den største funktionsværdi $z=46$ findes i skæringen mellem bibetingelse 2 og 3.
 Ved at løse bibetingelse 2 og 3 som 2 ligninger med 2 ubekendte findes det at den optimale løsning er $\vec{x}=\rvect{10 & 2}^T.$
+
 \label{eks:maksprob3}
 \end{eks}
 
