@@ -3,10 +3,16 @@
 Hvis det lineære programmerings problem er konsistent, betyder det at der er en løsning til det, men bare fordi der er en løsning betyder det ikke at der er en optimal løsning.
 Hvis der skal eksistere en optimal løsning må løsningsmængden ikke indeholde en linje.
 \begin{defn}[Linje]
-Lad $P\subseteq \mathds{R}^n $ være en polyede, da indeholder $P$ en \textbf{linje}, hvis $\vec{x}+\lambda\vec{d} \in P$ for alle $\lambda \in \mathds{R}^n$, hvor $\vec{x}\in P$ og $\vec{d} \in \mathds{R}^n$. Hvis $\vec{x}+\lambda\vec{d} \in P$ for $\lambda > 0$ eller $\lambda < 0$, siges $P$ at indeholde henholdsvis en positiv eller negativ halv linje.
+Lad $P\subseteq \mathds{R}^n $ være en polyede, da indeholder $P$ en \textbf{linje}, hvis $\vec{x}+\lambda\vec{d} \in P$ for alle $\lambda \in \mathds{R}_+$, hvor $\vec{x}\in P$ og $\vec{d} \in \mathds{R}^n$. Hvis $\vec{x}+\lambda\vec{d} \in P$ for $\lambda > 0$ eller $\lambda < 0$, siges $P$ at indeholde henholdsvis en positiv eller negativ halv linje.
 \label{def:linje}
 \end{defn}
-Det betyder, at der til en løsning kan lægges et vilkårligt stort multiplum af en vektor til, og summen vil stadig være en løsning, derfor må objektfunktionen nødvendigvis også kunne tage en vilkårlig stor værdi.
+
+\begin{defn} [Linje v2]
+Lad $P\subseteq \mathds{R}^n $ være en polyede og $\vec{x} \in P$, da indeholder $P$ ikke en \textbf{Positiv halvlinje}, hvis $\forall \vec{d} \in \mathds{R}^n \nexists \lambda \in \mathds{R}_+ : \vec{x}+\lambda \vec{d} \in P$
+\end{defn}
+\\
+Det betyder, at der til en løsning i polyeden kan lægges en retningsvektor til, denne retningsvektor bliver skaleret, så løsningen nu ligger et andet sted. Hvis der findes en retning, hvor der, selvom $\lambda$ er vilkårligt stor, resultere i at løsning stadig er i polyeden, så siges prolyede at have en linje.
+%Det betyder, at der til en løsning kan lægges et vilkårligt stort multiplum af en vektor til, og summen vil stadig være en løsning, derfor må objektfunktionen nødvendigvis også kunne tage en vilkårlig stor værdi.
 \begin{prop}
 Lad løsningsmængden $\mathcal{F} = \{ \vec{x} \in \mathds{R}^n| A \vec{x} \geq b \} \subseteq \mathds{R}^n $  til det lineærer minimeringsproblem $\vec{c}^T\vec{x}$ indeholde en linje, da er løsningen $-\infty$.
 \end{prop}
