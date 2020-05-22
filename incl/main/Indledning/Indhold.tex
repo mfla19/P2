@@ -12,12 +12,12 @@ Den tager udgangs punkt i niveaumængder og giver et overblik over, hvordan fors
 Niveaumængder giver et godt overblik for lineære programmerings problemer af en til tre variable, da de giver en metode til at forstå problemet grafisk, men er ikke optimal når der skal bruges flere variable.
 
 Da lineære programmerings problemer ofte omhandler problemer med vilkårlige variable, introduceres derfor en algoritme, der kan løse linære programmerings problemer med vilkårligt endeligt antal variable, kaldet Simplex Metoden.
-Simplex Metoden tager udgangs punkt i resultatet om, at den optimale værdi kan findes bland funktionsværdierne for basisløsningerne, og giver derfor en systematisk metode til at gå fra en mulig basisløsning til en ny, som har en mere optimal funktionsværdi, indtil den optimale værdi er fundet.
+Simplex Metoden tager udgangs punkt i resultatet om, at den optimale værdi kan findes bland funktionsværdierne for de mulige basisløsninger, og giver derfor en systematisk metode til at gå fra en mulig basisløsning til en ny, som har en mere optimal funktionsværdi, indtil den optimale værdi er fundet.
 
 Simplex metoden, udledes derfor og så betragtes forskellige implementerings muligheder af denne.
 Den første er Fuld Tabel, som er valgt fordi den er let at overskue, og derfor giver et godt overblik over de forskellige trin i Simplex metoden.
 Men da Fuld Tabel ikke i sig selv tager højde for, at basisvariablene skal være ikke negative, for at der er tale om en mulig løsning, indføres Den Leksikografiske Pivot Regel.
-Fuld Tabel kræver også, at en basisløsning er kendt på forhånd, og da det ikke altid er lige til at finde en basisløsning, introducere Store M Metoden, som er en udbygning af Fuld Tabel, hvor det ikke er nødvendigt at kende en basisløsning til at starte med.
+Fuld Tabel kræver også, at en mulig basisløsning er kendt på forhånd, og da det ikke altid er lige til at finde en basisløsning, introducere Store M Metoden, som er en udbygning af Fuld Tabel, hvor det ikke er nødvendigt at kende en mulig basisløsning til at starte med.
 
 Det er Store-M Metoden sammensat med Den Leksikografiske Pivot Regel, der så vil blive anvendt til at optimere lønningsudgifterne for en virksomhed, og der er derfor blevet udarbejdet et python program til formålet, som vil blive gennemgået, og anvendt på en tænkt case; hvor en virksomhed har 2 medarbejdere, som skal have udført 3 opgaver. 
 Hvis den ene arbejder 5 timer på første opgave og 10 timer på den tredje, og den anden arbejder 10 timer på den første og 20 timer på den anden vil det resultere i den optimale værdi, som kan beregnes til 7800 kr. Den optimale værdi svare til den mindste løn som skal udbetales.
