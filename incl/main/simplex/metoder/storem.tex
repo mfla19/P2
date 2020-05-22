@@ -1,12 +1,12 @@
 \subsection{Store M-metoden}
 
-Den sidste metode der introduceres er Store M-metoden. Store M-metoden bygger på en to-fase simplex metode, som er en komplet algoritme til at løse lineære programmeringsproblemer på standardform. Algoritmen er bygget op i to faser, hvor Store M-metoden er en kombination af disse. 
-
-Idéen bag Store M-metoden er at introducere en kostfunktion på formen
+Den sidste metode der introduceres er Store M-metoden. 
+Hvis problemet der skal løses ikke er på standartform, kan det være svært at finde mulig basisløsning, til at sætte algoritmen igang. Da er Store M-metoden nyttig.
+Idéen bag Store M-metoden er at introducere en hjælpefunktion på formen
 \begin{align*}
 \sum\limits_{j=1}^n c_jx_j + M \sum\limits_{i=1}^m y_i,
 \end{align*}
-hvor $M$ er en stor positiv konstant, og $y_i$ er kunstige (artificial?) variable. 
+hvor $M$ er en stor positiv konstant, og $y_i$ er kunstige variable. 
 Hvis det originale problem har en mulig løsning, og dens optimale kost er endelig, vil de kunstige variable gå mod $0$, når $M$ er tilstrækkelig stor. 
 Det betyder, at den originale kostfunktion nu skal minimeres. 
 Når den reducerede kost er en funktion af $M$, vil $M$ altid blive behandlet som værende af større værdi, når der skal vurderes, om en reduceret kost er negativ. \\
@@ -38,7 +38,7 @@ Der gives nu følgende hjælpeproblem, hvor der er tilføjet kunstige variable.
 \end{tabular}
 \end{center}
 
-En mulig basisløsning til hjælpeproblemet fås ved at lade $(x_5, x_6, x_7, x_4) = \vec{b} = (3,2,5,1)$. 
+En mulig basisløsning til hjælpeproblemet fås ved at lade $[x_5, x_6, x_7, x_4] = \vec{b}^T = [3,2,5,1]$. 
 Den korresponderende basismatrix er da identiteten. 
 Derudover er $c_B = (M,M,M,0)$. 
 Den reducerede kost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilket giver følgende tabel.
