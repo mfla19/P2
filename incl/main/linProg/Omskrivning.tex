@@ -1,5 +1,5 @@
 \subsection{Omskrivning mellem ligheder og uligheder}
-Da et programmeringsproblem ikke nødvendigvis er på den ønskede form fra start af, er det vigtigt at kunne omskrive mellem uligheder og ligheder. 
+Da bibetingelserne er ligninger repræsenteret ved et prikprodukt, kan hele ligningssystemet repræsenteres som et matrix-vektor produkt. Det kræver dog, at alle positivitetsbetingelser er på samme form. Der er derfor vigtigt, at det er muligt at omskrive mellem uligheder og ligheder, hvis et programmeringsproblem ikke er på den ønskede form fra start af.
 
 \begin{stn}
 Lad $\vec{a}_i^T,\vec{x} \in \mathds{R}^n$ og $b_i \in \mathds{R}$, da gælder:
@@ -16,38 +16,15 @@ hvor $x_{n+i}$ er en slack variable.
 I punkt $3$ og $4$ i Sætning \ref{stn:omskr_ligulig} omskrives der fra mindreend og størreend uligheder til ligheder ved indførslen af en ikke-negativ \textbf{slack-variabel}, der udgør forskellen mellem $\vec{a}_i^T\vec{x}$ og $b_i$ i uligheden. Slack-variablen indgår kun i denne række af koefficientmatricen og får koefficient $1$ for maksimeringsproblemer og $-1$ for minimeringsproblemer, afhængigt af uligheden i bibetingelsen. \\
 
 Dermed kan bibetingelserne skrives som $A\vec{x}\geq \vec{b}$, hvor $\vec{a_i}$ udgør den $i$'te række i $A$ og $b_i$ er den $i$'te indgang i $\vec{b}$.
-Bemærk, at positivitetsbetingelserne er et særtilfælde af størreendbetingelser, hvor koefficienten til $x_i$ er 1, mens resten af koefficienterne er 0 og hvor $b_i=0$.
-Positivitetsbetingelsen skrives ikke med i ligningssystemet, og i stedet er det som oftest underforstået, at enhver variabel skal være ikke-negativ.
+Bemærk, at positivitetsbetingelsen ikke skrives med i ligningssystemet, og i stedet er det som oftest underforstået, at enhver variabel skal være ikke-negativ.
 For at det skal gøre sig gældende, skal enhver fri variabel omskrives, så de er betinget af en positivitetsbetingelse.
 \begin{stn}
 Lad $x_i$ være en fri variabel, da er $x_i = x_{n+i}-x_{n+i+1}$, hvor $x_{n+i},x_{n+i+1}\geq 0$.
 \end{stn}
 %muligvis noget bindende tekst her
 
-\begin{comment}
-\begin{itemize}
-\item Omskrivning mellem uligheder %Det er blevet bedere, men er stadig ikke helt godt
-\begin{align*}
-	\vec{a}_i^T\vec{x} \geq b_i \quad \Leftrightarrow \quad -\vec{a}_i^T\vec{x} \leq -b_i
-\end{align*}
-\item Omskrivning fra lighed til ulighed
-\begin{center}
-\begin{tabular}{>{$}l<{$} >{$}r<{$}}
-	\vec{a}_i^T\vec{x} = b_i \quad \Leftrightarrow \quad 	& 
-	\vec{a}_i^T\vec{x} \leq b_i \quad \wedge \quad  \vec{a}_i^T\vec{x} \geq b_i \\ 
-\end{tabular}
-\end{center}
-\item Omskrivning fra ulighed til lighed\\
-En ulighed kan omskrives til en lighed ved indførslen af en ikke-negativ \textbf{slack-variabel} $x_{n+i}$, som udgør forskellen mellem $\vec{a}_i^T\vec{x}$ og $b_i$ i uligheden. 
-Slack-variablen indgår kun i denne række af koefficientmatricen og får koefficient $1$ for maksimeringsproblemer og $-1$ for minimeringsproblemer, afhængigt af uligheden i bibetingelsen.
-%Et standard maksimeringsproblem kan derved omskrives til ligheder ved at indføre en slackvariabel $x_{n+i}$ for hver bibetingelse. 
-\begin{center}
-\begin{tabular}{ >{$}l<{$} >{$}l<{$} >{$}l<{$}}
-	\vec{a}_i^T \vec{x}  \leq b_i & \Rightarrow & \vec{a}_i^T \vec{x} \ + \ x_{n+i} \ = b_i\\
-	\vec{a}_i^T \vec{x}  \geq b_i & \Rightarrow & \vec{a}_i^T \vec{x} \ -\ x_{n+i} \ = b_i
-\end{tabular} %Du skriver at du gør det for max, men du gør det også for min.
-\end{center} % Itemmize fungere okay, for de to første men dette afsnit bliver for langt til at det kan være et punkt, i min optik.
-\end{comment}
+
+
 
 \begin{comment}
 Derved bliver betingelserne for henholdsvis et maksimeringsproblem og et minimeringsproblem omskrevet til:
@@ -56,56 +33,6 @@ Derved bliver betingelserne for henholdsvis et maksimeringsproblem og et minimer
 	A' &=\rvect{A & -I_m}
 \end{align*}
 
-%Nok en god idet at komme med et eksemple så \vec{a_i} \vec{x} + x_{n+i} = b_i indflettet, på lige fod med for omskrivning af mellem uligheder.
-\end{itemize}
-\end{comment}
 
-\begin{comment}
-\begin{eks}[Standard maksimumsproblem]
-Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimumsproblem, skal alle relationer i bibetingelserne være $\leq$. %pas på med matematiske tegn i bindende tekst.
-Bibetingelse nr. 3 skal derved omskrives. Dette kan gøres ved at multiplicere begge sider af uligheden med $-1$, da dette vender ulighedstegnet. Derved bliver Eksempel \ref{eks:maksprob1} omskrevet til et standard maksimumsproblem.\\
-\begin{center}
-\begin{tabular}{l	>{$}r<{$}	>{$}r<{$}	>{$}l<{$}}
-Maksimer 		& 		4x_1	&	+3 x_2	& \\
-med hensyn til 	&  \ \ 	-2 x_1	& 	+4 x_2	& \leq 8\\
-				&  		x_1		& 	+3 x_2	& \leq 16\\
-				&  \ \ 	x_1		& 			& \leq 10\\
-og $x_1 \geq 0, x_2\geq 0$.
-\end{tabular}
-\end{center}
-
-
-%Man må vel ikke bare sige at x_1 \geq 0, men man skal sige at x_1 = x_3 - x_4, hvor x_3, x_4 \geq 0.
-
-%\begin{center}
-%	\input{fig/tikz/linprog2}
-%	\captionof{figure}{Den mulige mængde af et standard maksimeringsproblem.}
-%	\label{fig:maksprob2}
-%\end{center}
-
-\label{eks:maksprob2}
-\end{eks}
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-Da bibetingelserne er ligninger repræsenteret ved et prikprodukt, kan hele ligningssystemet repræsenteres som et matrix-vektorprodukt, det kræver dog, at alle ikke positivitets betingelser er på samme form.
-Det kan derfor være favorabelt at kunne omskrive fra en ulighed til en anden.
-\begin{stn}
-Lad $\vec{a}_i^T,\vec{x} \in \mathds{R}^n$ og $b_i \in \mathds{R}$, da gælder:
-\begin{enumerate}
-\item $\vec{a}_i^T\vec{x} \geq b_i \quad \Leftrightarrow \quad -\vec{a}_i^T\vec{x} \leq -b_i$
-\item $\vec{a}_i^T\vec{x} = b_i \quad \Leftrightarrow  \quad  \vec{a}_i^T\vec{x} \leq b_i \quad \wedge \quad  \vec{a}_i^T\vec{x} \geq b_i$
-\item $\vec{a}_i^T \vec{x}  \leq b_i \quad \Rightarrow \quad  \vec{a}_i^T \vec{x}  +  x_{n+i}  = b_i$
-\item $\vec{a}_i^T \vec{x}  \geq b_i \quad \Rightarrow \quad  \vec{a}_i^T \vec{x}  - x_{n+i}  = b_i$
-\end{enumerate}
-hvor $x_{n+i}$ er en slack variable. 
-\end{stn}
-Dermed kan bibetingelserne skrives som $A\vec{x}\geq \vec{b}$, hvor $\vec{a_i}$ udgør den $i$'te række i $A$ og $b_i$ er den $i$'te indgang i $\vec{b}$.
-Bemærk at positivitetsbetingelserne er et særtilfælde af størreendbetingelser, hvor koefficienten til $x_i$ er 1, mens resten af koefficienterne er 0 og hvor $b_i=0$.
-Positivitetsbetingelsen skrives ikke med i ligningssystemet, og i stedet er det som oftest underforstået, at enhver variabel skal være ikke-negativ.
-For at det skal gøre sig gældende, skal enhver fri variabel omskrives, så de er betinget af en positivitetsbetingelse.
-\begin{stn}
-Lad $x_i$ være en fri variabel, da er $x_i = x_{n+i}-x_{n+i+1}$, hvor $x_{n+i},x_{n+i+1}\geq 0$.
-\end{stn}
+Man må vel ikke bare sige at $x_1 \geq 0$, men man skal sige at $x_1 = x_3 - x_4$, hvor $x_3, x_4 \geq 0$.
 \end{comment}

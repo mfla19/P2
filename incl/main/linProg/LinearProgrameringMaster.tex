@@ -1,5 +1,7 @@
 \chapter{Lineær Programmering}
-Lineær programmering er en anvendelse af lineær algebra til at løse et optimeringsproblem, med udgangspunkt i maksimering eller minimering af en lineær funktion.
+I dette kapitel vil lineær programmering blive introduceret.
+Lineær programmering er en anvendelse af lineær algebra, der bruges til at løse et optimeringsproblem. Der tages udgangspunkt i enten maksimering eller minimering af en lineær funktion, der er underlagt en række betingelser. \textbf{Lineær} programmering henviser til, at den funktion, der ønskes optimeret, samt de betingelser, der skal opfyldes, alle er lineære. \\
+Kapitlet tager udgangspunkt i ??, medmindre andet er angivet. 
 
 \begin{defn}[Lineær funktion]
 Lad $f:\mathds{R} \to \mathds{R}$ være en funktion, da siges $f$ at være \textbf{lineær} hvis
@@ -11,7 +13,7 @@ Lad $f:\mathds{R} \to \mathds{R}$ være en funktion, da siges $f$ at være \text
 \end{defn}
 
 Bemærk, at selv om $f(x) = ax + b$ er kendt som en lineær funktion, er den ikke lineær pr. Definition \ref{def:linfunk}.
-Funktionen, som skal optimeres, kaldes objektfunktionen.
+Den funktion, der skal optimeres, kaldes objektfunktionen.
 \begin{defn}
 Betragt et lineært programmeringsproblem. Da er \textbf{objektfunktionen}
 \begin{align*}
@@ -21,9 +23,13 @@ for $\vec{x}, \vec{c} \in \mathds{R}^n$,
 funktionen, som ønskes optimeret. 
 \end{defn}
 
-Objektfunktionen er prikproduktet af vektorene; $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$, der indeholder koefficienterne i funktionen, og $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$, hvis indgange er funktionens variable.
-%Objektfunktionen er repræsenteret som prikproduktet af en vektor $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$, der indeholder alle koefficienterne i funktionen, og en vektor $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$, hvis indgange er funktionens variable.
-For disse er der fastsæt en række bibetingelser, som begrænser de mulige løsninger til problemet. 
+Objektfunktionen er repræsenteret ved prikproduktet af to vektorer $\vec{c}$ og $\vec{x}$, hvor $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$ indeholder koefficienterne i funktionen, og $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$, hvis indgange er funktionens variable. \\
+Hertil tilføjes en række lineære betingelser for variablerne, der kaldes \textbf{lineære bibetingelser}. En type af disse betingelser findes på formen
+\begin{align*}
+	x_i \geq 0,
+\end{align*}
+og kaldes \textbf{positivitetsbetingelser}. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse blot kan ses som en lineær bibetingelse, hvor koefficienten til $x_i$ er $1$, mens resten af koefficienterne er $0$, og hvor $b_i=0$. \\
+De lineære bibetingelser begrænser de mulige løsninger til problemet.
 
 \begin{defn}[Bibetingelser]
 Lad $\vec{x}\in \mathds{R}$ repræsentere variablerne til et lineært programmeringsproblem, og $x_i$ den $i$'te indgang i $\vec{x}$. Da findes følgende betingelser
@@ -36,7 +42,7 @@ Lad $\vec{x}\in \mathds{R}$ repræsentere variablerne til et lineært programmer
 for $\vec{a_i}\in \mathds{R}^n$ og $b_i\in \mathds{R}$. 
 Er $x_i$ ikke betinget af en positivitetsbetingelse kaldes den for en \textbf{fri variabel}.
 \end{defn}
-Her betegner vektoren $\vec{a_i}$ koefficienterne i den $i$'te bibetingelse. Bemærk, at hvis en ligning ikke indeholder den $j$'te variable, vil den $j$'te indgang i koefficientvektoren $\vec{a_i}$ være lig nul, da der skal være en indgang pr. variabel; ellers er prikproduktet ikke defineret.
+Her betegner vektoren $\vec{a_i}$ koefficienterne i den $i$'te bibetingelse. Bemærk, at hvis en ligning ikke indeholder den $j$'te variabel, vil den $j$'te indgang i koefficientvektoren $\vec{a_i}$ være lig nul, da der skal være en indgang pr. variabel; ellers er prikproduktet ikke defineret.
 
 En \textbf{mulig løsning} til et lineært optimeringsproblem er en vektor $\vec{x}$, som overholder alle problemets betingelser. %Bør nok skrives som en definition, men det kan være at det først skal ske under geo? Bertimaz har i hvertfald en strangent def.
 
@@ -54,46 +60,8 @@ og $x_1,x_2\geq 0$
 \end{tabular}
 \end{center}
 
+%Mængden af de mulige løsninger til problemet kan vises grafisk. De begrænsninger, der i problemet skal tages hensyn til, er indtegnet i et koordinatsystem. De mulige løsninger findes således inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen. 
 
-\begin{comment}
-For variablene er der fastsat en række af betingelser, som begrænser de mulige løsninger til problemet.
-%Ved ikke: Må vi antage at læseren ved, hvad en lineær funktion er, for tror de ikke bare at det er ax +b?
-
-
-Funktionen, som ønskes optimeret, kaldes \textbf{objektfunktionen} og findes på formen:
-\begin{align}
-f(\vec{x})\ = \vec{c}^T \vec{x} \ =  c_1x_1 + c_2x_2 + \cdots + c_nx_n,
-\end{align}
-hvor $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$ og $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$.
-
-\begin{comment}
-Bør muligvis være en defintion, behøver ikke at skrives ud, men så skal f(\vec{x}) frem for f(x_1, ..., x_n).  Men det er jo variable repræcenteret ved en vektor så måske introducerer f(x_1, ..., x_n), udenfor definitionen.
-\begin{defn}
-Betragt et lineært programmerings problem, da er \textbf{objektfunktionen}
-\begin{align*}
-f(\vec{x}) = \vec{c}^T \cdot \vec{x}, 
-\end{align*}
-for $\vec{x}, \vec{c} \in \mathds{R}^n$, funktionen, som ønskes optimeret.
-\end{defn} Eller noget, det er vigtigt at denne definition, vil kræve at vektor x og c bliver introduceret i den bindende tekst.
-
-%hvis objektfunktionen defineres, så bør det samme ske for bibetingelserne.
-Dertil tilføjes en række betingelser for variablerne på formen
-\begin{align}
-	x_i \geq 0,
-\end{align}
-der kaldes \textbf{positivitetsbetingelser}.
-Andre lineære betingelser for variablerne kaldes for \textbf{lineære bibetingelser}, og findes på formen 
-\begin{align}
-	a_{i,1} x_1 + a_{i,2} x_2 + \cdots + a_{i,n} x_n \  = \ \vec{a}_i^T\vec{x} \ (\leq,=,\geq) \  b_i, \quad \text{for} \ i \in \{1,2,\cdots, m\}, %Kan man bruge \leq,=,\geq)?
-\end{align}
-hvor $m$ er antallet af lineære bibetingelser. I en lineær bibetingelse kan venstresiden være begrænset med $\leq, \geq$ eller $=$ i forhold til højresiden. I nogle typer af programmeringsproblemer anvendes kun en enkelt af disse relationer. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse, $x_i \geq 0$, blot kan ses som en lineær bibetingelse, hvor koefficienten til $x_i$ er 1, mens resten af koefficienterne er 0, og hvor $b_i=0$.
-\end{comment}
-
-
-
-
-%Mængden af alle mulige løsninger til problemet kan vises grafisk. De mulige løsninger findes inden for det grå område på Figur \ref{fig:maksprob1}, hvor $x_1$ og $x_2$ vises henholdsvis på 1. og 2. aksen. %Hvor får du det grå område fra?
-%
 %\begin{center}
 %	\input{fig/tikz/linprog1}
 %	\captionof{figure}{Grafisk repræsentation af mulige løsninger.}

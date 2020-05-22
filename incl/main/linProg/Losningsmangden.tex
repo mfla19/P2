@@ -6,20 +6,15 @@ Den \textbf{mulige mængde} er mængden af løsningsvektorer, $\vec{x}$, som opf
 En \textbf{mulig løsning} er en løsningsvektor $\vec{x}$, som opfylder alle problemets betingelser.\\
 \textbf{Den mulige mængde} $\mathcal{F}$ er mængden af alle de mulige løsninger. Den vil derfor, for et standard maksimumsproblem, være defineret som
 \begin{align*}
-\mathcal{F}=\{\vec{x} \in \mathds{R}^n|A\vec{x} \leq \vec{b}, \vec{x} \geq \vec{0}\}
+\mathcal{F}=\{\vec{x} \in \mathds{R}^n|A\vec{x} \leq \vec{b}, \vec{x} \geq \vec{0}\}.
 \end{align*}
-%En vektor $\vec{x}^*$ kaldes en \textbf{optimal løsning}, hvis 
-%\begin{align}
-%	f(\vec{x}^*)=\max\limits_{\vec{x} \in \mathcal{F}}f(\vec{x}).
-%\end{align}
-Et problem kaldes \textbf{inkonsistent} (usikker på oversættelse) hvis den mulige mængde er den tomme mængde, ellers er problemet \textbf{konsistent}. %Et problem kaldes \textbf{ubegrænset}, hvis objektfunktionen kan tage arbitrært store funktionsværdier for maksimeringsproblemer, og arbitrært små funktionsværdier for minimeringsproblemer. Ellers kaldes problemet \textbf{begrænset}.
+Et problem kaldes \textbf{inkonsistent}  hvis den mulige mængde er den tomme mængde, ellers er problemet \textbf{konsistent}. 
 \end{defn}
-%Linje efter align og \\ skal enten skrives i bindende tekst eller gøres mere præcis
 
-I lineær programmering ledes der efter en optimal løsning, som vil være den mulige løsning, der enten maksimere eller minimere objektfunktionen, alt afhængig af, om der er tale om et maksimerings- eller minimeringsproblem. 
-Bemærk, at på samme måde som bibetingelserne kan omskrives, kan et minimeringsproblem laves til et maksimeringsproblem ved at multiplicere med $-1$, hvorfor det kun er nødvendigt at definere den optimale løsning for minimeringsproblemet.
+I lineær programmering søges der efter en optimal løsning, som vil være den mulige løsning, der enten maksimerer eller minimerer objektfunktionen, afhængig af, om der er tale om et maksimerings- eller minimeringsproblem. 
+Husk på, at et minimeringsproblem kan laves til et maksimeringsproblem, hvorfor det kun er nødvendigt at definere den optimale løsningsværdi for minimeringsproblemet.
 \begin{defn}[Optimal løsningsværdi]
-Lad $f$ være objektfunktionen til et lineært minimeringsproblem, da kaldes en vektor $\vec{x}^*$ en \textbf{optimal løsning}, hvis 
+Lad $f$ være objektfunktionen til et lineært minimeringsproblem, da kaldes en vektor $\vec{x}^*$ en \textbf{optimal løsningsværdi}, hvis 
 \begin{align}
 	f(\vec{x}^*)=\min\limits_{\vec{x} \in \mathcal{F}}f(\vec{x}).
 \end{align}
@@ -33,21 +28,20 @@ Ved at indtegne betingelserne i et koordinatsystem er det muligt at visualisere 
 
 \begin{center}
 	\input{fig/tikz/linprog2}
-	\captionof{figure}{Skravering af den mulige mængde for et standard maksimeringsporblem.}
+	\captionof{figure}{Skravering af den mulige mængde for et standard maksimeringsproblem.}
 	\label{fig:maksprob2}
 \end{center}
 \end{eks}
 
-Løsningerne til et optimeringsproblem er beskrevet som værende alle de $\vec{x}$, som overholder bibetingelserne. Løsningsmængden til bibetingelserne er beskrevet som et polyeder.
+Løsningerne til et optimeringsproblem er beskrevet som værende alle de vektorer, $\vec{x}$, som overholder bibetingelserne. Løsningsmængden til bibetingelserne er beskrevet som et polyeder.
 \begin{defn} [Polyeder]
 Et \textbf{Polyeder} er en mængde 
 \begin{align*}
  P =\{ \vec{x} \in \mathds{R}^n | A \vec{x} \geq \vec{b}, \vec{b}\in \mathds{R}^m\},
 \end{align*}
-hvor at $A$ er en $m \times n$ matrice.
+hvor $A$ er en $m \times n$ matrix.
 \end{defn}
-Hvis et lineært programmerings problem står på standard form $\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$, så kaldes dette stadig et polyeder.\\
-
+Hvis et lineært programmeringsproblem står på standardform $\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$, så kaldes det stadig et polyeder.\\
 Hvis der er et polyeder $P=\{x\mid A\vec{x}=\vec{b},x\geq 0\}$, som består af alle bibetingelserne for problemet, så må der også findes et andet polyeder $Q$, som består af alle de lineært uafhængige bibetingelser for problemet. Da $P$ består af de samme bibetingelser som $Q$ og lidt flere til, så er en løsning $\vec{x}$ til $P$ nødvendigvis også en løsning til $Q$, og modsat er en løsning til $Q$ også en løsning til $P$. Derfor må $Q=P$, hvilket vil blive bevist i følgende sætning.
 
 \begin{stn} 
@@ -70,91 +64,11 @@ Hvilket betyder, at $\vec{y}\in P$ og $Q\subset P$, og derved er $P=Q$.
 \end{proof}
 
 Et polyeder kan, alt efter bibetingelserne, være en mængde, der strækker sig ud i det uendelige, eller det kan være begrænset. 
-Hvis der er med et maksimeringsproblem at gøre, kan det ses, at bibetingelserne danner et område, men ved et minimeringsproblem, vil bibetingelserne ofte resultere i, at polyederet strækker sig ud i det uendelige og derfor ikke længere er en form. Selvom dette er tilfældet, kaldes løsningsmængden stadig for et polyeder.
-Følgene definition omhandler et begrænset område.
+Hvis der er med et maksimeringsproblem at gøre, kan det ses, at bibetingelserne danner et område, men ved et minimeringsproblem, vil bibetingelserne ofte resultere i, at polyederet strækker sig ud i det uendelige og derfor ikke længere er en form. Selvom dette er tilfældet, kaldes løsningsmængden stadig for et polyeder. \\
+Et problem kaldes \textbf{ubegrænset}, hvis objektfunktionen kan tage arbitrært store funktionsværdier for maksimeringsproblemer, og arbitrært små funktionsværdier for minimeringsproblemer. Ellers kaldes problemet \textbf{begrænset}.
+
 \begin{defn} [Begrænset]
 Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksisterer en konstant $K$ så $\forall \vec{x} \in S: |\vec{x}| \leq K$.
 \end{defn}
+
 Med andre ord; hvis der findes en konstant, som er højere end den absolutte værdi af alle $\vec{x} \in S \in S$, og hvis der ikke eksisterer en konstant, som er støre end $|\vec{x}|$, så vil alle $\vec{x}$ gå mod uendeligt.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-
-\section{Løsninger til linære programmeringsproblemer}
-Den mulige mængde er mængden af løsningsvektorer, $\vec{x}$, som opfylder alle problemets betingelser. Hvis en optimal løsning eksisterer vil denne derved være indeholdt i den mulige mængde.
-\begin{defn}[Mulige løsninger og den mulige mængde]
-Lad $A\vec{x}\geq \vec{b}$ betegne et lineært programmerings problem på standard form. 
-Da er $\vec{x^*}$ n \textbf{mulig løsning} hvis og kun hvis $A \vec{x^*} \geq \vec{b}$ og $\vec{x^*}\geq \vec{0}$.\\
-\textbf{Den mulige mængde} er mængden
-\begin{align*}
-\mathcal{F}=\{\vec{x} \in \mathds{R}^n|A\vec{x} \geq \vec{b}, \vec{x} \geq \vec{0}\}
-\end{align*}
-Et problem kaldes \textbf{inkonsistent}, hvis den mulige mængde er den tomme mængde, ellers er problemet \textbf{konsistent}.
-\end{defn}
-
-I lineære programmering ledes der efter en optimal løsning, som vil være den mulige løsning, der enten maksimere objektfunktionen eller minimere den, alt afhængig af om der er tale om et minimeringsproblem. 
-Bemærk at på samme måde som bibetingelserne kan omskrives, kan et minimeringsproblem laves til et maksimeringsproblem ved at multiplicere med $-1$, hvorfor det kun er nødvendigt at definere den optimale løsning for minimeringsproblemet.
-\begin{defn}[Optimal løsning \textbf{Skal omskrives til optimalløsningsværdi i stedet.}]
-Lad $f$ være objektfunktionen til et lineært minimeringsproblem, da kaldes en vektor $\vec{x}^*$ en \textbf{optimal løsning}, hvis 
-\begin{align}
-	f(\vec{x}^*)=\min\limits_{\vec{x} \in \mathcal{F}}f(\vec{x}).
-\end{align}
-Værdien af $f(\vec{x^*})$ kaldes den \textbf{optimale værdi}.
-\end{defn}
-
-Den optimale løsning kan findes på forskellige måder heriblandt med simplex-metoden, som beskrives i Kapitel \ref{afsnit:simplex}. En anden måde er ved geometrisk visualisering af den mulige mængde. Denne metode er mulig for problemer med op til 3 variable, da løsningsmængden derved visualiseres som et plot i det tilsvarende antal dimensioner. 
-
-\begin{eks}[Den mulige mængde]
-Ved at indtegne betingelserne i et koordinatsystem, er det muligt at visualisere den mulige mængde som fællesmængden af de mængder, der dannes ud fra betingelserne. På Figur \ref{fig:maksprob2} er den mulige mængde for problemet i Eksempel \ref{eks:maksprob2} indtegnet. Der er desuden tegnet en pil for hver betingelse, som viser for hvilken side af linjen, at koordinaterne opfylder betingelsen. Den mulige mængde er farvet grå.
-
-\begin{center}
-	\input{fig/tikz/linprog2}
-	\captionof{figure}{Skravering af den mulige mængde for et standard maksimeringsporblem.}
-	\label{fig:maksprob2}
-\end{center}
-
-\end{eks}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-I lineær programmerings afsnittet, er løsningerne til et optimeringsproblem beskrevet som værende alle de $\vec{x}$, som overholder bibetingelserne. Løsningsmængden til bibetingelserne er beskrevet som et polyeder.
-\begin{defn} [Polyeder]
-Et \textbf{Polyeder} er en mængde 
-\begin{align*}
- P =\{ \vec{x} \in \mathds{R}^n | A \vec{x} \geq \vec{b}, \vec{b}\in \mathds{R}^m\},
-\end{align*}
-hvor at $A$ er en $m \times n$ matrice.
-\end{defn}
-Hvis et lineært programmerings problem står på standard form $\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$, så kaldes dette stadig et polyeder.\\
-
-Hvis der er et polyeder $P=\{x\mid A\vec{x}=\vec{b},x\geq 0\}$ som består af alle bibetingelserne for problemet, så må der også findes en anden polyeder $Q$, som består af alle de lineært uafhængige bibetingelserne for problemet. Det giver god mening, at $P$ består af de samme bibetingelser som $Q$ og så lidt flere til, så er en løsning $\vec{x}$ til $P$ også en løsning til $Q$ og modsat er en løsning til $Q$ også en løsning til $P$ og derfor må $Q=P$, hvilket vil blive bevist i følgende sætning.
-
-\begin{stn} 
-Lad $P=\{\vec{x}\mid A\vec{x}=\vec{b},x\geq 0\}$ være en ikke-tom polyeder, hvor $A$ er en $m\times n$ matrix.\\
-Antag at $rank(A)=k<m$ og at rækkerne $\vec{a_i}^T$ for $i=1,\dots ,k$ er lineært uafhængig. Betragt polyeder $Q=\{\vec{x}\mid \vec{a_i}^T\vec{x}=b_{i}, \vec{x}\geq \vec{0}, i = 1,\dots	k\}$, så er $Q=P$.
-\label{stn:PQ}
-\end{stn}
-\begin{proof}
-Hvis $P=\{x\mid A\vec{x}=\vec{b},x\geq 0\}$ er et polyeder, afgrænset af alle bibetingelserne og har $rank(A)=k$, så må der være et polyeder $Q=\{\vec{x}\mid \vec{a_i}^T\vec{x}=b_{i}, \vec{x}\geq \vec{0}, i = 1,\dots	k\}$, der består af alle lineært uafhængig bibetingelser. Så må $P\subset Q$, eftersom alle elementerne i $P$ også tilfredsstiller bibetingelserne for $Q$.\\
-Eftersom $rank(A)=k$, så former rækkerne $\vec{a_1},\dots ,\vec{a_k}$ en basis for rækkerummet, derfor kan lineare kombinationen af rækkerne $a_i$ af $A$, skrives som $a_i=\sum_{j=1}^{k}{i j}\vec{a_j}$ for en skalar $c_{i j}$, lad så $\vec{x}$ være en del af $P$ så
-\begin{align*}
-\vec{a_i}^T\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{a_j}^T\vec{x}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i}, \qquad i=1,\dots,m.
-\end{align*}
-Lad nu $\vec{y}$ være en del af $Q$, så er $\vec{y}$ også en del af $P$, eftersom:
-\begin{align*}
-\vec{a_i}^T\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{a_j}^T\vec{y}=\sum_{j=1}^{k}c_{i j}\vec{b_j}=\vec{b_i}, \qquad i=1,\dots,m.
-\end{align*}
-Hvilket betyder $\vec{y}\in P$ og $Q\subset P$ og derved $P=Q$.
-\end{proof}
-Et polyhedron kan, alt efter bibetingelserne, være en mængde der strækker sig ud i det uendelige eller de kan være begrænset 
-Hvis der er med et maksimerings problem at gøre, kan det ses at bibetingelserne danner et område, men ved at minimeringsproblem, vil bibetingelserne ofte resultere i, at polyheronet strækker ud i det uendelige og derfor ikke længere er en form, men selvom dette er tilfældet, kaldes løsningsmængden stadig for et polyhedron.
-følgene definition omhandler et begrænset område
-\begin{defn} [Begrænset]
-Lad $S \subset \mathds{R}^n$, da er $S$ begrænset, hvis der eksistere en konstant $K$ så $\forall \vec{x} \in S: |\vec{x}| \leq K$.
-\end{defn}
-Med andre ord, hvis der findes en konstant, som er højere end den absolutte værdi af alle $\vec{x} \in S \in S$, hvis der ikke eksistere en konstant, som er støre end $|\vec{x}|$, så ville alle $\vec{x}$ gå mod uendeligt.
-
-\end{comment}

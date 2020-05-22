@@ -1,11 +1,11 @@
 \section{Standard maksimums- og minimumsproblemer}
-I et standard maksimumsproblem gælder det, for alle bibetingelserne, at den lineære funktion af variablene er mindre end eller lig en konstant, mens det i et standard minimumsproblem gælder, at ligningerne er større end eller lig en konstant. For begge problemer er variablene positivt begrænsede. 
+I et standard maksimumsproblem gælder det, for alle bibetingelserne, at den lineære funktion af variablene er mindre end eller lig en konstant, mens de i et standard minimumsproblem gælder skal være større end eller lig en konstant. For begge problemer er variablene positivt begrænsede. 
 
 Som beskrevet i Afsnit \ref{afsnit:lign_sys} kan et lineært ligningssystem opskrives som et matrix-vektor produkt. Matricen repræsenterer koefficienterne i det lineære ligningssytem, mens variablene skrives som en vektor. Tilsvarende gælder det for objektfunktionen, at denne kan skrives som et produkt af to vektorer. Dette tillader definitionen af et standard maksimumsproblem med disse produkter i Definition \ref{def:std_maksmin}. 
 
 \begin{defn}[Standard maksimums- og minimumsproblemer]
-	Lad $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$ være \textbf{løsningsvektoren} med koefficienter $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$ i objektfunktionen, og lad $m \times n$ matricen $A=[A_{ij}]$ for $i=1,...,m$ og $j=1,...,n$, og lad $\vec{b}=\rvect{b_1 & b_2 & \cdots & b_m}^T$.\\ %Jeg tror ikke at maticen er begrænset af \vec{b}
-	Da er standard maksimumsproblemet defineret som
+	Lad $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$ være \textbf{løsningsvektoren} med koefficienter $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$ i objektfunktionen, og lad $m \times n$ matricen $A=[A_{ij}]$ for $i=1,...,m$ og $j=1,...,n$, og lad $\vec{b}=\rvect{b_1 & b_2 & \cdots & b_m}^T$.\\
+Da er standard maksimumsproblemet defineret som
 \begin{center}
 \begin{tabular}{l	>{$}l<{$}}
 Maksimer 		& \vec{c}^T\vec{x} \\
@@ -24,7 +24,7 @@ og 				& \vec{x} \geq \vec{0}.
 \label{def:std_maksmin}
 \end{defn}
 Består ligningssystemet af ligheder, kaldes problemet henholdvist enten et \textbf{standard maksimumsproblem med ligheder}, eller et \textbf{standard minimumsproblem med ligheder}. \\
-Ethvert lineært programmeringsproblem kan altså omskrives, så det står på standardform. 
+Ethvert lineært programmeringsproblem kan således omskrives, så det står på standardform. 
 
 \begin{eks}[Standard maksimumsproblem]
 Hvis eksempel \ref{eks:maksprob1} skal omskrives til et standard maksimumsproblem, skal alle relationer i bibetingelserne være mindre end eller lig med konstanterne.
@@ -42,6 +42,8 @@ og $x_1 \geq 0, x_2\geq 0$.
 \end{eks}
 
 Bemærk, at på samme måde som bibetingelserne kan omskrives, kan et minimeringsproblem ligeledes laves til et maksimeringsproblem, ved at multiplicere med $-1$.
+
+
 
 \begin{comment}
 \begin{defn}[Standard minimum problem]
