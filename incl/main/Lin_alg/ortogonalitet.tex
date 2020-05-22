@@ -1,12 +1,12 @@
 \section{Ortogonal og ortonormalbasis}
-Ortogonal- og ortonormalbasis er special tilfælde af baser for et underrum.
+Ortogonal- og ortonormalbasis er specialtilfælde af baser for et underrum.
 \begin{defn}[Ortogonal- og ortonormalbasis]
 En basis $B = \{\vec{v}_i,..., \vec{v}_k\}$ for  et underrum $W$ til $\mathds{R}^n$ kaldes en \textbf{ortogonal basis}, hvis 
 $\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$. En ortogonal basis er \textbf{ortonormal}, hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
 \end{defn}
 For at vise, at en basis er ortogonal, er det nødvendigt at vise, at alle vektorer er indbyrdes ortogonale, her kan gøres brug af deres indbyrdes vektorprodukt.
 \begin{lma}
-Lad $\vec{v}, \vec{u} \in \mathds{R}^n$, og $\vec{v}\neq \vec{0}$, $\vec{u} \neq \vec{0}$ da er $\vec{v} \bot \vec{u}$ hvis og kun vis $\vec{v}^T\vec{u} = 0$.
+Lad $\vec{v}, \vec{u} \in \mathds{R}^n$, og $\vec{v}\neq \vec{0}$, $\vec{u} \neq \vec{0}$ da er $\vec{v} \bot \vec{u}$ hvis og kun hvis $\vec{v}^T\vec{u} = 0$.
 \label{lma:vinkelret}
 \end{lma}
 \begin{proof}
@@ -24,30 +24,30 @@ Dermed kan det konkluderes,  at $\vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u
 \begin{align*}
 \vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\pi/2}= \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cdot0 = 0.
 \end{align*}
-Dermed er vektorproduktet nul når vektorene er ortogonale.
-Antag til sidst at $\vec{v}^T\vec{u}=0$, da vil 
+Dermed er vektorproduktet nul, når vektorene er ortogonale.
+Antag til sidst, at $\vec{v}^T\vec{u}=0$, da vil 
 \begin{align*}
-0 = \vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}
+0 = \vec{v}^T\vec{u} = \Vert\vec{v}\Vert\Vert\vec{u}\Vert\cos{\theta}.
 \end{align*}
 Da hverken $\vec{v}$ eller $\vec{u}$ er lig $\vec{0}$ må $\cos{\theta} = 0 $, hvorfor det kan konkluderes, at de må være ortogonale.
 \end{proof}
-Her af følger, at to ortogonale vektorer er lineært uafhængige.
+Heraf følger, at to ortogonale vektorer er lineært uafhængige.
 \begin{lma}
 Lad $\vec{u}, \vec{v} \in \mathds{R}^n$, så $\vec{v} \neq \vec{0}$ og $\vec{u} \neq \vec{0}$, da er $\vec{v}$ og $\vec{u}$ lineært uafhængige hvis $\vec{v} \bot \vec{u}$.
 \label{lma:ortolinuaf}
 \end{lma}
 \begin{proof}
 Lad $\vec{v}, \vec{u}$ være ortogonale, og antag for modstrid, at de også er lineært afhængige.
-Da gælder at $\vec{v} = \lambda \vec{u}$, for en skalar $\lambda$.
+Da gælder, at $\vec{v} = \lambda \vec{u}$, for en skalar $\lambda$.
 Da $\vec{v}$ og $\vec{u}$ er ortogonale, følger det af Lemma \ref{lma:vinkelret}, at 
 \begin{align*}
 \vec{v}^T\vec{u} = \lambda\vec{u}^T\vec{u} = \lambda \Vert \vec{u} \Vert^2 = 0.
 \end{align*}
 Hvis $\lambda = 0$ vil $\vec{v}= \vec{0}$, og hvis $\Vert \vec{u} \Vert = 0$ vil $\vec{u} = \vec{0}$, hvorfor der er opstået modstrid, derfor er $\vec{v}$ og $\vec{u}$ lineært uafhængige.
 \end{proof}
-Det medfører, at enhver mængde af ortogonale vektorer, som udspænder et underrum, i følge Definition \ref{def:basis} er
+Det medfører, at enhver mængde af ortogonale vektorer, som udspænder et underrum, ifølge Definition \ref{def:basis} er
 en basis for underrummet.
-Er der derimod tale om en ikke ortogonal basis, kan den omdannes til sådanne ved brug af Gram-Schmidt processen.
+Er der derimod tale om en ikke ortogonal basis, kan den omdannes til en ved brug af Gram-Schmidt processen.
 \begin{stn}[Gram-Schmidt processen]
 Lad $\{\vec{u}_1, ..., \vec{u}_k\}$ være en basis for underrummet $W$ til $\mathds{R}^n$, og lad 
 $\vec{v}_1 = \vec{u}_1$, og $\vec{v}_i= \vec{u}_i - \sum_{j=1}^{i-1} \frac{\vec{u}_i^T \vec{v}_j}{\Vert\vec{v}_j\Vert}\vec{v}_j$ for $i \geq 2$.
@@ -57,12 +57,12 @@ Da udgør $B = \{\vec{v}_1,..., \vec{v}_k\}$ en ortogonal basis for $W$.
 \begin{proof}
 For at  vise, at $B$ er en ortogonal basis for $W$, laves et induktionsbevis, lad derfor først $k= 1$, da $\vec{u}_1\neq \vec{0}$ og udgør en basis for $W_1$, så må $\vec{v}_1 = \vec{u}_1$ nødvendigvis også gøre det.
 Da $B$ kun består af en vektor, må den være ortogonal.
-\\Antag, at $B$ er en ortogonal basis for $W_n$ for $k=n$, da vises det, at det medføre, at $B$ også er en ortogonal basis for  $W_{n+1}$ når $k = n+1$.
+\\Antag, at $B$ er en ortogonal basis for $W_n$, for $k=n$, da vises det, at det medfører, at $B$ også er en ortogonal basis for  $W_{n+1}$, når $k = n+1$.
 \\Betragt derfor elementet 
 \begin{align*}
 \vec{v}_{n+1} = \vec{u}_{n+1} - \sum_{i=1}^n \frac{\vec{u}_{n+1}^T\vec{v}_i}{\Vert\vec{v}_i\Vert^2}\vec{v}_i.
 \end{align*}
-Da $\vec{v}_1,...,\vec{v}_n$ er antaget til at være ortogonale, medfører det at
+Da det er antaget, at $\vec{v}_1,...,\vec{v}_n$ er ortogonale, medfører det, at
 \begin{align*}
 \vec{v}_j^T\vec{v}_{n+1} &= \vec{v}_j^T\vec{u}_{n+1} - \sum_{i=1}^n \frac{\vec{u}_{n+1}^T\vec{v}_i}{\Vert\vec{v}_i\Vert^2}\vec{v}_j^T\vec{v}_i
 \\ &= \vec{v}_j^T\vec{u}_{n+1} - \frac{\vec{u}_{n+1}^T\vec{v}_j}{\Vert\vec{v}_j\Vert^2}\vec{v}_j^T\vec{v}_j
@@ -70,21 +70,21 @@ Da $\vec{v}_1,...,\vec{v}_n$ er antaget til at være ortogonale, medfører det a
 \\ & =\vec{v}_j^T\vec{u}_{n+1} - \vec{v}_j^T\vec{u}_{n+1} = 0 , 
 \end{align*}
 for $j = 1,...,n$. 
-Derfor kan det konkluderes at $\vec{v}_{n+1}$ er ortogonal med $\vec{v}_1,...,\vec{v}_n$, hvormed det følger af Lemma \ref{lma:ortolinuaf}, at $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ er lineær uafhængige.
-Da $\vec{v}_1,...,\vec{v}_n$ er en basis for $W_n$, må $\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}$ være en basis for $W_{n+1}$, fordi $span(\vec{v}_1,...,\vec{v}_n) = span(\vec{u}_1,...,\vec{u}_n) = W_n$ pr. induktionsantagelsen. 
-Da $\vec{v}_{n+1}$ er lineær afhængig af $\vec{u}_{n+1}$ må $span(\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}) = span(\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1})$, og $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, hvorfor $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ udgør en ortogonal basis for $W_{n+1}$.
+Derfor kan det konkluderes, at $\vec{v}_{n+1}$ er ortogonal med $\vec{v}_1,...,\vec{v}_n$, hvormed det følger af Lemma \ref{lma:ortolinuaf}, at $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ er lineært uafhængige.
+Da $\vec{v}_1,...,\vec{v}_n$ er en basis for $W_n$, må $\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1}$ være en basis for $W_{n+1}$, fordi $span(\vec{v}_1,...,\vec{v}_n) = span(\vec{u}_1,...,\vec{u}_n) = W_n$ per induktionsantagelsen. 
+Da $\vec{v}_{n+1}$ er lineært afhængig af $\vec{u}_{n+1}$ må $span(\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}) = span(\vec{v}_1,...,\vec{v}_n, \vec{u}_{n+1})$, og $\vec{v}_{n+1} \neq \vec{0}$ da $\vec{u}_{n+1} \neq \vec{0}$, hvorfor $\vec{v}_1,...,\vec{v}_n, \vec{v}_{n+1}$ udgør en ortogonal basis for $W_{n+1}$.
 \end{proof}
 Derfor følger det, at et hvert underrum har en ortogonal basis.
 \begin{kor}
 Et hvert underrum $W$ til $\mathds{R}^n$ har en ortogonal og ortonormal basis.
 \end{kor}
 \begin{proof}
-Af Sætning \ref{stn:gram} fremgår det, hvordan enhver basis kan konstrueres til en ortogonal basis. 
+Af Sætning \ref{stn:gram} fremgår det, hvordan enhver basis kan konstrueres til at være en ortogonal basis. 
 For at konstruere en ortonomal basis, betragt et vilkårligt element $\vec{v}_i$ fra en ortogonal basis, og definer vektoren $\vec{u}_i = \frac{1}{\Vert\vec{v}_i\Vert}\vec{v}_i$, da vil $\{\vec{u}_1,...,\vec{u}_n\}$ udgøre en ortonormal basis. 
 Da $\Vert\vec{u}_i\Vert^2 = \frac{1}{\Vert\vec{v}_i\Vert^2}\Vert\vec{v}_i\Vert^2 = 1$.
 \end{proof}
-Det betyder at et hvert underrum har en basis, hvor alle vektorene er ortogonale og har længde $1$.
-Bemærk, at dette også illustrere, at forskellige basiser kan udspænde det samme rum. 
+Det betyder, at ethvert underrum har en basis, hvor alle vektorene er ortogonale og har længde $1$.
+Bemærk, at dette også illustrerer, at forskellige basiser kan udspænde det samme rum. 
 
 
 
