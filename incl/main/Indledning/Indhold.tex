@@ -7,13 +7,12 @@ Bemærk, at der kan være flere forskellige løsninger, som har samme funktionsv
 Der er dog sammenhæng mellem, hvilke løsninger som har optimal funktionsværdi, og det viser sig at den optimale værdi skal findes blandt basisløsningernes funktionsværdi, derfor vil der blive givet en gennemgang af basisløsninger, og hvordan de findes.
 Der ud over vil det blive vist, at så længe at problemet er konsistens og ikke indeholder en halvlinje, så eksistere en optimal værdi, som hvis eksistere altid vil være global.
 
-Herefter gennemgås to geometriske løsningsmetoder.
-Den ene; niveaumængder giver et overblik over, hvordan forskellige løsninger med samme funktionsværdi ligger i løsnings mængden, hvilket så anvendes til at finde den optimale værdi. 
+Herefter betragtes kort en geometriske tilgang til at løse lineære programmerings problemer.
+Den tager udgangs punkt i niveaumængder og giver et overblik over, hvordan forskellige løsninger med samme funktionsværdi ligger i løsnings mængden, hvilket så anvendes til at finde den optimale værdi. 
 Niveaumængder giver et godt overblik for lineære programmerings problemer af en til tre variable, da de giver en metode til at forstå problemet grafisk, men er ikke optimal når der skal bruges flere variable.
 
-Den anden tager udgangs punkt i resultatet om, at den optimale værdi kan findes bland funktionsværdierne for basisløsningerne, og giver derfor en geometrisk forståelse af basisløsninger, ved at kigge på simplexer, der er udspændt af søjlerne i basismatricerne.
-Løsningsmetoden fungere igen godt for en til tre variable, men derefter bliver den igen uoverskuelig.
-Derfor introduceres en algoritme, som systematisere metoden, kaldet Simplex metoden.
+Da lineære programmerings problemer ofte omhandler problemer med vilkårlige variable, introduceres derfor en algoritme, der kan løse linære programmerings problemer med vilkårligt endeligt antal variable, kaldet Simplex Metoden.
+Simplex Metoden tager udgangs punkt i resultatet om, at den optimale værdi kan findes bland funktionsværdierne for basisløsningerne, og giver derfor en systematisk metode til at gå fra en mulig basisløsning til en ny, som har en mere optimal funktionsværdi, indtil den optimale værdi er fundet.
 
 Simplex metoden, udledes derfor og så betragtes forskellige implementerings muligheder af denne.
 Den første er Fuld Tabel, som er valgt fordi den er let at overskue, og derfor giver et godt overblik over de forskellige trin i Simplex metoden.
