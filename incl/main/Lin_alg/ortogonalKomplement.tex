@@ -3,7 +3,7 @@ Da vektorerne der skal tilføjes en basis for at udvide den, altid skal være li
 \begin{defn}[Ortogonal komplement]
 En delmængde vektorer $S^{\bot} \subseteq \mathds{R}^n$ kaldes det \textbf{ortogonale komplement} til delmængden $S \subseteq \mathds{R}^n$, hvis 
 \begin{align*}
-	S^{\bot} = \{\vec{v} \in \mathds{R}^n \mid \vec{v}^T\vec{u} = 0, \, \forall \vec{u} \in S\}
+	S^{\bot} = \{\vec{v} \in \mathds{R}^n \mid \vec{v}^T\vec{u} = 0, \quad \forall \vec{u} \in S\}.
 \end{align*}
 \label{def:ortokom}
 \end{defn}
@@ -13,14 +13,14 @@ Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$, så er  $\vec{v}=\vec{0}$.
 \label{prop:nulortokomp}
 \end{prop}
 \begin{proof}
-Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$ så følger det af Definition \ref{def:ortokom} at $\vec{v}^T\vec{v} = 0$.
-Dermed så $\vec{v}^T\vec{v} = \sum_{i=1}^n v_i^2 =0$, hvilket kun er muligt, hvis $v_i = 0$ for ethvert $i = 1,..., n$, hvorfor $\vec{v}=\vec{0}$.
+Hvis $\vec{v} \in S$ og $\vec{v} \in S^{\bot}$, så følger det af Definition \ref{def:ortokom}, at $\vec{v}^T\vec{v} = 0$.
+Dermed er $\vec{v}^T\vec{v} = \sum_{i=1}^n v_i^2 =0$, hvilket kun er muligt, hvis $v_i = 0$ for ethvert $i = 1,..., n$, hvorfor $\vec{v}=\vec{0}$.
 \end{proof}
-Dermed indeholder både mængden og dets ortogonale komplement nulvektoren, da nulvektoren er ortogonal til enhver vektor i følge Lemma \ref{lma:vinkelret}. 
-Det resultere i, at det ortogonale komplement aldrig kan være lig den tommemængde.
-En mængde og dens ortogonale komplement har den egenskab at de tilsammen udspænder hele $\mathds{R}^n$.
+Både mængden og dets ortogonale komplement indeholder  så nulvektoren, da nulvektoren er ortogonal til enhver vektor ifølge Lemma \ref{lma:vinkelret}. 
+Det resulterer i, at det ortogonale komplement aldrig kan være lig den tomme mængde.
+En mængde og dens ortogonale komplement har den egenskab, at de tilsammen udspænder hele $\mathds{R}^n$.
 \begin{stn}[$\mathds{R}^n$ udspændt af $W$ og $W^{\bot}$]
-Lad $W$ være et underrum til $\mathds{R}^n$, da eksistere der entydige vektorer  $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så $\vec{u}= \vec{w}+\vec{z}$ for en hver $\vec{u} \in \mathds{R}^n$.
+Lad $W$ være et underrum til $\mathds{R}^n$, da eksisterer der entydige vektorer  $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$, så $\vec{u}= \vec{w}+\vec{z}$ for enhver $\vec{u} \in \mathds{R}^n$.
 \label{stn:Rnorto}
 \end{stn}
 \begin{proof}
@@ -31,16 +31,17 @@ Lad $w \in W$ være det element, der er en linear kombination af $\{\vec{v}_1,..
 \\ & = (\vec{u}^T\vec{v}_j)\vec{v}_j^T\vec{v}_j = \vec{u}^T\vec{v}_j \Vert \vec{v}_j \Vert^2 = \vec{u}^T\vec{v}_j,
 \end{align*}
 for $j=1,...,k$, da $\{\vec{v}_1,...,\vec{v}_k\}$ er en ortonormal basis.
-\\ Lad nu $\vec{z} = \vec{u}- \vec{w}$, da $\vec{v}_j^T\vec{w}= \vec{v}_j^T\vec{u}$ for et hvert $j=1,...,k$ gælder at 
+\\ Lad nu $\vec{z} = \vec{u}- \vec{w}$.
+Da $\vec{v}_j^T\vec{w}= \vec{v}_j^T\vec{u}$ for ethvert $j=1,...,k$, gælder det, at 
 \begin{align*}
 \vec{v}_j^T\vec{z} = \vec{v}_j^T\vec{u}- \vec{v}_j^T\vec{w} = 0,
 \end{align*}
 derfor må $\vec{z} \in W^{\bot}$. 
-Då $\vec{u}$ er valgt vilkårligt, medfører det, at der eksisterer vektorer $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$ så ethvert $\vec{u} \in \mathds{R}^n$ så $\vec{u}= \vec{w}+\vec{z}$.
+Da $\vec{u}$ er valgt vilkårligt, medfører det, at der eksisterer vektorer $\vec{w} \in W$ og $\vec{z} \in W^{\bot}$, så enhver $\vec{u} \in \mathds{R}^n$ er $\vec{u}= \vec{w}+\vec{z}$.
 \\Så vises, at $\vec{w}$ og $\vec{z}$ er entydige.
-Lad derfor $\vec{w}' \in W$ og $\vec{z}' \in W^{\bot}$ så $\vec{u}= \vec{w}' + \vec{z}'$.
+Lad derfor $\vec{w}' \in W$ og $\vec{z}' \in W^{\bot}$, så $\vec{u}= \vec{w}' + \vec{z}'$.
 Da må $\vec{w} + \vec{z} = \vec{w}' + \vec{z}'$, hvorfor $\vec{w}-\vec{w}' = \vec{z}-\vec{z}'$.
-Det følger derfor, at $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W$ og $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W^{\bot}$, hvilket, ifølge Proportion \ref{prop:nulortokomp}, betyder, at $\vec{w}-\vec{w}' = \vec{z}-\vec{z}' = \vec{0}$, hvormed $\vec{w}= \vec{w}'$ og $\vec{z}=\vec{z}'$ og entydigheden er bevist.
+Det følger derfor, at $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W$ og $\vec{w}-\vec{w}', \vec{z}-\vec{z}' \in W^{\bot}$, hvilket, ifølge Proportion \ref{prop:nulortokomp} betyder, at $\vec{w}-\vec{w}' = \vec{z}-\vec{z}' = \vec{0}$, hvormed $\vec{w}= \vec{w}'$ og $\vec{z}=\vec{z}'$ og entydigheden er bevist.
 \end{proof}
 Derfor vil, foreningsmængden af en delmængde af $\mathds{R}^n$ og dets ortogonale komplements baser udgøre en basis for $\mathds{R}^n$.
 \begin{kor}
@@ -48,12 +49,12 @@ Lad $B$  og $B^{\bot}$ udgøre en basis for henholdsvis underrummet $W$ til $\ma
 \label{kor:basisRnorto}
 \end{kor}
 \begin{proof}
-Det følger af Sætning \ref{stn:Rnorto}, at et hvert element i $\mathds{R}^n$ kan skrives som en linear kombination af af et element fra $W$ og et fra $W^{\bot}$, derfor må $span\{B, B^{\bot}\} = \mathds{R}^n$. 
-Da $B$ og $B^{\bot}$ er lineært uafhængige i følge Lemma \ref{lma:ortolinuaf} følger det af Korollar \ref{kor:serbase}, at $\{B, B^{\bot}\}$ udgør en basis for $\mathds{R}^n$.
+Det følger af Sætning \ref{stn:Rnorto}, at ethvert element i $\mathds{R}^n$ kan skrives som en linear kombination af et element fra $W$ og et fra $W^{\bot}$, derfor må $span\{B, B^{\bot}\} = \mathds{R}^n$. 
+Da $B$ og $B^{\bot}$ er lineært uafhængige ifølge Lemma \ref{lma:ortolinuaf}, følger det af Korollar \ref{kor:serbase}, at $\{B, B^{\bot}\}$ udgør en basis for $\mathds{R}^n$.
 \end{proof}
 Bemærk, at det derfor følger af \ref{kor:basisRnorto}, at
 \begin{align}
 \dim{\mathds{R}^n} = \dim{span\{B, B^{\bot}\}} = \dim{W} + \dim{W^{\bot}} = n.
 \end{align}
 Hvilket resulterer i, at hvis $B$ er en basis for et ægte underrum i $\mathds{R}^n$, så vil der eksistere en ortogonal vektor i $\mathds{R}^n$ ortogonal til $B$, som kan tilføjes $B$. 
-Det kan gentages indtil, at $B$ udgør en basis for $\mathds{R}^n$.
+Det kan gentages, indtil $B$ udgør en basis for $\mathds{R}^n$.
