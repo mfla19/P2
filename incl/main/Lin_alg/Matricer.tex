@@ -1,15 +1,27 @@
-\section{Matricer}
+\section{Vektorer og matricer}
+
 Lineære ligningssystemer kan opskrives i matricer. 
 En matrix er defineret i Definition \ref{def:matricer}.
 
-\begin{defn} [Matrix]
+\begin{defn}[Matrix]
 En $m \times n$ matrix er en rektangulær tabel over skalarer med $m$ rækker og $n$ søjler. 
 Hvis $m=n$ er matricen kvadratisk. 
 Skalaren i $i$'te række og $j$'te søjle kaldes $(i,j)$-indgangen.
 \label{def:matricer}
 \end{defn}
 
-Herunder ses en $m \times n$ matrix $A$ og dens indgange, $a_{i,j}$. Den $i$'te række i A betenges $\vec{a}_i$, mens den $j$'te søjle angives $\vec{A}_j$.
+En vektor er en matrix, der enten kun har en søjle eller en række. Vektorer kan også repræsenteres geometrisk hvor en vektor er en pil med en retning og en længde.
+Det vil sige, at en vektor er et særtilfælde af en matrix, og alle regneregler for matricer, gør sig derfor gældende for vektorer, men ikke alle regneregler for vektorer kan bruges for matricer.
+Vektorer anvendes blandt andet til at repræsentere rækker og søjler i matricer. 
+Indgangene i en vektor kaldes vektorens vektorkomponenter, og svarer til vektorens koordinater i den geometriske repræsentation.
+
+\begin{defn}[Vektor]
+En \textbf{vektor} er en matrix med enten kun en række eller en søjle. \\
+En \textbf{rækkevektor} $\vec{v}$ er en matrix med kun en række og med indgange $v_1,v_2,...,v_n$.\\
+En \textbf{søjlevektor} $\vec{u}$ er en matrix med kun en søjle og med indgange $u_1,u_2,...,u_m$.\\
+\end{defn}
+
+Herunder ses en $m \times n$ matrix $A$ og dens indgange, $a_{i,j}$. Den $i$'te række i A betenges $\vec{a}_i$ og er en rækkevektor, mens den $j$'te søjle angives $\vec{A}_j$ og er en søjlevektor.
 
 \begin{align*}
 A = \begin{bmatrix}
@@ -20,7 +32,22 @@ A = \begin{bmatrix}
 	\vdots  &         &       &         & \ddots& \vdots \\
 	a_{m,1} & \dots   & \dots & \dots   & \dots & a_{m,n} 
 \end{bmatrix}
+=
+\begin{bmatrix}
+\vec{a}_1\\
+\vec{a}_2\\
+\vdots\\
+\vec{a}_i\\
+\vdots\\
+\vec{a}_m
+\end{bmatrix}
+=
+\begin{bmatrix}
+\vec{A}_1	& \vec{A}_2	& \dots	& \vec{A}_j & \dots	& \vec{A}_n
+\end{bmatrix}
 \end{align*}
+
+
 
 Matricer kan bruges til at illustrere forskellige ting fra den virkelige verden. Det kan være antal varer solgt fra forskellige butikker, eller prisen på forskellige produkter. 
 
@@ -69,10 +96,21 @@ Det ses at $A$ er en $2 \times 3$ matrix og $A^T$ er en $3 \times 2$ matrix.
 \end{eks}
 
 
-En bestemt type matrix er en identitetsmatrix, der betegnes $I_n$. 
+Standard basis vektorer er vektorer, hvis indgange alle er $0$ pånær én indgang, der har værdien $1$. I den geometriske repræsentation vil disse vektorer da følge en af akserne i det tilsvarende koordinatsystem i positiv retning.
+
+\begin{defn}[Standard basisvektorer]
+Lad $\vec{e}_{i}\in\mathds{R}^n$ være en standard basisvektor. Da vil den $j$'te indgang være givet ved
+\begin{align*}
+e_{i_{j}}=\begin{cases} 0, \quad j \neq i
+\\ 1 , \quad j = i \end{cases}.
+\end{align*}
+
+\end{defn}
+
+En bestemt type matrix er en identitetsmatrix, der betegnes $I_n$ og dannes ud fra standard basisvektorer. 
 
 \begin{defn} [Identitetsmatrix]
-For hvert positivt heltal $n$, er $n \times n$ identitetsmatricen, $I_n$, defineret som\\ $I_n = \rvect{\vec{e_1} & \vec{e_2} & \dots &  \vec{e_n}}$, hvor $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ er standardvektorerne i $\mathds{R}^n$
+For hvert positivt heltal $n$, er identitetsmatricen $I_n$ en $n \times n$ matrix, defineret som\\ $I_n = \rvect{\vec{e_1} & \vec{e_2} & \dots &  \vec{e_n}}$, hvor $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ er standardvektorerne i $\mathds{R}^n$
 \label{def:imatrix}
 \end{defn}
 
@@ -85,7 +123,7 @@ I_3 = \begin{bmatrix}
 \end{bmatrix}
 \end{align*}
 
-En anden bestemt type matrix er en delmatrix, som er en form for undermatrix. 
+En anden bestemt type matrix er en delmatrix, som består af en del af en anden matrix.
 \begin{defn} [Delmatrix]
 En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
 \label{delmatrix}
@@ -105,108 +143,3 @@ A' = \begin{bmatrix}
 \end{bmatrix}
 \end{align*}
 
-\section{Regneoperationer med matricer}
-Givet to $m \times n$ matricer, $A$ og $B$, kan der udføres forskellige regneoperationer. \\
-
-\begin{stn}
-Lad $A$, $B$ og $C$ være $m \times n$ matricer, og lad $s$ og $t$ være tilfældige skalarer. Lad matricen $O$ være en nulmatrix.
-Så gælder følgende
-\begin{enumerate}[label=(\alph*)]
-\item $A + B = B + A$
-\item $(A + B) + C = A + (B + C)$
-\item $A + O = A$
-\item $A + (-A) = O$
-\item $(st) A = s (tA)$
-\item $s(A + B) = sA + sB$
-\item $(s+t)A = sA + tA$
-\end{enumerate}
-\label{stn_regn}
-\end{stn}
-
-\begin{proof} 
-(a) Det vises, at enhver indgang i $A + B$ er tilsvarende i $B + A$. Betragt indgangene $a_{i,j}$ og $b_{i,j}$. Summen af $a_{i,j} + b_{i,j}$ er det samme som $b_{i,j} + a_{i,j}$, jf. den kommutative lov. \\
-(b) Det vises, at enhver indgang i $(A + B) + C$ er den samme som den tilsvarende indgang i $A + (B + C)$. Ligesom i (a) tages der udgangspunkt i indgang $(i,j)$. Summen af $(a_{i,j} + b_{i,j}) + c_{i,j}$ er det samme som $a_{i,j} + (b_{i,j} + c_{i,j})$. Ifølge den associative lov, er det uden betydning hvor paranteserne er placeret i et additionsudtryk. Derfor må indgangen $(i,j)$ i $(A + B) + C$ være lig indgang $(i,j)$ i $A + (B + C)$. \\
-(c) For enhver indgang i $A$, $a_{i,j}$ skal denne adderes med $0$. $a_{i,j}+0=a_{i,j}$. Derfor må $A + O = A$. \\
-(d) For enhver indgang i $A$, $a_{i,j}$ skal denne fratrækkes samme indgang i $A$, $a_{i,j}$. Da \\ $a_{i,j} - a_{i,j} = 0$, må $A + (-A) = O$. \\
-(e) Her tages der udgangspunkt i (i,j)-indgangen i A, $a_{i,j}$. Det ses så, at udsagnet bliver til $(st)a_{i,j} = s(ta_{i,j})$ når flere tal multipliceres, er det lige meget i hvilken rækkefølge, jf. den associative lov. \\
-(f) Hver indgang i A, $a_{i,j}$ lægges sammen med den tilsvarende indgang i B, $b_{i,j}$, dette giver venstresiden $s(a_{i,j}+b_{i,j})$. Da det er tilladt at multiplicere ind i en parantes, kan udtrykket også skrives $s(a_{i,j}+b_{i,j})=sa_{i,j}+sb_{i,j}$, i følge den distributive lov. \\
-(g) På samme måde som før tages der udgangspunkt i (i,j)-indgangen i A, $a_{i,j}$. Udtrykket på venstresiden er så $(s+t)a_{i,j}$. Ligesom før, givet den distributive lov, kan der multipliceres ind i parantesen og dermed fås følgende, $(s+t)a_{i,j}=sa_{i,j}+ta_{i,j}$.
-\end{proof}
-
-\begin{eks}
-For at vise eksempler på nogle af ovenstående regneoperationer, tages der udgangspunkt i matricerne $A$ og $B$, samt skalaren $s$, hvor $s(A+B)$ skal findes.
-\begin{align*}
-A= \begin{bmatrix}
-	2 & 3 & 4 \\
-	5 & -2 & 1 	
-\end{bmatrix}, \quad
-B= \begin{bmatrix}
-	1 & 2 & -1 \\
-	-3 & 4 & 0
-\end{bmatrix}, \quad
-s=5
-\end{align*}
-Først udføres regneoperation (a) fra Sætning \ref{stn_regn},
-\begin{align*}
-A+B= \begin{bmatrix}
-	2 & 3 & 4 \\
-	5 & -2 & 1 	
-\end{bmatrix}  
-+ \begin{bmatrix}
-	1 & 2 & -1 \\
-	-3 & 4 & 0
-\end{bmatrix}
-= \begin{bmatrix}
-	3 & 5 & 3 \\
-	2 & 2 & 1
-\end{bmatrix}.
-\end{align*}
-Herfter udføres (f),
-\begin{align*}
-s(A+B)= 5 \times \begin{bmatrix}
-	3 & 5 & 3 \\
-	2 & 2 & 1
-\end{bmatrix}
-= \begin{bmatrix}
-	15 & 25 & 15 \\
-	10 & 10 & 5
-\end{bmatrix}.
-\end{align*}
-\end{eks}
-
-
-\subsection{Matrix produkt}
-Multiplikation af to matricer gøres ikke ved at multiplicere de tilsvarende indgange, som er tilfældet ved multiplikation af vektorer. Et produkt af to matricer defineres herunder. 
-\begin{defn} [Matrix produkt]
-Lad $A$ være en $m \times n$ matrix og $B$ være en $n \times p$ matrix. Da er produktet $A \cdot B$ en $m \times p$ matrix, hvor indgangene er givet ved: 
-
-$$(AB)_{i,j} = \vec{a}_i \cdot \vec{B}_j$$
-
-hvor $\vec{a}_i$ er den $i$'te række i $A$, og $\vec{B}_j$ er den $j$'te søjle i $B$
-\label{def:(matrixprodukt)}
-\end{defn}
-Det er vigtigt, at antallet af søjler i $A$ er det samme som antallet af rækker i $B$. Er det ikke tilfældet, så er matrix produktet ikke defineret. Matrix produktet er oftest ikke kommutativt. Ligningen $AB=BA$ er derfor ikke altid gældende. 
-\begin{eks}
-Nu tages udgangspunkt i to matricer $A$ og $B$. 
-\begin{align*}
-\underset{2 \times 3}{A}= \begin{bmatrix}
-	\bf{1} & \bf{3} & \bf{-2} \\
-	5 & 4 & 0 	
-\end{bmatrix},
-\underset{3 \times 4}{B}= \begin{bmatrix}
-	\bf{2} & 3 & -1 & 3 \\
-	\bf{1} & 4 & 5 & 5\\
-	\bf{1} & 0 & 4 & 2
-\end{bmatrix}  
-\end{align*}
-For at beregne indgang $(1,1)$ benyttes række $1$ i $A$ og søjle $1$ i $B$. 
-$$ab_{1,1}=1\cdot 2+3\cdot 1-2 \cdot 1 = 3$$ 
-De resterende indgange beregnes på samme måde. 
-Matrix produktet af $A$ og $B$ er altså givet ved:
-\begin{align*}
-\underset{2 \times 4}{AB}= \begin{bmatrix}
-	\bf{3} & 15 & 6 & 14 \\
-	14 & 31 & 15 & 35
-\end{bmatrix}  
-\end{align*}
-\end{eks}

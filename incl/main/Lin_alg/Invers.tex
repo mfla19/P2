@@ -16,8 +16,8 @@ Mens at der skal forekomme en pivot indgang i enhver række for, at $f$'s ko-dom
 Det betyder, at der en matrix $A'$ kun vil kunne eksistere, hvis at $A$s RT form er lig identitetsmatricen, og $A$ skal derfor være kvadratisk.
 Et resultat af at $f$ er bijektiv, er at $\vec{x}$ fra Ligning \eqref{lig:A'b}, er entydigt bestemt, derfor må $A'$ også være entydigt bestemt.
 \begin{stn}
-Lad $A$ være en $n \times n $ matrix, hvis der eksistere en matrix $A'$ så $AA'= A'A = I_n$ da er $A'$ entydigt bestemt.
-\label{stn:endtydiginvers}
+Lad $A$ være en $n \times n $ matrix. Hvis der eksistere en matrix $A'$ så $AA'= A'A = I_n$ da er $A'$ entydigt bestemt.
+\label{stn:entydiginvers}
 \end{stn}
 \begin{proof}
 Antag for modstrid at der eksistere to matricer $A'$ og $A^*$ så $A' \neq A^*$, og $A'A= AA' = I_n$ og $A^*A = AA^* = I_n$, da vil
@@ -26,25 +26,25 @@ A' = (A^*A)A' = A^*(AA') = A^*.
 \end{align*}
 Dermed opstår der modstrid, og $A'$ må være entydigt bestemt.
 \end{proof}
-Det betyder at $A'$ kan defineres som den inverse matrice til $A$.
+Det betyder at $A'$ kan defineres som den inverse matrix til $A$.
 \begin{defn}[Invers matrix]
 Lad $A$ og $A'$ være kvadratiske $n \times n$ matricer, hvorom der gælder, at $AA'=A'A=I_n$. 
-Så siges $A$ at være invertibel, og $A'$ udgør den inverse matrix til $A$; $A^{-1}$. 
+Så siges $A$ at være invertibel, og $A'$ udgør den inverse matrix til $A$, betegnet $A^{-1}$. 
 \label{def(inversmatrix)}
 \end{defn}
-Et eksempel på en invertibel matrix er en elementær matrix.
+Et eksempel på en invertibel matrix er en elementærmatrix.
 \begin{lma}
-Lad $E \in \mathds{R}^{n\times n}$ \textbf{?!?} være en elementær matrix, da er $E$ invertibel.
+Lad $E$ være en $n \times n$ elementærmatrix, da er $E$ invertibel.
 \label{lma:Einvertibel}
 \end{lma}
 \begin{proof}
-Af Definition \ref{def:elematrix}, fremgår det, at $E$ er den matrix der forekommer når en række operation $r$ udførers på $I_n$, derfor vil $E^{-1}$ være en inverse rækkeopration af $r$ udført på $I_n$. %Må det være den inverse?? 
-Derfor eksistere $E^{-1}$, hvis et $r^{-1}$ eksistere. 
+Af Definition \ref{def:elematrix}, fremgår det, at $E$ er den matrix der forekommer når en rækkeoperation $r$ udførers på $I_n$. Derfor vil $E^{-1}$ være den rækkeoperation som udligner for rækkeoperationen udført af $E$.
+Derfor eksisterer $E^{-1}$, hvis et $r^{-1}$ eksisterer. 
 Da både multiplikation og addition er invertible i de reelle tal, og det altid er muligt at ombytte to rækker tilbage, vil enhver rækkeoperation have en invers, og $E$ er derfor invertibel.
 \end{proof}
-Derfor må det være muligt at gå fra den RT form for en matrix $A$ tilbage til $A$.
+Derfor må det være muligt at gå fra den RT form for en matrix $A$ og tilbage til $A$.
 \begin{lma}
-Lad $R$ være den reducerede trappe form af $n\times m$ matricen $A$, så eksistere der en invertible matix $P$ så $PA = R$
+Lad $R$ være den reducerede trappeform af $n\times m$ matricen $A$, så eksistere der en invertible matix $P$ så $PA = R$
 \label{lma:PA=R}
 \end{lma}
 \begin{proof}
@@ -81,7 +81,7 @@ I_n & A^{-1}
 Betragt nu en vektor $\vec{x}$ i $\mathds{R}^n$, som opfylder, at $A\vec{x}=\vec{0}$.
 Så fåes det, af Ligning \eqref{lig:A'b}, at $\vec{x}=A^{-1} \vec{0}=\vec{0}$.
 Da løsningen af  $A\vec{x}=\vec{0}$ er $\vec{0}$ må $rang(A)=n$.
-Det betydet, at antallet af pivot-søjler er det samme som antallet af søjler, samt antallet af rækker. 
+Det betyder, at antallet af pivot-søjler er det samme som antallet af søjler, samt antallet af rækker. 
 RT formen af $A$ må derfor være identitetsmatricen. 
 \\%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Lad nu den reducerede trappeform af $A$ være identitetsmatricen.
@@ -93,7 +93,7 @@ A=I_nA=(P^{-1}P)A=P^{-1}(PA)=P^{-1}I_n=P^{-1}
 Da $P$ er invertibel må $P^{-1}$ også være invertibel. 
 Dermed er $A$ invertibel. 
 \\ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-(b) Da $A$ er invertibel, følger det af Sætning \ref{stn:inversmatrix} (a), at RT formen af $A$ er $I_n$, derfor følger det, af Lemma \ref{lma:PA=R}, at der eksisterer en matrix $P$ så $PA = I_n$. 
+(b) Da $A$ er invertibel, følger det af Sætning \ref{stn:inversmatrix} (a), at RT formen af $A$ er $I_n$, derfor følger det af Lemma \ref{lma:PA=R}, at der eksisterer en matrix $P$ så $PA = I_n$. 
 Af Definition \ref{def(inversmatrix)} og Sætning \ref{stn:entydiginvers}, følger det, at $P = A^{-1}$.
 Betragt nu matricen $\rvect{A&I_n}$ da vil
 \begin{align*}

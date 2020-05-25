@@ -41,7 +41,7 @@ b= \begin{bmatrix}
 b_1 \\
 b_2 \\
 \vdots \\
-b_n
+b_m
 \end{bmatrix}
 \end{align*}
 
@@ -53,7 +53,7 @@ Den information, der er nødvendig for at løse et lineært ligningssystem, kan 
 a_{1,1} & a_{1,2} & \dots & a_{1,n} & b_1 \\
 a_{2,1} & a_{2,2} & \dots & a_{2,n} & b_2 \\
 \vdots  &         &       &         & \vdots \\
-a_{m,1} & a_{m,2} & \dots & a_{m,n} & b_n
+a_{m,1} & a_{m,2} & \dots & a_{m,n} & b_m
 \end{array}
 \right]
 \]
@@ -61,7 +61,7 @@ a_{m,1} & a_{m,2} & \dots & a_{m,n} & b_n
 Totalmatricen laves ved at tilføje vektor $\vec{b}$ til koefficientmatricen $A$. Totalmatricen noteres således som $[A \ \vec{b}]$. Den lodrette streg mellem koefficienterne og konstanterne er ikke nødvendig, men kan tilføjes for at vise, at der er tale om en totalmatrix.\\
 
 
-\subsection{Elementære rækkeoperationer}
+\section{Elementære rækkeoperationer}
 Når et lineært ligningssystem skal løses, skal flere trin gennemføres. Først skrives ligningssystemet op som en totalmatrix. Herefter findes matricen på trappeform og dernæst rækkereduceret trappeform ved hjælp af rækkeoperationer. 
 
 \begin{defn}[Elementære rækkeoperationer]
@@ -74,7 +74,7 @@ Der findes 3 elementære rækkeoperationer
 \label{defn_elemen_operation}
 \end{defn}
 
-Enhvert elementær rækkeoperation kan blive udført ved matrix multiplikation. Til dette bruges elementærmatricer.  
+Enhvert elementær rækkeoperation kan blive udført ved matrixmultiplikation. Til dette bruges elementærmatricer.  
 
 \begin{defn}[Elementærmatrix]
 En matrix, $E$, kaldes en \textbf{elementærmatrix} hvis den kan opnåes ved at udføre én elementær rækkeoperation på $I_n$ 
@@ -124,14 +124,14 @@ Det ses altså, at den rækkeoperation, der blev udført på $I_3$ for at få $E
  
 
 
-Målet med elementære rækkeoperationer er, at opnå reduceret trappeform. En ledende indgang i en matrix, er den første indgang i en række der ikke er lig 0. 
+Målet med elementære rækkeoperationer er at opnå reduceret trappeform. En ledende indgang i en matrix, er den første indgang i en række der ikke er lig 0. 
 
 \begin{defn}[Reduceret trappeform (RT form)]
-En matrix siges at være på \textbf{reduceret trappeform} hvis følgende betingelser er opfyldt.
+En matrix siges at være på \textbf{trappeform}, hvis de første 3 betingelser er opfyldte. En matrix siges at være på \textbf{reduceret trappeform} hvis alle betingelserne er opfyldte.
 \begin{enumerate}
 \item Enhver række forskellig fra 0, ligger over enhver nul-række.
-\item Den ledende indgang i en række forskellig fra 0, ligger i en søjle til højre for søjlen med den ledende indgang i rækken ovenfor.
-\item Hvis en søjle indeholder en ledende indgang, vil alle indgange under den ledende i søjlen være lig 0.
+\item Den ledende indgang i en række ligger i en søjle til højre for søjlen med den ledende indgang i rækken ovenfor.
+\item Hvis en søjle indeholder en ledende indgang, vil alle indgange under den ledende indgang i søjlen være lig 0.
 \item Hvis en søjle indeholder en ledende indgang i en hvilken som helst række, skal alle andre indgange i søjlen være $0$.
 \item Den ledende indgang i hver ikke-nul-række skal være $1$.
 \end{enumerate}
@@ -139,7 +139,7 @@ En matrix siges at være på \textbf{reduceret trappeform} hvis følgende beting
 \end{defn}
 Før en række kommer på reduceret trappeform, kommer den først på trappeform. En matrice siges at være på trappeform når de første $3$ betingelser i Definotion \ref{def:reducerettrappeform} er opfyldt. \\
 
-De indgange i matricen, som er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Samtidig siges et ligningssystem at være uløseligt, hvis i der totalmatricen er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere med 0, hvilket ikke er muligt.\\
+De indgange i matricen, som er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Dog siges et ligningssystem at være uløseligt, hvis der i totalmatricen er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere variablene i den givne række med 0, hvilket ikke er muligt.\\
 
 \begin{defn}
 Lad $A$ være en $m \times n$ matrix. 
@@ -195,7 +195,7 @@ Denne matrix reduceres nu ved hjælp af rækkeoperationer til reduceret trappefo
 0 & 0 & 0 & 1 & 2
 \end{bmatrix}.
 \end{align*}
-Nu er matricen på reduceret trappeform. Som det ses, er det ligegyldigt, hvad der står i de søjler, der ikke er pivot-søjler. Dette er en fri variabel og ligningssystemet har derfor uendeligt mange løsninger.\\ 
+Nu er matricen på reduceret trappeform. Variablene for de søjler, der ikke er pivot-søjler kaldes frie variable. Hvis et ligningssystem har frie variable har systemet uendeligt mange løsninger, da de frie variable kan tage vilkårlige værdier.\\
 Nu isoleres alle variable, så en løsning kan findes:
 \begin{align*}
 x_1 &= 12 + 3x_3 \\
@@ -249,10 +249,10 @@ ellers kaldes de \textbf{lineært afhængige}.
 \end{defn}
 Det kan altså siges, at et ligningssystem er lineært uafhængigt, hvis der kun er en løsning, så der ingen frie variable er. Hvis et ligningssystem har frie variable, er der uendeligt mange løsninger og kaldes derfor lineært afhængigt. 
 
-\begin{defn}[Affint lineært uafhængig]
-Lad $\vec{x}_1,..., \vec{x}_{k+1} \in \mathds{R}^n$ for $k \leq n$, da er vektorerne \textbf{affint lineært uafhængige}, hvis 
-$\vec{x}_1- \vec{
-x}_{k+1},...,\vec{x}_k- \vec{x}_{k+1}$ er lineært uafhængige.
-\end{defn}
+%\begin{defn}[Affint lineært uafhængig]
+%Lad $\vec{x}_1,..., \vec{x}_{k+1} \in \mathds{R}^n$ for $k \leq n$, da er vektorerne \textbf{affint lineært uafhængige}, hvis 
+%$\vec{x}_1- \vec{
+%x}_{k+1},...,\vec{x}_k- \vec{x}_{k+1}$ er lineært uafhængige.
+%\end{defn}
 
 
