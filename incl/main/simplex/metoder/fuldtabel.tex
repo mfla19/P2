@@ -1,5 +1,5 @@
 \subsection{Fuld tabel}
-Fuld tabel metoden, er en metode til Simplex. For et standard minimeringsproblem $\vec{c}^T\vec{x}$, med bibetingelserne $A\vec{x} \geq \vec{b}$, kan ved brug af slack-variable omskrives til $A\vec{x}=\vec{b}$. Givet en aktuel basis, $B$, kan ligheden også udtrykkes som  $B^{-1}\vec{b}=B^{-1}A\vec{x}$. Fuld tabel metoden bruger $m \times (n+1)$ matricen $B^{-1}[\vec{b}|A]$.\\
+Fuld tabel metoden, er en metode til Simplex. For et standard minimeringsproblem $\vec{c}^T\vec{x}$, med bibetingelserne $A\vec{x} \geq \vec{b}$, kan ved brug af slack-variable omskrives til $A\vec{x}+\vec{s}=\vec{b}$. Givet en aktuel basis, $B$, kan ligheden også udtrykkes som  $B^{-1}\vec{b}=B^{-1}A\vec{x}$. Fuld tabel metoden bruger $m \times (n+1)$ matricen $B^{-1}[\vec{b}|A]$.\\
 
 \begin{defn}[Simplex Tabel]
 Lad $z=\vec{c}^T\vec{x}$ være en objektfunktion, med lineæret uafhængige bibetingelser for et minimeringsproblem $A\vec{x} \geq \vec{b}$ så er en \textbf{Simplex Tabel}\\
@@ -35,7 +35,7 @@ Søjlen $B^{-1}\vec{b}$ kaldes den nulte søjle, mens den øverste række kaldes
 5.Læg et multiplum af den $l$'te række til alle rækker, således at $u_l$ bliver $1$ og alle andre indgange i pivot søjlen bliver $0$
 6.Gå til trin 2. 
 \end{pro}
-
+For at starte simplex metoden skal der bruges en mulig basisløsning. Hvis problemet er på formen $A\vec{x} \leq \vec{b}$, og $\vec{b} \geq 0$, vil der altid kunne findes en mulig basisløsning. Denne findes ved om omskrive problemet ved hjælp af slack varialbe $A\vec{x} +\vec{s}= \vec{b}$. Vektoren givet ved $[\vec{x},\vec{s}]$, hvor $\vec{x}=\vec{0}$ og $\vec{s}=\vec{b}$ er en mulig basisløsning. 
 \begin{eks}[Fuld Tabel Metoden]
 Betragt det lineære progammeringsproblem. 
 \begin{center}
