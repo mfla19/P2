@@ -1,19 +1,20 @@
 \subsection{Fra span til base}
-Ligesom at en basis kan udvides til at udgøre en basis for et underrum af højere dimension end basens kardinalitet, kan et span reduceres til en basis.
+Ligesom en basis kan udvides til at udgøre en basis for et underrum af højere dimension end basens kardinalitet, kan et span reduceres til en basis.
 \begin{stn}[Fra span til basis]
-Lad $S=\{\vec{v_1},..., \vec{v_K}\} \subseteq \mathds{R}^n$ så $\dim(span(S)) = m$, og $B(1),...,B(m)$ betegne et indeks, da
+Lad $S=\{\vec{v_1},..., \vec{v_K}\} \subseteq \mathds{R}^n$ så $\dim(span(S)) = m$, og $B(1),...,B(m)$ betegne et indeks, da gælder
 \begin{enumerate}[label=\alph*]
 \item $\exists S_m =\{\vec{v_{B(1)}},...,\vec{v_{B(m)}}\}\subseteq S$ så $S_m$ er en base til $span (S)$
 \item $\exists S_{m-k} = \{v_{B(k+1)},...,v_{B(m)}\} \subseteq S\setminus S_k$, for $S_k = \{\vec{v_1},..., \vec{v_k}\} \subseteq S$ og $k \leq m$ så $S_k \cup S_{m-k}$ udgør en basis for $span(S)$.
 \end{enumerate} 
 \label{stn:spantilbasis}
 \end{stn}
-Bemærk at udsagn (a) er et særtilfælde af udsagn (b) med $k=0$, hvor med det kun er nødvendigt at bevise udsagn (b).
+Bemærk, at udsagn (a) er et særtilfælde af udsagn (b) med $k=0$, hvormed det kun er nødvendigt at bevise udsagn (b).
 \begin{proof}
-Antag at der eksistere en vektor $\vec{v}_{B(k+1)} \in S$, som opfylder at $\vec{v}_{B(k+1)} \notin span(S_k)$, dermed kan $S_k$ ikke udgøre en basis for $span(S)$, tilføj derfor $\vec{v}_{B(k+1)}$ til $S_k$, gentag til der ikke eksistere en $\vec{v}_{B(k+1)} \in S$ der er lineært uafhængig af $S_k$. 
-\\Antag nu at der ikke eksistere en vektor $\vec{v}_{B(k+1)} \in S$, som opfylder at $\vec{v}_{B(k+1)} \notin span(S_k)$, hvorfor $span(S) = span(S_k)$, og $\dim{span(S)}=\dim{span(S_k)}= m$.
-Da $S_k$ kun indeholder lineært uafhængige vektorer medfører det at $S_k$ er en basis for $S$.
-\\Da $\dim(span(S)) = m$ og $\dim{span(S_k)}=k$ må det følge af Definition \ref{def:dim}, og Definition \ref{def:basis}, at der skal tilføjes $m-k$ vektorer til $S_k$ for at $S_k$ er en basis til $S$.
+Antag, at der eksisterer en vektor $\vec{v}_{B(k+1)} \in S$, som opfylder, at $\vec{v}_{B(k+1)} \notin span(S_k)$, dermed kan $S_k$ ikke udgøre en basis for $span(S)$. 
+Tilføj derfor $\vec{v}_{B(k+1)}$ til $S_k$, gentag til der ikke eksisterer en $\vec{v}_{B(k+1)} \in S$ der er lineært uafhængig af $S_k$. 
+\\Antag nu, at der ikke eksisterer en vektor $\vec{v}_{B(k+1)} \in S$, som opfylder at $\vec{v}_{B(k+1)} \notin span(S_k)$, hvorfor $span(S) = span(S_k)$, og $\dim{span(S)}=\dim{span(S_k)}= m$.
+Da $S_k$ kun indeholder lineært uafhængige vektorer medfører det, at $S_k$ er en basis for $S$.
+\\Da $\dim(span(S)) = m$ og $\dim{span(S_k)}=k$, må det følge af Definition \ref{def:dim} og Definition \ref{def:basis}, at der skal tilføjes $m-k$ vektorer til $S_k$, for at $S_k$ er en basis til $S$.
 \end{proof} 
 Dermed kan en mængde af vektorer altid reduceres eller udvides til at udgøre en basis for et underrum.
 
