@@ -1,4 +1,4 @@
-\section{Optimale løsning}
+\section{Eksistens af en optimale løsning}
 \label{sec:eksistens}
 Hvis det lineære programmerings problem er konsistent, betyder det at der er en løsning til det, men bare fordi der er en løsning betyder det ikke at der er en optimal løsning.
 Hvis der skal eksistere en optimal løsning må løsningsmængden ikke indeholde en linje.
@@ -8,7 +8,7 @@ Lad $P\subseteq \mathds{R}^n $ være en polyede, da indeholder $P$ en \textbf{li
 \end{defn}
 
 \begin{defn} [Linje v2]
-Lad $P\subseteq \mathds{R}^n $ være en polyede og $\vec{x} \in P$, da indeholder $P$ ikke en \textbf{Positiv halvlinje}, hvis $\forall \vec{d} \in \mathds{R}^n \nexists \lambda \in \mathds{R}_+ : \vec{x}+\lambda \vec{d} \in P$
+Lad $P\subseteq \mathds{R}^n $ være en polyede og $\vec{x} \in P$, da indeholder $P$ ikke en \textbf{Positiv halvlinje}, hvis $\forall \vec{d} \in \mathds{R}^n \nexists \lambda \in \mathds{R}_+ : \vec{x}+\lambda \vec{d} \in P$, og en linje hvis $\forall \vec{d} \in \mathds{R}^n \nexists \lambda \in \mathds{R} : \vec{x}+\lambda \vec{d} \in P$.
 \end{defn}
 
 Det betyder, at der til en løsning i polyeden kan lægges en retningsvektor til, denne retningsvektor bliver skaleret, så løsningen nu ligger et andet sted. Hvis der findes en retning, hvor der, selvom $\lambda$ er vilkårligt stor, resultere i at løsning stadig er i polyeden, så siges prolyede at have en linje.
@@ -31,7 +31,7 @@ Antag, at $\vec{x} \in \mathcal{F}$ ikke er en mulig basisløsning, og lad $I =\
 Da $\vec{x}$ ikke er en mulig basisløsning, må $span(\{\vec{a_i}|i\in I\})$ være et ægte underrum til $\mathds{R}^n$, hvormed at der må eksistere en vektor $\vec{d} \in \mathds{R}^n$, så $\vec{a_i}^T\vec{d}=0$ for $i \in I$.
 Da må $\vec{a_i}^T(\vec{x}\pm \vec{d})= \vec{a_i}^T\vec{x}=b_i$.
 Vælg nu fortegn på $\vec{d}$ så $\vec{c}^T\vec{d}\leq 0$, da må $\vec{c}^T(\vec{x}+\lambda\vec{d}) \leq \vec{c}^T\vec{x}$ for en vilkårlig skalar $\lambda > 0$.
-Da løsningsmængden ikke indeholder en linje, vil der være en øvre grænse for $\lambda$ før $\vec{x}+\lambda\vec{d} \notin \mathcal{F}$, svarende til $\lambda$et, der opfylder $\vec{a_j}^T(\vec{x}+\lambda\vec{d})=b_j$, hvor $\vec{a_j} \not in \{\vec{a_i}|i\in I\}$ er den første bibetingelse der bliver aktiv, se Figur \ref{fig:eksistens}.
+Da løsningsmængden ikke indeholder en linje, vil der være en øvre grænse for $\lambda$ før $\vec{x}+\lambda\vec{d} \notin \mathcal{F}$, svarende til $\lambda$et, der opfylder $\vec{a_j}^T(\vec{x}+\lambda\vec{d})=b_j$, hvor $\vec{a_j} \notin \{\vec{a_i}|i\in I\}$ er den første bibetingelse der bliver aktiv, se Figur \ref{fig:eksistens}.
 Da $\vec{a_i}^T\vec{d}=0$ og $\vec{a_j}^T\vec{d} \neq 0$ medfører det at $\vec{a_i}$ og $\vec{a_j}$  er lineært uafhængige. 
 Derfor kan $j$ tilføjes til $I$.
 Gentag til at $|I|=n$.

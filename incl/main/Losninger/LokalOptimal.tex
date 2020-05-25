@@ -37,11 +37,11 @@ f(\vec{x}) \leq f(\lambda \vec{x}^* + (1-\lambda)\vec{x}).
 Da $f$ er lineær følger det af Definition \ref{def:linfunk}, at 
 \begin{align*}
 f(\vec{x}) \leq f(\lambda \vec{x}^* + (1-\lambda)\vec{x}) &= \lambda f(\vec{x}^*) + (1-\lambda)f(\vec{x}) \qquad \Rightarrow
-\\ f(\vec{x}) - f(\vec{x}) &=\lambda f(\vec{x}^*) + (1-\lambda)f(\vec{x}) \qquad \Rightarrow
-\\ 0 & = \lambda( f(\vec{x}^*) - f(\vec{x})),
+\\ f(\vec{x}) - f(\vec{x}) &\leq \lambda f(\vec{x}^*) + f(\vec{x})-\lambda f(\vec{x}) - f(\vec{x}) \qquad \Rightarrow
+\\ 0 & \leq \lambda( f(\vec{x}^*) - f(\vec{x})),
 \end{align*}
 hvis $\lambda$ er lille nok.
-Da $ \lambda$ kan være forskellig fra nul må det medføre, at $f((\vec{x}^*) - f(\vec{x}) = 0$, hvorfor $f(\vec{x}^*) =f(\vec{x})$. 
+Da $ \lambda$ kan være forskellig fra nul må det medføre, at $f(\vec{x}^*) - f(\vec{x}) = 0$, hvorfor $f(\vec{x}^*) =f(\vec{x})$. 
 Det kan derfor konkluderes, hvis $\vec{x}$ er en lokal optimal løsning, så er $\vec{x}$ en optimal løsning.
 \end{proof}
 Løsningsmængden  for et standard problem, vil altid være konveks.

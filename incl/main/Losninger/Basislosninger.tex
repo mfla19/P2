@@ -17,7 +17,7 @@ Lad $\vec{x}^* \in \mathds{R}^n$ og $I = \{i | \vec{a_i}^T \vec{x}^* = b_i\}$ v�
 \begin{enumerate}[label=(\alph*)]
 \item Mængden $R_a =\{\vec{a_i}| i\in I\}$ indeholder vektorer, hvoraf $n$ af dem er lineært uafhængige.
 \item Spannet $span(R_a) = \mathds{R}^n$.
-\item Ligningssystemet $\vec{a_i}^T \vec{x}^* = b_i$, for $i \in I$ har en unik løsning.
+\item Ligningssystemet $\vec{a_i}^T \vec{x}^* = b_i$, for $i \in I$ har en entydig løsning.
 \end{enumerate}
 \label{stn:uniklosning}
 \end{stn} %Ved ikke: Bør det siges at $\vec{a_i}$ repræcentere en række, eller er det underforstået i rapporten da den altid gør det?
@@ -38,19 +38,19 @@ Nu hvor aktive betingelser og lineært uafhængige rækker er definere, kan basi
 Lad $P$ være et polyeder dannet af lineære bibetingelser, og lad $\vec{x}^*\in \mathds{R}^n$. Da er $\vec{x}^*$ en \textbf{basisløsning}, hvis
 \begin{enumerate}[label=(\alph*)]
 \item Alle lighedskrav er aktive
-\item Der er $n$ lineært uafhængige aktive betingelser
+\item Af de aktive betingelser er $n$ lineært uafhængige
 \end{enumerate}
 og en \textbf{mulig basisløsning}, hvis
 \begin{enumerate}[label=(\alph*)]
 \setcounter{enumi}{2}
-\item $\vec{x}^*$ opfylder alle krav.
+\item hvis $\vec{x}^* \in P$ er en basisløsning.
 \end{enumerate}
 \label{def:basislosning}
 \end{defn}
-Det vil sige at en basisløsning ligger ikke inden for løsningsmængden, da der kun er $n$ krav opfyldt, der vil derfor være mindst $1$ krav der ikke er opfyldt og ud fra dette vil problemet ikke være løst.
-
+Det vil sige at en basisløsning ikke nødvendigvis ligger ikke i løsningsmængden, da skæringen mellem de $n$ lineært uafhængige krav ikke pr. Definition \ref{def:basislosning} behøver at ligge i løsningsmængden, og en mulig basisløsning er dermed det særtilfælde af basisløsninger som tilhører løsnings mængden.
+En konsekvens af at en basisløsning altid skal have $n$ lineært uafhængige aktive betingelser er, i følge Sætning \ref{stn:uniklosning}, er at basisløsningen er en entydig løsning til ledningssystemet af de $n$ aktive bibetingelser.
 %der skal måske lige laves en merge her
-Enhver bibetingelse udspænder et rum, for hvilket betingelsen er opfyldt. Skæringen, af de aktive betingelser, danner derved et rum, som er fællesmængden af betingelsernes udspændte rum. Skæringen, af en mængde af aktive betingelser, svarer derved til den mulige mængde af disse betingelser. Dog gælder det for basisløsninger pr. Definition \ref{def:basislosning}, at der for en basisløsning $\vec{x}$ skal være $n$ lineært uafhængige aktive betingelser, hvorved en basisløsningen er en unik vektor, hvilket er bevist igennem Sætning \ref{stn:uniklosning}. %Ved ikke, er en vektor og et punkt det samme?
+%Enhver bibetingelse udspænder et rum, for hvilket betingelsen er opfyldt. Skæringen, af de aktive betingelser, danner derved et rum, som er fællesmængden af betingelsernes udspændte rum. Skæringen, af en mængde af aktive betingelser, svarer derved til den mulige mængde af disse betingelser. Dog gælder det for basisløsninger pr. Definition \ref{def:basislosning}, at der for en basisløsning $\vec{x}$ skal være $n$ lineært uafhængige aktive betingelser, hvorved en basisløsningen er en unik vektor, hvilket er bevist igennem Sætning \ref{stn:uniklosning}. %Ved ikke, er en vektor og et punkt det samme?
 
 \begin{kor}[Endelig mængde af basisløsninger]
 Givet en endelig mængde af bibetingelser, vil der kun eksistere en endelig mængde af basisløsninger og derved også kun en endelig mængde mulige basisløsninger.
@@ -61,6 +61,8 @@ Givet en endelig mængde af bibetingelser, vil der kun eksistere en endelig mæn
 Betragt et lineært ligningssystem med $m$ uligheder og løsningsvektorer på formen $\vec{x} \in \mathds{R}^n$, hvor m er et endeligt tal.
 	Betragt da systemet af $n$ aktive uafhængige lineære uligheder udvalgt af de $m$ uligheder. Da vil dette system ifølge Sætning \ref{stn:uniklosning} kun have en løsning, og denne udvælgelse af uligheder giver derved kun en basisløsning. Da der kun er en endelig mængde af muligheder for at udtrække $n$ af $m$ uligheder på, vil der netop også kun være en endelig mængde af basisløsninger. Da mængden af mulige basisløsninger er en delmængde af mængden af basisløsninger, vil der også kun være en endelig mængde af mulige basisløsninger.
 \end{proof}
+
+Det at en basisløsning er en entydig løsning til ligningssystemet af dens $n$ lineært uafhængige bibetingelser kan bruges til at finde en procedure til at finde basisløsninger.
 
 \begin{stn}[Krav til basisløsninger]
 Lad $A\vec{x}=\vec{b}$ og $\vec{x}\geq 0$, hvor $A$ er en $m\times n$ matrix med lineært uafhængige rækker. Da er $\vec{x}^*\in \mathds{R}^n$ en basisløsning hvis og kun hvis $A\vec{x}^*=b, \vec{x}^* \geq 0$, og der eksisterer indekser $B(1), ..., B(m)$ således, at
@@ -99,15 +101,25 @@ Vælg $m$ lineært uafhængige koloner $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$
 Lad $x_i=0 \,\forall i\neq B(1),\dots,B(m)$
 Løs $A\vec{x}=\vec{b}$ for de ubekendte $x_{B(1)},\dots x_{B(m)}$
 \end{pro}
-En Basis løsning lavet med denne procedure, så længde den ikke er negativ, kaldes den for en mulig basisløsning. Og fordi en mulig basisløsning er en basisløsning, så kan en mulig basisløsning findes, ved at lave basisløsninger.\\
-Hvis $\vec{x}^*$ er en basisløsning, kaldes indgangene $x^*_{B(1)},\dots ,x^*_{B(m)}$ for basis variabler, hvor $x_i=0 \,\forall i\neq B(1),\dots,B(m)$ kaldes for ikke-basis variabler.\\ %måske et andet ord
-Søjlerne $A_{B(1)},\dots ,A_{B(m)}$ kaldes for basis søjlerne og da de er lineært uafhængige, så danne de en basis for $\mathds{R}^m$\\
-To baser kan være forskellige, men de vil blive betragtet som værende to forskellige mængder $\{B(1),\dots,B(m)\}$ af basis indekser, hvis disse to mængde består af de samme basis indekser, så vil de blive betragtet som værende samme basis.\\
-Hvis søjlerne $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$, bliver sat ved siden af hinanden, så der dannes $m\times m$ matrixen $B$, som kaldes en basis matrix. ligeledes dannes vektoren $\vec{x}_{B}$ bestående af basis variablerne. Basis variablerne er bestemt ved at løse ligningen $B\vec{x}_B=\vec{b}$ således at en unik løsning er givet ved $\vec{x}_B=B^{-1}\vec{b}$
-\begin{defn}
-Betragt en $m\times m$ basis matrix $B$ dannet af lineært uafhængige søjler fra $A$ i $A\vec{x}=\vec{b}$
+Bemærk at proceduren indirekte kan bruges til at finde mulige basisløsninger, da de er et særtilfælde af basisløsninger.\\
+%En Basis løsning lavet med denne procedure, så længde den ikke er negativ, kaldes den for en mulig basisløsning. Og fordi en mulig basisløsning er en basisløsning, så kan en mulig basisløsning findes, ved at lave basisløsninger.\\
 
+Hvis $\vec{x}$ er en basisløsning, kaldes indgangene $x_{B(1)},\dots ,x_{B(m)}$ for basis variable, mens $x_i \,\forall i\neq B(1),\dots,B(m)$ kaldes for ikke-basis variabler. Mens søjlerne $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$ udgør en basis for $\mathds{R}^m$ ifølge Sætning \ref{stn:uniklosning}.
+\begin{defn}
+Lad $\vec{x}$ en basisløsning så $x_i = 0$ for alle $i \notin I_B$, da er $B = [\vec{A_i}: i \in I_B]$ \textbf{basismatricen} knyttet til basisløsningen. 
+Og ved $\vec{x}_B$ forstås løsningen til ligningsstemmet $B\vec{x}_B =\vec{b}$.
 \end{defn}
+Bemærk at da $B$ består af $m$ lineært uahængige rækker og er en $m\times m$ matrix følger det af Sætning \ref{stn:inversmatrix}, at $B^{-1}$ eksistere. 
+
+
+%\\ %måske et andet ord
+%Søjlerne $A_{B(1)},\dots ,A_{B(m)}$ kaldes for basis søjlerne og da de er lineært uafhængige, så danne de en basis for $\mathds{R}^m$\\
+%To baser kan være forskellige, men de vil blive betragtet som værende to forskellige mængder $\{B(1),\dots,B(m)\}$ af basis indekser, hvis disse to mængde består af de samme basis indekser, så vil de blive betragtet som værende samme basis.\\
+%Hvis søjlerne $\vec{A}_{B(1)},\dots,\vec{A}_{B(m)}$, bliver sat ved siden af hinanden, så der dannes $m\times m$ matrixen $B$, som kaldes en basis matrix. ligeledes dannes vektoren $\vec{x}_{B}$ bestående af basis variablerne. Basis variablerne er bestemt ved at løse ligningen $B\vec{x}_B=\vec{b}$ således at en unik løsning er givet ved $\vec{x}_B=B^{-1}\vec{b}$
+%\begin{defn}
+%Betragt en $m\times m$ basis matrix $B$ dannet af lineært uafhængige søjler fra $A$ i $A\vec{x}=\vec{b}$
+%
+%\end{defn}
 
 \begin{comment}
 Der mangler bare generelt bindetekst mellem sætninger, fra at korollar 6.12 skal introduceres til at kapitlet skal afsluttes og føres videre til naboløsninger
