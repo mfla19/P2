@@ -1,6 +1,6 @@
 \section{Span og basis for en matrix}
 Til sidst gennemgås, hvad der forståes ved spannet af en matrix.
-Her er enten tale om spannet af matricens søjler eller rækker.
+Her er enten tale om spannet af matricens søjler eller dens rækker.
 \begin{stn}[Span af $\mathds{R}^n$]
 Lad $A$ være en $m\times n$ matrix og $S_A= \{\vec{A_j}| \vec{ A_j}\in A\}$, da er følgende udsagn ækvivalente:
 \begin{enumerate}[label=\alph*]
@@ -11,38 +11,41 @@ Lad $A$ være en $m\times n$ matrix og $S_A= \{\vec{A_j}| \vec{ A_j}\in A\}$, da
 \end{stn}
 \begin{proof}
 Først vises (a) $\Leftrightarrow$ (b):
-Lad $span(S_A) = \mathds{R}^m$ så følger det af Definition \ref{def:span} at $A\vec{x}= \vec{b}$ har en løsning for ethvert $\vec{b} \in \mathds{R}^m$.
-På samme måde hvis $A\vec{x}= \vec{b}$ har en løsning for ethvert $\vec{b} \in \mathds{R}^m$, medfører det at $span(S_A) = \mathds{R}^m$. 
+Lad $span(S_A) = \mathds{R}^m$, så følger det af Definition \ref{def:span}, at $A\vec{x}= \vec{b}$ har en løsning for enhver $\vec{b} \in \mathds{R}^m$.
+På samme måde, hvis $A\vec{x}= \vec{b}$ har en løsning for enhver $\vec{b} \in \mathds{R}^m$, medfører det, at $span(S_A) = \mathds{R}^m$. 
 \\(b) $\Rightarrow$ (c):
-Antag for modstrid at $rang(A) = m-1$, da indeholder $A$ en nulrække på RT form. 
-Lad denne række være $\vec{a_i}^T = \vec{0}$, da vil $A\vec{x} = \vec{b}$ kun have en løsning hvis $b_i=0$, hvor $b_i$ er den $i$te indgang i $\vec{b}$, da $b_i = \vec{a_i}^T \vec{x} = \vec{0} \vec{x} = 0$. 
-Derfor er der ikke en løsning til ethvert $\vec{b} \in \mathds{R}^m$, hvorfor der er opstået modstrid.
+Antag for modstrid, at $rang(A) = m-1$, da indeholder $A$ en nulrække på RT form. 
+Lad denne række være $\vec{a_i}^T = \vec{0}$, da vil $A\vec{x} = \vec{b}$ kun have en løsning, hvis $b_i=0$, hvor $b_i$ er den $i$'te indgang i $\vec{b}$, da $b_i = \vec{a_i}^T \vec{x} = \vec{0} \vec{x} = 0$. 
+Derfor er der ikke en løsning til enhver $\vec{b} \in \mathds{R}^m$, hvorfor der er opstået modstrid.
 \\(c) $\Rightarrow$ (b): 
-Betragt total matricen $[A \vec{b}]$, da $rang(A) = m$, er der en pivot-indgang i hver række. 
-Hvilket medføre, at totalmatricen ikke kan indeholde en række på formen $[\vec{0}^T, b_i]$, hvor $b_i \neq 0$, derfor må der være en løsning til ligningsstemmet $A\vec{x} = \vec{b}$.
-Da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$te indgang i den $i$te række, og $k$ er en skalar.
-Da et hvert tal kan udtrykkes som produktet af to realle tal, må der altid være en løsning til $A\vec{x}=\vec{b}$.
+Betragt totalmatricen $[A \vec{b}]$. 
+Da $rang(A) = m$, er der en pivot-indgang i hver række,
+hvilket medfører, at totalmatricen ikke kan indeholde en række på formen $[\vec{0}^T, b_i]$, hvor $b_i \neq 0$.
+Der må derfor være en løsning til ligningsstemmet $A\vec{x} = \vec{b}$, da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$'te indgang i den $i$'te række, og $k$ er en skalar.
+Da ethvert tal kan udtrykkes som produktet af to reelle tal, må der altid være en løsning til $A\vec{x}=\vec{b}$.
 \end{proof}
-Underrummet udspændt af søjlerne i $A$ kaldes for søjlerummet af $A$, mens rækkerummet af $A$ er udspændt af $A$s rækker.
+Underrummet udspændt af søjlerne i $A$, kaldes for søjlerummet af $A$, mens rækkerummet af $A$ er udspændt af $A$s rækker.
 \begin{defn}[Søjlerum og Rækkerum]
 Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\})$, mens \textbf{rækkerummet} af $A$ er $Row A = span(\{\vec{a_i}|i=1,...,m\})$.
 \label{def:sojlerum}
 \end{defn} 
-Det betyder at de lineært uafhængige søjler og rækker vil udgøre en basis for henholdsvis søjlerummet og rækkerummet, hvilket er de rækker og søjler med pivot indgang. 
+Det betyder, at de lineært uafhængige søjler og rækker vil udgøre en basis for henholdsvis søjlerummet og rækkerummet, hvilket er de rækker og søjler med en pivot indgang. 
 De næste to resultater vil kun blive vist for søjlerummet, da de er ækvivalente til rækkerummet og det samme gælder for deres beviser.
 \begin{kor}
-Lad $A$ være en $n \times m$ matrix da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
+Lad $A$ være en $n \times m$ matrix, da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
 \label{kor:pivotsojle}
 \end{kor}
 \begin{proof}
-Antag uden at miste generealitet at de først $k$ søjler i $A$ har en pivot indgang, da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
+Antag uden at miste generalitet, at de først $k$ søjler i $A$ har en pivot indgang.
+Da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
 Det følger derfor af Sætning \ref{stn:spantilbasis} at $Col A = span(\{A_j| j=1,...,k\})$.
 \end{proof}
-Det betyder at dimensionen af søjlerummet og rækkerummet er lig antallet af pivotindgange i matricen, hvilket pr defintion er rangen af matricen.
+Dette betyder, at dimensionen af søjlerummet og rækkerummet er lig antallet af pivotindgange i matricen, hvilket per defintion er rangen af matricen.
 \begin{kor}
-Lad $A$ være en $n\times m $ matrix da er $\dim{col A} = rank (A)$
+Lad $A$ være en $n\times m $ matrix, da er $\dim{col A} = rank (A)$
 \end{kor}
 \begin{proof}
-Af Korolar \ref{kor:pivotsojle} følger at søjlerne i $A$ med pivot indgang udgør en base for $Col A$, da antallet af søjler med pivot indgang er lig rangen af $A$ må $\dim{Col A} = rank (A)$ i følge Definition \ref{def:dim}.
+Af Korolar \ref{kor:pivotsojle} følger det, at søjlerne med pivot indgang i $A$, udgør en base for $Col A$. 
+Da antallet af søjler med pivot indgang er lig rangen af $A$, må $\dim{Col A} = rank (A)$ ifølge Definition \ref{def:dim}.
 \end{proof}
-Dermed er spannet af en matrix, spannet af vektorerne der svare til enten matricens rækker eller søjler.
+Dermed er spannet af en matrix, spannet af vektorerne der svarer til enten matricens rækker eller søjler.
