@@ -17,19 +17,17 @@ hvor $x_{n+i}$ er en slack variable.
 \begin{proof}
 Punkt 1: gælder da der kan omskrives mellem de to ligheder ved blot at multiplicere med -1.\\
 Punkt 2: En lighedsbetingelse kan omskrives til en mindreendbetingelse og en størreendbetingelse, da enhver vektor $\vec{x}$ som overholder lighedsbetingelsen nødvendigvis også skal overholde begge ulighedsbetingelser. Enhver vektor som overholder begge ulighedsbetingelser vil derved også overholde lighedsbetingelsen, mens en vektor som højest overholder en af ulighedsbetingelserne ikke kan overholde lighedsbetingelsen.\\
-Punkt 3: For enhver mindreendbetingelse kan man indføre en positivt begrænset slackvariabel som er lig $x_{n+i}  = b_i - \vec{a}_i^T \vec{x}$. Da variablen er positivt begrænset vil $\vec{a}_i^T \vec{x}$ nødvendigvis værre mindre end eller lig $\vec{a}_i^T \vec{x}$ $b_i$, hvilket derved danner samme betingelse som mindreendbetingelsen.\\
+Punkt 3: For enhver mindreendbetingelse kan man indføre en positivt begrænset slackvariabel som er lig $x_{n+i}  = b_i - \vec{a}_i^T \vec{x}$. Da variablen er positivt begrænset vil $\vec{a}_i^T \vec{x}$ nødvendigvis værre mindre end eller lig $b_i$, hvilket derved danner samme betingelse som mindreendbetingelsen.\\
 punkt 4: tilsvarende punkt 3, hvor $x_{n+i}$ har koefficient $-1$.
 \end{proof}
 
-Ethvert lineært programmeringsproblem kan således omskrives, så det står på standardform. 
-I punkt $3$ og $4$ i Sætning \ref{stn:omskr_ligulig} omskrives der fra mindreend og størreend uligheder til ligheder ved indførslen af en ikke-negativ \textbf{slack-variabel}, der udgør forskellen mellem $\vec{a}_i^T\vec{x}$ og $b_i$ i uligheden. Slack-variablen indgår kun i denne række af koefficientmatricen og får koefficient $1$ for maksimeringsproblemer og $-1$ for minimeringsproblemer, afhængigt af uligheden i bibetingelsen. \\
+%Ethvert lineært programmeringsproblem kan således omskrives, så det står på standardform. 
+%I punkt $3$ og $4$ i Sætning \ref{stn:omskr_ligulig} omskrives der fra mindreend og størreend uligheder til ligheder ved indførslen af en ikke-negativ slack-variabel, der udgør forskellen mellem $\vec{a}_i^T\vec{x}$ og $b_i$ i uligheden. Slack-variablen indgår kun i denne række af koefficientmatricen og får koefficient $1$ for maksimeringsproblemer og $-1$ for minimeringsproblemer, afhængigt af uligheden i bibetingelsen. \\
 
-Dermed kan bibetingelserne skrives som $A\vec{x}\geq \vec{b}$, hvor $\vec{a_i}$ udgør den $i$'te række i $A$ og $b_i$ er den $i$'te indgang i $\vec{b}$.
+Dermed kan bibetingelserne skrives som $A\vec{x}\geq \vec{b}$, hvor $\vec{a}_i$ udgør den $i$'te række i $A$ og $b_i$ er den $i$'te indgang i $\vec{b}$.
 Bemærk, at positivitetsbetingelsen ikke skrives med i ligningssystemet, og i stedet er det som oftest underforstået, at enhver variabel skal være ikke-negativ.
-For at det skal gøre sig gældende, skal enhver fri variabel omskrives, så de er betinget af en positivitetsbetingelse.
-\begin{stn}
-Lad $x_i$ være en fri variabel, da er $x_i = x_{n+i}-x_{n+i+1}$, hvor $x_{n+i},x_{n+i+1}\geq 0$.
-\end{stn}
+Hvis problemet indeholder en variabel $x_i$, som kan tage negativ værdi, kan to nye frie variable $x_{n+i}, x_{n+i+1} \geq 0$ introduceres.
+Hvorefter $x_i$ erstattes med $x_i = x_{n+i}-x_{n+i+1}$, da ethvert tal kan skrives som differancen af to ikke negative tal. 
 %muligvis noget bindende tekst her
 
 

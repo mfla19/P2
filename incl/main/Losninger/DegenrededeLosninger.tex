@@ -1,14 +1,14 @@
 \subsection{Degenererede basisløsninger}
 En basisløsning skal have $n$ aktive lineært uafhængige bibetingelser i følge Definition \ref{def:basislosning} (b), det udelukker ikke at en basisløsning kan have flere aktive krav, hvis nogle af kravende er lineært afhængige. 
 \begin{defn}[Degenereret basisløsning]
-En basisløsning $\vec{x}\in \mathds{R}^n$ siges at være en \textbf{degenereret basisløsning}, hvis basisløsningen har mere en $n$ aktive betingelser.
+En basisløsning $\vec{x}\in \mathds{R}^n$ siges at være en \textbf{degenereret basisløsning}, hvis basisløsningen har mere en $n$ aktive bibetingelser.
 \end{defn}
-Det vil sige, at for $\vec{x}\in \mathds{R}^2$, vil $\vec{x}$ være degenereret, hvis $\vec{x}$ ligger på et skæringspunkt af $3$ betingelser.
+Det vil sige, at for $\vec{x}\in \mathds{R}^2$, vil $\vec{x}$ være degenereret, hvis $\vec{x}$ ligger på et skæringspunkt af $3$ bibetingelser.
 Af Sætning \ref{stn:PQ} følger det, at antagelsen om, at alle bibetingelser er lineært uafhængige ikke ændre løsningsmængden, derfor vil denne rapport kun meget overfladisk nævne degenererede løsninger. 
-Men da degenerede løsninger kan give nogle problematikker senere i Simplex-metoden, så den terminerer for tidligt, defineres degenereret basisløsninger, for at vise en forståelse for emnet eksistens.
-Helt generelt gælder der for basisløsninger til en polyede på standard form med ligheder, at der altid vil $m$ lighedsbetingelser  aktive. Derfor må, det at have mere end $n$ aktive betingelser, være at mere end $n-m$ variabler er $0$
+Men da degenerede løsninger kan give nogle problematikker senere i Simplex metoden, så den terminerer for tidligt, defineres degenererede basisløsninger, for at vise en forståelse for emnets eksistens.
+Helt generelt gælder der for basisløsninger til et polyeder på standard form med ligheder, at der altid vil $m$ lighedsbetingelser  aktive. Derfor må, det at have mere end $n$ aktive bibetingelser, betyde at mere end $n-m$ variabler er $0$
 \begin{defn}
-En polyede på standard form $P =\{ \vec{x} \in \mathds{R}^n | A \vec{x} = \vec{b}, \vec{b}\in \mathds{R}^m\}$ og lad $\vec{x}$ være en basisløsning. Lad $m$ være mængden af rækker i $A$. Så er $\vec{x}$ en degenereret basisløsning, hvis mere end $n-m$ komponenter af $\vec{x}$ er $0$.
+Lad $P =\{ \vec{x} \in \mathds{R}^n \mid A \vec{x} = \vec{b}, \, \vec{b}\in \mathds{R}^m\}$ være et polyeder på standard form med ligheder, og lad $\vec{x}$ være en basisløsning. Lad $m$ være mængden af rækker i $A$. Så er $\vec{x}$ en degenereret basisløsning, hvis mere end $n-m$ komponenter af $\vec{x}$ er $0$.
 \end{defn}
 
 
