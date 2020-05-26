@@ -7,15 +7,15 @@ Lad $\vec{x} \in P$. En vektor $\vec{d}$ er en \textbf{mulig retning} fra $\vec{
 
 Derfor skal den mulige retning introducere en ny basisvariabel til løsningen.
 
-\begin{lma}[Den $j$te retningsvektor]
-Lad $\vec{x} \in P$ være en basisløsning med basis matrix $B$, og lad $\vec{d}_j  \in \mathds{R}_n$ være en mulig retningsvektor, så $\vec{x}' = \vec{x}+ \theta\vec{d}_j$ introducerer basisvariablen $x_j'$ og kun $x_j'$ til løsningen, for en skalar $\theta$.
-Da vil $\vec{d}_j$ være givet; så $\vec{d}_B = -B^{-1}\vec{A}_j$, $d_j = 1$ og $d_i = 0$ for $i \neq j$ og $ i,j \notin I_B$.
+\begin{lma}[Den $j$'te retningsvektor]
+Lad $\vec{x} \in P$ være en basisløsning med basis matrix $B$, og lad $\vec{d}_j  \in \mathds{R}^n$ være en mulig retningsvektor, så $\vec{x}' = \vec{x}+ \theta\vec{d}_j$ introducerer basisvariablen $x_j'$ og kun $x_j'$ til løsningen, for en skalar $\theta$.
+Da vil $\vec{d}_j$ være givet; så $\vec{d}_{j,B} = -B^{-1}\vec{A}_j$, $d_{j,j} = 1$ og $d_{i,j} = 0$ for $i \neq j$ og $ i,j \notin I_B$.
 \label{lma:retningsvektor}
 \end{lma}
 
 \begin{proof}
-Hvis $\vec{x}'$ skal introducere $x_j'$ til løsningen skal $x_j + \theta d_j > 0$. 
-Da $x_j = 0$ ifølge antagelsen om, at $\vec{x}$ er en basisløsning, og $\theta$ er en skalar, kan $d_j$ sættes lig $1$ uden at miste genereiltet. 
+Hvis $\vec{x}'$ skal introducere $x_j'$ til løsningen skal $x_j + \theta d_{j,j} > 0$. 
+Da $x_j = 0$ ifølge antagelsen om, at $\vec{x}$ er en basisløsning, og $\theta$ er en skalar, kan $d_j$ sættes lig $1$ uden at miste generalitet. 
 På samme måde må $d_i = 0$ for $i \neq j$ og $i \notin I_B$, da $x_i' = 0$, for ikke at introducere $x_i'$ til løsningen.
 Da $\vec{d}$ er en mulig retningsvektor, vil $\vec{x}' \in P$, hvormed at $A\vec{x}' = A\vec{x}+ \theta A\vec{d}_j = \vec{b}$. 
 Fordi $A\vec{x} = \vec{b}$, medfører det, at $A\vec{d}_j = \vec{0}$.
