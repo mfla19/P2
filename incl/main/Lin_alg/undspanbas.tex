@@ -1,11 +1,12 @@
-Rummet $\mathds{R}^n$ er mængden af vektorer af dimension $n$, og på samme måde som med mængder generelt, er det muligt at betragte delmængder af $\mathds{R}^n$.
+\newline
+Rummet $\mathds{R}^n$ er mængden af vektorer af dimension $n$, altså mængden af vektorer med $n$ indgange. På samme måde som med mængder generelt, er det muligt at betragte delmængder af $\mathds{R}^n$.
 Et special tilfælde af disse delmængder er et underrum.
 \begin{defn}[Underrum]
 Lad $W$ være en mængde af vektorer $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$, da er $W$  \textbf{underrum} til $\mathds{R}^n$, hvis:
-\begin{enumerate}[label=\alph*]
+\begin{enumerate}[label=(\alph*)]
 \item $\vec{0} \in W$
 \item $\vec{u}+\vec{v} \in W \quad \forall \vec{u}, \vec{v} \in W$
-\item $c \cdot \vec{v} \in W \quad \forall \vec{v} \in W, \forall c \in \mathds{R}$
+\item $c \cdot \vec{v} \in W \quad \forall \vec{v} \in W, \quad \forall c \in \mathds{R}$
 \end{enumerate}
 \label{def:underrum}
 \end{defn}
@@ -14,7 +15,7 @@ En anden delmængde er et span.
 Lad $S=\{\vec{v_1},...,\vec{v_k}\}$ være en ikke tom mængde af vektorer, hvor $\vec{v_i} \in \mathds{R}^n$ for $i = 1,..,k$. 
 Da er \textbf{spannet af $S$} mængden af vektorer
 \begin{align*}
-span(S) = \{\vec{u} \mid \vec{u}=\sum_{i=0}^k c_i \vec{v_i}, \quad \vec{v_i} \in S, \quad c_i \in \mathds{R}\}.
+span(S) = \{\vec{u} \mid \vec{u}=\sum_{i=1}^k c_i \vec{v_i}, \quad \vec{v_i} \in S, \quad c_i \in \mathds{R}\}.
 \end{align*} 
 og $S$ siges at udspænde dets span.
 \label{def:span}
