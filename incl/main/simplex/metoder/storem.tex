@@ -1,16 +1,17 @@
-\subsection{Store M-metoden}
+\subsection{Store-M metoden}
 
-Den sidste metode, der introduceres, er Store M-metoden. 
-Hvis problemet, der skal løses, ikke er på standardform, kan det være svært at finde en mulig basisløsning til at sætte algoritmen i gang. Da er Store M-metoden nyttig.
-Idéen bag Store M-metoden er at introducere en hjælpefunktion på formen
+Den sidste metode, der introduceres, er Store-M metoden. 
+Hvis problemet, der skal løses, ikke er på standardform, kan det være svært at finde en mulig basisløsning til at sætte algoritmen i gang. 
+Da er Store-M metoden nyttig.
+Idéen bag Store-M metoden er at introducere en hjælpefunktion på formen
 \begin{align*}
 \sum\limits_{j=1}^n c_jx_j + M \sum\limits_{i=1}^m y_i,
 \end{align*}
 hvor $M$ er en stor positiv konstant, og $y_i$ er kunstige variable. 
-Hvis det originale problem har en mulig løsning, og dens optimale kost er endelig, vil de kunstige variable gå mod $0$, når $M$ er tilstrækkelig stor. 
+Hvis det originale problem har en mulig løsning, og dens optimale cost er endelig, vil de kunstige variable gå mod $0$, når $M$ er tilstrækkelig stor. 
 
-Det betyder, at den originale kostfunktion nu skal minimeres. 
-Når den reducerede kost er en funktion af $M$, vil $M$ altid blive behandlet som værende af større værdi, når der skal vurderes, om en reduceret kost er negativ. \\
+Det betyder, at den originale costfunktion nu skal minimeres. 
+Når den reducerede cost er en funktion af $M$, vil $M$ altid blive behandlet som værende af større værdi, når der skal vurderes, om en reduceret cost er negativ. \\
 
 \begin{eks}
 Et lineært programmeringsproblem er givet.
@@ -42,7 +43,7 @@ Der gives nu følgende hjælpeproblem, hvor der er tilføjet kunstige variable.
 En mulig basisløsning til hjælpeproblemet fås ved at lade $[x_5, x_6, x_7, x_4] = \vec{b}^T = [3,2,5,1]$. 
 Den korresponderende basismatrix er da identiteten. 
 Derudover er $c_B = (M,M,M,0)$. 
-Den reducerede kost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilket giver følgende tabel.
+Den reducerede cost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilket giver følgende tabel.
 
 \begin{center}
 \begin{tabular}{|c|c|ccccccc|}
@@ -59,9 +60,9 @@ Den reducerede kost for hver variabel $x_i$ evalueres ved $c_i - c'_BA_i$, hvilk
 \end{tabular}
 \end{center}
 
-Den reducerede kost for $x_3$ er negativ når $M$ er stor nok. 
+Den reducerede cost for $x_3$ er negativ når $M$ er stor nok. 
 Derfor er $x_3$ nu en del af basen, og $x_4$ er ikke. 
-For at sætte den reducerede kost af $x_3$ lig nul, skal hele rækken multipliceres med $6M- \frac{1}{3}$, samt lægge det til den nul'te række. 
+For at sætte den reducerede cost af $x_3$ lig nul, skal hele rækken multipliceres med $6M- \frac{1}{3}$, samt lægge det til den nul'te række. 
 Den nye tabel vil da se ud som følger.
 
 \begin{center}
@@ -79,7 +80,7 @@ Den nye tabel vil da se ud som følger.
 \end{tabular}
 \end{center}
 
-Det ses nu, at den reducerede kost af $x_2$ er negativ når $M$ er tilstrækkelig stor, hvorfor $x_2$ nu bringes ind i basen og $x_6$ udgår. 
+Det ses nu, at den reducerede cost af $x_2$ er negativ når $M$ er tilstrækkelig stor, hvorfor $x_2$ nu bringes ind i basen og $x_6$ udgår. 
 Tabellen ser nu således ud.
 
 \begin{center}
@@ -131,6 +132,6 @@ Nu bringes $x_4$ ind i basen, og $x_3$ udgår.
 \end{tabular}
 \end{center}
 
-Med en stor nok værdi for $M$ er alle reducerede kostværdier ikke-negative, og der er fundet en optimal løsning til hjælpeproblemet.
+Med en stor nok værdi for $M$ er alle reducerede costværdier ikke-negative, og der er fundet en optimal løsning til hjælpeproblemet.
 Alle de kunstige variable er blevet lig nul, hvorfor der nu ligeledes haves en optimal løsning til det originale problem.  
 \end{eks}

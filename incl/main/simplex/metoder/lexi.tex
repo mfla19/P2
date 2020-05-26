@@ -1,5 +1,6 @@
-\subsection{Leksikografisk pivot regel}
-Den leksikografiske pivot regel er udviklet ud fra observationer af Simplex metodens opførsel. Formålet med metoden er at sikre, at Simplex metoden slutter efter et endeligt antal iterationer. Den leksikografiske pivotregel er let at implementere i Fuld tabel metoden. 
+\subsection{Leksikografisk pivotregel}
+Den leksikografiske pivotregel er udviklet ud fra observationer af Simplex metodens opførsel. Formålet med metoden er at sikre, at Simplex metoden slutter efter et endeligt antal iterationer. 
+Den leksikografiske pivotregel er let at implementere i Fuld tabel metoden. 
 \begin{defn}[Leksikografisk mindre]
 En vektor $\vec{u} \in \mathds{R}^n$ siges at være \textbf{leksikografisk mindre} end en anden vektor $\vec{v} \in \mathds{R}^n$, hvis $\vec{u} \neq \vec{v}$ og den første ikke-nul komponent af $\vec{u}-\vec{v}$ er negativ 
 \begin{align*}
@@ -7,7 +8,7 @@ En vektor $\vec{u} \in \mathds{R}^n$ siges at være \textbf{leksikografisk mindr
 \end{align*}
 \end{defn}
 \begin{eks}
-Tag udgangspunkt i de to vektorer: 
+Tag udgangspunkt i de to vektorer
 \begin{align*}
 \vec{u}^T=[0,5,8]\quad 
 \text{og}
@@ -19,12 +20,13 @@ Da gælder det, at $\vec{u} \overset{L}{<} \vec{v}$, da den første ikke-nul kom
 Fremgangsmåden for den leksikografiske pivotregel er som følger.
   
 \begin{pro}{Leksikografisk pivotregel}
-Vælg en vilkårlig indgangssøjle $\vec{A}_j$. Det skal gælde, at $\Delta c_j$ er negativ. Lad $\vec{u}=B^{-1}\vec{A}_j$ være den $j$'te søjle i Simplex-tabellen.
-For hvert $i$, $u_i>0$, divider den $i$'te række med $u_i$, og vælg den leksikografisk mindste række. Hvis $l$ er leksikografisk mindst, så udgår den $l$'te basisvariabel, $x_{B(l)}$, af basen. 
+Vælg en vilkårlig indgangssøjle $\vec{A}_j$. Det skal gælde, at $\Delta c_j$ er negativ. Lad $\vec{u}=B^{-1}\vec{A}_j$ være den $j$'te søjle i Simplex tabellen.
+For hvert $i$, $u_i>0$, divider den $i$'te række med $u_i$ og vælg den leksikografisk mindste række. 
+Hvis $l$ er leksikografisk mindst, så udgår den $l$'te basisvariabel, $x_{B(l)}$, af basen. 
 \end{pro}
 
 \begin{eks}
-Betragt den følgende matrix, hvor den nulte række er undladt. Antag, at pivot-søjlen er den tredje søjle. 
+Betragt den følgende matrix, hvor den nulte række er undladt. Antag, at pivotsøjlen er den tredje søjle. 
 
 \begin{center}
 \begin{tabular}{|l|llll|}
@@ -50,25 +52,27 @@ Her er den den første række leksikografisk mindst, da $\frac{1}{2}<\frac{4}{3}
 
 Bemærk, at den leksikografiske pivotregel altid fører til et entydigt valg af variabel. Hvis dette ikke var tilfældet, måtte det gælde, at to rækker i tabellen er lineært afhængige. Da ville rangen af $B^{-1}A$ være mindre end $m$. Det samme ville være gældende for $A$. Det er i modstrid med antagelsen om, at $A$ indeholder lineært uafhængige rækker. 
 
-\begin{defn}[Lexi positiv]
-En vektor $\vec{u} \neq \vec{0}$ kaldes \textbf{leksikografisk positiv} hvis den første ikke-nul komponent er positiv.\citep{lexipositiv} 
+\begin{defn}[Leksikografisk positiv]
+En vektor $\vec{u} \neq \vec{0}$ kaldes \textbf{leksikografisk positiv} hvis den første ikke-nul komponent er positiv. \citep{lexipositiv} 
 \end{defn}
 
  
 \begin{stn}
-Antag, at Simplex-tabellen fra algoritmens start kun indeholder leksikografisk positive rækker bortset fra den nulte række. Følges den leksikografiske pivot regel, så vil 
+Antag, at Simplex tabellen fra algoritmens start kun indeholder leksikografisk positive rækker bortset fra den nulte række. Følges den leksikografiske pivotregel, så vil 
 \begin{enumerate}[label=(\alph*)]
-\item Enhver række i Simplex-tabellen, foruden den nulte række, forblive leksikografisk positiv gennem algoritmen. 
-\item Den nulte række vokser skarpt for hver iteration. 
-\item Simplex metoden slutter efter et endeligt antal iterationer. 
+\item enhver række i Simplex tabellen, foruden den nulte række, forblive leksikografisk positiv gennem algoritmen. 
+\item den nulte række vokse skarpt for hver iteration. 
+\item Simplex metoden slutte efter et endeligt antal iterationer. 
 \end{enumerate}
 \label{stn:lexi}
 \end{stn}
 
 \begin{proof}
-(a) Antag, at alle rækker, foruden den nulte række, er leksikografisk positive, ved starten af en iteration. Antag, at $x_j$ indgår i basen, og pivotrækken er den $l$'te række. Så følger det af den leksikografiske pivotregel, at $u_l>0$ og
+(a) Antag, at alle rækker, foruden den nulte række, er leksikografisk positive, ved starten af en iteration. Antag, at $x_j$ indgår i basen og pivotrækken er den $l$'te række. 
+Så følger det af den leksikografiske pivotregel, at $u_l>0$ og
 \begin{align}
-\frac{(l'te \quad række)}{u_l} \overset{L}{<} \frac{(i'te \quad række)}{u_i}, \quad \quad \text{hvis} \quad  i \neq l \quad \text{og} \quad u_i>0
+\frac{(l'te \quad række)}{u_l} \overset{L}{<} \frac{(i'te \quad række)}{u_i}, \quad \quad \text{hvis} \quad  i \neq l \quad \text{og} \quad u_i>0.
+\label{5_2}
 \end{align}
 For at bestemme den nye tabel, bliver den $l$'te række divideret med et positiv tal $u_l$, og forbliver derfor leksikografisk positiv. 
 
@@ -78,10 +82,10 @@ Betragt nu tilfældet hvor $u_i>0$ og $i \neq l$. Da er den nye $i$'te række gi
 \begin{align*}
 (\text{ny $i$'te række)}=\text{(gammel $i$'te række)}-\frac{u_i}{u_l}\text{(gammel $l$'te række)}
 \end{align*}  
-Fordi den leksikografiske ulighed i Ligning (8.2)  gælder for de gamle rækker, må den nye $i$'te række være leksikografisk positiv. 
-%mangler ref
-(b)Ved starten af en iteration er den reducerede omkostning i pivotsøjlen negativ. For at få den reducerede omkostning til at være lig $0$, skal en positiv multiplikation af pivotrækken lægges til. Da de resterende rækker er leksikografisk positive, vil den nulte række vokse leksikografisk. 
+Fordi den leksikografiske ulighed i Ligning \ref{5_2} gælder for de gamle rækker, må den nye $i$'te række også være leksikografisk positiv. \\
+(b) Ved starten af en iteration er den reducerede omkostning i pivotsøjlen negativ. For at få den reducerede omkostning til at være lig $0$, skal en positiv multiplikation af pivotrækken lægges til. 
+Da de resterende rækker er leksikografisk positive, vil den nulte række vokse leksikografisk. 
 
-(c) Da den nulte række vokser leksikografisk ved hver iteration, vil den aldrig komme tilbage til en tidligere værdi. Den nulte række afhænger af den aktuelle basis. Derfor vil den samme basis aldrig blive gentaget. Simplex metoden må da slutte efter et endeligt antal iterationer. 
+(c) Da den nulte række vokser leksikografisk ved hver iteration, vil den aldrig komme tilbage til en tidligere værdi. Den nulte række afhænger af den aktuelle basis, derfor vil den samme basis aldrig blive gentaget. Simplex metoden må da slutte efter et endeligt antal iterationer. 
 \end{proof}
 
