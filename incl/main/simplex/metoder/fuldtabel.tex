@@ -1,4 +1,4 @@
-Der findes forskellige måder at implementere simplex metoden, det kan blandt gøres ved brug af Fuld tabel og Store-M metoden. Desuden kan den leksikografiske pivotregel forhindre, at Simplex metoden har et undeligt antal iterationer. 
+Der findes forskellige måder at implementere Simplex metoden, det kan blandt gøres ved brug af Fuld tabel og Store-M metoden. Desuden kan den leksikografiske pivotregel forhindre, at Simplex metoden har et undeligt antal iterationer. 
 
 \subsection{Fuld tabel}
 Fuld tabel metoden er en metode til implementering af Simplex. Et standard minimeringsproblem $\vec{c}^T\vec{x}$, med bibetingelserne $A\vec{x} \geq \vec{b}$, kan ved brug af slack-variable omskrives til $A\vec{x}+\vec{s}=\vec{b}$. Givet en aktuel basis, $B$, kan ligheden også udtrykkes som  $B^{-1}\vec{b}=B^{-1}A\vec{x}$. Fuld tabel metoden bruger $m \times (n+1)$ matricen $B^{-1}[\vec{b} \ \mid \ A]$.\\
