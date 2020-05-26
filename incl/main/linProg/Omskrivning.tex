@@ -1,8 +1,9 @@
 \subsection{Omskrivning mellem ligheder og uligheder}
-Da bibetingelserne er ligninger repræsenteret ved et prikprodukt, kan hele ligningssystemet repræsenteres som et matrix-vektor produkt. Det kræver dog, at alle positivitetsbetingelser er på samme form. Der er derfor vigtigt, at det er muligt at omskrive mellem uligheder og ligheder, hvis et programmeringsproblem ikke er på den ønskede form fra start af.
+Da bibetingelserne er ligninger repræsenteret ved et prikprodukt, kan hele ligningssystemet repræsenteres som et matrix-vektor produkt. Det kræver dog, at alle positivitetsbetingelser er på samme form. 
+Det er derfor vigtigt, at det er muligt at omskrive mellem forskellige typer betingelser, hvis et programmeringsproblem ikke er på den ønskede form fra start.
 
 \begin{stn}
-Lad $\vec{a}_i^T,\vec{x} \in \mathds{R}^n$ og $b_i \in \mathds{R}$, da gælder:
+Lad $\vec{a}_i^T,\vec{x} \in \mathds{R}^n$ og $b_i \in \mathds{R}$, da gælder det at følgende omskrivninger :
 \begin{enumerate}
 \item Omskrivning mellem uligheder \qquad \quad $\vec{a}_i^T\vec{x} \geq b_i \quad \Leftrightarrow \quad -\vec{a}_i^T\vec{x} \leq -b_i$
 \item Omskrivning fra lighed til ulighed \qquad  $\vec{a}_i^T\vec{x} = b_i \quad \Leftrightarrow  \quad  \vec{a}_i^T\vec{x} \leq b_i \quad \wedge \quad  \vec{a}_i^T\vec{x} \geq b_i$
@@ -13,6 +14,14 @@ hvor $x_{n+i}$ er en slack variable.
 \label{stn:omskr_ligulig} 
 \end{stn}
 
+\begin{proof}
+Punkt 1: gælder da der kan omskrives mellem de to ligheder ved blot at multiplicere med -1.\\
+Punkt 2: En lighedsbetingelse kan omskrives til en mindreendbetingelse og en størreendbetingelse, da enhver vektor $\vec{x}$ som overholder lighedsbetingelsen nødvendigvis også skal overholde begge ulighedsbetingelser. Enhver vektor som overholder begge ulighedsbetingelser vil derved også overholde lighedsbetingelsen, mens en vektor som højest overholder en af ulighedsbetingelserne ikke kan overholde lighedsbetingelsen.\\
+Punkt 3: For enhver mindreendbetingelse kan man indføre en positivt begrænset slackvariabel som er lig $x_{n+i}  = b_i - \vec{a}_i^T \vec{x}$. Da variablen er positivt begrænset vil $\vec{a}_i^T \vec{x}$ nødvendigvis værre mindre end eller lig $\vec{a}_i^T \vec{x}$ $b_i$, hvilket derved danner samme betingelse som mindreendbetingelsen.\\
+punkt 4: tilsvarende punkt 3, hvor $x_{n+i}$ har koefficient $-1$.
+\end{proof}
+
+Ethvert lineært programmeringsproblem kan således omskrives, så det står på standardform. 
 I punkt $3$ og $4$ i Sætning \ref{stn:omskr_ligulig} omskrives der fra mindreend og størreend uligheder til ligheder ved indførslen af en ikke-negativ \textbf{slack-variabel}, der udgør forskellen mellem $\vec{a}_i^T\vec{x}$ og $b_i$ i uligheden. Slack-variablen indgår kun i denne række af koefficientmatricen og får koefficient $1$ for maksimeringsproblemer og $-1$ for minimeringsproblemer, afhængigt af uligheden i bibetingelsen. \\
 
 Dermed kan bibetingelserne skrives som $A\vec{x}\geq \vec{b}$, hvor $\vec{a_i}$ udgør den $i$'te række i $A$ og $b_i$ er den $i$'te indgang i $\vec{b}$.

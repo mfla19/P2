@@ -1,50 +1,48 @@
 \chapter{Lineær Programmering}
 I dette kapitel vil lineær programmering blive introduceret.
-Lineær programmering er en anvendelse af lineær algebra, der bruges til at løse et optimeringsproblem. Der tages udgangspunkt i enten maksimering eller minimering af en lineær funktion, der er underlagt en række betingelser. \textbf{Lineær} programmering henviser til, at den funktion, der ønskes optimeret, samt de betingelser, der skal opfyldes, alle er lineære. \\
-Kapitlet tager udgangspunkt i ??, medmindre andet er angivet. 
+Lineær programmering er en anvendelse af lineær algebra, der bruges til at løse et optimeringsproblem. Der tages udgangspunkt i enten maksimering eller minimering af en lineær funktion, der er underlagt en række betingelser. 
+Lineær programmering henviser til, at den funktion, der ønskes optimeret, samt de betingelser, der skal opfyldes, alle er lineære. \\
+Kapitlet tager udgangspunkt i \citep{bert} og \citep{lay}, medmindre andet er angivet. 
 
 \begin{defn}[Lineær funktion]
-Lad $f:\mathds{R} \to \mathds{R}$ være en funktion, da siges $f$ at være \textbf{lineær} hvis
+Lad $f:\mathds{R}^n \to \mathds{R}$ være en funktion, da siges $f$ at være \textbf{lineær} hvis
 \begin{enumerate}[label=\alph*]
-\item $f(x_1 + x_2) = f(x_1) + f(x_2), \qquad \forall x_1,x_2 \in \mathds{R}$
-\item $f(c\cdot x) = c \cdot f(x), \qquad \forall a, x \in \mathds{R}$
+\item $f(\vec{x}_1 + \vec{x}_2) = f(\vec{x}_1) + f(\vec{x}_2), \qquad \forall \vec{x}_1,\vec{x}_2\in \mathds{R}^n$
+\item $f(c\cdot \vec{x}) = c \cdot f(\vec{x}), \qquad \forall c \in \mathds{R}, \vec{x} \in \mathds{R}^n$
 \end{enumerate}
 \label{def:linfunk}
 \end{defn}
 
-Bemærk, at selv om $f(x) = ax + b$ er kendt som en lineær funktion, er den ikke lineær pr. Definition \ref{def:linfunk}.
+Bemærk, at selv om $f(x) = ax + b$ er kendt som en lineær funktion, er den ikke lineær pr. Definition \ref{def:linfunk}.\\
 Den funktion, der skal optimeres, kaldes objektfunktionen.
 \begin{defn}
 Betragt et lineært programmeringsproblem. Da er \textbf{objektfunktionen}
 \begin{align*}
-f(\vec{x}) = \vec{c}^T \cdot \vec{x} = c_1x_1 + c_2x_2 + \cdots + c_nx_n, 
+f(\vec{x}) = \vec{c}^T \cdot \vec{x} = c_1x_1 + c_2x_2 + \cdots + c_nx_n, \quad  \vec{x}, \vec{c} \in \mathds{R}^n. 
 \end{align*}
-for $\vec{x}, \vec{c} \in \mathds{R}^n$, 
-funktionen, som ønskes optimeret. 
 \end{defn}
 
-Objektfunktionen er repræsenteret ved prikproduktet af to vektorer $\vec{c}$ og $\vec{x}$, hvor $\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$ indeholder koefficienterne i funktionen, og $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$, hvis indgange er funktionens variable. \\
-Hertil tilføjes en række lineære betingelser for variablerne, der kaldes \textbf{lineære bibetingelser}. En type af disse betingelser findes på formen
-\begin{align*}
-	x_i \geq 0,
-\end{align*}
-og kaldes \textbf{positivitetsbetingelser}. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse blot kan ses som en lineær bibetingelse, hvor koefficienten til $x_i$ er $1$, mens resten af koefficienterne er $0$, og hvor $b_i=0$. \\
+Objektfunktionen er repræsenteret ved prikproduktet af to vektorer $\vec{c}$ og $\vec{x}$, hvor \\
+$\vec{c}= \rvect{c_1 & c_2 & \cdots & c_n}^T$ indeholder koefficienterne i funktionen, og $\vec{x}= \rvect{x_1 & x_2 & \cdots & x_n}^T$, hvis indgange er funktionens variable. \\
+Hertil tilføjes en række lineære betingelser for variablerne, der kaldes lineære bibetingelser. 
+En type af disse betingelser findes på formen $x_i \geq 0$, og kaldes positivitetsbetingelser. Positivitetsbetingelser er et specialtilfælde af de lineære bibetingelser, da en positivitetsbetingelse blot kan ses som en lineær bibetingelse, hvor koefficienten til $x_i$ er $1$, mens resten af koefficienterne er $0$, og hvor $b_i=0$. \\
 De lineære bibetingelser begrænser de mulige løsninger til problemet.
 
 \begin{defn}[Bibetingelser]
-Lad $\vec{x}\in \mathds{R}$ repræsentere variablerne til et lineært programmeringsproblem, og $x_i$ den $i$'te indgang i $\vec{x}$. Da findes følgende betingelser
+Lad $\vec{x}\in \mathds{R}^n$ repræsentere variablene til et lineært programmeringsproblem, og $x_i$ den $i$'te indgang i $\vec{x}$. Lad $A$ være en $m \times n$ matrix med betingelserne for problemet.
+Da gælder følgende betingelser
 \begin{enumerate}
 \item \textbf{Positivitetsbetingelser}: $x_i \geq 0$
 \item \textbf{Lighedsbetingelser}: $\vec{a}_i^T\vec{x} = b_i$
 \item \textbf{Størreendbetingelser}: $\vec{a}_i^T\vec{x} \geq b_i$
 \item \textbf{Mindreendbetingelser}: $\vec{a}_i^T\vec{x} \leq b_i$
 \end{enumerate}
-for $\vec{a_i}\in \mathds{R}^n$ og $b_i\in \mathds{R}$. 
+for $\vec{a_i}\in \mathds{R}^n$ og $b_i\in \mathds{R}^m$. 
 Er $x_i$ ikke betinget af en positivitetsbetingelse kaldes den for en \textbf{fri variabel}.
 \end{defn}
 Her betegner vektoren $\vec{a_i}$ koefficienterne i den $i$'te bibetingelse. Bemærk, at hvis en ligning ikke indeholder den $j$'te variabel, vil den $j$'te indgang i koefficientvektoren $\vec{a_i}$ være lig nul, da der skal være en indgang pr. variabel; ellers er prikproduktet ikke defineret.
 
-En \textbf{mulig løsning} til et lineært optimeringsproblem er en vektor $\vec{x}$, som overholder alle problemets betingelser. %Bør nok skrives som en definition, men det kan være at det først skal ske under geo? Bertimaz har i hvertfald en strangent def.
+En mulig løsning til et lineært optimeringsproblem er en vektor $\vec{x}$, som overholder alle problemets betingelser. %Bør nok skrives som en definition, men det kan være at det først skal ske under geo? Bertimaz har i hvertfald en strangent def.
 
 Et eksempel på et lineært programmeringsproblem ses i Eksempel \ref{eks:maksprob1}. Eksemplet er et lineært maksimeringsproblem, da objektfunktionen ønskes maksimeret.
 

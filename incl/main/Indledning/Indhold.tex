@@ -15,19 +15,22 @@ Niveaumængder giver et godt overblik over lineære programmeringsproblemer af e
 Da lineære programmeringsproblemer ofte omhandler problemer med et vilkårligt antal variable, introduceres en algoritme, der kan løse linære programmeringsproblemer med et vilkårligt endeligt antal variable, kaldet Simplex metoden.
 Simplex metoden tager udgangspunkt i, at den optimale værdi kan findes blandt funktionsværdierne for de mulige basisløsninger, og giver derfor en systematisk metode til at gå fra en mulig basisløsning til en ny, som har en mere optimal funktionsværdi, indtil den optimale værdi er fundet.
 
-Simplex metoden, udledes derfor og så betragtes forskellige implementerings muligheder af denne.
-Den første er Fuld Tabel, som er valgt fordi den er let at overskue, og derfor giver et godt overblik over de forskellige trin i Simplex metoden.
-Men da Fuld Tabel ikke i sig selv tager højde for, at basisvariablene skal være ikke negative, for at der er tale om en mulig løsning, indføres Den Leksikografiske Pivot Regel.
-Fuld Tabel kræver også, at en mulig basisløsning er kendt på forhånd, og da det ikke altid er lige til at finde en basisløsning, introducere Store M Metoden, som er en udbygning af Fuld Tabel, hvor det ikke er nødvendigt at kende en mulig basisløsning til at starte med.
+Simplex metoden udledes derfor og så betragtes forskellige implementeringsmuligheder af denne.
+Den første er Fuld tabel, som er valgt, fordi den er let at overskue, og derfor giver et godt overblik over de forskellige trin i Simplex metoden.
+Da Fuld tabel ikke i sig selv tager højde for, at basisvariablene skal være ikke-negative, for at der er tale om en mulig løsning, indføres den Leksikografiske pivotregel.
+Fuld tabel kræver også, at en mulig basisløsning er kendt på forhånd, og da det ikke altid er lige til at finde en basisløsning, introduceres Store-M metoden, som er en udbygning af Fuld tabel.
+Med Store-M metoden er det ikke nødvendigt at kende en mulig basisløsning til at starte med.
 
-Det er Store-M Metoden sammensat med Den Leksikografiske Pivot Regel, der så vil blive anvendt til at optimere lønningsudgifterne for en virksomhed, og der er derfor blevet udarbejdet et python program til formålet, som vil blive gennemgået, og anvendt på en tænkt case; hvor en virksomhed har 2 medarbejdere, som skal have udført 3 opgaver. 
-Hvis den ene arbejder 5 timer på første opgave og 10 timer på den tredje, og den anden arbejder 10 timer på den første og 20 timer på den anden vil det resultere i den optimale værdi, som kan beregnes til 7800 kr. Den optimale værdi svare til den mindste løn som skal udbetales.
+Det er Store-M metoden sammensat med den Leksikografiske pivot-regel, der så vil blive anvendt til at optimere lønningsudgifterne for en virksomhed. Der er blevet udarbejdet et python program til formålet, som vil blive gennemgået og anvendt på en tænkt case, hvor en virksomhed har 2 medarbejdere, som skal have udført 3 opgaver. 
+Hvis den ene arbejder 5 timer på første opgave og 10 timer på den tredje, og den anden arbejder 10 timer på den første og 20 timer på den anden, vil det resultere i den optimale værdi, som kan beregnes til 7800 kr. Den optimale værdi svarer til den mindste løn som skal udbetales.
 
-Projektet inkludere også et appendiks vedrørende lineær algebra, som er skrevet med udgangspunkt i \citep{lial}, da blandt andet Simplex metoden er bygget på rækkeoperationer. 
+Projektet inkluderer også et appendiks vedrørende lineær algebra, som er skrevet med udgangspunkt i \citep{lial}, da blandt andet Simplex metoden bygger på rækkeoperationer. 
 
 
-Projektet har valgt at prioritere løsningsmetoder for deres overskuelighed frem for deres effektivitet, og det kunne derfor være relevant i et fremtidigt projekt, at betragte tidskompleksisten af metoderne, og undersøge om der er andre løsningsmetoder eller implementeringer af Simplex metoden med lavere tidskompleksitet.
-Der er også truffet et aktivt valg om, at se bort fra degenererede løsninger, og da de kan påvirke, hvordan Simplex metoden skal implementeres, kunne dette også være relevant at undersøge i fremtiden, og så implementere i python programmet, så det bliver mere universelt.
+Projektet har valgt at prioritere metoder som er mere overskuelige at prioritere i praksis, fremfor at fokusere på metodernes tidskompleksitet.
+Det kunne derfor være relevant, i et fremtidigt projekt, at betragte tidskompleksisten af metoderne og undersøge, om der er andre løsningsmetoder eller implementeringer af Simplex metoden med lavere tidskompleksitet.
+Der er også truffet et aktivt valg om, at se bort fra degenererede løsninger.
+Da de kan påvirke, hvordan Simplex metoden skal implementeres, kunne dette også være relevant at undersøge og implementere i python programmet, så det bliver mere universelt.
 En anden ting er, at projektet kun belyser, hvordan den optimale værdi findes, og det er derfor underordnet, hvilken løsning der findes. 
-Men er der tale om en virkelig case, kunne det være relevant at fremlægge alle løsninger som vil fører til den optimale værdi, så virksomheden selv ville kunne vælge, hvilken de havde lyst til at benytte, da løsnings metoderne kun tager højde for et givent antal parametre.
-Det kunne derfor være relevant, at undersøge, om der er en sammenhæng mellem lineære programmerings problemer og antallet af løsninger med optimal værdi, samt finde en metode til at finde alle de løsninger, som føre til en optimal værdi, uden at skulle tjekke alle løsninger.
+Men er der tale om en virkelig case, kunne det være relevant at fremlægge alle løsninger som vil føre til den optimale værdi, så virksomheden selv kunne vælge, hvilken de havde lyst til at benytte, da løsnings metoderne kun tager højde for et givent antal parametre.
+Det kunne derfor være relevant at undersøge, om der er en sammenhæng mellem lineære programmeringsproblemer og antallet af løsninger med optimal værdi, samt finde en metode til at finde alle de løsninger, som fører til en optimal værdi, uden at skulle tjekke alle løsninger.
