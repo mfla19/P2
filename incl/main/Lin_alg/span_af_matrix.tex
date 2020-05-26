@@ -2,7 +2,7 @@
 Til sidst gennemgås, hvad der forståes ved spannet af en matrix.
 Her er enten tale om spannet af matricens søjler eller dens rækker.
 \begin{stn}[Span af $\mathds{R}^n$]
-Lad $A$ være en $m\times n$ matrix og $S_A= \{\vec{A_j}| \vec{ A_j}\in A\}$, da er følgende udsagn ækvivalente:
+Lad $A$ være en $m\times n$ matrix og $S_A= \{\vec{A_j}\mid \vec{ A_j}\in A\}$, da er følgende udsagn ækvivalente:
 \begin{enumerate}[label=\alph*]
 \item $span(S_A) = \mathds{R}^m$
 \item $\exists \vec{x} \in \mathds{R}^n \forall \vec{b} \in \mathds{R}^m: \quad A\vec{x}=\vec{b}$
@@ -24,12 +24,12 @@ hvilket medfører, at totalmatricen ikke kan indeholde en række på formen $[\v
 Der må derfor være en løsning til ligningsstemmet $A\vec{x} = \vec{b}$, da enhver indgang i $\vec{b}$ kan udtrykkes $b_i = \sum_{j=1}^n a_{ij} x_i = k \cdot x_i$, hvor $a_{ij}$ er den $j$'te indgang i den $i$'te række, og $k$ er en skalar.
 Da ethvert tal kan udtrykkes som produktet af to reelle tal, må der altid være en løsning til $A\vec{x}=\vec{b}$.
 \end{proof}
-Underrummet udspændt af søjlerne i $A$, kaldes for søjlerummet af $A$, mens rækkerummet af $A$ er udspændt af $A$s rækker.
+Underrummet udspændt af søjlerne i $A$, kaldes for søjlerummet af $A$, mens rækkerummet af $A$ er udspændt af $A$'s rækker.
 \begin{defn}[Søjlerum og Rækkerum]
-Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col A = span(\{A_j | j =1,...,n\})$, mens \textbf{rækkerummet} af $A$ er $Row A = span(\{\vec{a_i}|i=1,...,m\})$.
+Lad $A$ være en $n\times m$ matrix, da er \textbf{søjlerummet} af $A$ $Col (A) = span(\{A_j \mid j =1,...,n\})$, mens \textbf{rækkerummet} af $A$ er $Row (A) = span(\{\vec{a_i} \mid i=1,...,m\})$.
 \label{def:sojlerum}
 \end{defn} 
-Det betyder, at de lineært uafhængige søjler og rækker vil udgøre en basis for henholdsvis søjlerummet og rækkerummet, hvilket er de rækker og søjler med en pivot indgang. 
+Det betyder, at de lineært uafhængige søjler og rækker vil udgøre en basis for henholdsvis søjlerummet og rækkerummet, hvilket er de rækker og søjler der har en pivot indgang. 
 De næste to resultater vil kun blive vist for søjlerummet, da de er ækvivalente til rækkerummet og det samme gælder for deres beviser.
 \begin{kor}
 Lad $A$ være en $n \times m$ matrix, da vil søjlerne med en pivot indgang udgøre en basis for $Col (A)$
@@ -37,15 +37,15 @@ Lad $A$ være en $n \times m$ matrix, da vil søjlerne med en pivot indgang udg�
 \end{kor}
 \begin{proof}
 Antag uden at miste generalitet, at de først $k$ søjler i $A$ har en pivot indgang.
-Da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j | j = 1,...,k\}$. 
-Det følger derfor af Sætning \ref{stn:spantilbasis} at $Col A = span(\{A_j| j=1,...,k\})$.
+Da er $A_j$, for $j=1,...,k$ lineært uafhængige, mens $A_j$, for $j = k+1,...,n$ vil være en linear kombination af $\{A_j \mid j = 1,...,k\}$. 
+Det følger derfor af Sætning \ref{stn:spantilbasis} at $Col (A) = span(\{A_j \mid j=1,...,k\})$.
 \end{proof}
 Dette betyder, at dimensionen af søjlerummet og rækkerummet er lig antallet af pivotindgange i matricen, hvilket per defintion er rangen af matricen.
 \begin{kor}
-Lad $A$ være en $n\times m $ matrix, da er $\dim{col A} = rank (A)$
+Lad $A$ være en $n\times m $ matrix, da er $\dim{Col (A)} = rang (A)$
 \end{kor}
 \begin{proof}
-Af Korolar \ref{kor:pivotsojle} følger det, at søjlerne med pivot indgang i $A$, udgør en base for $Col A$. 
-Da antallet af søjler med pivot indgang er lig rangen af $A$, må $\dim{Col A} = rank (A)$ ifølge Definition \ref{def:dim}.
+Af Korolar \ref{kor:pivotsojle} følger det, at søjlerne med pivot indgang i $A$, udgør en base for $Col (A)$. 
+Da antallet af søjler med pivotindgang er lig rangen af $A$, må $\dim{Col (A)} = rang (A)$ ifølge Definition \ref{def:dim}.
 \end{proof}
 Dermed er spannet af en matrix, spannet af vektorerne der svarer til enten matricens rækker eller søjler.

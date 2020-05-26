@@ -1,10 +1,11 @@
-\section{Ortogonal og ortonormalbasis}
-Ortogonal- og ortonormalbasis er specialtilfælde af baser for et underrum.
-\begin{defn}[Ortogonal- og ortonormalbasis]
+\section{Ortogonal og ortonormal basis}
+Ortogonal og ortonormal basis er specialtilfælde af baser for et underrum.
+\begin{defn}[Ortogonal og ortonormal basis]
 En basis $B = \{\vec{v}_i,..., \vec{v}_k\}$ for  et underrum $W$ til $\mathds{R}^n$ kaldes en \textbf{ortogonal basis}, hvis 
-$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$. En ortogonal basis er \textbf{ortonormal}, hvis $\Vert\vec{v}_i\Vert = 1 \, \forall \vec{v}_i \in B$.
+$\vec{v}_i \bot \vec{v}_j \, \forall \vec{v}_i, \vec{v}_j \in B, \, i \neq j$. En ortogonal basis er \textbf{ortonormal}, hvis $\Vert\vec{v}_i\Vert = 1 \quad \forall \vec{v}_i \in B$.
 \end{defn}
-For at vise, at en basis er ortogonal, er det nødvendigt at vise, at alle vektorer er indbyrdes ortogonale, her kan gøres brug af deres indbyrdes vektorprodukt.
+For at vise, at en basis er ortogonal, er det nødvendigt at vise, at alle vektorer er indbyrdes ortogonale. 
+Her kan gøres brug af deres indbyrdes vektorprodukt.
 \begin{lma}
 Lad $\vec{v}, \vec{u} \in \mathds{R}^n$, og $\vec{v}\neq \vec{0}$, $\vec{u} \neq \vec{0}$ da er $\vec{v} \bot \vec{u}$ hvis og kun hvis $\vec{v}^T\vec{u} = 0$.
 \label{lma:vinkelret}
@@ -76,12 +77,12 @@ Da $\vec{v}_{n+1}$ er lineært afhængig af $\vec{u}_{n+1}$ må $span(\vec{v}_1,
 \end{proof}
 Derfor følger det, at et hvert underrum har en ortogonal basis.
 \begin{kor}
-Et hvert underrum $W$ til $\mathds{R}^n$ har en ortogonal og ortonormal basis.
+Ethvert underrum $W$ til $\mathds{R}^n$ har en ortogonal og ortonormal basis.
 \end{kor}
 \begin{proof}
 Af Sætning \ref{stn:gram} fremgår det, hvordan enhver basis kan konstrueres til at være en ortogonal basis. 
-For at konstruere en ortonomal basis, betragt et vilkårligt element $\vec{v}_i$ fra en ortogonal basis, og definer vektoren $\vec{u}_i = \frac{1}{\Vert\vec{v}_i\Vert}\vec{v}_i$, da vil $\{\vec{u}_1,...,\vec{u}_n\}$ udgøre en ortonormal basis. 
-Da $\Vert\vec{u}_i\Vert^2 = \frac{1}{\Vert\vec{v}_i\Vert^2}\Vert\vec{v}_i\Vert^2 = 1$.
+For at konstruere en ortonomal basis, betragt et vilkårligt element $\vec{v}_i$ fra en ortogonal basis. 
+Definer vektoren $\vec{u}_i = \frac{1}{\Vert\vec{v}_i\Vert}\vec{v}_i$, da vil $\{\vec{u}_1,...,\vec{u}_n\}$ udgøre en ortonormal basis, da $\Vert\vec{u}_i\Vert^2 = \frac{1}{\Vert\vec{v}_i\Vert^2}\Vert\vec{v}_i\Vert^2 = 1$.
 \end{proof}
 Det betyder, at ethvert underrum har en basis, hvor alle vektorene er ortogonale og har længde $1$.
 Bemærk, at dette også illustrerer, at forskellige basiser kan udspænde det samme rum. 

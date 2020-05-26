@@ -6,22 +6,22 @@ Lad $V$ være et underrum til $\mathds{R}^n$ med $\dim{V}=k$, da vil enhver line
 \label{kor:linearuafhangighedunderrum}
 \end{kor}
 \begin{proof}
-Antag, at der eksisterer en delmængde $S \subseteq V$ med $p > k$ lineært uafhængige vektorer, hvis $span(S) = V$, da vil $S$ være en basis til $V$ af Definition \ref{def:basis}, men det strider imod Sætning \ref{stn:basiskardinalitet}. Det samme gør sig gældende for alle underrum af $V$.
+Antag for modstrid, at der eksisterer en delmængde $S \subseteq V$ med $p > k$ lineært uafhængige vektorer. 
+Hvis $span(S) = V$, da vil $S$ være en basis til $V$ af Definition \ref{def:basis}, men det strider imod Sætning \ref{stn:basiskardinalitet}. Det samme gør sig gældende for alle underrum af $V$.
 Derfor må $S$ generere et underrum $W$, hvor $V \subset W$, hvilket strider mod Definition \ref{def:underrum}, da $V$ skal være lukket under vektor addition og skalar multiplikation.
 \end{proof}
-Indeholder delmængden præcis det antal vektorer, som svarer til dimensionen af underrummet, da er delmængden en basis til underrummet, hvis delmængden er lineært uafhængig eller udspænder underrummet.
+Indeholder delmængden præcis det antal vektorer, som svarer til dimensionen af underrummet, er delmængden en basis til underrummet, hvis delmængden er lineært uafhængig eller udspænder underrummet.
 \begin{kor}
 Lad $V$ være et underrum til $\mathds{R}^n$ med $\dim{V}=k$, da vil $S \subseteq V$, hvor $|S|=k$, være en basis for $V$, hvis $S$ er lineært uafhængig eller $span(S) = V$.
 \label{kor:serbase}
 \end{kor}
 \begin{proof}
 Lad først $S$ være lineært uafhængig, da følger det af Definition \ref{def:basis}, at $S$ er en basis for et $k$ dimensionalt underrum til $V$.
-Antag nu, at der er en vektor $\vec{v}$ i $V$ som ikke er i $span(S)$, da vil $\vec{v}$ være lineært uafhængig med $S$, hvorfor at $\dim{V} > \dim{span(S)}$, hvilket strider imod defintionen af $S$. 
-Derfor må $V = span(S)$, og $S$ må derfor udgøre en basis for $V$.
- som må være lig $V$, hvorfor $S$ er en base til $V$.
-\\Lad nu $span(S) = V$, da må $\dim{span(S)} = \dim{V} = k$, hvorfor det følger af Definition \ref{def:dim} og Definition \ref{def:basis}, at $S$ består af $k$ lineært uafhængige vektorer, og da $|S|=k$ må $S$ derfor være en basis for $V$.
+Antag nu, at der er en vektor $\vec{v}$ i $V$ som ikke er i $span(S)$, da vil $\vec{v}$ være lineært uafhængig med $S$, hvorfor $\dim{V} > \dim{span(S)}$, hvilket strider imod defintionen af $S$. 
+Derfor må $V = span(S)$, og $S$ må udgøre en basis for $V$, som må være lig $V$, hvorfor $S$ er en base til $V$.
+\\Lad nu $span(S) = V$, da må $\dim{span(S)} = \dim{V} = k$, hvorfor det følger af Definition \ref{def:dim} og Definition \ref{def:basis}, at $S$ består af $k$ lineært uafhængige vektorer, og da $|S|=k$ må $S$ være en basis for $V$.
 \end{proof}
-Da en lineært uafhængig delmængde af vektorer med samme kardinaliltet som dimensionen af underrummet, må det udgøre en basis for at underrum som er lig underrummet selv.
+Hvis en lineært uafhængig delmængde af vektorer har samme kardinaliltet som dimensionen af underrummet, må delmængden udgøre en basis for et underrum som er lig underrummet selv.
 \begin{stn}
 Lad $V$ og $W$ være underrum til $\mathds{R}^n$, og lad $V \subseteq W$, da vil $\dim{V} \leq \dim{W}$, i det tilfælde hvor $\dim{V}=\dim{W}$, er $V=W$.
 \label{stn:dimunderrum}

@@ -12,7 +12,7 @@ Lad $W$ være en mængde af vektorer $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$,
 \end{defn}
 En anden delmængde er et span.
 \begin{defn}[Span]
-Lad $S=\{\vec{v_1},...,\vec{v_k}\}$ være en ikke tom mængde af vektorer, hvor $\vec{v_i} \in \mathds{R}^n$ for $i = 1,..,k$. 
+Lad $S=\{\vec{v_1},...,\vec{v_k}\}$ være en ikke-tom mængde af vektorer, hvor $\vec{v_i} \in \mathds{R}^n$ for $i = 1,..,k$. 
 Da er \textbf{spannet af $S$} mængden af vektorer
 \begin{align*}
 span(S) = \{\vec{u} \mid \vec{u}=\sum_{i=1}^k c_i \vec{v_i}, \quad \vec{v_i} \in S, \quad c_i \in \mathds{R}\}.
@@ -29,22 +29,22 @@ Lad $S=\{\vec{v_1},...,\vec{v_k}\} \subseteq \mathds{R}^n$, da er $span(S)$ et u
 For at vise at $span(S)$ er et underrum til $\mathds{R}^n$ skal det vises, at $span(S)$ overholder alle betingelserne i Definition \ref{def:underrum}.
 Først vises betingelse (b), lad  derfor $\vec{u}, \vec{w} \in span(S)$, da vil 
 \begin{align*}
-\vec{u}+\vec{w}= \sum_{i=1}^k c_i \vec{v_i} + \sum_{i=1}^k c'_i \vec{v_i} = \sum_{i=1} c_i\cdot c_i' \vec{v_i},
+\vec{u}+\vec{w}= \sum_{i=1}^k c_i \vec{v_i} + \sum_{i=1}^k c'_i \vec{v_i} = \sum_{i=1}^k c_i\cdot c_i' \vec{v_i},
 \end{align*}
-hvor $c_i, c_i'$ er skalare.
+hvor $c_i, c_i'$ er skalarer.
 Dermed er $\vec{u}+\vec{w}$ en linearkombination af $\vec{v_1},...,\vec{v_k}$, hvorfor $\vec{u}+\vec{v} \in span(S)$, og $span(S)$ er lukket under vektor addition.
-\\ Så vises, at $span(S)$ er lukket under skalar multiplikation, lad derfor $c, c_i$ være skalare, da vil
+\\ Så vises, at $span(S)$ er lukket under skalar multiplikation, lad derfor $c, c_i$ være skalarer, da vil
 \begin{align*}
-c\vec{w}= c\sum_{i=1}^k c_i \vec{v_i}  = \sum_{i=1} c \cdot c_i \vec{v_i}.
+c\vec{w}= c\sum_{i=1}^k c_i \vec{v_i}  = \sum_{i=1}^k c \cdot c_i \vec{v_i}.
 \end{align*}
 Hvorfor $c\vec{w} \in span(S)$, og betingelse (c), er opfyldt.
 \\Til sidst vises det, at $\vec{0} \in span(S)$.
 Da nulvektoren kan skrives som linearkombinationen af vektorene i $S$; $\vec{0} = \sum_{i=1}^k 0 \vec{v_i}$, medfører det, at $\vec{0} \in span(S)$, hvorfor $span(S)$ overholder betingelse (a), og dermed er $span(S)$ et underrum til $\mathds{R}^n$.
 \end{proof}
 Det betyder, at spannet er et underrum udspændt af alle de mulige lineære kombinationer af en mængde vektorer. 
-Derfor må to mængder vektorer, som er lineært afhængige af hinanden, udspænde samme underrum.
+Derfor må to mængder vektorer, som er lineært afhængige, udspænde samme underrum.
 \begin{stn}[Ækvivalente span]
-Lad $S = \{\vec{v_1},...,\vec{v_k}\}$ og $S_u = \{\vec{v_1},...,\vec{v_k}, \vec{u}\}$ være mængder af vektorer i $\mathds{R}^n$, da $span(S) = span(S_u)$, hvis og kun hvis $u \in span(S)$.
+Lad $S = \{\vec{v_1},...,\vec{v_k}\}$ og $S_u = \{\vec{v_1},...,\vec{v_k}, \vec{u}\}$ være mængder af vektorer i $\mathds{R}^n$, da er $span(S) = span(S_u)$, hvis og kun hvis $u \in span(S)$.
 \label{stn:akvivalentespan}
 \end{stn}
 \begin{proof}
@@ -54,7 +54,7 @@ span(S_u) &= \{ \vec{b} \in \mathds{R}^n\mid \exists \vec{x} \in \mathds{R}^n: \
 \\&= \{ \vec{b} \in \mathds{R}^n\mid \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k c_i \vec{v_i} + c_{k+1} \sum_{i=1}^k C_i \vec{v_i} = \vec{b}\}
 \\&= \{ \vec{b} \in \mathds{R}^n\mid \exists \vec{x} \in \mathds{R}^n: \, \sum_{i=1}^k K_j \vec{v_i} = \vec{b}\} = span(S)
 \end{align*}
-hvor $c_j, C_j, c_{k+1}, K_j$ er vilkårlige skalare.
+hvor $c_j, C_j, c_{k+1}, K_j$ er vilkårlige skalarer.
 \\ Antag $span(S) = span(S_u)$, dvs. at de to mængder udspænder den samme mængde af vektorer, hvorfor de samme vektorer som er en linearkombination af $\vec{v_1},...,\vec{v_k}, \vec{u}$ også er en linearkombination $\vec{v_1},..., \vec{v_k}$, dermed må $\vec{u}$ være en linearkombination af  $\vec{v_1},..., \vec{v_k}$, hvorefter det følger af Definition \ref{def:span}, at $\vec{u} \in span(S)$.
 \end{proof}
 Derfor må den mindste mængde vektorer, som udspænder et underrum, være lineært uafhængige.
@@ -65,16 +65,16 @@ Lad $S =\{v_1,...,v_k\}$, hvor $\vec{v_1},...,\vec{v_k} \in \mathds{R}^n$ er lin
 \end{defn}
 Antallet af vektorerne i basen vil være konstant.
 \begin{stn}[Kardinalteten af en basis]
-Lad $V$ være et ikke tomt underrum til $\mathds{R}^n$, og lad $B$ og $B'$ udgøre en basis for $V$, da vil $|B|=|B'|$.
+Lad $V$ være et ikke-tomt underrum til $\mathds{R}^n$, og lad $B$ og $B'$ udgøre en basis for $V$, da vil $|B|=|B'|$.
 \label{stn:basiskardinalitet}
 \end{stn}
 \begin{proof}
 Lad $B$ bestå af $k$ vektorer og $B'$ af $p$ vektorer, antag for modstrid, at $k < p$, da vil der eksistere to matricer $A_{B}$ og $A_{B'}$, hvis søjler er vektorerne fra henholdsvis $B$ og $B'$.
-Hvis $rank(A_{B}) = rank(A_{B'}) = k$ da vil vektorerne i $B'$ være lineært afhængig, hvorfor $B'$ ikke er en basis.
-Hvis $rank(A_{B}) < rank(A_{B'} )$, da vil der eksistere en vektor $\vec{b} \in \mathds{R}^n$, hvor der eksistere en løsning til $A_{B'}\vec{x} = \vec{b}$, men ikke til ligningssystemet $A_B \vec{x}=\vec{b}$, hvorfor $span(B) \neq span(B')$, derfor kan både $B$ og $B'$ ikke være basis til $V$ af Definition \ref{def:basis}.
+Hvis $rang(A_{B}) = rang(A_{B'}) = k$ da vil vektorerne i $B'$ være lineært afhængig, hvorfor $B'$ ikke er en basis.
+Hvis $rang(A_{B}) < rang(A_{B'} )$, vil der eksistere en vektor $\vec{b} \in \mathds{R}^n$, hvor der eksisterer en løsning til $A_{B'}\vec{x} = \vec{b}$, men ikke til ligningssystemet $A_B \vec{x}=\vec{b}$, hvorfor $span(B) \neq span(B')$, hvilket er i modstrid med, at både $B$ og $B'$ skal være basis til $V$ af Definition \ref{def:basis}.
 Derfor følger det, at $p=k$.
 \end{proof}
-Hvilket fører til denne definition.
+Det fører til følgende definition.
 \begin{defn}[Dimension]
 Lad $B$ være en basis for et ikke tomt underrum $V$ til $\mathds{R}^n$, da er \textbf{dimensionen} af $V$ givet ved $\dim{V} = |B|$
 \label{def:dim}
@@ -84,7 +84,7 @@ Den mest kendte basis for $\mathds{R}^n$ er standardvektorene, og ved notationen
 \begin{align*}
 \begin{bmatrix} a \\ b \end{bmatrix} = a\begin{bmatrix} 1 \\0 \end{bmatrix} + b \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
 \end{align*}
-Standard vektorerne udgør det, som kaldes en ortonormalbasis.
+Standard vektorerne udgør det, som kaldes en ortonormal basis.
 
 
 
