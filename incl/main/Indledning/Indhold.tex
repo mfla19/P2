@@ -1,18 +1,19 @@
-\section{Løsning af problemformulering}
-For at besvare problemformuleringen vil dette projekt med udgangspunkt \citep{bert} og \citep{lay} give en introduktion til lineære programmerings problemer. 
-Da senere løsningsmetoder og beviser kræver, at problemerne er på standardform eller standardform med ligheder, og at alle bibetingelser er lineært uafhængige, vil der blive givet en gennemgang af, hvordan lineære programmerings problemer kan omskrives så de overholder disse betingelser.
+\section{Løsning af problemformuleringen}
+For at besvare problemformuleringen vil dette projekt med udgangspunkt \citep{bert} og \citep{lay} give en introduktion til lineære programmeringsproblemer. 
+Da senere løsningsmetoder og beviser kræver, at problemerne er på standardform eller standardform med ligheder, og at alle bibetingelser er lineært uafhængige, vil der blive givet en gennemgang af, hvordan lineære programmeringsproblemer kan omskrives, så de overholder disse betingelser.
 
-De forskellige løsnings metoder har til formål at finde en løsning, som har en optimal funktions værdi, for objekt funktionen tilknyttet det lineære programmeringsproblem.
-Bemærk, at der kan være flere forskellige løsninger, som har samme funktionsværdi, og der derfor er ikke tale om at finde den optimale løsning. 
-Der er dog sammenhæng mellem, hvilke løsninger som har optimal funktionsværdi, og det viser sig at den optimale værdi skal findes blandt basisløsningernes funktionsværdi, derfor vil der blive givet en gennemgang af basisløsninger, og hvordan de findes.
-Der ud over vil det blive vist, at så længe at problemet er konsistens og ikke indeholder en halvlinje, så eksistere en optimal værdi, som hvis eksistere altid vil være global.
+De forskellige løsnings metoder har til formål at finde en løsning, som har en optimal funktionsværdi, for objektfunktionen tilknyttet det lineære programmeringsproblem.
+Bemærk, at der kan være flere forskellige løsninger, som har samme funktionsværdi, og der derfor ikke er tale om at finde den optimale løsning, men en optimal løsning. 
+Der er dog sammenhæng mellem, hvilke løsninger der har optimal funktionsværdi, og det viser sig, at den optimale værdi skal findes blandt de mulige basisløsningers funktionsværdi. 
+Derfor vil der blive givet en gennemgang af basisløsninger, og hvordan de findes.
+Derudover vil det blive vist, at så længe problemet er konsistent og ikke indeholder en halvlinje, så eksisterer en optimal værdi, som altid vil være global.
 
-Herefter betragtes kort en geometriske tilgang til at løse lineære programmerings problemer.
-Den tager udgangs punkt i niveaumængder og giver et overblik over, hvordan forskellige løsninger med samme funktionsværdi ligger i løsnings mængden, hvilket så anvendes til at finde den optimale værdi. 
-Niveaumængder giver et godt overblik for lineære programmerings problemer af en til tre variable, da de giver en metode til at forstå problemet grafisk, men er ikke optimal når der skal bruges flere variable.
+Herefter betragtes kort en geometrisk tilgang til at løse lineære programmeringsproblemer.
+Den tager udgangspunkt i niveaumængder og giver et overblik over, hvordan forskellige løsninger med samme funktionsværdi ligger i løsningsmængden, hvilket så anvendes til at finde den optimale værdi. 
+Niveaumængder giver et godt overblik over lineære programmeringsproblemer af en til tre variable, da de giver en metode til at forstå problemet grafisk, men ikke er optimale når der skal bruges flere variable.
 
-Da lineære programmerings problemer ofte omhandler problemer med vilkårlige variable, introduceres derfor en algoritme, der kan løse linære programmerings problemer med vilkårligt endeligt antal variable, kaldet Simplex Metoden.
-Simplex Metoden tager udgangs punkt i resultatet om, at den optimale værdi kan findes bland funktionsværdierne for de mulige basisløsninger, og giver derfor en systematisk metode til at gå fra en mulig basisløsning til en ny, som har en mere optimal funktionsværdi, indtil den optimale værdi er fundet.
+Da lineære programmeringsproblemer ofte omhandler problemer med et vilkårligt antal variable, introduceres en algoritme, der kan løse linære programmeringsproblemer med et vilkårligt endeligt antal variable, kaldet Simplex metoden.
+Simplex metoden tager udgangspunkt i, at den optimale værdi kan findes blandt funktionsværdierne for de mulige basisløsninger, og giver derfor en systematisk metode til at gå fra en mulig basisløsning til en ny, som har en mere optimal funktionsværdi, indtil den optimale værdi er fundet.
 
 Simplex metoden, udledes derfor og så betragtes forskellige implementerings muligheder af denne.
 Den første er Fuld Tabel, som er valgt fordi den er let at overskue, og derfor giver et godt overblik over de forskellige trin i Simplex metoden.
