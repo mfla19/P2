@@ -1,11 +1,11 @@
 \chapter{Case}
-Teorien omkring store-M metoden vil nu blive anvendt til optimeringen af en specifik case. Problemet, som skal optimeres, er tildelingen af arbejdsopgaver til ansatte i en virksomhed. 
-I denne case adskiller de ansatte sig fra hinanden i forhold til både løn, maksimale antal arbejdstimer, samt deres effektivitet i løsningen af de forskellige opgaver. 
+Teorien omkring Store-M metoden vil nu blive anvendt til optimeringen af en specifik case. Problemet, som skal optimeres, er tildelingen af arbejdsopgaver til ansatte i en virksomhed. 
+I denne case adskiller de ansatte sig fra hinanden i forhold til både løn, maksimalt antal arbejdstimer, samt deres effektivitet i løsningen af de forskellige opgaver. 
 Yderligere skal hver opgave løses et bestemt antal gange.
-Optimeringsproblemet går, med udgangspunkt i disse betingelser, ud på at minimere firmaets udgifter til løn. Netop store-M metoden anvendes, da problemet ikke har en åbenlys basisløsning, og det kan derfor løses med et enkelt optimeringsproblem.\\
+Optimeringsproblemet går, med udgangspunkt i disse betingelser, ud på at minimere firmaets udgifter til løn. Netop Store-M metoden anvendes, da problemet ikke har en åbenlys basisløsning, og det kan derfor løses med et enkelt optimeringsproblem.\\
 
 Lad en virksomhed have $G$ ansatte, hvor den $i$'te ansatte maksimalt må arbejde $T_i$ timer, hvor $i=1, \dots, G$. Virksomheden har $H$ arbejdsopgaver, som hver skal løses $O_j$ gange, hvor $j=1, \dots, H$.
-Her gælder det, at $p_{ij}$ er den mængde tid, den $i$'te ansatte bruger, på den $j$'te opgave, med en effektivitet på $n_{ij}$. Derudover har hver ansat en individuel løn $L_i$.
+Her gælder det, at $p_{ij}$ er den mængde tid, den $i$'te ansatte bruger på den $j$'te opgave med en effektivitet på $n_{ij}$. Derudover har hver ansat en individuel løn $L_i$.
 Disse oplysninger er samlet i følgende programmeringsproblem, som søger at minimere udgifterne:
 
 \begin{center}
@@ -29,15 +29,15 @@ Derved består det nødvendige input af vektorer $\vec{L}$, $\vec{T}$ og $\vec{O
 \end{align*}
 
 
-Ved anvendelse af store-M metoden til løsningen af dette problem, skal der anvendes slack-variable og kunstige variable. Enhver ulighed skal omskrives til en lighed, hvilket kræver indførslen af en slack-variabel. Da begrænsningerne for de ansattes timetal er mindreendbetingelser, kan disse omskrives til:
+Ved anvendelse af Store-M metoden til løsningen af dette problem, skal der anvendes slack-variable og kunstige variable. Enhver ulighed skal omskrives til en lighed, hvilket kræver indførslen af en slack-variabel. Da begrænsningerne for de ansattes timetal er mindreendbetingelser, kan disse omskrives til:
 $$T_i = \sum_{j=1}^H p_{ij}+s_i$$
-I store-M metoden kræver denne begrænsning ikke en ekstra variabel med cost $M$, da $s_i$ gerne må være over $0$ i den endelige løsning.
+I Store-M metoden kræver denne begrænsning ikke en ekstra variabel med cost $M$, da $s_i$ gerne må være over $0$ i den endelige løsning.
 
 Begrænsninger af typen
 $O_{j} = \sum_{i=1}^G n_{ij} p_{ij},$
 kræver en ekstra variabel $a_j$ med cost $M$ for at kunne danne en begyndende basisløsning. Derved omskrives disse begrænsninger til
 $O_{j} = \sum_{i=1}^G n_{ij} p_{ij}+a_j$.
-Variablerne $a_j$ må ikke have en værdi over $0$ i den endelige basis, da de originale ligheder derved ikke overholdes. Derfor får disse variable en cost $M$, så de reduceres til $0$, hvis dette er muligt.
+Variablene $a_j$ må ikke have en værdi over $0$ i den endelige basis, da de originale ligheder derved ikke overholdes. Derfor får disse variable en cost $M$, så de reduceres til $0$, hvis dette er muligt.
 
 Derved kan problemet omskrives til:
 \begin{center}
@@ -49,10 +49,10 @@ og $p_{ij} \geq 0.$
 	\end{tabular}
 \end{center}
 
-Der vil derved være $G \cdot H$ variable $p_{ij}$, $G$ slack-variable $s_i$, og $H$ kunstige variable $a_j$. Dette giver i alt $G \cdot H+G+H$ variable i $G+H$ betingelser. 
+Der vil derved være $G \cdot H$ variable, $p_{ij}$, $G$ slack-variable, $s_i$, og $H$ kunstige variable, $a_j$. Dette giver i alt $G \cdot H+G+H$ variable i $G+H$ betingelser. 
 
 \section{Konstruktion af simplex tabellen for casen}
-Ved konstruktionen af den fulde tabel tilføjes endnu en række og søjle. Derved får tabellen størrelse $(G+H+1) \times (G\cdot H+G+H+1)$. 
+Ved konstruktionen af den fulde tabel tilføjes endnu en række og søjle. Derved får tabellen størrelsen $(G+H+1) \times (G\cdot H+G+H+1)$. 
 Løsningsvektoren og cost-vektoren bliver derved:
 
 \begin{align*}
@@ -124,8 +124,8 @@ O_3 &0       & 0      & n_{13} & 0      & 0      & n_{23} & 0 & 0 & 0 & 0 & 1\\
 \section{Løsning af problemet}
 For at løse optimeringsproblemet dannes den fulde tabel ligesom i Fuld tabel metoden, hvorfor den også kan løses på samme måde.
 For netop denne case er der nogle faktorer, som betyder, at problemet bliver simplificeret.
-Da alle indgange i $B^{-1}$ og $\vec{x}_B$ er positive, vil alle rækker, ifølge Sætning \ref{stn:lexi}, forblive leksikografisk positive, hvorved der ikke er behov for at bytte om på søjlerne for at kunne anvende den leksikografiske metode.
-Da der findes en unik variabel i hver betingelse, garanterer dette, at rækkerne er lineært uafhængige, hvorved de fundne basisløsninger nødvendigvis har dimension $0$. Derved er det ikke nødvendigt at tage højde for eventuelle tilfælde med lineært afhængige rækker. Da alle variable har en cost større end $0$, og da ingen af disse kan være negative, er det heller ikke muligt at opnå et tilfælde med uendeligt lav cost. Derved er det udelukkende nødvendigt at undersøge 2 scenarier: 
+Da alle indgange i $B^{-1}$ og $\vec{x}_B$ er positive, vil alle rækker, ifølge Sætning \ref{stn:lexi}, forblive leksikografisk positive, hvorved der ikke er behov for at bytte om på søjlerne for at kunne anvende den leksikografiske pivotregel.
+Da der findes en entydig variabel i hver betingelse, garanterer dette, at rækkerne er lineært uafhængige, hvorved de fundne basisløsninger nødvendigvis har dimension $0$. Derved er det ikke nødvendigt at tage højde for eventuelle tilfælde med lineært afhængige rækker. Da alle variable har en cost større end $0$, og da ingen af disse kan være negative, er det heller ikke muligt at opnå et tilfælde med uendeligt lav cost. Derved er det udelukkende nødvendigt at undersøge 2 scenarier: 
 \begin{itemize}
 \item Problemet har en optimal løsning.
 \item Problemet har ingen løsning.
@@ -134,7 +134,7 @@ Da der findes en unik variabel i hver betingelse, garanterer dette, at rækkerne
 
 Til løsningen af problemer af denne type er der dannet følgende algoritmer med funktioner, som finder en optimal løsning. Algoritme \ref{alg:lexi} finder den leksikografisk mindste række i tabellen, for de rækker, som har en indgang over nul i pivotsøjlen. 
 
-Algoritme \ref{alg:storem2} er den overordnede algoritme, som laver nye iterationer, indtil en optimal løsning er fundet. Yderligere defineres to konstanter $m$ og $n$, som er henholdsvis højde og bredde af den fulde tabel. Her gælder det, i algoritmerne, at matricen $A$ er den fulde tabel.
+Algoritme \ref{alg:storem2} er den overordnede algoritme, som laver nye iterationer, indtil en optimal løsning er fundet. Yderligere defineres to konstanter $m$ og $n$, som er henholdsvis højde og bredde af den fulde tabel. Her gælder det i algoritmerne, at matricen $A$ er den fulde tabel.
 
 \newpage
 
@@ -238,4 +238,4 @@ Dermed bliver den mindste løn, som skal udbetales, $15 \cdot 120 + 30 \cdot 200
 
 \end{eks}
 
-Ved at anvende denne algoritme er det nemt at optimere problemer med arbejdsfordeling, da dette yderligere giver en del forsimplinger i anvendelsen af store-M metoden. 
+Ved at anvende denne algoritme er det nemt at optimere problemer med arbejdsfordeling, da dette giver en del forsimplinger i anvendelsen af Store-M metoden. 
