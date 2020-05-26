@@ -19,10 +19,10 @@ Et sæt af $m$ lineære ligninger, der indeholder de samme $n$ variable, hvor b�
 a_{1,1}x_1+a_{1,2}x_2+ &\dots +a_{1,n}x_n = b_1\\
 a_{2,1}x_1+a_{2,2}x_2+ &\dots +a_{2,n}x_n = b_2\\
 &\vdots \\
-a_{m,1}x_1+a_{m,2}x_2+ &\dots +a_{m,n}x_n = b_m
+a_{m,1}x_1+a_{m,2}x_2+ &\dots +a_{m,n}x_n = b_m.
 \end{align*}
 
-Koefficienterne i et lineært ligningssystem kan skrives i en matrix, mens variable og konstanterne skrives som vektorer. Et lineært ligningsystem kan så skrives op som en matrix ligning på formen $A \vec{x} = \vec{b}$, hvor
+Koefficienterne i et lineært ligningssystem kan skrives i en matrix, mens variable og konstanterne skrives som vektorer. Et lineært ligningsystem kan så skrives op som en matrixligning på formen $A \vec{x} = \vec{b}$, hvor
 
 \begin{align*}
 A= \begin{bmatrix}
@@ -45,7 +45,7 @@ b_m
 \end{bmatrix}
 \end{align*}
 
-Søjlerne i $A$ indeholder koefficienterne $x_1$, $x_2$, $\dots $, $x_n$ og kaldes derfor koefficientmatricen til det lineære ligningssystem. 
+Søjlerne i $A$ indeholder koefficienterne til variablene $x_1$, $x_2$, $\dots $, $x_n$ og kaldes derfor koefficientmatricen til det lineære ligningssystem. 
 Den information, der er nødvendig for at løse et lineært ligningssystem, kan samles i en totalmatrix på formen:
 \[
 \left[
@@ -137,15 +137,15 @@ En matrix siges at være på \textbf{trappeform}, hvis de første 3 betingelser 
 \end{enumerate}
 \label{def:reducerettrappeform}
 \end{defn}
-Før en række kommer på reduceret trappeform, kommer den først på trappeform. En matrice siges at være på trappeform når de første $3$ betingelser i Definotion \ref{def:reducerettrappeform} er opfyldt. \\
+Før en række kommer på reduceret trappeform, kommer den først på trappeform. En matrix siges at være på trappeform når de første $3$ betingelser i Definition \ref{def:reducerettrappeform} er opfyldt. \\
 
-De indgange i matricen, som er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Dog siges et ligningssystem at være uløseligt, hvis der i totalmatricen er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere variablene i den givne række med 0, hvilket ikke er muligt.\\
+De indgange i matricen, som er en ledende indgang, kaldes pivot-indgange. De søjler der indeholder en pivot-indgang kaldes pivot-søjler. De variable, hvis søjler ikke har pivot, kaldes frie variable og hvis en matrix indeholder frie variable betyder det, at der er uendeligt mange løsninger, fordi resultatet ikke afhænger af de frie variable. Dog siges et ligningssystem at være uløseligt, hvis der i totalmatricen er pivot i sidste søjle, da det ville betyde at der skulle opnås et resultat forskelligt fra 0, ved kun at multiplicere variablene i den givne række med 0.\\
 
 \begin{defn}
 Lad $A$ være en $m \times n$ matrix. 
 Da er \textbf{rangen} af $A$ antallet af pivot-søjler i $A$, og noteres $rang(A)$. 
 \textbf{Nulliteten} af $A$ noteres $null(A)$ og er antallet af ikke-pivot-søjler i $A$. \\
-Derudover gælder $rang(A) + null(A) = n$.
+Derudover gælder, at $rang(A) + null(A) = n$.
 \end{defn}
 
 \begin{eks}
@@ -195,7 +195,7 @@ Denne matrix reduceres nu ved hjælp af rækkeoperationer til reduceret trappefo
 0 & 0 & 0 & 1 & 2
 \end{bmatrix}.
 \end{align*}
-Nu er matricen på reduceret trappeform. Variablene for de søjler, der ikke er pivot-søjler kaldes frie variable. Hvis et ligningssystem har frie variable har systemet uendeligt mange løsninger, da de frie variable kan tage vilkårlige værdier.\\
+Nu er matricen på reduceret trappeform.\\
 Nu isoleres alle variable, så en løsning kan findes:
 \begin{align*}
 x_1 &= 12 + 3x_3 \\

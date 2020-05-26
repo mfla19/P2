@@ -6,7 +6,7 @@ Da vektorer også er matricer vil regneregler for matricer også gælde for vekt
 Addition af matricer kan kun foretages for matricer med samme størrelse, da additionen laves ved at addere matrix-indgange på tilsvarende indgange.
 
 \begin{defn}[Addition af matricer]
-Lad $A, B, C$ være $m \times n$ matricer, så $C=A+B$. Da er den $i,j$'te indgang i $C$ givet som $c_{i,j} = a_{i,j} + b_{i,j}$. 
+Lad $A, B, C$ være $m \times n$ matricer, så $C=A+B$. Da er den $i,j$'te indgang i $C$ givet ved $c_{i,j} = a_{i,j} + b_{i,j}$. 
 \end{defn}
 
 
@@ -20,7 +20,7 @@ Lad $A, B, C$ være $m \times n$ matricer, så $C=A+B$. Da er den $i,j$'te indga
 Tilsvarende kan vektorer også adderes som defineret i Definition \ref{def:add_vek}. Regning med vektorer kan yderligere repræsenteres geometrisk, hvor vektorer anses som pile med en retning i så mange dimentioner som der er indgange i vektoren.
 
 \begin{defn}[Addition af to vektor]
-Lad $\vec{v}, \vec{u}, \vec{w} \in \mathds{R}^n$, så $\vec{w}=\vec{u}+\vec{v}$, da er den $i$te indgang i $\vec{w}$ givet som $w_i = u_i + v_i$. 
+Lad $\vec{v}, \vec{u}, \vec{w} \in \mathds{R}^n$, så $\vec{w}=\vec{u}+\vec{v}$, da er den $i$'te indgang i $\vec{w}$ givet ved $w_i = u_i + v_i$ for $i=1, \dots ,n$. 
 %Lad $\underset{m \times 1}{A}$ og $\underset{m \times 1}{B}$ være to vektorer med samme størrelse. Da vil additionen af de to vektorer give en vektor, $\underset{m \times 1}{C}$, hvor hver komponent er summen af de tilsvarende komponenter i $\underset{m \times 1}{A}$ og $\underset{m \times 1}{B}$.
 %\begin{align*}
 %\underset{m \times 1}{A} = 
@@ -88,7 +88,7 @@ Betragt de to $4$ dimensionelle vektorer
 -5\\
 \end{bmatrix}
 \end{align*}
-Da er deres sum 
+Deres sum er
 \begin{align*}
 \vec{v}+\vec{u}=
 \begin{bmatrix}
@@ -121,11 +121,11 @@ Da er deres sum
 \end{align*}
 \end{eks}
 
-Skalar multiplikation er en skalering af alle indgangene i en matrix med en bestemt skalar.
+Skalarmultiplikation er en skalering af alle indgangene i en matrix med en bestemt skalar.
 
 
 \begin{defn}[Matrixskalar]
-Lad $A$ være en $m \times n$ matrix og $k$ en skalar. Da vil matricen $B$ defineret som $B=k \cdot A$, være en $m \times n$ matrix med indgange $b_{i,j}=k\cdot a_{i,j}$. Skalaren $k$ kaldes en matrixskalar. Er $A$ en vektor kaldes $k$ en vektorskalar.
+Lad $A$ være en $m \times n$ matrix og $k$ en skalar. Da vil matricen $B$ defineret ved $B=k \cdot A$, være en $m \times n$ matrix med indgange $b_{i,j}=k\cdot a_{i,j}$. Skalaren $k$ kaldes en \textbf{matrixskalar}. Er $A$ en vektor kaldes $k$ en \textbf{vektorskalar}.
 \end{defn}
 
 %\begin{defn}[Vektor skalar]
@@ -219,7 +219,7 @@ Så gælder følgende
 \end{stn}
 
 \begin{proof} 
-(a) Det vises, at enhver indgang i $A + B$ er tilsvarende i $B + A$. Betragt indgangene $a_{i,j}$ og $b_{i,j}$. Summen af $a_{i,j} + b_{i,j}$ er det samme som $b_{i,j} + a_{i,j}$, jf. den kommutative lov. \\
+(a) Det vises, at enhver indgang i $A + B$ er tilsvarende indgangen i $B + A$. Betragt indgangene $a_{i,j}$ og $b_{i,j}$. Summen af $a_{i,j} + b_{i,j}$ er det samme som $b_{i,j} + a_{i,j}$, jf. den kommutative lov. \\
 (b) Det vises, at enhver indgang i $(A + B) + C$ er den samme som den tilsvarende indgang i $A + (B + C)$. Ligesom i (a) tages der udgangspunkt i indgang $(i,j)$. Summen af $(a_{i,j} + b_{i,j}) + c_{i,j}$ er det samme som $a_{i,j} + (b_{i,j} + c_{i,j})$. Ifølge den associative lov, er det uden betydning hvor paranteserne er placeret i et additionsudtryk. Derfor må indgangen $(i,j)$ i $(A + B) + C$ være lig indgang $(i,j)$ i $A + (B + C)$. \\
 (c) For enhver indgang i $A$, $a_{i,j}$ skal denne adderes med $0$. $a_{i,j}+0=a_{i,j}$. Derfor må $A + O = A$. \\
 (d) For enhver indgang i $A$, $a_{i,j}$ skal denne fratrækkes samme indgang i $A$, $a_{i,j}$. Da \\ $a_{i,j} - a_{i,j} = 0$, må $A + (-A) = O$. \\
@@ -241,7 +241,7 @@ B= \begin{bmatrix}
 \end{bmatrix}, \quad
 s=5
 \end{align*}
-Først udføres regneoperation addition,
+Først udføres addition af matricer,
 \begin{align*}
 A+B= \begin{bmatrix}
 	2 & 3 & 4 \\
@@ -256,7 +256,7 @@ A+B= \begin{bmatrix}
 	2 & 2 & 1
 \end{bmatrix}.
 \end{align*}
-Herfter udføres skalering,
+Herfter udføres skalering af matricer,
 \begin{align*}
 s(A+B)= 5 \cdot \begin{bmatrix}
 	3 & 5 & 3 \\
@@ -280,7 +280,7 @@ s(A+B)= 5 \cdot \begin{bmatrix}
 %Dette lægger grundlaget for hvordan matricer ganges sammen, eftersom en vektor også kan ses som en $n\times1$ matrix. 
 Et matrix-vektor produkt, er produktet af en $m\times n$ matrix og en $n$ dimensional vektor, og svarer til summen af vektorskalar-produktet mellem den $j$te søjle i matricen, og den $j$te indgang i vektoren, for enhver søjle i matricen.
 \begin{defn}[Matrix-vektor produkt]
-Lad $A$ være en $m\times n$ matrix og $\vec{v}\in \mathds{R}^n$ vektor. 
+Lad $A$ være en $m\times n$ matrix og $\vec{v}\in \mathds{R}^n$. 
 Da vil $A \vec{v} = \sum_{j=1}^n \vec{A_j}v_j = \vec{u}$, hvor $\vec{u} \in \mathds{R}^m$.
 %Lad $A$ være en $m\tiems n$ matrix og $\vec{v}\in \mathds{R}^n$ vektor. Så skrives \textbf{Matrix-vektor produktet} $A\vec{x}$, som produktet af søjlerne $\vec{A_j}$ i $A$ og de tilsvarende komponenter i $\vec{x}$. Dette kræver at matricen har samme antal søjler som vektoren har komponenter, hvilket er defineret med $n$.
 %\begin{align*}
@@ -310,7 +310,7 @@ Et særtilfælde af en matrix-vektor mulitiplikation er, når to vektorer multip
 Lad $\vec{v}, \vec{u} \in \mathds{R}^n$ være to vektorer, da er \textbf{prikproduktet} givet ved $\langle\vec{v},\vec{u}\rangle = \sum_{i=1}^n v_i \cdot u_i = \vec{v}^T \cdot \vec{u} $
 \end{defn}
 \begin{eks}
-Betragt den $2 \times 3$ matrix og den $2$ dimentionelle søjle vektor
+Betragt en $2 \times 3$ matrix og en $2$ dimentionel søjlevektor
 \begin{align*}
 A=
 \begin{bmatrix}
@@ -368,8 +368,7 @@ A\vec{x}= \begin{bmatrix}
 \end{bmatrix}
 \end{align*}
 \end{eks}
-
-Multiplikation af to matricer gøres ikke ved at multiplicere de tilsvarende indgange, som er tilfældet ved multiplikation af vektorer. Et produkt af to matricer defineres herunder. 
+Et produkt af to matricer defineres herunder. 
 \begin{defn} [Matrix produkt]
 Lad $A$ være en $m \times n$ matrix og $B$ være en $n \times p$ matrix. Da er produktet $A \cdot B$ en $m \times p$ matrix, hvor indgangene er givet ved: 
 
@@ -380,7 +379,7 @@ hvor $\vec{a}_i$ er den $i$'te række i $A$, og $\vec{B}_j$ er den $j$'te søjle
 \end{defn}
 Det er vigtigt, at antallet af søjler i $A$ er det samme som antallet af rækker i $B$. Er dette ikke tilfældet, så er matrix produktet ikke defineret. Matrix produktet er oftest ikke kommutativt. Ligningen $AB=BA$ er derfor ikke altid gældende. 
 \begin{eks}
-Nu tages udgangspunkt i to matricer $A$ og $B$. 
+Der tages udgangspunkt i to matricer $A$ og $B$. 
 \begin{align*}
 \underset{2 \times 3}{A}= \begin{bmatrix}
 	\bf{1} & \bf{3} & \bf{-2} \\

@@ -1,26 +1,26 @@
 \section{Den inverse matrix}
 En anden måde at løse et ligningssystem $A\vec{x} = \vec{b}$ på, er ved at finde en matrix $A'$ som opfylder, at $A'A =A A' = I_n$.
-Hvorefter at $\vec{x}$ vil kunne findes som
+Hvorefter $\vec{x}$ vil kunne findes som
 \begin{align}
 \vec{x}= I_n\vec{x} = A'A\vec{x} = A'\vec{b}.
 \label{lig:A'b}
 \end{align}
-Bemærk, at $A'$ derfor vil udgøre et invers element til $A$, og $A'$ kan derfor kun eksistere, hvis at funktionen
+Bemærk, at $A'$ derfor vil udgøre et invers element til $A$, og $A'$ kan derfor kun eksistere, hvis funktionen
 \begin{align*}
 f(\vec{x}) = A \vec{x} 
 \label{lig:funktion}
 \end{align*}
 er bijektiv.
 For, at den er injektiv, skal alle søjler være lineært uafhængige, og derfor skal der forekomme en pivot-indgang i hver søjle.
-Mens at der skal forekomme en pivot indgang i enhver række for, at $f$'s ko-domæne er lig dens værdimængde, og den derfor vil være surjektiv. 
-Det betyder, at der en matrix $A'$ kun vil kunne eksistere, hvis at $A$s RT form er lig identitetsmatricen, og $A$ skal derfor være kvadratisk.
-Et resultat af at $f$ er bijektiv, er at $\vec{x}$ fra Ligning \eqref{lig:A'b}, er entydigt bestemt, derfor må $A'$ også være entydigt bestemt.
+Mens der skal forekomme en pivot indgang i enhver række for, at $f$'s ko-domæne er lig dens værdimængde, og den vil være surjektiv. 
+Det betyder, at en matrix $A'$ kun vil kunne eksistere, hvis $A$'s RT form er lig identitetsmatricen, og $A$ skal derfor være kvadratisk.
+Et resultat af at $f$ er bijektiv er, at $\vec{x}$ fra Ligning \eqref{lig:A'b}, er entydigt bestemt, derfor må $A'$ også være entydigt bestemt.
 \begin{stn}
-Lad $A$ være en $n \times n $ matrix. Hvis der eksistere en matrix $A'$ så $AA'= A'A = I_n$ da er $A'$ entydigt bestemt.
+Lad $A$ være en $n \times n $ matrix. Hvis der eksisterer en matrix $A'$ så $AA'= A'A = I_n$ da er $A'$ entydigt bestemt.
 \label{stn:entydiginvers}
 \end{stn}
 \begin{proof}
-Antag for modstrid at der eksistere to matricer $A'$ og $A^*$ så $A' \neq A^*$, og $A'A= AA' = I_n$ og $A^*A = AA^* = I_n$, da vil
+Antag for modstrid at der eksisterer to matricer $A'$ og $A^*$ så $A' \neq A^*$, og $A'A= AA' = I_n$ og $A^*A = AA^* = I_n$, da vil
 \begin{align*}
 A' = (A^*A)A' = A^*(AA') = A^*.
 \end{align*}
@@ -42,18 +42,18 @@ Af Definition \ref{def:elematrix}, fremgår det, at $E$ er den matrix der foreko
 Derfor eksisterer $E^{-1}$, hvis et $r^{-1}$ eksisterer. 
 Da både multiplikation og addition er invertible i de reelle tal, og det altid er muligt at ombytte to rækker tilbage, vil enhver rækkeoperation have en invers, og $E$ er derfor invertibel.
 \end{proof}
-Derfor må det være muligt at gå fra den RT form for en matrix $A$ og tilbage til $A$.
+Derfor må det være muligt at gå fra RT-form for en matrix $A$ og tilbage til $A$.
 \begin{lma}
-Lad $R$ være den reducerede trappeform af $n\times m$ matricen $A$, så eksistere der en invertible matix $P$ så $PA = R$
+Lad $R$ være den reducerede trappeform af $n\times m$ matricen $A$, så eksisterer der en invertibel matix $P$ så $PA = R$
 \label{lma:PA=R}
 \end{lma}
 \begin{proof}
-Da $R$ er RT formen til $A$ betyder det, at der eksistere et multiplum af elementær matricer så
+Da $R$ er RT-formen af $A$ betyder det, at der eksisterer et multiplum af elementærmatricer, så
 \begin{align*}
 \left( E_k \dotsm E_2 E_1 \right) A = R.
-\end{align*}.
+\end{align*}
 Lad nu $P = E_k E_{k-1} \dotsm E_1$, da vil $PA = R$.
-Da $E_k$ betegner en elementær matrix følger det af Lemma \ref{lma:Einvertibel} at $E_k^{-1}$ eksistere, hvorfor at 
+Da $E_k$ betegner en elementærmatrix følger det af Lemma \ref{lma:Einvertibel} at $E_k^{-1}$ eksisterer, hvorfor 
 \begin{align*}
 \left( E_1^{-1}\dotsm E_{k-1}^{-1} E_k^{-1} \right) P = E_1^{-1}\dotsm \left( E_{k-1}^{-1}\left( E_k^{-1}E_k \right) E_{k-1}\right)\dotsm E_1 = E_1^{-1}\dotsm \left( E_{k-1}^{-1}  E_{k-1} \right) \dotsm E_1 = I_n.
 \end{align*}
@@ -85,7 +85,7 @@ Det betyder, at antallet af pivot-søjler er det samme som antallet af søjler, 
 RT formen af $A$ må derfor være identitetsmatricen. 
 \\%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Lad nu den reducerede trappeform af $A$ være identitetsmatricen.
-Da følger det af Lemma \ref{lma:PA=R}, at der eksistere en invertibel $n \times n$  matrix $P$ således at: $PA=I_n$.
+Da følger det af Lemma \ref{lma:PA=R}, at der eksisterer en invertibel $n \times n$  matrix $P$ således at: $PA=I_n$.
 Derfor vil der gælde ,at
 \begin{align*}
 A=I_nA=(P^{-1}P)A=P^{-1}(PA)=P^{-1}I_n=P^{-1}
@@ -99,9 +99,9 @@ Betragt nu matricen $\rvect{A&I_n}$ da vil
 \begin{align*}
 P \rvect{A & I_n} = \rvect{I_n & P} = \rvect{I_n & A^{-1}}.
 \end{align*}
-Da $P$ per definition er produktet af elementærmatricerne, der svare til de rækkeoperationer, som bliver brugt til at bringe $A$ på RT form, betyder det, at den inverse matrix til $A$, kan fremstilles ved at udføre samme rækkeoperationer på $I_n$ som vil føre til $A$s RT form.
+Da $P$ per definition er produktet af elementærmatricerne, der svarer til de rækkeoperationer, som bliver brugt til at bringe $A$ på RT form, betyder det, at den inverse matrix til $A$ kan fremstilles ved at udføre samme rækkeoperationer på $I_n$ som fører til $A$s RT form.
 \end{proof}
-Det betyder at med mindre, at den inverse matrix er åbenlys skal der stadig bruges rækkeoperationer til at løse Ligningen \eqref{lig:A'b}, og det kan derfor ikke altid betale sig at finde den inverse, hvis den skulle eksistere.
+Det betyder at med mindre, den inverse matrix er åbenlys skal der stadig bruges rækkeoperationer til at løse Ligningen \eqref{lig:A'b}, og det kan derfor ikke altid betale sig at finde den inverse, hvis den skulle eksistere.
 
 
 

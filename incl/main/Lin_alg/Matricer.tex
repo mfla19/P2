@@ -10,8 +10,9 @@ Skalaren i $i$'te række og $j$'te søjle kaldes $(i,j)$-indgangen.
 \label{def:matricer}
 \end{defn}
 
-En vektor er en matrix, der enten kun har en søjle eller en række. Vektorer kan også repræsenteres geometrisk hvor en vektor er en pil med en retning og en længde.
-Det vil sige, at en vektor er et særtilfælde af en matrix, og alle regneregler for matricer, gør sig derfor gældende for vektorer, men ikke alle regneregler for vektorer kan bruges for matricer.
+En vektor er en matrix, der enten kun har en søjle eller en række. 
+Vektorer kan også repræsenteres geometrisk, hvor en vektor er en pil med en retning og en længde.
+Det vil sige, at en vektor er et særtilfælde af en matrix, og alle regneregler for matricer, gør sig derfor også gældende for vektorer, men ikke alle regneregler for vektorer kan bruges på matricer.
 Vektorer anvendes blandt andet til at repræsentere rækker og søjler i matricer. 
 Indgangene i en vektor kaldes vektorens vektorkomponenter, og svarer til vektorens koordinater i den geometriske repræsentation.
 
@@ -49,7 +50,7 @@ A = \begin{bmatrix}
 
 
 
-Matricer kan bruges til at illustrere forskellige ting fra den virkelige verden. Det kan være antal varer solgt fra forskellige butikker, eller prisen på forskellige produkter. 
+Matricer kan bruges til at illustrere forskellige ting fra den virkelige verden. Det kan være antal varer solgt fra forskellige butikker eller prisen på forskellige produkter. 
 
 \begin{eks}
 Herunder ses en $4 \times 3$ matrix, der viser antallet af solgte varer fra tre forskellige butikker. Hver række i matricen repræsenterer en bestemt vare, mens hver søjle repræsenterer en butik. Den første række viser altså hvor mange trøjer hver butik har solgt.
@@ -96,10 +97,10 @@ Det ses at $A$ er en $2 \times 3$ matrix og $A^T$ er en $3 \times 2$ matrix.
 \end{eks}
 
 
-Standard basis vektorer er vektorer, hvis indgange alle er $0$ pånær én indgang, der har værdien $1$. I den geometriske repræsentation vil disse vektorer da følge en af akserne i det tilsvarende koordinatsystem i positiv retning.
+Standard basisvektorer er vektorer, hvis indgange alle er $0$ pånær én indgang, der har værdien $1$.
 
 \begin{defn}[Standard basisvektorer]
-Lad $\vec{e}_{i}\in\mathds{R}^n$ være en standard basisvektor. Da vil den $j$'te indgang være givet ved
+Lad $\vec{e}_{i}\in\mathds{R}^n$ være en \textbf{standard basisvektor}. Da vil den $j$'te indgang være givet ved
 \begin{align*}
 e_{i_{j}}=\begin{cases} 0, \quad j \neq i
 \\ 1 , \quad j = i \end{cases}.
@@ -110,7 +111,7 @@ e_{i_{j}}=\begin{cases} 0, \quad j \neq i
 En bestemt type matrix er en identitetsmatrix, der betegnes $I_n$ og dannes ud fra standard basisvektorer. 
 
 \begin{defn} [Identitetsmatrix]
-For hvert positivt heltal $n$, er identitetsmatricen $I_n$ en $n \times n$ matrix, defineret som\\ $I_n = \rvect{\vec{e_1} & \vec{e_2} & \dots &  \vec{e_n}}$, hvor $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ er standardvektorerne i $\mathds{R}^n$
+For hvert positivt heltal $n$, er textbf{identitetsmatricen} $I_n$ en $n \times n$ matrix, defineret som\\ $I_n = \rvect{\vec{e_1} & \vec{e_2} & \dots &  \vec{e_n}}$, hvor $\vec{e_1}$, $\vec{e_2}$, $\dots$, $\vec{e_n}$ er standardvektorerne i $\mathds{R}^n$
 \label{def:imatrix}
 \end{defn}
 
@@ -123,23 +124,23 @@ I_3 = \begin{bmatrix}
 \end{bmatrix}
 \end{align*}
 
-En anden bestemt type matrix er en delmatrix, som består af en del af en anden matrix.
-\begin{defn} [Delmatrix]
-En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
-\label{delmatrix}
-\end{defn}
-
-Givet en matrix $A$ kan der dannes delmatricen $A'$.
-
-\begin{align*}
-A = \begin{bmatrix}
-	1 & 2 & 3 \\
-	4 & 5 & 6 \\
-	7 & 8 & 9 
-\end{bmatrix}, \quad \quad
-A' = \begin{bmatrix}
-	5 & 6 \\
-	8 & 9
-\end{bmatrix}
-\end{align*}
-
+%En anden bestemt type matrix er en delmatrix, som består af en del af en anden matrix.
+%\begin{defn} [Delmatrix]
+%En matrix $A'$ er en delmatrix af $A$, hvis $A'$ kan dannes ved at fjerne hele søjler og/eller hele rækker fra $A$.
+%\label{delmatrix}
+%\end{defn}
+%
+%Givet en matrix $A$ kan der dannes delmatricen $A'$.
+%
+%\begin{align*}
+%A = \begin{bmatrix}
+%	1 & 2 & 3 \\
+%	4 & 5 & 6 \\
+%	7 & 8 & 9 
+%\end{bmatrix}, \quad \quad
+%A' = \begin{bmatrix}
+%	5 & 6 \\
+%	8 & 9
+%\end{bmatrix}
+%\end{align*}
+%
