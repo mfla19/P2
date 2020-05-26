@@ -1,37 +1,37 @@
 
-En niveaumængde beskriver mængden alle de mulige vektorer $\vec{x}$, som i funktionen $f(\vec{x})$ giver en bestemt funktionsværdi $z$. 
+En niveaumængde beskriver mængden af alle de mulige vektorer $\vec{x}$, som i funktionen $f(\vec{x})$ giver en bestemt funktionsværdi $z$. 
 \begin{defn}[Niveaumængde]
 Lad $f(\vec{x})= \vec{c}^T\vec{x}$ være en objektfunktion, da kaldes
 \begin{align*}
-N_z = \{\vec{x}| f(\vec{x}) = z, z \in \mathds{R}\}
+N_z = \{\vec{x} \in \mathds{R}^n \mid f(\vec{x}) = z, \, z \in \mathds{R}\}
 \end{align*}
 for en \textbf{niveaumængde}.
 \end{defn}
 
-For et minimeringsproblem er målet derved at finde den mindste værdi $z$ for hvilken der findes en vektor $\vec{x}$, så $f(\vec{x})=z$ og hvor $\vec{x}$ overholder alle problemets betingelser.
 
-Den mulige mængde beskriver alle vektorer $\vec{x}$, som opfylder betingelserne. Derved er målet at finde den mindste mulige $z$ for hvilken der er en ikke-tom skæring mellem niveaumængden $N_z$ og den mulige mængde.
+
+For et minimeringsproblem er målet derved at finde den mindste værdi $z$ for hvilken der findes en vektor $\vec{x}$, så $f(\vec{x})=z$, og hvor $\vec{x}$ overholder alle problemets betingelser.
+
+Den mulige mængde beskriver alle vektorer $\vec{x}$, som opfylder betingelserne. Derved er målet at finde den mindste mulige $z$, for hvilken der er en ikke-tom skæring mellem niveaumængden $N_z$ og den mulige mængde.
 
 \begin{stn}
-Lad $N_z$ betegne en niveaumængde for en funktion $f(\vec{x})=\vec{c}^T\vec{x}$, da er $\vec{c}$ ortogonal med denne niveaumængde.
+Lad $N_z$ betegne en niveaumængde for en funktion $f(\vec{x})=\vec{c}^T\vec{x}$, da er $\vec{c}$ ortogonal med enhver $\vec{d}= \vec{x}-\vec{y}$ for alle $\vec{x}, \vec{y} \in N_z$. 
 \end{stn}
 
-Bemærk, at $\vec{c}$ ikke er ortogonal med $\vec{x}\in N_Z$ men med niveaumængden.
 \begin{proof}
-Lad $\vec{x}, \vec{y} \in N_z$ da er niveaumængden beskrevet af $N_z$ parallel med $\vec{x}-\vec{y}$.
-Tages prikproduktet af $\vec{x}-\vec{y}$ og $\vec{c}$, fåes at
+Tages prikproduktet af $\vec{d}$ og $\vec{c}$, fås
 \begin{align*}
-\vec{c}^T(\vec{x}-\vec{y}) = \vec{c}^T\vec{x} -\vec{c}^T\vec{y} = z - z = 0,
+\vec{c}^T\vec{d}=\vec{c}^T(\vec{x}-\vec{y}) = \vec{c}^T\vec{x} -\vec{c}^T\vec{y} = z - z = 0,
 \end{align*}
-hvorfor $\vec{c}$ og $\vec{x}-\vec{y}$ er ortogonale i følge Lemma \ref{lma:vinkelret}, og dermed må $\vec{c}$ også være orthogonal med niveaumængden $N_z$.
+hvorfor $\vec{c}$ og $\vec{d}$ er ortogonale i følge Lemma \ref{lma:vinkelret}, og dermed må $\vec{c}$ også være ortogonal med $\vec{d}$.
 \end{proof}
-
-Vælges en vektor $\vec{x}=k\vec{c}$ vil denne vektor være en del af en niveaukurve hvor $\vec{c}^T\vec{x}=k\Vert\vec{c}\Vert^2=z$. Ved at isolere for k findes det at $k=\frac{z}{\Vert\vec{c}\Vert^2}$, når $k\vec{c}$ er en del af niveaukurven.
+Det følger derfor, at niveaumængdens værdi ændres i $\vec{c}$s retning. 
+Vælges derfor en vektor $\vec{x}=k\vec{c}$, vil denne vektor være en del af en niveaumængde hvor $\vec{c}^T\vec{x}=k\Vert\vec{c}\Vert^2=z$. Ved at isolere for $k$ findes det, at $k=\frac{z}{\Vert\vec{c}\Vert^2}$ når $k\vec{c}$ er en del af niveaumængden.
 
 %Da $k$ er direkte proportionel med $z$ kan den optimale værdi i et maksimeringsproblem findes hvor  en funktion af $z$, kan den optimale værdi i et maksimeringsproblem findes for den niveaukurve, hvor 
 
-En optimal løsning kan derved findes i maksimeringsproblemer, ved at finde den største mulige $k\vec{c}$, hvor den tilsvarende niveaumængde skærer den mulige mængde. Altså, er afstanden mellem niveamængden og origo større jo større $z$ er, da $z$ er direkte proportionel med $k$. Tilsvarende må det gælde modsat for minimeringsproblemer. 
-Altså kan en niveaumængde vises geometrisk, som en mængde, der er orthogonal på $\vec{c}$ og indeholder vektoren $k\vec{c}=\frac{z}{\Vert\vec{c}\Vert^2}\vec{c}$.
+En optimal løsning kan derved findes i maksimeringsproblemer, ved at finde den største mulige $k\vec{c}$, hvor den tilsvarende niveaumængde skærer den mulige mængde. Altså, er afstanden mellem niveaumængden og origo større jo større $z$ er, da $z$ er direkte proportionel med $k$. Tilsvarende må det gælde modsat for minimeringsproblemer. 
+Altså kan en niveaumængde vises geometrisk, som en mængde der er ortogonal på $\vec{c}$ og indeholder vektoren $k\vec{c}=\frac{z}{\Vert\vec{c}\Vert^2}\vec{c}$.
 
 %
 %Dette betyder derved at der ved grafisk at undersøge en mulig mængde vil være muligt for minimeringsproblemer af finde den optimale løsning der hvor en skæringen mellem niveaukurven og den mulige mængde er ikke-nul og hvor skæringen går igennem den vektor $\vec{c}k$ med mindst mulig $k$.

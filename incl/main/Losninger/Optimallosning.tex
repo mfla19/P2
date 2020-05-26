@@ -33,6 +33,16 @@ Er løsningsmængden ikke tom, og uden linjer, da eksistere der en optimal løsn
 Hvis løsningsmængden $P =\{\vec{x} \in \mathds{R}^n\mid A \vec{x} \geq \vec{b} \} \neq \emptyset$, til det lineære minimeringsproblem $\vec{c}^T\vec{x}$, ikke indeholder en positiv halvlinje, da vil der eksistere en optimal løsning $\vec{x}^{**}$, som er en mulig basisløsning.
 \label{stn:eksistens}
 \end{stn}
+
+\begin{bem}
+At Sætning \ref{stn:eksistens} henviser til et vilkårligt programmerings problem, og positivitets betingelserne er derfor inkluderet i $A$.
+\end{bem}
+
+\begin{bem}
+At $A$ er en $n \times m$, med $k\geq n$ lineært uafhængige rækker.
+For hvis $k < n$ vil problemet indeholde mindst en fri variabel, og derfor vil der eksistere en linje.
+\end{bem}
+
 \begin{proof}
 Antag, at $\vec{x} \in P$ ikke er en mulig basisløsning, og lad $I =\{i \mid \vec{a_i}^T\vec{x}=b_i\}$ betegne indeksene for de lineært uafhængige aktive bibetingelser knyttet til løsningen $\vec{x}$.
 Da $\vec{x}$ ikke er en mulig basisløsning, må $span(\{\vec{a_i}\mid i\in I\})$ være et ægte underrum til $\mathds{R}^n$, hvormed det følger af Sætning \ref{stn:Rnorto}, at der eksisterer en vektor $\vec{d} \in \mathds{R}^n$, så $\vec{a_i}^T\vec{d}=0$ for $i \in I$.
@@ -42,10 +52,10 @@ Da løsningsmængden ikke indeholder en positiv halvlinje, vil der være en øvr
 Da $\vec{a_i}^T\vec{d}=0$ og $\vec{a_j}^T\vec{d} \neq 0$ medfører det, at $\vec{a_i}$ og $\vec{a_j}$  er lineært uafhængige af Lemma \ref{lma:ortolinuaf}. 
 Derfor kan $j$ tilføjes til $I$.
 Gentag til at $|I|=n$.
-\\ Antag nu, at $|I|=n$, derfor må $\vec{x}$ have $n$ aktive bibetingelser.
-Da $\vec{x}\in \mathcal{F}$ medfører det, at $\vec{x}$ overholder alle ligheds bibetingelser, og at $\vec{x}$ er en mulig løsning. 
+\\ Antag nu, at $|I|=n$, derfor må $\vec{x}$ have $n$ aktive lineært uafhængige bibetingelser.
+Da $\vec{x}\in P$ medfører det, at $\vec{x}$ overholder alle ligheds bibetingelser, og at $\vec{x}$ er en mulig løsning. 
 Derfor følger det af Definition \ref{def:basislosning}, at $\vec{x}$ er en mulig basisløsning.
-\\Derfor må der fra en vilkårlig løsning $\vec{x}\in \mathcal{F}$ kunne konstrueres en mulig basisløsning $\vec{x^*}$ så $\vec{c}^T\vec{x^*} \leq \vec{c}^T \vec{x}$.
+\\Derfor må der fra en vilkårlig løsning $\vec{x}\in P$ kunne konstrueres en mulig basisløsning $\vec{x^*}$ så $\vec{c}^T\vec{x^*} \leq \vec{c}^T \vec{x}$.
 Dermed må den optimale løsning være den mulige basisløsning, der minimere objektfunktionen, hvorfor der eksistere en optimal løsning, som er en mulig basisløsning.
 \end{proof}
 \begin{figure}
@@ -55,8 +65,8 @@ Dermed må den optimale løsning være den mulige basisløsning, der minimere ob
 	\label{fig:eksistens}
 \end{center}
 \end{figure}
-Det betyder at hvis det lineære programmerings problem er konsistent, da eksistere der enten en optimal løsning, blandt basisløsningerne eller den optimale løsning er $\pm \infty$.
-Det kunne derfor være relevant at finde en måde, hvor den optimale løsning blandt basisløsningerne kan findes, her kan gøres brug af simplex metoden.
+Det betyder, at hvis det lineære programmeringsproblem er konsistent, da eksistere der enten en optimal løsning, blandt basisløsningerne eller den optimale værdi er $\pm \infty$.
+Det kunne derfor være relevant at finde en måde, hvor den optimale løsning blandt basisløsningerne kan findes, her kan gøres brug af Simplex metoden.
 
 
 
