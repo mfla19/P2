@@ -1,8 +1,10 @@
-\subsection{Fuld tabel}
-Fuld tabel metoden er en metode til implementering af Simplex. Et standard minimeringsproblem $\vec{c}^T\vec{x}$, med bibetingelserne $A\vec{x} \geq \vec{b}$, kan ved brug af slack-variable omskrives til $A\vec{x}+\vec{s}=\vec{b}$. Givet en aktuel basis, $B$, kan ligheden også udtrykkes som  $B^{-1}\vec{b}=B^{-1}A\vec{x}$. Fuld tabel metoden bruger $m \times (n+1)$ matricen $B^{-1}[\vec{b} \ | \ A]$.\\
+Der findes forskellige måder at implementere simplex metoden, det kan blandt gøres ved brug af Fuld tabel og Store-M metoden. Desuden kan den leksikografiske pivotregel forhindre, at Simplex metoden har et undeligt antal iterationer. 
 
-\begin{defn}[Simplex Tabel]
-Lad $z=\vec{c}^T\vec{x}$ være en objektfunktion med lineært uafhængige bibetingelser for et minimeringsproblem $A\vec{x} \geq \vec{b}$, så er en \textbf{Simplex Tabel},\\
+\subsection{Fuld tabel}
+Fuld tabel metoden er en metode til implementering af Simplex. Et standard minimeringsproblem $\vec{c}^T\vec{x}$, med bibetingelserne $A\vec{x} \geq \vec{b}$, kan ved brug af slack-variable omskrives til $A\vec{x}+\vec{s}=\vec{b}$. Givet en aktuel basis, $B$, kan ligheden også udtrykkes som  $B^{-1}\vec{b}=B^{-1}A\vec{x}$. Fuld tabel metoden bruger $m \times (n+1)$ matricen $B^{-1}[\vec{b} \ \mid \ A]$.\\
+
+\begin{defn}[Simplex tabel]
+Lad $z=\vec{c}^T\vec{x}$ være en objektfunktion med lineært uafhængige bibetingelser for et minimeringsproblem $A\vec{x} \geq \vec{b}$, så er en \textbf{Simplex tabel},\\
 \begin{center}
 \begin{tabular}{| c | c |}
   \hline
@@ -14,7 +16,7 @@ hvor $-\vec{c_B}\vec{x}_B$ er det negative af den aktuelle omkostning.
 \end{defn}
 
 
-På mere udvidet form vil Simplex Tabellen se således ud.
+På mere udvidet form vil Simplex tabellen se således ud,
 \begin{center}
 \begin{tabular}{| r|r r r|}
   \hline	
@@ -27,24 +29,24 @@ På mere udvidet form vil Simplex Tabellen se således ud.
 \end{center}
 Søjlen $B^{-1}\vec{b}$ kaldes den nulte søjle, mens den øverste række kaldes den nulte række.
 
-\begin{pro} [label=pro:simplex,numbers=none,xleftmargin=0em] {Procedure for Fuld tabel metoden}
+\begin{pro} [label=pro:simplex,numbers=none,xleftmargin=0em] {Fuld tabel metoden}
 1. Start med en tabel til basismatricen $B$ og den tilhørende mulige basisløsning $\vec{x}$.
 2. Undersøg den reducerede omkostning i den nulte række. Hvis de alle er ikke-negative, er den aktuelle løsning optimal. Elles vælges et $j$, hvor $\Delta c_j <0$.
-3. Betragt vektoren $\vec{u}=B^{-1}\vec{A}_j$, som er den $j$'te søjle i tabellen. Hvis alle komponenterne i $\vec{u}$ er negative, er den optimale omkostning $-\infty$.
-4. For hvert $i$, hvor $u_i$ er positiv, beregn forholdet $x_{B(i)}/u_i$. Lad $l$ være indeks for rækken, hvor forholdet er mindst. Søjlen $\vec{A}_{B(l)}$ forlader basen, og $\vec{A}_j$ indgår i basen. 
+3. Betragt vektoren $\vec{u}=B^{-1}\vec{A}_j$, som er den $j$'te søjle i tabellen. Hvis alle komponenterne i $\vec{u}$ er $\quad$ negative, er den optimale omkostning $-\infty$.
+4. For hvert $i$, hvor $u_i$ er positiv, beregn forholdet $\frac{x_{B(i)}}{u_i}$. Lad $l$ være indeks for rækken, hvor forholdet er mindst. Søjlen $\vec{A}_{B(l)}$ forlader basen, og $\vec{A}_j$ indtræder i basen. 
 5. Læg et multiplum af den $l$'te række til alle rækker, således at $u_l$ bliver $1$ og alle andre indgange i pivot søjlen bliver $0$
-6. Gå til trin $2$. 
+6. Gentag proceduren fra trin $2$. 
 \end{pro}
-For at starte Simplex-metoden skal der bruges en mulig basisløsning. Hvis problemet er på formen $A\vec{x} \leq \vec{b}$, og $\vec{b} \geq 0$, vil der altid kunne findes en mulig basisløsning. Denne findes ved om omskrive problemet ved hjælp af slack-varialbe $A\vec{x} +\vec{s}= \vec{b}$. Vektoren givet ved $[\vec{x},\vec{s}]$, hvor $\vec{x}=\vec{0}$ og $\vec{s}=\vec{b}$, er en mulig basisløsning. 
+For at starte Simplex metoden skal der bruges en mulig basisløsning. Hvis problemet er på formen $A\vec{x} \leq \vec{b}$, og $\vec{b} \geq \vec{0}$, vil der altid kunne findes en mulig basisløsning. Denne findes ved at omskrive problemet ved hjælp af slack-variable $A\vec{x} +\vec{s}= \vec{b}$. Vektoren givet ved $[\vec{x},\vec{s}]^T$, hvor $\vec{x}=\vec{0}$ og $\vec{s}=\vec{b}$, er en mulig basisløsning. 
 \begin{eks}[Fuld Tabel Metoden]
-Betragt det lineære progammeringsproblem. 
+Betragt det lineære progammeringsproblem
 \begin{center}
 \begin{tabular}{ l c c  c  r }
 Minimer &$-10x_1$&$-12x_2$ & $-12x_3$&\\
 I forhold til: &$x_1$&+$2x_2 $&+$2x_3$ & $\leq 20$\\
-&$2x_1$& $+x_2$& $2x_3$ & $\leq 20$\\
+&$2x_1$& $+x_2$& $+2x_3$ & $\leq 20$\\
 &$2x_1$&$+2x_2$&$+x_3$&$\leq 20$\\
-$x_1,x_2,x_3\geq 0$
+$x_1,x_2,x_3\geq 0$.
 \end{tabular}
 \end{center}
 
@@ -53,16 +55,16 @@ Nu indførers slack-variable, så ulighederne bliver til ligheder.
 \begin{tabular}{ l c c  c c c c r }
 Minimer &$-10x_1$&$-12x_2$ & $-12x_3$&&&\\
 I forhold til: &$x_1$&+$2x_2 $&+$2x_3$ &$+x_4$&& &$=20$\\
-&$2x_1$& $+x_2$& $2x_3$ & & $+x_5$ &&$=20$\\
+&$2x_1$& $+x_2$& $+2x_3$ & & $+x_5$ &&$=20$\\
 &$2x_1$&$+2x_2$&$+x_3$&&&$+x_6$&$=20$\\
 $x_1,x_2,x_3,x_4,x_5,x_6\geq 0$
 \end{tabular}
 \end{center}
 
 Trin 1\\
-Nu er $\vec{x}^T=[0,0,0,20,20,20]$ en mulig basisløsning, hvor $B(1)=4,B(2)=5,B(3)=6$. Den tilhørende basismatrix er identitesmatricen, $I_3$. 
+Nu er $\vec{x}^T=[0,0,0,20,20,20]$ en mulig basisløsning, hvor $B(1)=4,B(2)=5$ og $B(3)=6$. Den tilhørende basismatrix er identitesmatricen, $I_3$. 
 \begin{center}
-\begin{tabular}{r| r|r r r r r r|}
+\begin{tabular}{|r| r|r r r r r r|}
   \hline	
   &$0$&$-10$ &$-10$&$-10$&$0$&$0$&$0$\\ \hline	
   $x_4=$&$20$&$1$&$2$&$2$&$1$&$0$&$0$\\	
@@ -73,24 +75,24 @@ Nu er $\vec{x}^T=[0,0,0,20,20,20]$ en mulig basisløsning, hvor $B(1)=4,B(2)=5,B
 \end{center}
 
 Trin 2\\
-I den nulte række findes $3$ negative værdier. Den reducerede omkostning for $x_1$ er negativ. Den indgår derfor i basen. \\
+I den nulte række findes $3$ negative værdier. Den reducerede omkostning for $x_1$ er negativ. Den indtræder derfor i basen. \\
 \\
 Trin 3\\
 $\vec{u}^T=[1,2,2]$. Det ses, at alle komponenterne er positive. \\
 \\
 Trin 4\\
-For at bestemme hvilken række, der skal være pivotrække udregnes forholdet $x_{B(i)}/u_i$. 
+For at bestemme hvilken række, der skal være pivotrække udregnes forholdet $\frac{x_{B(i)}}{u_i}$. 
 \begin{align*}
-x_{B(1)}/u_1=\frac{20}{1}=20\\
-x_{B(2)}/u_2=\frac{20}{2}=10\\
-x_{B(3)}/u_3=\frac{20}{2}=10\\
+\frac{x_{B(1)}}{u_1}=\frac{20}{1}=20\\
+\frac{x_{B(2)}}{u_2}=\frac{20}{2}=10\\
+\frac{x_{B(3)}}{u_3}=\frac{20}{2}=10\\
 \end{align*}
 Det ses, at forholdet for $i=2$ og $i=3$ er det samme. Da vælges $l$ til at være række $2$. \\
 \\
 Trin 5\\
 Den nye tabel er givet ved:
 \begin{center}
-\begin{tabular}{r| r|r r r r r r|}
+\begin{tabular}{|r| r|r r r r r r|}
   \hline	
   &$100$&$0$ &$-7$&$-2$&$0$&$5$&$0$\\ \hline	
   $x_4=$&$10$&$0$&$1.5$&$1$&$1$&$-0.5$&$0$\\	
@@ -100,9 +102,9 @@ Den nye tabel er givet ved:
 \end{tabular}
 \end{center}
 I denne tabel er den reducerede omkostning for $x_2$ og $x_3$ negativ. Derfor gennemgås procedureren igen fra Trin 2.\\
-$x_3$ vælges til at indgå i basen. Efter procedureren er gennemgået er tabellen givet ved. 
+$x_3$ vælges til at indtræde i basen. Efter procedureren er gennemgået er tabellen givet ved. 
 \begin{center}
-\begin{tabular}{r| r|r r r r r r|}
+\begin{tabular}{|r| r|r r r r r r|}
   \hline	
   &$120$&$0$ &$-4$&$0$&$2$&$4$&$0$\\ \hline	
   $x_3=$&$10$&$0$&$1.5$&$1$&$1$&$-0.5$&$0$\\	
@@ -111,9 +113,9 @@ $x_3$ vælges til at indgå i basen. Efter procedureren er gennemgået er tabell
    \hline
 \end{tabular}
 \end{center}
-Den reducerede omkostning for $x_2$ er stadig negativ. Derfor gennemgås procedureren igen fra Trin 2. Når $x_2$ indgår i basen, er tabellen givet ved. 
+Den reducerede omkostning for $x_2$ er stadig negativ. Derfor gennemgås procedureren igen fra Trin 2. Når $x_2$ indtræder i basen, er tabellen givet ved. 
 \begin{center}
-\begin{tabular}{r| r|r r r r r r|}
+\begin{tabular}{|r| r|r r r r r r|}
   \hline	
   &$136$&$0$ &$0$&$0$&$3.6$&$1.6$&$1.6$\\ \hline	
   $x_3=$&$4$&$0$&$0$&$1$&$0.4$&$0.4$&$-0.6$\\	
@@ -122,6 +124,6 @@ Den reducerede omkostning for $x_2$ er stadig negativ. Derfor gennemgås procedu
    \hline
 \end{tabular}
 \end{center}
-Der er nu ingen negative indgange i den nulte række. Derfor er den nuværende basisløsning, $\vec{x}=(4,4,4,0,0,0)$, den optimale løsning. 
+Der er nu ingen negative indgange i den nulte række. Derfor er den nuværende basisløsning, $\vec{x}=(4,4,4,0,0,0)$, den optimale løsning. Omkostningen for objektfunktionen er så $-136$.
 \end{eks}
 
